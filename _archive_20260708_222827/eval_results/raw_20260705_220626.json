@@ -1,0 +1,62 @@
+[
+  {
+    "config": "full",
+    "results": [
+      {
+        "id": "t1_top_downtime",
+        "tier": 1,
+        "question": "Which machine had the most downtime hours?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 21.2,
+        "tokens": 3830,
+        "answer": "Machine M13 had the highest total downtime hours with 196.54 hours.\n  data: {'machine_id': 'M13', 'total_downtime_hours': 196.54}\n\n[!] Statistical caveats (validator):\n  - t1: This claim identifies the machine with the highest absolute total downtime. It does not account for the duration each machine has been operational. A machine that has been in service longer might naturally accumulate more to",
+        "error": null
+      },
+      {
+        "id": "t2_total_defects",
+        "tier": 2,
+        "question": "How many defective parts were produced in total?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 26.0,
+        "tokens": 4937,
+        "answer": "The total sum of defect counts across all defects is 12992.\n  data: {'total_defect_count': 12992}",
+        "error": null
+      },
+      {
+        "id": "t2_worst_steel",
+        "tier": 2,
+        "question": "Which supplier has the highest defect rate for steel lots?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 39.0,
+        "tokens": 4208,
+        "answer": "The supplier with the highest defect rate for steel lots is Borealis Supply with a defect rate of 0.0303.\n  data: {'supplier_name': 'Borealis Supply', 'highest_steel_defect_rate': 0.0303}\n\n[!] Statistical caveats (validator):\n  - t1: The claim identifies the supplier with the highest observed defect rate. However, without information on the variability of these rates (e.g., confidence intervals) o",
+        "error": null
+      },
+      {
+        "id": "t3_small_n",
+        "tier": 3,
+        "question": "Which product has the best quality record, and how confident can we be?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 26.0,
+        "tokens": 0,
+        "answer": "",
+        "error": "Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
+      },
+      {
+        "id": "t4_shift_trap",
+        "tier": 4,
+        "question": "Which shift has the best quality record?",
+        "correct": 0.5,
+        "flagged": true,
+        "latency_s": 45.1,
+        "tokens": 4739,
+        "answer": "The shift with the lowest defect rate is 'night' with a defect rate of 0.0139.\n  data: {'shift_name': 'night', 'lowest_defect_rate': 0.0139}\n\n[!] Statistical caveats (validator):\n  - t1: This claim identifies the 'best' shift from multiple comparisons without providing confidence intervals, so the statistical significance of the difference from other shifts is unknown. Furthermore, the analysis do",
+        "error": null
+      }
+    ]
+  }
+]

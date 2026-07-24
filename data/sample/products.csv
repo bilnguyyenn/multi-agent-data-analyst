@@ -1,0 +1,9 @@
+product_id,product_name,complexity
+P1,part_A,low
+P2,part_B,low
+P3,part_C,low
+P4,part_D,medium
+P5,part_E,medium
+P6,part_F,medium
+P7,part_G,high
+P8,part_H,high

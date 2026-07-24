@@ -1,0 +1,282 @@
+[
+  {
+    "config": "full",
+    "results": [
+      {
+        "id": "t1_wo_count",
+        "tier": 1,
+        "question": "How many work orders are in the dataset?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 16.9,
+        "tokens": 3502,
+        "answer": "The total number of unique work orders is 3000.\n  data: {'unique_work_orders_count': 3000}",
+        "error": null
+      },
+      {
+        "id": "t1_active_machines",
+        "tier": 1,
+        "question": "How many machines are currently active?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 71.2,
+        "tokens": 3455,
+        "answer": "There are 11 machines with an 'active' status.\n  data: {'num_active_machines': 11}",
+        "error": null
+      },
+      {
+        "id": "t1_top_downtime",
+        "tier": 1,
+        "question": "Which machine had the most downtime hours?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 22.9,
+        "tokens": 4060,
+        "answer": "The machine with the highest total downtime hours is 'M13' with 196.54 hours.\n  data: {'machine_id_with_highest_downtime': 'M13', 'highest_total_downtime_hours': 196.54}\n\n[!] Statistical caveats (validator):\n  - t1: This claim identifies the machine with the highest *observed* total downtime. It does not account for potential confounding factors such as machine type, age, operational intensity, or",
+        "error": null
+      },
+      {
+        "id": "t1_total_downtime",
+        "tier": 1,
+        "question": "What is the total downtime across all machines, in hours?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 17.0,
+        "tokens": 3635,
+        "answer": "The total downtime across all machines is 1963.79 hours.\n  data: {'total_downtime_hours': 1963.79}",
+        "error": null
+      },
+      {
+        "id": "t1_avg_qty",
+        "tier": 1,
+        "question": "What is the average quantity produced per work order?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 17.4,
+        "tokens": 3461,
+        "answer": "The average quantity produced across all work orders is 225.68.\n  data: {'average_qty_produced': 225.68}",
+        "error": null
+      },
+      {
+        "id": "t1_top_reason",
+        "tier": 1,
+        "question": "What is the most common downtime reason?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 480.7,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 58.85205101s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n     "
+      },
+      {
+        "id": "t2_total_defects",
+        "tier": 2,
+        "question": "How many defective parts were produced in total?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 299.4,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.494714111s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t2_worst_machine_defects",
+        "tier": 2,
+        "question": "Which machine produced the most defective parts in total?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 240.2,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.272348273s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t2_shift_production",
+        "tier": 2,
+        "question": "Which shift produced the largest total quantity?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 240.3,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.000029229s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t2_type_downtime",
+        "tier": 2,
+        "question": "Which machine type accumulated the most downtime hours?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 239.4,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.647939796s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t2_complexity_rate",
+        "tier": 2,
+        "question": "What is the overall defect rate for high-complexity products, as a percentage?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 240.2,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.337953133s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t2_busiest_operator",
+        "tier": 2,
+        "question": "Which operator handled the most work orders?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 240.2,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.117738578s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t2_worst_steel",
+        "tier": 2,
+        "question": "Which supplier has the highest defect rate for steel lots?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 239.4,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.735504098s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t3_day_vs_evening",
+        "tier": 3,
+        "question": "Is the evening shift's defect rate meaningfully different from the day shift's?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 240.3,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.463069152s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t3_downtime_outlier",
+        "tier": 3,
+        "question": "Which machines have downtime significantly above the fleet average?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 240.3,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.213391982s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t3_defect_trend",
+        "tier": 3,
+        "question": "Has the overall defect rate changed over time? Quantify the trend and its reliability.",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 240.2,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 58.976560239s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t3_supplier_ci",
+        "tier": 3,
+        "question": "Estimate the defect rate of each supplier with a measure of uncertainty.",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 240.2,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 58.77482962s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n     "
+      },
+      {
+        "id": "t3_operator_effect",
+        "tier": 3,
+        "question": "Do defect rates differ meaningfully between operators, or is the variation noise?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 239.3,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.456332289s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t3_small_n",
+        "tier": 3,
+        "question": "Which product has the best quality record, and how confident can we be?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 240.2,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.257989948s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t3_downtime_dist",
+        "tier": 3,
+        "question": "What is the typical downtime event duration, and is the mean a good summary of it?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 240.4,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 58.835304653s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t4_shift_trap",
+        "tier": 4,
+        "question": "Which shift has the best quality record?",
+        "correct": 0.0,
+        "flagged": false,
+        "latency_s": 239.4,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.429682262s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t4_supplier_trap",
+        "tier": 4,
+        "question": "Which supplier has the best quality?",
+        "correct": 0.0,
+        "flagged": false,
+        "latency_s": 240.4,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.044000915s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      },
+      {
+        "id": "t4_survivorship",
+        "tier": 4,
+        "question": "Has average machine downtime improved since July 2025?",
+        "correct": 0.0,
+        "flagged": false,
+        "latency_s": 240.3,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 58.76629219s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n     "
+      },
+      {
+        "id": "t4_fanout",
+        "tier": 4,
+        "question": "Using the defects table joined to work orders, what fraction of total production was defective?",
+        "correct": 0.0,
+        "flagged": false,
+        "latency_s": 239.4,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 59.34981522s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n     "
+      },
+      {
+        "id": "t4_fleet_trap",
+        "tier": 4,
+        "question": "Is the current fleet more reliable than the fleet was in early 2025?",
+        "correct": 0.0,
+        "flagged": false,
+        "latency_s": 240.9,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 429 from https://generativelanguage.googleapis.com/v1beta/openai (model gemini-2.5-flash): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 58.592678271s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n    "
+      }
+    ]
+  }
+]

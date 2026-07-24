@@ -1,0 +1,60 @@
+# Cerebras free-tier routing — the token-budget winner for this eval.
+#
+# Why Cerebras over Gemini/Groq: the eval is TOKEN-heavy (each question = 5-10 agent
+# calls carrying data schemas + generated code + critic reasoning, ~20-40K tokens).
+# Free-tier daily TOKEN caps, not request counts, are what actually kill the run:
+#   Cerebras      -> 30 RPM / 1,000,000 tokens/day  <- ~10x Groq; a 25-q config fits/day
+#   Groq (70B)    -> 30 RPM / 100,000 tokens/day    <- too small (killed an earlier run)
+#   Gemini F-Lite -> 15 RPM / 1,000 req/day but tight per-minute token cap
+# No credit card, no waitlist: sign up at https://cloud.cerebras.ai and grab a key.
+#
+# NOTE: Cerebras rotates its public catalog often — the Llama 3.x models many blog
+# posts cite have moved to Dedicated (paid) endpoints. Current FREE public model IDs
+# (verify at https://inference-docs.cerebras.ai/models/overview):
+#   gpt-oss-120b  (production, 120B, ~3000 tok/s)  -> reasoning tier
+#   gemma-4-31b   (PREVIEW, 31B, ~1850 tok/s)      -> mechanical tier
+#   zai-glm-4.7   (PREVIEW, 355B, ~1000 tok/s)     -> alt heavy reasoning
+# Preview models are eval-only and can be pulled on short notice — if one 404s, swap
+# it for a production ID from the catalog page above.
+#
+# Bonus: unlike the Gemini config (both tiers = same model), Cerebras gives a REAL
+# two-tier split (70B reasoning vs 8B mechanical), so the routed-vs-single-model
+# comparison in the scorecard stays meaningful.
+#
+# Use:
+#   export ANALYST_ROUTING_CONFIG=config/routing.cerebras.yaml
+#   export ANALYST_HOSTED_BASE_URL=https://api.cerebras.ai/v1
+#   export ANALYST_HOSTED_API_KEY=<key from cloud.cerebras.ai — free, no card>
+#   export ANALYST_HOSTED_MIN_INTERVAL_S=2   # glide at 30 RPM instead of 429ing
+#
+# Verify current model IDs + limits at https://inference-docs.cerebras.ai (providers
+# rename models and adjust quotas often). Recording is auto-on for eval, so ONE clean
+# pass writes cassettes -> every re-run/CI is $0 replay afterward, regardless of tier.
+#
+# Note for the write-up: keep the model constant across ablation configs (it is here).
+
+roles:
+  planner:     reasoning
+  critic:      reasoning
+  validator:   reasoning
+  council_metric:       reasoning
+  council_statistical:  reasoning
+  council_data_quality: reasoning
+  adjudicator:          reasoning
+  reporter:    reasoning
+  executor:    mechanical
+  summarizer:  mechanical
+
+tiers:
+  reasoning:
+    anthropic: claude-fable-5
+    hosted: gpt-oss-120b
+    local: qwen2.5-coder:3b-instruct-q4_K_M
+  mechanical:
+    anthropic: claude-haiku-4-5-20251001
+    hosted: gemma-4-31b
+    local: qwen2.5-coder:3b-instruct-q4_K_M
+
+limits:
+  max_output_tokens: 2048
+  request_timeout_s: 120

@@ -1,0 +1,283 @@
+[
+  {
+    "config": "full",
+    "results": [
+      {
+        "id": "t1_wo_count",
+        "tier": 1,
+        "question": "How many work orders are in the dataset?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 49.9,
+        "tokens": 4971,
+        "answer": "There are 3000 unique work orders.\n  data: {'unique_work_order_count': 3000}",
+        "error": null
+      },
+      {
+        "id": "t1_active_machines",
+        "tier": 1,
+        "question": "How many machines are currently active?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 18.1,
+        "tokens": 3319,
+        "answer": "There are 11 machines with status 'active'.\n  data: {'active_machines_count': 11}",
+        "error": null
+      },
+      {
+        "id": "t1_top_downtime",
+        "tier": 1,
+        "question": "Which machine had the most downtime hours?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 19.9,
+        "tokens": 6332,
+        "answer": "The total downtime hours for each machine have been calculated.\n  data: [{'machine_id': 'M12', 'total_downtime_hours': 170.56999999999996}, {'machine_id': 'M07', 'total_downtime_hours': 180.45999999999998}, {'machine_id': 'M11', 'total_downtime_hours': 100.01000000000002}, {'machine_id': 'M04', 'total_downtime_hours': 135.57999999999998}, {'machine_id': 'M13', 'total_downtime_hours': 196.539999999",
+        "error": null
+      },
+      {
+        "id": "t1_total_downtime",
+        "tier": 1,
+        "question": "What is the total downtime across all machines, in hours?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 17.5,
+        "tokens": 3377,
+        "answer": "The total downtime hours across all events is 1963.79.\n  data: {'total_downtime_hours': 1963.7900000000002}",
+        "error": null
+      },
+      {
+        "id": "t1_avg_qty",
+        "tier": 1,
+        "question": "What is the average quantity produced per work order?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 17.4,
+        "tokens": 3461,
+        "answer": "The average quantity produced across all work orders is 225.68.\n  data: {'average_qty_produced': 225.68}",
+        "error": null
+      },
+      {
+        "id": "t1_top_reason",
+        "tier": 1,
+        "question": "What is the most common downtime reason?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 17.0,
+        "tokens": 4521,
+        "answer": "The occurrences of each downtime reason have been counted.\n  data: [{'reason': 'electrical', 'count': 155}, {'reason': 'mechanical', 'count': 155}, {'reason': 'material_wait', 'count': 154}, {'reason': 'changeover', 'count': 137}]",
+        "error": null
+      },
+      {
+        "id": "t2_total_defects",
+        "tier": 2,
+        "question": "How many defective parts were produced in total?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 26.0,
+        "tokens": 4937,
+        "answer": "The total sum of defect counts across all defects is 12992.\n  data: {'total_defect_count': 12992}",
+        "error": null
+      },
+      {
+        "id": "t2_worst_machine_defects",
+        "tier": 2,
+        "question": "Which machine produced the most defective parts in total?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 0.3,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t2_shift_production",
+        "tier": 2,
+        "question": "Which shift produced the largest total quantity?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 1.9,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t2_type_downtime",
+        "tier": 2,
+        "question": "Which machine type accumulated the most downtime hours?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 2.0,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t2_complexity_rate",
+        "tier": 2,
+        "question": "What is the overall defect rate for high-complexity products, as a percentage?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 2.0,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t2_busiest_operator",
+        "tier": 2,
+        "question": "Which operator handled the most work orders?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 2.1,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t2_worst_steel",
+        "tier": 2,
+        "question": "Which supplier has the highest defect rate for steel lots?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 39.0,
+        "tokens": 4208,
+        "answer": "The supplier with the highest defect rate for steel lots is Borealis Supply with a defect rate of 0.0303.\n  data: {'supplier_name': 'Borealis Supply', 'highest_steel_defect_rate': 0.0303}\n\n[!] Statistical caveats (validator):\n  - t1: The claim identifies the supplier with the highest observed defect rate. However, without information on the variability of these rates (e.g., confidence intervals) o",
+        "error": null
+      },
+      {
+        "id": "t3_day_vs_evening",
+        "tier": 3,
+        "question": "Is the evening shift's defect rate meaningfully different from the day shift's?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 2.0,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t3_downtime_outlier",
+        "tier": 3,
+        "question": "Which machines have downtime significantly above the fleet average?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 1.9,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t3_defect_trend",
+        "tier": 3,
+        "question": "Has the overall defect rate changed over time? Quantify the trend and its reliability.",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 2.0,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t3_supplier_ci",
+        "tier": 3,
+        "question": "Estimate the defect rate of each supplier with a measure of uncertainty.",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 2.0,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t3_operator_effect",
+        "tier": 3,
+        "question": "Do defect rates differ meaningfully between operators, or is the variation noise?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 2.0,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t3_small_n",
+        "tier": 3,
+        "question": "Which product has the best quality record, and how confident can we be?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 2.0,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t3_downtime_dist",
+        "tier": 3,
+        "question": "What is the typical downtime event duration, and is the mean a good summary of it?",
+        "correct": 0.0,
+        "flagged": null,
+        "latency_s": 2.1,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t4_shift_trap",
+        "tier": 4,
+        "question": "Which shift has the best quality record?",
+        "correct": 0.5,
+        "flagged": true,
+        "latency_s": 45.1,
+        "tokens": 4739,
+        "answer": "The shift with the lowest defect rate is 'night' with a defect rate of 0.0139.\n  data: {'shift_name': 'night', 'lowest_defect_rate': 0.0139}\n\n[!] Statistical caveats (validator):\n  - t1: This claim identifies the 'best' shift from multiple comparisons without providing confidence intervals, so the statistical significance of the difference from other shifts is unknown. Furthermore, the analysis do",
+        "error": null
+      },
+      {
+        "id": "t4_supplier_trap",
+        "tier": 4,
+        "question": "Which supplier has the best quality?",
+        "correct": 0.0,
+        "flagged": false,
+        "latency_s": 1.9,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t4_survivorship",
+        "tier": 4,
+        "question": "Has average machine downtime improved since July 2025?",
+        "correct": 0.0,
+        "flagged": false,
+        "latency_s": 2.0,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t4_fanout",
+        "tier": 4,
+        "question": "Using the defects table joined to work orders, what fraction of total production was defective?",
+        "correct": 0.0,
+        "flagged": false,
+        "latency_s": 2.0,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      },
+      {
+        "id": "t4_fleet_trap",
+        "tier": 4,
+        "question": "Is the current fleet more reliable than the fleet was in early 2025?",
+        "correct": 0.0,
+        "flagged": false,
+        "latency_s": 2.0,
+        "tokens": 0,
+        "answer": "",
+        "error": "HTTP 404 from https://api.cerebras.ai/v1 (model llama-3.3-70b): {\"message\":\"Model llama-3.3-70b does not exist or you do not have access to it.\",\"type\":\"not_found_error\",\"param\":\"model\",\"code\":\"model_not_found\"}"
+      }
+    ],
+    "aborted": false
+  }
+]

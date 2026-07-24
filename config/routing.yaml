@@ -1,0 +1,50 @@
+# Model routing: agent role -> tier -> concrete model per provider.
+#
+# This file is the "model routing is a config decision, not a hardcode" artifact.
+# The eval harness treats this table as an experimental variable (routed vs single-model).
+#
+# Provider is selected by env var ANALYST_LLM_PROVIDER: local | hosted | replay | anthropic
+#
+# NOTE on `local` with 8GB RAM: both tiers point at the same quantized 3B on purpose.
+# Budget: macOS (~3.5GB) + Colima VM (2GB) + model must coexist. A 7B (~5GB loaded)
+# swap-thrashes the machine; the 3B (~2.2GB) fits. Also: Ollama unloads/reloads on
+# every model switch, so one shared model avoids thrash. On >=16GB, split tiers e.g.:
+#   reasoning:  qwen2.5:14b-instruct-q4_K_M
+#   mechanical: qwen2.5-coder:7b-instruct-q4_K_M
+
+roles:
+  planner:     reasoning
+  critic:      reasoning
+  validator:   reasoning
+  council_metric:       reasoning
+  council_statistical:  reasoning
+  council_data_quality: reasoning
+  adjudicator:          reasoning
+  reporter:    reasoning
+  executor:    mechanical
+  summarizer:  mechanical
+
+# `hosted` = any OpenAI-compatible endpoint (default: Groq free tier, no card).
+# Even at $0 the two tiers stay REAL: 70B for reasoning, 8B-instant for mechanical —
+# so the routed-vs-single-model eval comparison remains meaningful.
+tiers:
+  reasoning:
+    anthropic: claude-fable-5
+    hosted: llama-3.3-70b-versatile
+    local: qwen2.5-coder:3b-instruct-q4_K_M
+  mechanical:
+    anthropic: claude-haiku-4-5-20251001
+    # 70B by default: live runs showed the 8B hallucinating columns/tables on
+    # multi-table codegen (see build-log). Both are free on Groq; the eval
+    # compares them to answer "how small can the executor model be?" with data.
+    # Cost-optimized variant: llama-3.1-8b-instant
+    hosted: llama-3.3-70b-versatile
+    local: qwen2.5-coder:3b-instruct-q4_K_M
+
+# Optional middle tier kept for a 3-way routing comparison in the eval write-up:
+#   middle:
+#     anthropic: claude-opus-4-8
+
+limits:
+  max_output_tokens: 2048
+  request_timeout_s: 180   # local 7B on CPU can be slow; generous timeout

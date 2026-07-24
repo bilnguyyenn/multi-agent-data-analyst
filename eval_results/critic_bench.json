@@ -1,0 +1,17 @@
+{
+  "recall": 0.83,
+  "precision": 0.71,
+  "false_positive_rate": 0.5,
+  "rows": [
+    {"id": "fanout_join", "flaw_class": "join fan-out", "verdict": "revise", "detected": true},
+    {"id": "survivorship", "flaw_class": "survivorship bias", "verdict": "revise", "detected": true},
+    {"id": "confounded", "flaw_class": "confounded comparison", "verdict": "approve", "detected": false},
+    {"id": "silent_nulls", "flaw_class": "silent null handling / denominator", "verdict": "revise", "detected": true},
+    {"id": "wrong_grain", "flaw_class": "averaging averages", "verdict": "revise", "detected": true},
+    {"id": "goal_mismatch", "flaw_class": "goal mismatch (count vs hours)", "verdict": "revise", "detected": true},
+    {"id": "sound_agg", "flaw_class": "", "verdict": "approve", "detected": false},
+    {"id": "sound_dedup", "flaw_class": "", "verdict": "approve", "detected": false},
+    {"id": "sound_count", "flaw_class": "", "verdict": "revise", "detected": true},
+    {"id": "sound_weighted", "flaw_class": "", "verdict": "revise", "detected": true}
+  ]
+}

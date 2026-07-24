@@ -1,0 +1,48 @@
+# Gemini free-tier routing — chosen for EVAL runs after Groq's 70B daily token
+# cap (~100K TPD) proved smaller than a single benchmark config (~150-250K tokens).
+#
+# CURRENT free-tier limits (Google cut these in Dec 2025 — verify, they move):
+#   2.5 Flash      -> 10 RPM / 250 RPD  ← too small: the 4-config matrix is
+#                     ~500-800 requests (4 configs x 25 q x ~5-10 LLM calls each),
+#                     which is 2-3x the 250/day cap. Cannot finish in one day.
+#   2.5 Flash-Lite -> 15 RPM / 1,000 RPD ← the whole matrix fits in a day. Used here.
+#                     Weaker reasoning than Flash, but model is held constant across
+#                     ablation configs, so the with/without-critic comparison stays valid.
+#
+# Use:
+#   export ANALYST_ROUTING_CONFIG=config/routing.gemini.yaml
+#   export ANALYST_HOSTED_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai
+#   export ANALYST_HOSTED_API_KEY=<AI Studio key — free, no card>
+#   export ANALYST_HOSTED_MIN_INTERVAL_S=4   # glide at 15 RPM instead of 429ing
+#
+# WITHOUT MIN_INTERVAL you machine-gun the RPM limit: the first ~15 calls succeed,
+# then every call 429s and each burns ~240s (4 retries x 60s) before giving up.
+#
+# Note for the write-up: eval results describe the system on the model that ran
+# them — keep the model constant across ablation configs (it is, here).
+
+roles:
+  planner:     reasoning
+  critic:      reasoning
+  validator:   reasoning
+  council_metric:       reasoning
+  council_statistical:  reasoning
+  council_data_quality: reasoning
+  adjudicator:          reasoning
+  reporter:    reasoning
+  executor:    mechanical
+  summarizer:  mechanical
+
+tiers:
+  reasoning:
+    anthropic: claude-fable-5
+    hosted: gemini-2.5-flash-lite
+    local: qwen2.5-coder:3b-instruct-q4_K_M
+  mechanical:
+    anthropic: claude-haiku-4-5-20251001
+    hosted: gemini-2.5-flash-lite
+    local: qwen2.5-coder:3b-instruct-q4_K_M
+
+limits:
+  max_output_tokens: 2048
+  request_timeout_s: 120

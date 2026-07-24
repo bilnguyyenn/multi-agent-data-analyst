@@ -1,0 +1,66 @@
+{
+  "downtime_hours_by_machine": {
+    "M01": 168.55,
+    "M02": 179.83,
+    "M03": 69.4,
+    "M04": 135.58,
+    "M05": 110.39,
+    "M06": 169.32,
+    "M07": 180.46,
+    "M08": 116.07,
+    "M09": 118.7,
+    "M10": 138.21,
+    "M11": 100.01,
+    "M12": 170.57,
+    "M13": 196.54,
+    "M14": 110.16
+  },
+  "top_downtime_machine": "M13",
+  "shift_defect_rate_naive": {
+    "day": 0.02115,
+    "evening": 0.02069,
+    "night": 0.01385
+  },
+  "shift_defect_rate_by_complexity": {
+    "high": {
+      "day": 0.03941,
+      "evening": 0.04117,
+      "night": 0.046
+    },
+    "low": {
+      "day": 0.00668,
+      "evening": 0.00747,
+      "night": 0.00825
+    },
+    "medium": {
+      "day": 0.01726,
+      "evening": 0.01947,
+      "night": 0.02277
+    }
+  },
+  "shift_trap_note": "night looks best naively but is worst within every complexity class",
+  "supplier_defect_rate_overall": {
+    "S1": 0.05231,
+    "S2": 0.03892,
+    "S3": 0.05109
+  },
+  "supplier_defect_rate_by_material": {
+    "composite": {
+      "S1": 0.06011,
+      "S2": 0.07471,
+      "S3": 0.0713
+    },
+    "steel": {
+      "S1": 0.01911,
+      "S2": 0.03033,
+      "S3": 0.02903
+    }
+  },
+  "simpson_note": "S1 best within both materials, worst/middling overall due to composite-heavy mix",
+  "decommissioned_machines": [
+    "M03",
+    "M08",
+    "M11"
+  ],
+  "total_production_qty": 677044
+}

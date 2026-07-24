@@ -1,0 +1,76 @@
+# Full production-shaped stack:  docker compose up --build
+# UI on http://localhost:8080 · API on :8000 · Jaeger on http://localhost:16686
+#
+# 12-factor by construction (config via env, stateless api/worker, healthchecks) so
+# the Kubernetes story writes itself: api/worker/frontend -> Deployments+Services,
+# postgres/redis -> StatefulSets (or managed), env -> ConfigMaps/Secrets. What
+# genuinely changes for k8s: the sandbox. Mounting the host docker socket (below)
+# doesn't translate — you'd move code execution to a dedicated sandbox service
+# (gVisor runtimeClass or E2B) behind the same SandboxRunner interface.
+#
+# HONEST TRADEOFF, worker.volumes: /var/run/docker.sock gives the worker container
+# the ability to start sibling sandbox containers on the host daemon. Socket access
+# is root-equivalent on that daemon — acceptable for a single-user local stack,
+# never for multi-tenant. The interface (SandboxRunner) is where the upgrade lives.
+#
+# 8GB NOTE: this whole stack + Colima fits, but stop Ollama first if it's running.
+
+services:
+  redis:
+    image: redis:7-alpine
+    healthcheck: { test: ["CMD", "redis-cli", "ping"], interval: 5s, retries: 10 }
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: analyst
+      POSTGRES_PASSWORD: analyst
+      POSTGRES_DB: analyst
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      { test: ["CMD-SHELL", "pg_isready -U analyst"], interval: 5s, retries: 10 }
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.57
+    environment: { COLLECTOR_OTLP_ENABLED: "true" }
+    ports: ["16686:16686"]   # trace UI
+
+  api:
+    build: { context: ., dockerfile: docker/app.Dockerfile }
+    environment: &appenv
+      REDIS_URL: redis://redis:6379
+      ANALYST_DB_URL: postgresql://analyst:analyst@postgres:5432/analyst
+      ANALYST_LLM_PROVIDER: hosted
+      ANALYST_HOSTED_API_KEY: ${ANALYST_HOSTED_API_KEY}
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4318
+      ANALYST_MEMORY_DIR: /state/memory
+    volumes:
+      - ./data:/app/data:ro
+      - appstate:/state
+    ports: ["8000:8000"]
+    depends_on:
+      redis: { condition: service_healthy }
+      postgres: { condition: service_healthy }
+
+  worker:
+    build: { context: ., dockerfile: docker/app.Dockerfile }
+    command: arq analyst.api.worker.WorkerSettings
+    environment:
+      <<: *appenv
+      ANALYST_EXEC_TMP: /state/exec   # must be volume-backed: sandbox mounts live here
+    volumes:
+      - ./data:/app/data:ro
+      - appstate:/state
+      - /var/run/docker.sock:/var/run/docker.sock   # see tradeoff note above
+    depends_on:
+      redis: { condition: service_healthy }
+      postgres: { condition: service_healthy }
+
+  frontend:
+    build: { context: ., dockerfile: docker/frontend.Dockerfile }
+    ports: ["8080:80"]
+    depends_on: [api]
+
+volumes:
+  pgdata:
+  appstate:

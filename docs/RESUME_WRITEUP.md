@@ -1,0 +1,108 @@
+# Resume and portfolio writeup — `analyst`
+
+All numbers below come from complete, zero-error, 25-question runs in the committed
+scorecard. The benchmark model routing is held constant across configurations.
+
+**Recommendation for Bill's data-science resume:** replace the county-level obesity
+project with this project. The tennis engine already demonstrates conventional
+modeling depth; this project adds LLM systems, evaluation design, statistical
+reasoning, and safe code execution.
+
+## Project title
+
+**Multi-Agent Autonomous Data Analyst** — LangGraph · FastAPI · React/TypeScript ·
+Docker · Pandas · DuckDB
+
+## Resume bullets — selected version
+
+- Built a multi-agent data analyst that converts natural-language questions into
+  parallel task DAGs, executes generated Python/SQL in isolated Docker sandboxes,
+  and automatically profiles uploaded relational data for missingness, duplicates,
+  invalid/orphaned keys, distributions, and outliers before analysis.
+- Implemented deterministic confidence intervals, hypothesis tests, Simpson-
+  detecting stratified adjustment, and leakage-aware scikit-learn pipelines with
+  training-only CV selection, temporal/group holdouts, baseline comparisons,
+  bootstrap metrics, permutation importance, and subgroup diagnostics.
+- Designed an integrity-gated 25-question ablation benchmark plus a separate
+  20-question held-out statistical suite with runtime-derived ground truth,
+  component rubrics, and multi-seed uncertainty; improved original-benchmark
+  accuracy from **0.56 to 0.86** versus a bare planner/executor and removed review
+  components that failed to justify their token cost.
+
+## Compact one-bullet version
+
+- Built and evaluated a multi-agent data analyst (LangGraph, FastAPI, Docker) that
+  executes sandboxed Python/SQL, computes deterministic statistical and predictive
+  evidence, and scores **0.86 vs 0.56** for a bare baseline on a 25-question trap
+  benchmark; ablations removed review agents that added cost without improving
+  accuracy.
+
+## MLE/infra-leaning alternative
+
+- Delivered a containerized agent service with FastAPI, arq/Redis workers, Postgres
+  run persistence, WebSocket streaming, and OpenTelemetry/Jaeger traces; untrusted
+  generated code runs in networkless, resource-limited Docker sandboxes.
+- Instrumented tokens and latency per configuration and built replayable, key-free
+  CI plus a provenance-linked scorecard that rejects incomplete or errored runs.
+- Selected a 0.80/3,429-token Standard mode and a 0.86/17,223-token High-assurance
+  mode after controlled ablations showed the critic and adaptive router did not earn
+  default status.
+
+## Portfolio description
+
+**Multi-Agent Autonomous Data Analyst**
+
+A planner decomposes a business question into a dynamic task DAG. Parallel executor
+agents write and run SQL or pandas against uploaded tables inside isolated Docker
+containers. A deterministic EDA layer profiles table grain, columns, distributions,
+missingness, duplicate/invalid keys, and inferred relationship integrity, then
+streams actionable findings and a transparent readiness score through the UI.
+For prediction requests, a governed modeling layer—not generated model-training
+code—owns validated joins, temporal/group/random holdouts, training-only CV model
+selection, dummy baselines, bootstrap metric intervals, permutation importance, and
+slice diagnostics. It rejects target/identifier leakage and row-multiplying joins.
+Standard mode sends the resulting claims through a statistical validator.
+High-assurance mode additionally fans the same immutable evidence to
+metric, statistical, and data-quality specialists; deterministic consensus avoids
+an extra model call, while disagreement invokes an adjudicator that may request one
+bounded recomputation. Results, provenance, risks, and dissent stream through a
+React interface over WebSockets.
+
+The central contribution is evaluation rather than agent count. I generated a
+25-question manufacturing benchmark with objective gold answers and planted traps
+for confounding, survivorship, join fan-out, and Simpson's paradox. Seven complete
+ablation configurations show that the selected council-without-critic policy scores
+0.86 versus 0.56 for a bare planner/executor. The statistical validator is
+load-bearing: removing it drops overall score from 0.80 to 0.68 and eliminates trap
+flagging. The critic, by contrast, adds no overall accuracy and false-positives on
+50% of sound controls, so it was removed from the product path. An adaptive council
+router also failed to save tokens and remains only as a documented negative result.
+
+To reduce development-benchmark overfitting, I added a separate 20-question suite
+on independently generated product-analytics data. It covers interval estimation,
+hypothesis tests/effect sizes, stratified confounding, and design/data-quality
+failure modes; exact item-set/content-hash integrity and a stratified no-reversal
+sound control prevent partial runs and indiscriminate trap flagging from earning
+credit. No held-out performance number is claimed until a live run passes the gate.
+
+Tech: Python, SQL, LangGraph, FastAPI, React/TypeScript, Docker, pandas, scikit-learn, DuckDB,
+Chroma, Postgres, Redis, OpenTelemetry/Jaeger, GitHub Actions.
+
+## Interview one-liner
+
+> I built a multi-agent data analyst, then used a reproducible ablation benchmark to
+> prove which agents earned their cost: 0.86 for the selected council policy versus
+> 0.56 bare, with the critic and adaptive router removed after negative results.
+
+## Numbers to memorize
+
+- High assurance: **0.86**, 17,223 mean tokens, perfect tiers 1–3.
+- Standard: **0.80**, 3,429 mean tokens, 27.6s mean latency.
+- Bare planner/executor: **0.56**.
+- No validator: **0.68**, with zero trap flagging.
+- Critic-bench: **0.83 recall**, **0.71 precision**, **0.50 false-positive rate**.
+- Held-out suite: **20 questions**, four balanced categories; performance pending a
+  complete live run, so do not quote an accuracy number yet.
+
+Tier-4 uses five planted trap questions per configuration, so describe trap-specific
+deltas as directional. The 0.86 and 0.56 headline scores each use all 25 questions.

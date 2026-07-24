@@ -1,0 +1,60 @@
+# CI: every push runs the full test suite at $0 — replay mode, dev sandbox,
+# fake embedder; no API keys, no Docker daemon, no model downloads.
+# The LIVE benchmark is a manual workflow_dispatch job gated on a repo secret.
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      live_eval:
+        description: "run live benchmark against Groq (uses ANALYST_HOSTED_API_KEY secret)"
+        type: boolean
+        default: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -e ".[dev]"
+      - name: unit + replay e2e tests ($0, deterministic)
+        run: python -m pytest tests/ -q
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: frontend/package-lock.json }
+      - run: npm install --no-audit --no-fund
+        working-directory: frontend
+      - name: strict TS + production build
+        run: npm run build
+        working-directory: frontend
+
+  live-eval:
+    if: github.event_name == 'workflow_dispatch' && inputs.live_eval
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -e ".[dev]"
+      - name: generate benchmark dataset
+        run: python -m analyst gen-data --out data/sample --seed 7
+      - name: live benchmark (smoke subset, hosted free tier)
+        env:
+          ANALYST_HOSTED_API_KEY: ${{ secrets.ANALYST_HOSTED_API_KEY }}
+          ANALYST_LLM_PROVIDER: hosted
+          ANALYST_SANDBOX: subprocess   # CI runner: reviewed benchmark code only
+        run: |
+          python -m analyst eval --data data/sample --subset smoke \
+            --configs full,no-critic --critic-bench
+      - uses: actions/upload-artifact@v4
+        with:
+          name: scorecard
+          path: eval_results/
