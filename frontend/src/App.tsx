@@ -35,6 +35,13 @@ export default function App() {
   const [councilMode, setCouncilMode] = useState<"adaptive" | "always" | "off">("off");
   const [runs, setRuns] = useState<RunSummary[]>([]);
   const [activeRun, setActiveRun] = useState<string | null>(null);
+  const [activeQuestion, setActiveQuestion] = useState("");
+  const [parentSource, setParentSource] = useState<{
+    id: string; question: string; truncated: boolean;
+  } | null>(null);
+  const [followupQuestion, setFollowupQuestion] = useState("");
+  const [followupPending, setFollowupPending] = useState(false);
+  const [followupError, setFollowupError] = useState("");
   const [status, setStatus] = useState<string>("idle");
   const [tasks, setTasks] = useState<TaskInfo[]>([]);
   const [events, setEvents] = useState<AgentEvent[]>([]);
@@ -56,6 +63,7 @@ export default function App() {
   const openStream = useCallback((runId: string, initialReport: DataQualityReport | null = null) => {
     ws.current?.close();
     setActiveRun(runId);
+    setActiveQuestion(""); setParentSource(null); setFollowupQuestion(""); setFollowupError("");
     setTasks([]); setEvents([]); setAnswer(null); setClaims([]); setStatisticalEvidence([]);
     setPredictiveEvidence([]);
     setDataQualityReport(initialReport);
@@ -68,10 +76,17 @@ export default function App() {
     ws.current = sock;
 
     sock.onmessage = (raw) => {
+      if (ws.current !== sock) return;
       const msg: WsMessage = JSON.parse(raw.data);
       switch (msg.type) {
         case "replay": {
           const r = msg.run;
+          setActiveQuestion(r.question ?? "");
+          const turns = r.followup_context?.turns ?? [];
+          setParentSource(r.parent_run_id ? {
+            id: r.parent_run_id, question: turns[turns.length - 1]?.question ?? "Previous analysis",
+            truncated: r.followup_context?.truncated ?? false,
+          } : null);
           setStatus(r.status);
           setTasks(Object.values(r.dag ?? {}));
           setEvents(r.events ?? []);
@@ -114,7 +129,7 @@ export default function App() {
           break;
       }
     };
-    sock.onerror = () => setStatus("stream error");
+    sock.onerror = () => { if (ws.current === sock) setStatus("stream error"); };
   }, [refreshRuns]);
 
   const submit = useCallback(async () => {
@@ -158,6 +173,28 @@ export default function App() {
       setStatus(error instanceof Error ? error.message : "request failed");
     }
   }, [question, dataDir, files, councilMode, openStream]);
+
+  const submitFollowup = useCallback(async () => {
+    if (!activeRun || followupPending || !followupQuestion.trim()) return;
+    setFollowupPending(true); setFollowupError("");
+    try {
+      const response = await fetch(`/runs/${encodeURIComponent(activeRun)}/followups`, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: followupQuestion.trim() }),
+      });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(
+        typeof payload.detail === "string" ? payload.detail : "Follow-up could not be started",
+      );
+      openStream(payload.run_id);
+    } catch (error) {
+      setFollowupError(error instanceof Error ? error.message : "Follow-up request failed");
+    } finally {
+      setFollowupPending(false);
+    }
+  }, [activeRun, followupPending, followupQuestion, openStream]);
+
+  const busy = ["running", "queued", "connecting", "submitting", "uploading dataset"].includes(status);
 
   return (
     <div className="layout">
@@ -209,7 +246,7 @@ export default function App() {
             }}
           />
         </details>
-        <button onClick={submit} disabled={status === "running"}>
+        <button onClick={submit} disabled={busy || followupPending}>
           {status === "running" ? "agents working…" : "Ask"}
         </button>
         <div className={`status status-${status}`}>{status}</div>
@@ -392,6 +429,18 @@ export default function App() {
                 </div>
               )}
             </div>
+            {activeQuestion && <p className="analysis-question">{activeQuestion}</p>}
+            {parentSource && (
+              <p className="followup-source">
+                Follow-up to{" "}
+                <button type="button" onClick={() => openStream(parentSource.id)}>
+                  {parentSource.question}
+                </button>
+                {parentSource.truncated && (
+                  <span> · Prior context was shortened; restate older filters if needed.</span>
+                )}
+              </p>
+            )}
             <pre>{answer}</pre>
             {claims.filter((c) => c.verdict !== "pass").length > 0 && (
               <div className="caveats">
@@ -401,6 +450,24 @@ export default function App() {
                   </p>
                 ))}
               </div>
+            )}
+            {status === "done" && activeRun && (
+              <form className="followup-form" onSubmit={(event) => {
+                event.preventDefault(); void submitFollowup();
+              }}>
+                <label htmlFor="followup-question">Ask a follow-up</label>
+                <div className="followup-controls">
+                  <input id="followup-question" value={followupQuestion} maxLength={2000}
+                    placeholder="Break that down by shift…"
+                    onChange={(event) => setFollowupQuestion(event.target.value)}
+                    disabled={followupPending} />
+                  <button type="submit" disabled={followupPending || !followupQuestion.trim()}>
+                    {followupPending ? "Starting…" : "Analyze follow-up"}
+                  </button>
+                </div>
+                <small>Starts a new analysis using this run’s dataset and review mode.</small>
+                {followupError && <p role="alert">{followupError}</p>}
+              </form>
             )}
           </section>
         )}

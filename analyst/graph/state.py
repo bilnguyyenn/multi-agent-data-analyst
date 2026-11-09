@@ -20,6 +20,8 @@ from typing import Annotated, Any, Literal, Optional, TypedDict
 
 from pydantic import BaseModel, Field
 
+from analyst.followups import FollowupContext
+
 # ---------------------------------------------------------------------------
 # Inner models (Pydantic: validated, serializable — these cross process
 # boundaries later via Postgres checkpoints and WebSocket events)
@@ -408,6 +410,7 @@ def merge_dicts(left: dict, right: dict) -> dict:
 # ---------------------------------------------------------------------------
 
 class AnalysisState(TypedDict, total=False):
+    followup_context: FollowupContext
     run_id: str
     question: str
     dataset: DatasetManifest

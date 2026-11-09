@@ -34,6 +34,7 @@ class RunStore:
             "predictive_evidence": [],
             "data_quality_report": None,
             "dataset_provenance": None,
+            "parent_run_id": None, "followup_context": None,
             "council_findings": [], "council_decisions": [],
             "council_routing": None,
         })

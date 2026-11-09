@@ -9,6 +9,8 @@ import json
 from html import escape
 from typing import Any
 
+from analyst.followups import FollowupContext
+
 REPORT_VERSION = "analysis-report-v1"
 
 
@@ -61,6 +63,10 @@ def report_payload(run: dict) -> dict:
         "council_decisions": [_pick(d, "round status conclusion rationale dissent action task_id")
                               for d in _records(run.get("council_decisions"))],
     }
+    if run.get("followup_context"):
+        context = FollowupContext.model_validate(run["followup_context"])
+        payload["followup_context"] = context.model_dump()
+        payload["parent_run_id"] = context.parent_run_id
     for item in _records(run.get("statistical_evidence")):
         payload["statistical_evidence"].append({
             **_pick(item, "task_id request_id kind status sample_size summary warnings"),
@@ -172,6 +178,13 @@ def render_report(payload: dict) -> str:
     ]
     if payload.get("demo_note"):
         body.append(f'<p class="notice">{_e(payload["demo_note"])}</p>')
+    if payload.get("followup_context"):
+        context = payload["followup_context"]
+        parent = context["turns"][-1]
+        body.append(f'<p class="notice">Follow-up to run <code>{_e(context["parent_run_id"])}</code>: '
+                    f'{_e(parent["question"])}. '
+                    f'{"Prior context was truncated. " if context["truncated"] else ""}'
+                    'Earlier answers are context, not new validation evidence.</p>')
     if failed_tasks or unresolved or invalid:
         body.append(f'<p class="notice">Review before relying on this answer: {unresolved} '
                     f'claim caveat(s)/failure(s), {failed_tasks} failed task(s), '

@@ -22,6 +22,7 @@ from typing import Callable
 
 from analyst.api.runstore import RunStore
 from analyst.data import build_manifest
+from analyst.followups import FollowupContext
 from analyst.graph.control_loop import build_graph
 from analyst.graph.state import Budgets
 from analyst.llm.client import make_client
@@ -80,6 +81,16 @@ def execute_run(
         store.update(run_id, status="running", started_at=time.time())
         publish({"type": "status", "status": "running"})
 
+        dataset = build_manifest(data_dir)
+        expected_hash = options.get("expected_dataset_hash")
+        context = (FollowupContext.model_validate(options["followup_context"])
+                   if options.get("followup_context") else None)
+        if context is not None and expected_hash != context.dataset_hash:
+            raise ValueError("follow-up context does not match the expected dataset fingerprint")
+        if expected_hash and dataset.content_hash != expected_hash:
+            raise ValueError("dataset changed while this follow-up was queued; start a new analysis")
+        store.update(run_id, dataset_provenance=dataset_provenance(dataset))
+
         llm = make_client(provider=options.get("provider"))
         sandbox = make_runner(options.get("sandbox"))
         memory = None
@@ -99,14 +110,14 @@ def execute_run(
             memory=memory,
         )
 
-        dataset = build_manifest(data_dir)
-        store.update(run_id, dataset_provenance=dataset_provenance(dataset))
         initial = {
             "run_id": run_id,
             "question": question,
             "dataset": dataset,
             "budgets": Budgets(),
         }
+        if context is not None:
+            initial["followup_context"] = context
         seen_events = 0
         final = None
         for state in graph.stream(initial, stream_mode="values",

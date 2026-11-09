@@ -225,8 +225,15 @@ export interface RunSummary {
   answer: string | null;
 }
 
+export interface FollowupContext {
+  parent_run_id: string;
+  dataset_hash: string;
+  truncated: boolean;
+  turns: { run_id: string; question: string; answer: string }[];
+}
+
 export type WsMessage =
-  | { type: "replay"; run: { status: string; answer: string | null; dag: Record<string, TaskInfo>; events: AgentEvent[]; claims: Claim[]; statistical_evidence?: StatisticalEvidence[]; predictive_evidence?: PredictiveEvidence[]; data_quality_report?: DataQualityReport | null; council_findings?: CouncilFinding[]; council_decisions?: CouncilDecision[]; council_routing?: CouncilRoutingDecision | null } }
+  | { type: "replay"; run: { question?: string; parent_run_id?: string | null; followup_context?: FollowupContext | null; status: string; answer: string | null; dag: Record<string, TaskInfo>; events: AgentEvent[]; claims: Claim[]; statistical_evidence?: StatisticalEvidence[]; predictive_evidence?: PredictiveEvidence[]; data_quality_report?: DataQualityReport | null; council_findings?: CouncilFinding[]; council_decisions?: CouncilDecision[]; council_routing?: CouncilRoutingDecision | null } }
   | { type: "status"; status: string; detail?: string }
   | { type: "node_update"; tasks: TaskInfo[]; new_events: AgentEvent[]; statistical_evidence?: StatisticalEvidence[]; predictive_evidence?: PredictiveEvidence[]; data_quality_report?: DataQualityReport | null; council_findings?: CouncilFinding[]; council_decisions?: CouncilDecision[]; council_routing?: CouncilRoutingDecision | null }
   | { type: "answer"; answer: string; claims: Claim[]; statistical_evidence?: StatisticalEvidence[]; predictive_evidence?: PredictiveEvidence[]; data_quality_report?: DataQualityReport | null; council_findings?: CouncilFinding[]; council_decisions?: CouncilDecision[]; council_routing?: CouncilRoutingDecision | null }

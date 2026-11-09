@@ -19,8 +19,8 @@ Docker · Pandas · DuckDB
 
 - Built a multi-agent data analyst that converts natural-language questions into
   parallel task DAGs, executes generated Python/SQL in isolated Docker sandboxes,
-  and delivers statistical evidence through a FastAPI/React interface with
-  portable HTML/JSON reports and dataset provenance.
+  and supports contextual follow-up analyses with dataset-hash checks, source-run
+  lineage, and portable evidence reports through FastAPI/React.
 - Designed a 25-question ablation benchmark with planted statistical traps;
   achieved **0.86 vs. 0.56** for a bare planner/executor and selected a lower-cost
   **0.80** Standard mode based on measured token/accuracy tradeoffs.
@@ -51,6 +51,9 @@ scenarios or prediction accuracy. See the
 - Added an API-free predictive reliability CI gate with raw model evidence, fixed
   scenario contracts, dataset/source hashes, and no-signal/shift controls; fixed
   temporal leakage at both holdout and CV boundaries.
+- Implemented multi-turn analysis with bounded conversation context, explicit
+  parent-run lineage, inherited review policies, and dataset-fingerprint checks
+  at submission and worker startup to reject stale-data follow-ups.
 - Selected a 0.80/3,429-token Standard mode and a 0.86/17,223-token High-assurance
   mode after controlled ablations showed the critic and adaptive router did not earn
   default status.
@@ -78,6 +81,10 @@ metric, statistical, and data-quality specialists; deterministic consensus avoid
 an extra model call, while disagreement invokes an adjudicator that may request one
 bounded recomputation. Results, provenance, risks, and dissent stream through a
 React interface over WebSockets.
+Users can ask a related question from a completed run. Each follow-up becomes a
+separate analysis with bounded, caveat-preserving prior context; hash checks at
+submission and worker startup reject changed datasets before model access. Parent
+lineage and context remain visible in the UI and exported reports.
 
 The central contribution is evaluation rather than agent count. I generated a
 25-question manufacturing benchmark with objective gold answers and planted traps

@@ -14,6 +14,9 @@ The browser interface streams the task graph while it runs. It also shows data
 quality findings, statistical evidence, model evaluation results, reviewer
 decisions, and unresolved objections. Completed runs export self-contained HTML
 reports and JSON evidence with dataset provenance and visible caveats.
+Completed runs also support contextual follow-up questions: each creates a new
+analysis with source-run lineage, inherited review settings, and dataset-hash
+checks before queuing and execution. See [follow-up analyses](docs/FOLLOWUPS.md).
 
 **Try a key-free example:** download [the sample analysis report](examples/analysis-report.html)
 and open it in a browser, or run:
@@ -354,6 +357,10 @@ snapshot without making more model calls:
 python -m analyst export-report .analyst_runs/last_run.json --out report.html
 ```
 
+In the browser, **Ask a follow-up** continues from the selected completed analysis
+without re-uploading its data. If the dataset changed, the app asks you to start a
+new analysis so the old context cannot silently refer to different CSVs.
+
 ### Full local stack
 
 The complete stack includes Postgres, Redis, an arq worker, the React frontend, and
@@ -430,3 +437,4 @@ More detail is available in:
 - [Predictive reliability benchmark](docs/PREDICTIVE_BENCHMARK.md)
 - [Resume-ready project bullets](docs/RESUME_WRITEUP.md)
 - [Report export and provenance](docs/REPORTS.md)
+- [Follow-up analyses](docs/FOLLOWUPS.md)

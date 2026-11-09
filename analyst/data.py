@@ -14,18 +14,34 @@ from analyst.graph.state import DatasetManifest, TableInfo
 from analyst.quality import profile_dataset
 
 
-def build_manifest(root: str | Path) -> DatasetManifest:
-    root = Path(root)
+def _csv_paths(root: Path) -> list[Path]:
     csvs = sorted(root.glob("*.csv"))
     if not csvs:
         raise FileNotFoundError(f"No CSV files in {root}")
+    return csvs
 
-    h = hashlib.sha256()
+
+def _content_hash(csvs: list[Path]) -> str:
+    digest = hashlib.sha256()
+    for path in csvs:
+        digest.update(path.name.encode())
+        digest.update(path.read_bytes())
+    return digest.hexdigest()
+
+
+def dataset_content_hash(root: str | Path) -> str:
+    """Verify CSV identity without parsing/profiling it again in the API."""
+    return _content_hash(_csv_paths(Path(root)))
+
+
+def build_manifest(root: str | Path) -> DatasetManifest:
+    root = Path(root)
+    csvs = _csv_paths(root)
+
+    content_hash = _content_hash(csvs)
     tables = []
     frames: dict[str, pd.DataFrame] = {}
     for f in csvs:
-        h.update(f.name.encode())
-        h.update(f.read_bytes())
         frame = pd.read_csv(f)
         frames[f.stem] = frame
         tables.append(
@@ -40,6 +56,6 @@ def build_manifest(root: str | Path) -> DatasetManifest:
     return DatasetManifest(
         root=str(root),
         tables=tables,
-        content_hash=h.hexdigest(),
+        content_hash=content_hash,
         quality_report=profile_dataset(frames),
     )

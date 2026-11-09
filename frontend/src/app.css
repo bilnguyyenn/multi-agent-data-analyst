@@ -55,6 +55,17 @@ body { font-family: ui-sans-serif, system-ui, sans-serif; color: #111827; }
 .report-actions { display: flex; flex-wrap: wrap; gap: 8px; font-size: 12px; }
 .report-actions a { color: #3730a3; text-decoration: none; border: 1px solid #c7d2fe; border-radius: 5px; padding: 5px 8px; }
 .report-actions a:hover { background: #eef2ff; }
+.analysis-question { margin-bottom: 10px; font-weight: 650; font-size: 14px; }
+.followup-source { margin-bottom: 10px; font-size: 12px; color: #64748b; }
+.followup-source button { border: 0; background: none; padding: 0; color: #3730a3; cursor: pointer; font: inherit; text-decoration: underline; }
+.followup-form { margin-top: 16px; padding: 12px; border: 1px solid #dbe3ee; border-radius: 7px; background: #f8fafc; }
+.followup-form label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 650; }
+.followup-controls { display: flex; gap: 8px; }
+.followup-controls input { flex: 1; min-width: 0; border: 1px solid #cbd5e1; border-radius: 5px; padding: 8px; font: inherit; font-size: 13px; }
+.followup-controls button { border: 0; border-radius: 5px; background: #3730a3; color: white; padding: 8px 12px; cursor: pointer; }
+.followup-controls button:disabled { opacity: .5; cursor: default; }
+.followup-form small { display: block; margin-top: 6px; color: #64748b; font-size: 11px; }
+.followup-form [role="alert"] { margin-top: 8px; font-size: 12px; color: #b91c1c; }
 .decision, .verdict { border-radius: 999px; padding: 2px 7px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
 .decision-consensus, .verdict-support { background: #dcfce7; color: #166534; }
 .decision-adjudicated { background: #dbeafe; color: #1d4ed8; }

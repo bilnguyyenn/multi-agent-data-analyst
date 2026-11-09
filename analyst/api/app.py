@@ -27,12 +27,13 @@ from typing import Literal
 from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from analyst.api.events import make_event_bus
 from analyst.api.pgstore import make_run_store
 from analyst.api.runner import execute_run, new_run_id
-from analyst.data import build_manifest
+from analyst.data import build_manifest, dataset_content_hash
+from analyst.followups import build_context
 from analyst.reporting import render_report, report_payload
 
 app = FastAPI(title="analyst", version="0.1.0")
@@ -71,6 +72,18 @@ class DatasetFile(BaseModel):
 
 class CreateDataset(BaseModel):
     files: list[DatasetFile]
+
+
+class FollowupRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    question: str = Field(min_length=1, max_length=2000)
+
+    @field_validator("question")
+    @classmethod
+    def meaningful_question(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("enter a follow-up question")
+        return value.strip()
 
 
 @app.post("/datasets", status_code=201)
@@ -135,9 +148,35 @@ async def create_dataset(req: CreateDataset):
 
 @app.post("/runs", status_code=202)
 async def create_run(req: CreateRun):
-    run_id = new_run_id()
     options = req.model_dump(exclude={"question", "data_dir"})
-    store.create(run_id, req.question, req.data_dir, options)
+    return await _start_run(req.question, req.data_dir, options)
+
+
+@app.post("/runs/{parent_run_id}/followups", status_code=202)
+async def create_followup(parent_run_id: str, req: FollowupRequest):
+    parent = store.read(parent_run_id)
+    if parent is None:
+        raise HTTPException(404, f"no run {parent_run_id}")
+    try:
+        context = build_context(parent)
+        current_hash = await asyncio.to_thread(dataset_content_hash, parent["data_dir"])
+    except (ValueError, OSError, KeyError) as exc:
+        raise HTTPException(409, f"cannot start follow-up: {exc}") from exc
+    if current_hash != context.dataset_hash:
+        raise HTTPException(409, "the dataset changed since this analysis; start a new analysis")
+    # Inherit reviewed execution options, never arbitrary fields from a prior job.
+    options = {key: value for key, value in (parent.get("options") or {}).items()
+               if key in CreateRun.model_fields and key not in {"question", "data_dir"}}
+    options.update(expected_dataset_hash=context.dataset_hash, followup_context=context.model_dump())
+    return await _start_run(req.question, parent["data_dir"], options)
+
+
+async def _start_run(question: str, data_dir: str, options: dict):
+    run_id = new_run_id()
+    store.create(run_id, question, data_dir, options)
+    if options.get("followup_context"):
+        store.update(run_id, parent_run_id=options["followup_context"]["parent_run_id"],
+                     followup_context=options["followup_context"])
 
     if os.environ.get("ANALYST_DEV_INPROCESS"):
         loop = asyncio.get_running_loop()
@@ -146,7 +185,7 @@ async def create_run(req: CreateRun):
             asyncio.run_coroutine_threadsafe(bus.publish(run_id, event), loop)
 
         loop.run_in_executor(
-            None, execute_run, run_id, req.question, req.data_dir, options,
+            None, execute_run, run_id, question, data_dir, options,
             store, publish,
         )
     else:
@@ -156,7 +195,7 @@ async def create_run(req: CreateRun):
         pool = await create_pool(
             RedisSettings.from_dsn(os.environ.get("REDIS_URL", "redis://localhost:6379"))
         )
-        await pool.enqueue_job("run_analysis", run_id, req.question, req.data_dir, options)
+        await pool.enqueue_job("run_analysis", run_id, question, data_dir, options)
         await pool.aclose()
 
     return {"run_id": run_id, "status": "queued"}

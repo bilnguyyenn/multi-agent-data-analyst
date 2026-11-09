@@ -56,6 +56,11 @@ formats return 422. Both exports use `Content-Disposition: attachment`,
 - council conclusions, risks, adjudication rationale, and dissent;
 - dataset content hash, table names, row counts, columns, and dtypes.
 
+Follow-up reports additionally include the parent run identifier and bounded,
+versioned conversation context. HTML labels the source question and any context
+truncation; earlier answers remain context rather than new validation evidence.
+See [follow-up analyses](FOLLOWUPS.md).
+
 An explicit field list excludes provider options, local CSV paths, generated code,
 stdout/stderr, event logs, raw uploaded rows, and profiling sample frequencies.
 Analysis text and schema names remain part of the report. The JSON packet contains

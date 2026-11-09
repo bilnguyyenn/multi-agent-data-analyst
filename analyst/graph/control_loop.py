@@ -30,6 +30,7 @@ from analyst.agents.critic import review
 from analyst.agents.executor import run_task
 from analyst.agents.planner import PlanError, make_plan, make_replan
 from analyst.agents.validator import validate
+from analyst.followups import question_with_context
 from analyst.graph.risk import assess_council_risk
 from analyst.graph.scheduler import cascade_failures, ready_set
 from analyst.graph.state import (
@@ -117,8 +118,12 @@ def build_graph(
 
     # ---- nodes ------------------------------------------------------------
 
+    def analysis_question(state: AnalysisState) -> str:
+        return question_with_context(state["question"], state.get("followup_context"),
+                                     state["dataset"].content_hash)
+
     def retrieve_memory(state: AnalysisState) -> dict:
-        hits = memory.query(state["question"], state["dataset"].content_hash)
+        hits = memory.query(analysis_question(state), state["dataset"].content_hash)
         return {
             "memory_hits": hits,
             "events": [_ev("memory", hits=[(h.id, h.similarity) for h in hits])],
@@ -127,7 +132,7 @@ def build_graph(
     def update_memory(state: AnalysisState) -> dict:
         stored = memory.store_run(
             run_id=state["run_id"],
-            question=state["question"],
+            question=analysis_question(state),
             dataset_hash=state["dataset"].content_hash,
             dag=state.get("dag", {}),
             artifacts=state.get("artifacts", {}),
@@ -141,7 +146,7 @@ def build_graph(
             rejected = {tid: state["dag"][tid] for tid in req["task_ids"]}
             try:
                 updates, usage = make_replan(
-                    llm, state["question"], state["dataset"],
+                    llm, analysis_question(state), state["dataset"],
                     rejected, req["reason"], known_ids=set(state["dag"]),
                 )
             except PlanError as e:
@@ -167,7 +172,7 @@ def build_graph(
 
         try:
             dag, usage = make_plan(
-                llm, state["question"], state["dataset"],
+                llm, analysis_question(state), state["dataset"],
                 memory_hits=state.get("memory_hits"),
             )
         except PlanError as e:
@@ -317,7 +322,7 @@ def build_graph(
         for t in dag.values():
             if t.status != "review":
                 continue
-            v = review(llm, state["question"], t, artifacts[t.id], state["dataset"])
+            v = review(llm, analysis_question(state), t, artifacts[t.id], state["dataset"])
             verdicts[t.id] = v
             events.append(
                 _ev("critic", task=t.id, verdict=v.verdict, reason=v.reason[:200],
@@ -368,7 +373,7 @@ def build_graph(
         routing = assess_council_risk(
             round_number=round_number,
             mode=resolved_council_mode,
-            question=state["question"],
+            question=analysis_question(state),
             dag=done,
             artifacts=state.get("artifacts", {}),
             verdicts=state.get("verdicts", {}),
@@ -419,7 +424,7 @@ def build_graph(
                     {
                         "specialist": specialist,
                         "round": round_number,
-                        "question": state["question"],
+                        "question": analysis_question(state),
                         "dataset": state["dataset"],
                         "tasks": done,
                         "artifacts": state.get("artifacts", {}),
@@ -477,7 +482,7 @@ def build_graph(
         decision = adjudicate(
             llm=llm,
             round_number=round_number,
-            question=state["question"],
+            question=analysis_question(state),
             tasks=done,
             artifacts=state.get("artifacts", {}),
             findings=findings,
@@ -584,7 +589,7 @@ def build_graph(
                 settled_artifacts, state["dataset"]
             )
         claims, usage = validate(
-            llm, state["question"], done, artifacts, state["dataset"],
+            llm, analysis_question(state), done, artifacts, state["dataset"],
             statistical_evidence=statistical_evidence,
             predictive_evidence=predictive_evidence,
         )

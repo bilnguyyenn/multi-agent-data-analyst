@@ -52,6 +52,16 @@ default rather than defended as sunk complexity.
 
 ## The hard questions
 
+### Q. What makes the application useful beyond one-shot question answering?
+**Answer:** "A user can open a completed analysis and ask a follow-up without
+uploading the same tables again. It creates a separate run with source lineage
+and inherits the original review settings. Prior questions, answers, and caveats
+enter a bounded context window; they don't become automatically approved facts.
+Both submission and worker startup check the dataset fingerprint, so stale data
+are rejected before a model call. Reports preserve that lineage. I tested the
+software flow with scripted models, including a fresh computation that corrects
+an incorrect parent count; I don't claim that as measured live-model accuracy."
+
 ### Q. How do you know the predictive layer isn't leaking its test data?
 **Answer:** "The application owns model fitting rather than trusting generated
 training code. Model selection uses training-only CV, with preprocessing inside

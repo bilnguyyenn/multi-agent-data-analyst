@@ -148,6 +148,133 @@ def test_evidence_backed_product_defaults():
     assert request.council_mode == "off"
 
 
+def _seed_followup_parent(data_dir):
+    import analyst.api.app as app_module
+    from analyst.data import build_manifest
+    from analyst.reporting import dataset_provenance
+
+    app_module.store.create("parent", "How many work orders?", data_dir, {
+        "provider": "replay", "sandbox": "subprocess", "no_memory": True,
+        "no_critic": False, "council_mode": "always", "timeout": 30,
+    })
+    app_module.store.update(
+        "parent", status="done", answer="There are 4000 work orders (an old disputed count).",
+        dataset_provenance=dataset_provenance(build_manifest(data_dir)),
+        claims=[{"task_id": "old", "claim": "count", "verdict": "caveat",
+                 "note": "The old count may be wrong; recompute it."}],
+    )
+    return app_module.store
+
+
+def _await_run(api, run_id):
+    import time
+
+    deadline = time.monotonic() + 10
+    while time.monotonic() < deadline:
+        run = api.get(f"/runs/{run_id}").json()
+        if run["status"] in {"done", "error"}:
+            assert run["status"] == "done", run["answer"]
+            return run
+        time.sleep(0.02)
+    pytest.fail("follow-up did not complete")
+
+
+def test_followup_executes_new_evidence_and_propagates_context_to_reviewers(client, monkeypatch):
+    api, data_dir = client
+    store = _seed_followup_parent(data_dir)
+    captured = []
+    from analyst.llm.replay import ReplayClient
+
+    class InspectingClient:
+        def __init__(self):
+            self.replay = ReplayClient.from_env()
+
+        def complete(self, *, role, system, user):
+            captured.append((role, user))
+            return self.replay.complete(role=role, system=system, user=user)
+
+    monkeypatch.setattr("analyst.api.runner.make_client", lambda **kw: InspectingClient())
+    response = api.post("/runs/parent/followups", json={"question": "  Recompute that count  "})
+    assert response.status_code == 202
+    child_id = response.json()["run_id"]
+    child = _await_run(api, child_id)
+
+    assert child["parent_run_id"] == "parent"
+    assert child["question"] == "Recompute that count"
+    assert "3000 work orders" in child["answer"]
+    assert "4000" in child["followup_context"]["turns"][-1]["answer"]
+    assert child["options"]["council_mode"] == "always"
+    assert child["options"]["timeout"] == 30
+    assert child["options"]["sandbox"] == "subprocess"
+    for role in ("planner", "critic", "validator", "council_metric", "council_statistical",
+                 "council_data_quality"):
+        prompt = next(prompt for actual_role, prompt in captured if actual_role == role)
+        assert "Current follow-up question: Recompute that count" in prompt
+        assert "old count may be wrong" in prompt
+    assert store.read("parent")["answer"].startswith("There are 4000")
+    report = api.get(f"/runs/{child_id}/report?format=json").json()
+    assert report["parent_run_id"] == "parent"
+    assert report["followup_context"]["turns"][-1]["run_id"] == "parent"
+
+    grandchild = api.post(f"/runs/{child_id}/followups", json={"question": "Confirm that again"})
+    assert grandchild.status_code == 202
+    result = _await_run(api, grandchild.json()["run_id"])
+    assert [turn["run_id"] for turn in result["followup_context"]["turns"]] == ["parent", child_id]
+
+
+def test_followup_rejects_changed_data_before_creating_a_job(client, monkeypatch):
+    from pathlib import Path
+
+    api, data_dir = client
+    store = _seed_followup_parent(data_dir)
+    (Path(data_dir) / "work_orders.csv").write_text("changed,data\n1,2\n")
+    monkeypatch.setattr("analyst.api.runner.make_client", lambda **kw: pytest.fail("LLM access"))
+    response = api.post("/runs/parent/followups", json={"question": "and by shift?"})
+
+    assert response.status_code == 409
+    assert "dataset changed" in response.json()["detail"]
+    assert len(store.list_runs()) == 1
+
+
+def test_worker_rechecks_fingerprint_before_any_model_access(client, monkeypatch):
+    from pathlib import Path
+
+    from analyst.api.runner import execute_run
+    from analyst.followups import build_context
+
+    _, data_dir = client
+    store = _seed_followup_parent(data_dir)
+    context = build_context(store.read("parent"))
+    options = {"expected_dataset_hash": context.dataset_hash, "followup_context": context.model_dump()}
+    store.create("queued-child", "and by shift?", data_dir, options)
+    (Path(data_dir) / "work_orders.csv").write_text("changed,data\n1,2\n")
+    accessed = []
+    monkeypatch.setattr("analyst.api.runner.make_client", lambda **kw: accessed.append(True))
+    execute_run("queued-child", "and by shift?", data_dir, options, store, lambda event: None)
+
+    assert accessed == []
+    assert store.read("queued-child")["status"] == "error"
+    assert "changed while this follow-up was queued" in store.read("queued-child")["answer"]
+
+
+@pytest.mark.parametrize("change", ["running", "error", "missing_fingerprint"])
+def test_followup_rejects_ineligible_parent(client, change):
+    api, data_dir = client
+    store = _seed_followup_parent(data_dir)
+    store.update("parent", **({"dataset_provenance": None} if change == "missing_fingerprint"
+                              else {"status": change}))
+    response = api.post("/runs/parent/followups", json={"question": "and by shift?"})
+    assert response.status_code == 409
+    assert len(store.list_runs()) == 1
+
+
+@pytest.mark.parametrize("payload", [{"question": " "}, {"question": "x" * 2001},
+                                    {"question": "and by shift?", "provider": "hosted"}])
+def test_followup_validates_input_and_disallows_execution_option_overrides(client, payload):
+    api, _ = client
+    assert api.post("/runs/parent/followups", json=payload).status_code == 422
+
+
 def test_unknown_run_404(client):
     api, _ = client
     assert api.get("/runs/nope").status_code == 404
