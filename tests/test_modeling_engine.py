@@ -6,7 +6,13 @@ import pytest
 
 from analyst.data import build_manifest
 from analyst.graph.state import Artifact, ExecutionOutcome
-from analyst.modeling.engine import evaluate_modeling_artifacts, evaluate_modeling_request
+from analyst.modeling.engine import (
+    ModelingRequest,
+    _cv_splitter,
+    _split,
+    evaluate_modeling_artifacts,
+    evaluate_modeling_request,
+)
 
 
 @pytest.fixture(scope="module")
@@ -223,3 +229,90 @@ def test_artifact_requests_are_collected_and_invalid_shape_is_visible(modeling_d
     assert evidence["t2:model_1"].warnings == [
         "modeling_requests must be a list or object"
     ]
+
+
+def test_temporal_holdout_keeps_simultaneous_observations_together():
+    # A row-count cut would put part of the final 30-row cohort in training.
+    frame = pd.DataFrame({"when": np.repeat(pd.date_range("2025-01-01", periods=4), 30)})
+    target = pd.Series(np.arange(len(frame), dtype=float))
+    request = ModelingRequest(
+        task_type="regression", table="observations", target="value", features=["x"],
+        split_strategy="temporal", time_column="when",
+    )
+
+    train, test, _, _, diagnostics = _split(request, frame, target)
+
+    assert train["when"].max() < test["when"].min()
+    assert (len(train), len(test)) == (90, 30)
+    assert diagnostics["train_time_max"] < diagnostics["test_time_min"]
+
+
+def test_temporal_cv_never_splits_timestamp_cohorts():
+    frame = pd.DataFrame({"when": np.repeat(pd.date_range("2025-01-01", periods=9), 17)})
+    target = pd.Series(np.arange(len(frame), dtype=float))
+    request = ModelingRequest(
+        task_type="regression", table="observations", target="value", features=["x"],
+        split_strategy="temporal", time_column="when",
+    )
+    cv, _, folds = _cv_splitter(request, target, frame)
+    splits = cv.split(frame) if hasattr(cv, "split") else cv
+
+    boundaries = [(frame.iloc[a]["when"].max(), frame.iloc[b]["when"].min())
+                  for a, b in splits]
+    assert len(boundaries) == folds
+    assert all(train_end < validation_start for train_end, validation_start in boundaries)
+
+
+def test_temporal_split_rejects_a_single_timestamp():
+    frame = pd.DataFrame({"when": ["2025-01-01"] * 100})
+    request = ModelingRequest(
+        task_type="regression", table="observations", target="value", features=["x"],
+        split_strategy="temporal", time_column="when",
+    )
+    with pytest.raises(ValueError, match="distinct timestamps"):
+        _split(request, frame, pd.Series(np.arange(100)))
+
+
+def test_temporal_cv_rejects_insufficient_distinct_training_times():
+    frame = pd.DataFrame({"when": ["2025-01-01"] * 30 + ["2025-01-02"] * 30})
+    request = ModelingRequest(
+        task_type="regression", table="observations", target="value", features=["x"],
+        split_strategy="temporal", time_column="when",
+    )
+    with pytest.raises(ValueError, match="three distinct training timestamps"):
+        _cv_splitter(request, pd.Series(np.arange(len(frame))), frame)
+
+
+def test_nonfinite_cv_scores_fail_visibly(modeling_dataset, monkeypatch):
+    monkeypatch.setattr(
+        "analyst.modeling.engine.cross_val_score", lambda *args, **kwargs: np.full(5, np.nan)
+    )
+    evidence = evaluate_modeling_request("cv", {
+        "task_type": "regression", "table": "observations", "target": "value",
+        "features": ["x"], "models": ["ridge"],
+    }, modeling_dataset)
+
+    assert evidence.status == "invalid"
+    assert "non-finite cross-validation" in evidence.warnings[0]
+
+
+def test_changing_only_holdout_labels_cannot_change_model_selection(modeling_dataset, tmp_path):
+    frame = pd.read_csv(next(t.path for t in modeling_dataset.tables if t.name == "observations"))
+    frame["shifted_value"] = frame["value"].copy()
+    frame.loc[frame.index[-160:], "shifted_value"] *= -10
+    frame.to_csv(tmp_path / "observations.csv", index=False)
+    dataset = build_manifest(tmp_path)
+    request = {
+        "task_type": "regression", "table": "observations", "features": ["x", "segment"],
+        "models": ["ridge", "random_forest"], "split_strategy": "temporal",
+        "time_column": "event_date", "cv_folds": 3, "bootstrap_iterations": 100,
+    }
+
+    original = evaluate_modeling_request("original", {**request, "target": "value"}, dataset)
+    changed = evaluate_modeling_request("changed", {**request, "target": "shifted_value"}, dataset)
+
+    assert original.status == changed.status == "computed"
+    assert original.candidates == changed.candidates
+    assert original.selected_model == changed.selected_model
+    assert original.diagnostics["train_primary_metric"] == changed.diagnostics["train_primary_metric"]
+    assert original.diagnostics["test_primary_metric"] < changed.diagnostics["test_primary_metric"]

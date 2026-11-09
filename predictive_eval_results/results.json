@@ -1,0 +1,2982 @@
+{
+  "contract": {
+    "suite": "predictive-reliability-v1",
+    "seeds": [
+      20261109,
+      20261110,
+      20261111
+    ],
+    "rows": 960,
+    "cases": [
+      {
+        "id": "classification_signal",
+        "category": "signal",
+        "request": {
+          "task_type": "classification",
+          "table": "observations",
+          "target": "converted",
+          "features": [
+            "x",
+            "segment"
+          ],
+          "models": [
+            "logistic_regression",
+            "random_forest"
+          ],
+          "primary_metric": "roc_auc",
+          "cv_folds": 3,
+          "bootstrap_iterations": 100,
+          "slice_by": [
+            "segment"
+          ]
+        },
+        "expected_status": "computed",
+        "expected_warning": "",
+        "minimum_metric": 0.75,
+        "maximum_metric": null,
+        "minimum_improvement": 0.25,
+        "maximum_improvement": null
+      },
+      {
+        "id": "regression_signal",
+        "category": "signal",
+        "request": {
+          "task_type": "regression",
+          "table": "observations",
+          "target": "value",
+          "features": [
+            "x",
+            "segment"
+          ],
+          "models": [
+            "ridge"
+          ],
+          "primary_metric": "rmse",
+          "cv_folds": 3,
+          "bootstrap_iterations": 100
+        },
+        "expected_status": "computed",
+        "expected_warning": "",
+        "minimum_metric": null,
+        "maximum_metric": 0.7,
+        "minimum_improvement": 1.8,
+        "maximum_improvement": null
+      },
+      {
+        "id": "temporal_cohorts",
+        "category": "split",
+        "request": {
+          "task_type": "regression",
+          "table": "observations",
+          "target": "value",
+          "features": [
+            "x",
+            "segment"
+          ],
+          "models": [
+            "ridge"
+          ],
+          "primary_metric": "rmse",
+          "cv_folds": 3,
+          "bootstrap_iterations": 100,
+          "split_strategy": "temporal",
+          "time_column": "observed_at"
+        },
+        "expected_status": "computed",
+        "expected_warning": "",
+        "minimum_metric": null,
+        "maximum_metric": 0.7,
+        "minimum_improvement": 1.8,
+        "maximum_improvement": null
+      },
+      {
+        "id": "group_holdout",
+        "category": "split",
+        "request": {
+          "task_type": "regression",
+          "table": "observations",
+          "target": "value",
+          "features": [
+            "x",
+            "segment"
+          ],
+          "models": [
+            "ridge"
+          ],
+          "primary_metric": "rmse",
+          "cv_folds": 3,
+          "bootstrap_iterations": 100,
+          "split_strategy": "group",
+          "group_column": "account_group"
+        },
+        "expected_status": "computed",
+        "expected_warning": "",
+        "minimum_metric": null,
+        "maximum_metric": 0.7,
+        "minimum_improvement": 1.8,
+        "maximum_improvement": null
+      },
+      {
+        "id": "no_signal",
+        "category": "negative_control",
+        "request": {
+          "task_type": "regression",
+          "table": "observations",
+          "target": "noise",
+          "features": [
+            "x",
+            "segment"
+          ],
+          "models": [
+            "ridge"
+          ],
+          "primary_metric": "r2",
+          "cv_folds": 3,
+          "bootstrap_iterations": 100
+        },
+        "expected_status": "computed",
+        "expected_warning": "",
+        "minimum_metric": -0.2,
+        "maximum_metric": 0.1,
+        "minimum_improvement": null,
+        "maximum_improvement": null
+      },
+      {
+        "id": "temporal_shift",
+        "category": "negative_control",
+        "request": {
+          "task_type": "regression",
+          "table": "observations",
+          "target": "shifted",
+          "features": [
+            "x",
+            "segment"
+          ],
+          "models": [
+            "ridge"
+          ],
+          "primary_metric": "rmse",
+          "cv_folds": 3,
+          "bootstrap_iterations": 100,
+          "split_strategy": "temporal",
+          "time_column": "observed_at"
+        },
+        "expected_status": "computed",
+        "expected_warning": "does not beat the naive baseline",
+        "minimum_metric": 4.0,
+        "maximum_metric": null,
+        "minimum_improvement": null,
+        "maximum_improvement": -0.5
+      },
+      {
+        "id": "target_leakage",
+        "category": "rejection",
+        "request": {
+          "task_type": "regression",
+          "table": "observations",
+          "target": "value",
+          "features": [
+            "x",
+            "value"
+          ],
+          "models": [
+            "ridge"
+          ],
+          "primary_metric": "rmse",
+          "cv_folds": 3,
+          "bootstrap_iterations": 100
+        },
+        "expected_status": "invalid",
+        "expected_warning": "target cannot also be a feature",
+        "minimum_metric": null,
+        "maximum_metric": null,
+        "minimum_improvement": null,
+        "maximum_improvement": null
+      },
+      {
+        "id": "identifier_leakage",
+        "category": "rejection",
+        "request": {
+          "task_type": "regression",
+          "table": "observations",
+          "target": "value",
+          "features": [
+            "x",
+            "row_id"
+          ],
+          "models": [
+            "ridge"
+          ],
+          "primary_metric": "rmse",
+          "cv_folds": 3,
+          "bootstrap_iterations": 100
+        },
+        "expected_status": "invalid",
+        "expected_warning": "identifier-like features are rejected",
+        "minimum_metric": null,
+        "maximum_metric": null,
+        "minimum_improvement": null,
+        "maximum_improvement": null
+      },
+      {
+        "id": "join_fanout",
+        "category": "rejection",
+        "request": {
+          "task_type": "regression",
+          "table": "observations",
+          "target": "value",
+          "features": [
+            "x",
+            "segment"
+          ],
+          "models": [
+            "ridge"
+          ],
+          "primary_metric": "rmse",
+          "cv_folds": 3,
+          "bootstrap_iterations": 100,
+          "joins": [
+            {
+              "table": "events",
+              "on": [
+                "row_id"
+              ]
+            }
+          ]
+        },
+        "expected_status": "invalid",
+        "expected_warning": "join validation failed",
+        "minimum_metric": null,
+        "maximum_metric": null,
+        "minimum_improvement": null,
+        "maximum_improvement": null
+      },
+      {
+        "id": "single_timestamp",
+        "category": "rejection",
+        "request": {
+          "task_type": "regression",
+          "table": "observations",
+          "target": "value",
+          "features": [
+            "x",
+            "segment"
+          ],
+          "models": [
+            "ridge"
+          ],
+          "primary_metric": "rmse",
+          "cv_folds": 3,
+          "bootstrap_iterations": 100,
+          "split_strategy": "temporal",
+          "time_column": "same_time"
+        },
+        "expected_status": "invalid",
+        "expected_warning": "distinct timestamps",
+        "minimum_metric": null,
+        "maximum_metric": null,
+        "minimum_improvement": null,
+        "maximum_improvement": null
+      }
+    ]
+  },
+  "contract_sha256": "025ce3641bd2e559435a0d2afcc926272a0dca1cca63ce58abe5e9518309b688",
+  "environment": {
+    "python": "3.13.5",
+    "numpy": "2.3.1",
+    "pandas": "2.3.1",
+    "scipy": "1.16.1",
+    "scikit-learn": "1.7.2"
+  },
+  "source_sha256": {
+    "engine": "b674abdc1b17737eb07e83a7982e5e07ae35419f47668e6d1d6b2bc8a540a252",
+    "benchmark": "a9b54ffdcc52ffb5c123487a96b98e1f919f1d0f6b0cb85a0444c28e174b3e97"
+  },
+  "dataset_hashes": {
+    "20261109": "5e63db10fcf585f748cba3bf918199af04c8a71c8291ea1debfbc294f864ae79",
+    "20261110": "2b6db9e6e42d10e2ed22797c348c845fe3500ce53ae35ab57906c3e2cab8a1b5",
+    "20261111": "b17b1d9857f3e873639f651fc4f1f5208d09598396cfacb49127f15594224633"
+  },
+  "results": [
+    {
+      "seed": 20261109,
+      "id": "classification_signal",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "classification_signal",
+        "task_type": "classification",
+        "status": "computed",
+        "target": "converted",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "logistic_regression",
+        "primary_metric": "roc_auc",
+        "train_size": 768,
+        "test_size": 192,
+        "split_strategy": "random",
+        "metrics": [
+          {
+            "name": "roc_auc",
+            "value": 0.9061956522,
+            "higher_is_better": true,
+            "baseline_value": 0.5,
+            "lower": 0.86381172,
+            "upper": 0.9436988442,
+            "confidence": 0.95
+          },
+          {
+            "name": "accuracy",
+            "value": 0.828125,
+            "higher_is_better": true,
+            "baseline_value": 0.5208333333,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "balanced_accuracy",
+            "value": 0.8276086957,
+            "higher_is_better": true,
+            "baseline_value": 0.5,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "precision",
+            "value": 0.8316831683,
+            "higher_is_better": true,
+            "baseline_value": 0.5208333333,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "recall",
+            "value": 0.84,
+            "higher_is_better": true,
+            "baseline_value": 1.0,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "f1",
+            "value": 0.8358208955,
+            "higher_is_better": true,
+            "baseline_value": 0.6849315068,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "log_loss",
+            "value": 0.3896131829,
+            "higher_is_better": false,
+            "baseline_value": 0.6922822709,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "logistic_regression",
+            "cv_mean": 0.8970557377,
+            "cv_std": 0.005486963786,
+            "folds": 3
+          },
+          {
+            "name": "random_forest",
+            "cv_mean": 0.8932041873,
+            "cv_std": 0.01041957131,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": 0.3564565217,
+            "std": 0.07158450398
+          },
+          {
+            "feature": "segment",
+            "importance": 0.0055,
+            "std": 0.002937277522
+          }
+        ],
+        "slices": [
+          {
+            "column": "segment",
+            "value": "north",
+            "n": 78,
+            "metric": "roc_auc",
+            "score": 0.8843853821,
+            "warning": ""
+          },
+          {
+            "column": "segment",
+            "value": "south",
+            "n": 56,
+            "metric": "roc_auc",
+            "score": 0.9361979167,
+            "warning": ""
+          },
+          {
+            "column": "segment",
+            "value": "west",
+            "n": 58,
+            "metric": "roc_auc",
+            "score": 0.8933333333,
+            "warning": ""
+          }
+        ],
+        "summary": "logistic_regression selected by 3-fold training CV; holdout roc_auc=0.9062 (95% bootstrap CI 0.864\u20130.944), baseline=0.5, n_train=768, n_test=192",
+        "warnings": [],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "positive_label": "1",
+          "negative_label": "0",
+          "positive_rate": 0.521875,
+          "train_primary_metric": 0.8986661412,
+          "test_primary_metric": 0.9061956522,
+          "baseline_primary_metric": 0.5,
+          "baseline_improvement": 0.4061956522,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261109,
+      "id": "regression_signal",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "regression_signal",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "value",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "rmse",
+        "train_size": 768,
+        "test_size": 192,
+        "split_strategy": "random",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 0.3454581759,
+            "higher_is_better": false,
+            "baseline_value": 2.865615891,
+            "lower": 0.3114060155,
+            "upper": 0.3778367576,
+            "confidence": 0.95
+          },
+          {
+            "name": "mae",
+            "value": 0.2741870896,
+            "higher_is_better": false,
+            "baseline_value": 2.307168239,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": 0.9854368735,
+            "higher_is_better": true,
+            "baseline_value": -0.002073610891,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": 0.3602446716,
+            "cv_std": 0.006120120428,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": 3.620330814,
+            "std": 0.1241697183
+          },
+          {
+            "feature": "segment",
+            "importance": 0.2954210925,
+            "std": 0.02355274517
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout rmse=0.3455 (95% bootstrap CI 0.311\u20130.378), baseline=2.866, n_train=768, n_test=192",
+        "warnings": [],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "train_primary_metric": 0.358716097,
+          "test_primary_metric": 0.3454581759,
+          "baseline_primary_metric": 2.865615891,
+          "baseline_improvement": 2.520157715,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261109,
+      "id": "temporal_cohorts",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "temporal_cohorts",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "value",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "rmse",
+        "train_size": 720,
+        "test_size": 240,
+        "split_strategy": "temporal",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 0.3481252927,
+            "higher_is_better": false,
+            "baseline_value": 2.905089791,
+            "lower": 0.3160679464,
+            "upper": 0.3845355106,
+            "confidence": 0.95
+          },
+          {
+            "name": "mae",
+            "value": 0.2732193059,
+            "higher_is_better": false,
+            "baseline_value": 2.293523797,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": 0.9856367783,
+            "higher_is_better": true,
+            "baseline_value": -0.000229891557,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": 0.3530517532,
+            "cv_std": 0.02541048228,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": 3.831427649,
+            "std": 0.06936785007
+          },
+          {
+            "feature": "segment",
+            "importance": 0.3102690079,
+            "std": 0.008267884517
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout rmse=0.3481 (95% bootstrap CI 0.316\u20130.385), baseline=2.905, n_train=720, n_test=240",
+        "warnings": [],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "train_time_max": "2025-01-09T00:00:00+00:00",
+          "test_time_min": "2025-01-10T00:00:00+00:00",
+          "actual_test_fraction": 0.25,
+          "cv_time_boundaries": [
+            {
+              "train_time_max": "2025-01-03T00:00:00+00:00",
+              "validation_time_min": "2025-01-04T00:00:00+00:00"
+            },
+            {
+              "train_time_max": "2025-01-05T00:00:00+00:00",
+              "validation_time_min": "2025-01-06T00:00:00+00:00"
+            },
+            {
+              "train_time_max": "2025-01-07T00:00:00+00:00",
+              "validation_time_min": "2025-01-08T00:00:00+00:00"
+            }
+          ],
+          "train_primary_metric": 0.3585411123,
+          "test_primary_metric": 0.3481252927,
+          "baseline_primary_metric": 2.905089791,
+          "baseline_improvement": 2.556964498,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261109,
+      "id": "group_holdout",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "group_holdout",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "value",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "rmse",
+        "train_size": 768,
+        "test_size": 192,
+        "split_strategy": "group",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 0.3149924526,
+            "higher_is_better": false,
+            "baseline_value": 2.775374806,
+            "lower": 0.2877667419,
+            "upper": 0.3458492248,
+            "confidence": 0.95
+          },
+          {
+            "name": "mae",
+            "value": 0.2541350616,
+            "higher_is_better": false,
+            "baseline_value": 2.221971374,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": 0.9871182038,
+            "higher_is_better": true,
+            "baseline_value": -4.469433615e-05,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": 0.3665700404,
+            "cv_std": 0.008888663268,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": 3.512476999,
+            "std": 0.1207348105
+          },
+          {
+            "feature": "segment",
+            "importance": 0.3194811005,
+            "std": 0.03214885253
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout rmse=0.315 (95% bootstrap CI 0.288\u20130.346), baseline=2.775, n_train=768, n_test=192",
+        "warnings": [],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "group_overlap": 0,
+          "train_primary_metric": 0.3654285533,
+          "test_primary_metric": 0.3149924526,
+          "baseline_primary_metric": 2.775374806,
+          "baseline_improvement": 2.460382353,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261109,
+      "id": "no_signal",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "no_signal",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "noise",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "r2",
+        "train_size": 768,
+        "test_size": 192,
+        "split_strategy": "random",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 1.043804057,
+            "higher_is_better": false,
+            "baseline_value": 1.043840454,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "mae",
+            "value": 0.8419907435,
+            "higher_is_better": false,
+            "baseline_value": 0.8450373921,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": -0.001039589935,
+            "higher_is_better": true,
+            "baseline_value": -0.001109403014,
+            "lower": -0.02692758209,
+            "upper": 0.01331911971,
+            "confidence": 0.95
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": -0.005314093037,
+            "cv_std": 0.006263842731,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": 0.004112408054,
+            "std": 0.002610090803
+          },
+          {
+            "feature": "segment",
+            "importance": -0.0006460299246,
+            "std": 0.00303220385
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout r2=-0.00104 (95% bootstrap CI -0.0269\u20130.0133), baseline=-0.001109, n_train=768, n_test=192",
+        "warnings": [],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "train_primary_metric": 0.002431622983,
+          "test_primary_metric": -0.001039589935,
+          "baseline_primary_metric": -0.001109403014,
+          "baseline_improvement": 6.981307835e-05,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261109,
+      "id": "temporal_shift",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "temporal_shift",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "shifted",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "rmse",
+        "train_size": 720,
+        "test_size": 240,
+        "split_strategy": "temporal",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 5.821862467,
+            "higher_is_better": false,
+            "baseline_value": 2.995517761,
+            "lower": 5.322661513,
+            "upper": 6.35705386,
+            "confidence": 0.95
+          },
+          {
+            "name": "mae",
+            "value": 4.607621592,
+            "higher_is_better": false,
+            "baseline_value": 2.364909755,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": -2.966371062,
+            "higher_is_better": true,
+            "baseline_value": -0.05005792147,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": 0.3696547453,
+            "cv_std": 0.01671727584,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": -1.701024092,
+            "std": 0.08420487583
+          },
+          {
+            "feature": "segment",
+            "importance": 0.01090336256,
+            "std": 0.01397605645
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout rmse=5.822 (95% bootstrap CI 5.32\u20136.36), baseline=2.996, n_train=720, n_test=240",
+        "warnings": [
+          "selected model does not beat the naive baseline on holdout rmse",
+          "possible overfitting: holdout rmse is more than 1.5x training"
+        ],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "train_time_max": "2025-01-09T00:00:00+00:00",
+          "test_time_min": "2025-01-10T00:00:00+00:00",
+          "actual_test_fraction": 0.25,
+          "cv_time_boundaries": [
+            {
+              "train_time_max": "2025-01-03T00:00:00+00:00",
+              "validation_time_min": "2025-01-04T00:00:00+00:00"
+            },
+            {
+              "train_time_max": "2025-01-05T00:00:00+00:00",
+              "validation_time_min": "2025-01-06T00:00:00+00:00"
+            },
+            {
+              "train_time_max": "2025-01-07T00:00:00+00:00",
+              "validation_time_min": "2025-01-08T00:00:00+00:00"
+            }
+          ],
+          "train_primary_metric": 0.3591312526,
+          "test_primary_metric": 5.821862467,
+          "baseline_primary_metric": 2.995517761,
+          "baseline_improvement": -2.826344706,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261109,
+      "id": "target_leakage",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "target_leakage",
+        "task_type": "regression",
+        "status": "invalid",
+        "target": "",
+        "features": [],
+        "selected_model": "",
+        "primary_metric": "",
+        "train_size": 0,
+        "test_size": 0,
+        "split_strategy": "",
+        "metrics": [],
+        "candidates": [],
+        "feature_importance": [],
+        "slices": [],
+        "summary": "predictive modeling request could not be computed",
+        "warnings": [
+          "target cannot also be a feature"
+        ],
+        "diagnostics": {}
+      }
+    },
+    {
+      "seed": 20261109,
+      "id": "identifier_leakage",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "identifier_leakage",
+        "task_type": "regression",
+        "status": "invalid",
+        "target": "",
+        "features": [],
+        "selected_model": "",
+        "primary_metric": "",
+        "train_size": 0,
+        "test_size": 0,
+        "split_strategy": "",
+        "metrics": [],
+        "candidates": [],
+        "feature_importance": [],
+        "slices": [],
+        "summary": "predictive modeling request could not be computed",
+        "warnings": [
+          "identifier-like features are rejected by default because they can memorize rows: row_id"
+        ],
+        "diagnostics": {}
+      }
+    },
+    {
+      "seed": 20261109,
+      "id": "join_fanout",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "join_fanout",
+        "task_type": "regression",
+        "status": "invalid",
+        "target": "",
+        "features": [],
+        "selected_model": "",
+        "primary_metric": "",
+        "train_size": 0,
+        "test_size": 0,
+        "split_strategy": "",
+        "metrics": [],
+        "candidates": [],
+        "feature_importance": [],
+        "slices": [],
+        "summary": "predictive modeling request could not be computed",
+        "warnings": [
+          "join validation failed for 'events': Merge keys are not unique in right dataset; not a many-to-one merge"
+        ],
+        "diagnostics": {}
+      }
+    },
+    {
+      "seed": 20261109,
+      "id": "single_timestamp",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "single_timestamp",
+        "task_type": "regression",
+        "status": "invalid",
+        "target": "",
+        "features": [],
+        "selected_model": "",
+        "primary_metric": "",
+        "train_size": 0,
+        "test_size": 0,
+        "split_strategy": "",
+        "metrics": [],
+        "candidates": [],
+        "feature_importance": [],
+        "slices": [],
+        "summary": "predictive modeling request could not be computed",
+        "warnings": [
+          "temporal split requires distinct timestamps before the holdout"
+        ],
+        "diagnostics": {}
+      }
+    },
+    {
+      "seed": 20261110,
+      "id": "classification_signal",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "classification_signal",
+        "task_type": "classification",
+        "status": "computed",
+        "target": "converted",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "logistic_regression",
+        "primary_metric": "roc_auc",
+        "train_size": 768,
+        "test_size": 192,
+        "split_strategy": "random",
+        "metrics": [
+          {
+            "name": "roc_auc",
+            "value": 0.8828201501,
+            "higher_is_better": true,
+            "baseline_value": 0.5,
+            "lower": 0.8299648785,
+            "upper": 0.9308700026,
+            "confidence": 0.95
+          },
+          {
+            "name": "accuracy",
+            "value": 0.7864583333,
+            "higher_is_better": true,
+            "baseline_value": 0.5260416667,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "balanced_accuracy",
+            "value": 0.7850614732,
+            "higher_is_better": true,
+            "baseline_value": 0.5,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "precision",
+            "value": 0.7884615385,
+            "higher_is_better": true,
+            "baseline_value": 0.5260416667,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "recall",
+            "value": 0.8118811881,
+            "higher_is_better": true,
+            "baseline_value": 1.0,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "f1",
+            "value": 0.8,
+            "higher_is_better": true,
+            "baseline_value": 0.6894197952,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "log_loss",
+            "value": 0.4369706972,
+            "higher_is_better": false,
+            "baseline_value": 0.6917936306,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "logistic_regression",
+            "cv_mean": 0.8859300071,
+            "cv_std": 0.01108410911,
+            "folds": 3
+          },
+          {
+            "name": "random_forest",
+            "cv_mean": 0.8414957657,
+            "cv_std": 0.01761592395,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": 0.3605483625,
+            "std": 0.01400809889
+          },
+          {
+            "feature": "segment",
+            "importance": 0.003742791862,
+            "std": 0.002033871648
+          }
+        ],
+        "slices": [
+          {
+            "column": "segment",
+            "value": "north",
+            "n": 59,
+            "metric": "roc_auc",
+            "score": 0.8321678322,
+            "warning": ""
+          },
+          {
+            "column": "segment",
+            "value": "south",
+            "n": 67,
+            "metric": "roc_auc",
+            "score": 0.88125,
+            "warning": ""
+          },
+          {
+            "column": "segment",
+            "value": "west",
+            "n": 66,
+            "metric": "roc_auc",
+            "score": 0.9074074074,
+            "warning": ""
+          }
+        ],
+        "summary": "logistic_regression selected by 3-fold training CV; holdout roc_auc=0.8828 (95% bootstrap CI 0.83\u20130.931), baseline=0.5, n_train=768, n_test=192",
+        "warnings": [],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "positive_label": "1",
+          "negative_label": "0",
+          "positive_rate": 0.5270833333,
+          "train_primary_metric": 0.8882631024,
+          "test_primary_metric": 0.8828201501,
+          "baseline_primary_metric": 0.5,
+          "baseline_improvement": 0.3828201501,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261110,
+      "id": "regression_signal",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "regression_signal",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "value",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "rmse",
+        "train_size": 768,
+        "test_size": 192,
+        "split_strategy": "random",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 0.3494524862,
+            "higher_is_better": false,
+            "baseline_value": 2.966028415,
+            "lower": 0.3022887411,
+            "upper": 0.3912298643,
+            "confidence": 0.95
+          },
+          {
+            "name": "mae",
+            "value": 0.2611505913,
+            "higher_is_better": false,
+            "baseline_value": 2.346639619,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": 0.9861150024,
+            "higher_is_better": true,
+            "baseline_value": -0.0002767055949,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": 0.3413598414,
+            "cv_std": 0.01097694066,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": 3.787396876,
+            "std": 0.05355191682
+          },
+          {
+            "feature": "segment",
+            "importance": 0.2844864787,
+            "std": 0.01091664305
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout rmse=0.3495 (95% bootstrap CI 0.302\u20130.391), baseline=2.966, n_train=768, n_test=192",
+        "warnings": [],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "train_primary_metric": 0.3390585522,
+          "test_primary_metric": 0.3494524862,
+          "baseline_primary_metric": 2.966028415,
+          "baseline_improvement": 2.616575929,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261110,
+      "id": "temporal_cohorts",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "temporal_cohorts",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "value",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "rmse",
+        "train_size": 720,
+        "test_size": 240,
+        "split_strategy": "temporal",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 0.3299482434,
+            "higher_is_better": false,
+            "baseline_value": 3.197942473,
+            "lower": 0.2989535277,
+            "upper": 0.3614374216,
+            "confidence": 0.95
+          },
+          {
+            "name": "mae",
+            "value": 0.2562462685,
+            "higher_is_better": false,
+            "baseline_value": 2.609889983,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": 0.9892760424,
+            "higher_is_better": true,
+            "baseline_value": -0.007406486372,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": 0.353027303,
+            "cv_std": 0.01761456427,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": 4.002438367,
+            "std": 0.05399090443
+          },
+          {
+            "feature": "segment",
+            "importance": 0.3256900223,
+            "std": 0.01339980002
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout rmse=0.3299 (95% bootstrap CI 0.299\u20130.361), baseline=3.198, n_train=720, n_test=240",
+        "warnings": [],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "train_time_max": "2025-01-09T00:00:00+00:00",
+          "test_time_min": "2025-01-10T00:00:00+00:00",
+          "actual_test_fraction": 0.25,
+          "cv_time_boundaries": [
+            {
+              "train_time_max": "2025-01-03T00:00:00+00:00",
+              "validation_time_min": "2025-01-04T00:00:00+00:00"
+            },
+            {
+              "train_time_max": "2025-01-05T00:00:00+00:00",
+              "validation_time_min": "2025-01-06T00:00:00+00:00"
+            },
+            {
+              "train_time_max": "2025-01-07T00:00:00+00:00",
+              "validation_time_min": "2025-01-08T00:00:00+00:00"
+            }
+          ],
+          "train_primary_metric": 0.3445746133,
+          "test_primary_metric": 0.3299482434,
+          "baseline_primary_metric": 3.197942473,
+          "baseline_improvement": 2.867994229,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261110,
+      "id": "group_holdout",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "group_holdout",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "value",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "rmse",
+        "train_size": 768,
+        "test_size": 192,
+        "split_strategy": "group",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 0.3375699454,
+            "higher_is_better": false,
+            "baseline_value": 3.119561741,
+            "lower": 0.3043727653,
+            "upper": 0.3762441723,
+            "confidence": 0.95
+          },
+          {
+            "name": "mae",
+            "value": 0.2714635846,
+            "higher_is_better": false,
+            "baseline_value": 2.460225586,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": 0.9881383032,
+            "higher_is_better": true,
+            "baseline_value": -0.01299299767,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": 0.3418061406,
+            "cv_std": 0.04443372036,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": 3.874194945,
+            "std": 0.2419056591
+          },
+          {
+            "feature": "segment",
+            "importance": 0.3465136249,
+            "std": 0.03085023505
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout rmse=0.3376 (95% bootstrap CI 0.304\u20130.376), baseline=3.12, n_train=768, n_test=192",
+        "warnings": [],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "group_overlap": 0,
+          "train_primary_metric": 0.3419905865,
+          "test_primary_metric": 0.3375699454,
+          "baseline_primary_metric": 3.119561741,
+          "baseline_improvement": 2.781991796,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261110,
+      "id": "no_signal",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "no_signal",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "noise",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "r2",
+        "train_size": 768,
+        "test_size": 192,
+        "split_strategy": "random",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 1.009871737,
+            "higher_is_better": false,
+            "baseline_value": 1.013387352,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "mae",
+            "value": 0.8155208794,
+            "higher_is_better": false,
+            "baseline_value": 0.8191017921,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": 0.005625530125,
+            "higher_is_better": true,
+            "baseline_value": -0.001309852091,
+            "lower": -0.02390884138,
+            "upper": 0.01727393343,
+            "confidence": 0.95
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": -0.01538205115,
+            "cv_std": 0.01004602842,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "segment",
+            "importance": 0.006504505845,
+            "std": 0.004574110339
+          },
+          {
+            "feature": "x",
+            "importance": 0.003023134798,
+            "std": 0.001419114098
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout r2=0.005626 (95% bootstrap CI -0.0239\u20130.0173), baseline=-0.00131, n_train=768, n_test=192",
+        "warnings": [],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "train_primary_metric": 0.005371541758,
+          "test_primary_metric": 0.005625530125,
+          "baseline_primary_metric": -0.001309852091,
+          "baseline_improvement": 0.006935382216,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261110,
+      "id": "temporal_shift",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "temporal_shift",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "shifted",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "rmse",
+        "train_size": 720,
+        "test_size": 240,
+        "split_strategy": "temporal",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 6.367017851,
+            "higher_is_better": false,
+            "baseline_value": 3.206902093,
+            "lower": 5.771362491,
+            "upper": 6.992705073,
+            "confidence": 0.95
+          },
+          {
+            "name": "mae",
+            "value": 5.12824888,
+            "higher_is_better": false,
+            "baseline_value": 2.582062768,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": -3.059534706,
+            "higher_is_better": true,
+            "baseline_value": -0.02985368171,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": 0.355055186,
+            "cv_std": 0.007088080115,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": -1.7429567,
+            "std": 0.05503961762
+          },
+          {
+            "feature": "segment",
+            "importance": -0.04922680496,
+            "std": 0.02489206977
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout rmse=6.367 (95% bootstrap CI 5.77\u20136.99), baseline=3.207, n_train=720, n_test=240",
+        "warnings": [
+          "selected model does not beat the naive baseline on holdout rmse",
+          "possible overfitting: holdout rmse is more than 1.5x training"
+        ],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "train_time_max": "2025-01-09T00:00:00+00:00",
+          "test_time_min": "2025-01-10T00:00:00+00:00",
+          "actual_test_fraction": 0.25,
+          "cv_time_boundaries": [
+            {
+              "train_time_max": "2025-01-03T00:00:00+00:00",
+              "validation_time_min": "2025-01-04T00:00:00+00:00"
+            },
+            {
+              "train_time_max": "2025-01-05T00:00:00+00:00",
+              "validation_time_min": "2025-01-06T00:00:00+00:00"
+            },
+            {
+              "train_time_max": "2025-01-07T00:00:00+00:00",
+              "validation_time_min": "2025-01-08T00:00:00+00:00"
+            }
+          ],
+          "train_primary_metric": 0.3513465915,
+          "test_primary_metric": 6.367017851,
+          "baseline_primary_metric": 3.206902093,
+          "baseline_improvement": -3.160115758,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261110,
+      "id": "target_leakage",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "target_leakage",
+        "task_type": "regression",
+        "status": "invalid",
+        "target": "",
+        "features": [],
+        "selected_model": "",
+        "primary_metric": "",
+        "train_size": 0,
+        "test_size": 0,
+        "split_strategy": "",
+        "metrics": [],
+        "candidates": [],
+        "feature_importance": [],
+        "slices": [],
+        "summary": "predictive modeling request could not be computed",
+        "warnings": [
+          "target cannot also be a feature"
+        ],
+        "diagnostics": {}
+      }
+    },
+    {
+      "seed": 20261110,
+      "id": "identifier_leakage",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "identifier_leakage",
+        "task_type": "regression",
+        "status": "invalid",
+        "target": "",
+        "features": [],
+        "selected_model": "",
+        "primary_metric": "",
+        "train_size": 0,
+        "test_size": 0,
+        "split_strategy": "",
+        "metrics": [],
+        "candidates": [],
+        "feature_importance": [],
+        "slices": [],
+        "summary": "predictive modeling request could not be computed",
+        "warnings": [
+          "identifier-like features are rejected by default because they can memorize rows: row_id"
+        ],
+        "diagnostics": {}
+      }
+    },
+    {
+      "seed": 20261110,
+      "id": "join_fanout",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "join_fanout",
+        "task_type": "regression",
+        "status": "invalid",
+        "target": "",
+        "features": [],
+        "selected_model": "",
+        "primary_metric": "",
+        "train_size": 0,
+        "test_size": 0,
+        "split_strategy": "",
+        "metrics": [],
+        "candidates": [],
+        "feature_importance": [],
+        "slices": [],
+        "summary": "predictive modeling request could not be computed",
+        "warnings": [
+          "join validation failed for 'events': Merge keys are not unique in right dataset; not a many-to-one merge"
+        ],
+        "diagnostics": {}
+      }
+    },
+    {
+      "seed": 20261110,
+      "id": "single_timestamp",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "single_timestamp",
+        "task_type": "regression",
+        "status": "invalid",
+        "target": "",
+        "features": [],
+        "selected_model": "",
+        "primary_metric": "",
+        "train_size": 0,
+        "test_size": 0,
+        "split_strategy": "",
+        "metrics": [],
+        "candidates": [],
+        "feature_importance": [],
+        "slices": [],
+        "summary": "predictive modeling request could not be computed",
+        "warnings": [
+          "temporal split requires distinct timestamps before the holdout"
+        ],
+        "diagnostics": {}
+      }
+    },
+    {
+      "seed": 20261111,
+      "id": "classification_signal",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "classification_signal",
+        "task_type": "classification",
+        "status": "computed",
+        "target": "converted",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "logistic_regression",
+        "primary_metric": "roc_auc",
+        "train_size": 768,
+        "test_size": 192,
+        "split_strategy": "random",
+        "metrics": [
+          {
+            "name": "roc_auc",
+            "value": 0.8709607224,
+            "higher_is_better": true,
+            "baseline_value": 0.5,
+            "lower": 0.8126686201,
+            "upper": 0.9176298487,
+            "confidence": 0.95
+          },
+          {
+            "name": "accuracy",
+            "value": 0.7916666667,
+            "higher_is_better": true,
+            "baseline_value": 0.5260416667,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "balanced_accuracy",
+            "value": 0.7910999891,
+            "higher_is_better": true,
+            "baseline_value": 0.5,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "precision",
+            "value": 0.801980198,
+            "higher_is_better": true,
+            "baseline_value": 0.5260416667,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "recall",
+            "value": 0.801980198,
+            "higher_is_better": true,
+            "baseline_value": 1.0,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "f1",
+            "value": 0.801980198,
+            "higher_is_better": true,
+            "baseline_value": 0.6894197952,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "log_loss",
+            "value": 0.4545553121,
+            "higher_is_better": false,
+            "baseline_value": 0.6918038353,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "logistic_regression",
+            "cv_mean": 0.9152273628,
+            "cv_std": 0.002625864084,
+            "folds": 3
+          },
+          {
+            "name": "random_forest",
+            "cv_mean": 0.8837656028,
+            "cv_std": 0.01944761365,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": 0.3625938418,
+            "std": 0.03599219151
+          },
+          {
+            "feature": "segment",
+            "importance": 0.004134479382,
+            "std": 0.005328859305
+          }
+        ],
+        "slices": [
+          {
+            "column": "segment",
+            "value": "north",
+            "n": 59,
+            "metric": "roc_auc",
+            "score": 0.8206388206,
+            "warning": ""
+          },
+          {
+            "column": "segment",
+            "value": "south",
+            "n": 72,
+            "metric": "roc_auc",
+            "score": 0.9148606811,
+            "warning": ""
+          },
+          {
+            "column": "segment",
+            "value": "west",
+            "n": 61,
+            "metric": "roc_auc",
+            "score": 0.8571428571,
+            "warning": ""
+          }
+        ],
+        "summary": "logistic_regression selected by 3-fold training CV; holdout roc_auc=0.871 (95% bootstrap CI 0.813\u20130.918), baseline=0.5, n_train=768, n_test=192",
+        "warnings": [],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "positive_label": "1",
+          "negative_label": "0",
+          "positive_rate": 0.528125,
+          "train_primary_metric": 0.9159023487,
+          "test_primary_metric": 0.8709607224,
+          "baseline_primary_metric": 0.5,
+          "baseline_improvement": 0.3709607224,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261111,
+      "id": "regression_signal",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "regression_signal",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "value",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "rmse",
+        "train_size": 768,
+        "test_size": 192,
+        "split_strategy": "random",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 0.3783339077,
+            "higher_is_better": false,
+            "baseline_value": 2.964480034,
+            "lower": 0.3295651452,
+            "upper": 0.4183060971,
+            "confidence": 0.95
+          },
+          {
+            "name": "mae",
+            "value": 0.2945369527,
+            "higher_is_better": false,
+            "baseline_value": 2.377800442,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": 0.9835158756,
+            "higher_is_better": true,
+            "baseline_value": -0.01207432886,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": 0.3514534706,
+            "cv_std": 0.004767778766,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": 3.704986515,
+            "std": 0.1093752288
+          },
+          {
+            "feature": "segment",
+            "importance": 0.280727793,
+            "std": 0.02864759619
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout rmse=0.3783 (95% bootstrap CI 0.33\u20130.418), baseline=2.964, n_train=768, n_test=192",
+        "warnings": [],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "train_primary_metric": 0.346867747,
+          "test_primary_metric": 0.3783339077,
+          "baseline_primary_metric": 2.964480034,
+          "baseline_improvement": 2.586146126,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261111,
+      "id": "temporal_cohorts",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "temporal_cohorts",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "value",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "rmse",
+        "train_size": 720,
+        "test_size": 240,
+        "split_strategy": "temporal",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 0.3470730229,
+            "higher_is_better": false,
+            "baseline_value": 2.961515741,
+            "lower": 0.3098276548,
+            "upper": 0.3721532326,
+            "confidence": 0.95
+          },
+          {
+            "name": "mae",
+            "value": 0.2681268441,
+            "higher_is_better": false,
+            "baseline_value": 2.399192872,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": 0.9862228657,
+            "higher_is_better": true,
+            "baseline_value": -0.00310239453,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": 0.3635609573,
+            "cv_std": 0.01594684374,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": 3.817892984,
+            "std": 0.09100553206
+          },
+          {
+            "feature": "segment",
+            "importance": 0.3013164249,
+            "std": 0.01809427254
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout rmse=0.3471 (95% bootstrap CI 0.31\u20130.372), baseline=2.962, n_train=720, n_test=240",
+        "warnings": [],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "train_time_max": "2025-01-09T00:00:00+00:00",
+          "test_time_min": "2025-01-10T00:00:00+00:00",
+          "actual_test_fraction": 0.25,
+          "cv_time_boundaries": [
+            {
+              "train_time_max": "2025-01-03T00:00:00+00:00",
+              "validation_time_min": "2025-01-04T00:00:00+00:00"
+            },
+            {
+              "train_time_max": "2025-01-05T00:00:00+00:00",
+              "validation_time_min": "2025-01-06T00:00:00+00:00"
+            },
+            {
+              "train_time_max": "2025-01-07T00:00:00+00:00",
+              "validation_time_min": "2025-01-08T00:00:00+00:00"
+            }
+          ],
+          "train_primary_metric": 0.3559271329,
+          "test_primary_metric": 0.3470730229,
+          "baseline_primary_metric": 2.961515741,
+          "baseline_improvement": 2.614442718,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261111,
+      "id": "group_holdout",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "group_holdout",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "value",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "rmse",
+        "train_size": 768,
+        "test_size": 192,
+        "split_strategy": "group",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 0.3638978679,
+            "higher_is_better": false,
+            "baseline_value": 2.855643493,
+            "lower": 0.3255916681,
+            "upper": 0.4135962486,
+            "confidence": 0.95
+          },
+          {
+            "name": "mae",
+            "value": 0.2800015457,
+            "higher_is_better": false,
+            "baseline_value": 2.309093247,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": 0.9836804182,
+            "higher_is_better": true,
+            "baseline_value": -0.004981295955,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": 0.3528829025,
+            "cv_std": 0.02270429963,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": 3.536899987,
+            "std": 0.04404101482
+          },
+          {
+            "feature": "segment",
+            "importance": 0.2993116359,
+            "std": 0.03204556697
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout rmse=0.3639 (95% bootstrap CI 0.326\u20130.414), baseline=2.856, n_train=768, n_test=192",
+        "warnings": [],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "group_overlap": 0,
+          "train_primary_metric": 0.3507697598,
+          "test_primary_metric": 0.3638978679,
+          "baseline_primary_metric": 2.855643493,
+          "baseline_improvement": 2.491745625,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261111,
+      "id": "no_signal",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "no_signal",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "noise",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "r2",
+        "train_size": 768,
+        "test_size": 192,
+        "split_strategy": "random",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 1.093669845,
+            "higher_is_better": false,
+            "baseline_value": 1.087872608,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "mae",
+            "value": 0.8819860745,
+            "higher_is_better": false,
+            "baseline_value": 0.8726094869,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": -0.01101312599,
+            "higher_is_better": true,
+            "baseline_value": -0.0003233387363,
+            "lower": -0.05255077909,
+            "upper": 0.008815630817,
+            "confidence": 0.95
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": -0.01529613319,
+            "cv_std": 0.0159435353,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": -0.00593293307,
+            "std": 0.001963159197
+          },
+          {
+            "feature": "segment",
+            "importance": -0.00106625262,
+            "std": 0.00867582192
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout r2=-0.01101 (95% bootstrap CI -0.0526\u20130.00882), baseline=-0.0003233, n_train=768, n_test=192",
+        "warnings": [
+          "selected model does not beat the naive baseline on holdout r2"
+        ],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "train_primary_metric": 0.008190598782,
+          "test_primary_metric": -0.01101312599,
+          "baseline_primary_metric": -0.0003233387363,
+          "baseline_improvement": -0.01068978725,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261111,
+      "id": "temporal_shift",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "temporal_shift",
+        "task_type": "regression",
+        "status": "computed",
+        "target": "shifted",
+        "features": [
+          "x",
+          "segment"
+        ],
+        "selected_model": "ridge",
+        "primary_metric": "rmse",
+        "train_size": 720,
+        "test_size": 240,
+        "split_strategy": "temporal",
+        "metrics": [
+          {
+            "name": "rmse",
+            "value": 6.007228528,
+            "higher_is_better": false,
+            "baseline_value": 3.095728011,
+            "lower": 5.584288686,
+            "upper": 6.430601223,
+            "confidence": 0.95
+          },
+          {
+            "name": "mae",
+            "value": 4.891754255,
+            "higher_is_better": false,
+            "baseline_value": 2.525241,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          },
+          {
+            "name": "r2",
+            "value": -3.158483503,
+            "higher_is_better": true,
+            "baseline_value": -0.1043640713,
+            "lower": null,
+            "upper": null,
+            "confidence": null
+          }
+        ],
+        "candidates": [
+          {
+            "name": "ridge",
+            "cv_mean": 0.3419552637,
+            "cv_std": 0.01010599701,
+            "folds": 3
+          }
+        ],
+        "feature_importance": [
+          {
+            "feature": "x",
+            "importance": -1.698064483,
+            "std": 0.1002763357
+          },
+          {
+            "feature": "segment",
+            "importance": -0.04641611914,
+            "std": 0.02582634623
+          }
+        ],
+        "slices": [],
+        "summary": "ridge selected by 3-fold training CV; holdout rmse=6.007 (95% bootstrap CI 5.58\u20136.43), baseline=3.096, n_train=720, n_test=240",
+        "warnings": [
+          "selected model does not beat the naive baseline on holdout rmse",
+          "possible overfitting: holdout rmse is more than 1.5x training"
+        ],
+        "diagnostics": {
+          "target_rows_dropped": 0,
+          "train_time_max": "2025-01-09T00:00:00+00:00",
+          "test_time_min": "2025-01-10T00:00:00+00:00",
+          "actual_test_fraction": 0.25,
+          "cv_time_boundaries": [
+            {
+              "train_time_max": "2025-01-03T00:00:00+00:00",
+              "validation_time_min": "2025-01-04T00:00:00+00:00"
+            },
+            {
+              "train_time_max": "2025-01-05T00:00:00+00:00",
+              "validation_time_min": "2025-01-06T00:00:00+00:00"
+            },
+            {
+              "train_time_max": "2025-01-07T00:00:00+00:00",
+              "validation_time_min": "2025-01-08T00:00:00+00:00"
+            }
+          ],
+          "train_primary_metric": 0.352190444,
+          "test_primary_metric": 6.007228528,
+          "baseline_primary_metric": 3.095728011,
+          "baseline_improvement": -2.911500517,
+          "random_seed": 42,
+          "bootstrap_iterations": 100
+        }
+      }
+    },
+    {
+      "seed": 20261111,
+      "id": "target_leakage",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "target_leakage",
+        "task_type": "regression",
+        "status": "invalid",
+        "target": "",
+        "features": [],
+        "selected_model": "",
+        "primary_metric": "",
+        "train_size": 0,
+        "test_size": 0,
+        "split_strategy": "",
+        "metrics": [],
+        "candidates": [],
+        "feature_importance": [],
+        "slices": [],
+        "summary": "predictive modeling request could not be computed",
+        "warnings": [
+          "target cannot also be a feature"
+        ],
+        "diagnostics": {}
+      }
+    },
+    {
+      "seed": 20261111,
+      "id": "identifier_leakage",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "identifier_leakage",
+        "task_type": "regression",
+        "status": "invalid",
+        "target": "",
+        "features": [],
+        "selected_model": "",
+        "primary_metric": "",
+        "train_size": 0,
+        "test_size": 0,
+        "split_strategy": "",
+        "metrics": [],
+        "candidates": [],
+        "feature_importance": [],
+        "slices": [],
+        "summary": "predictive modeling request could not be computed",
+        "warnings": [
+          "identifier-like features are rejected by default because they can memorize rows: row_id"
+        ],
+        "diagnostics": {}
+      }
+    },
+    {
+      "seed": 20261111,
+      "id": "join_fanout",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "join_fanout",
+        "task_type": "regression",
+        "status": "invalid",
+        "target": "",
+        "features": [],
+        "selected_model": "",
+        "primary_metric": "",
+        "train_size": 0,
+        "test_size": 0,
+        "split_strategy": "",
+        "metrics": [],
+        "candidates": [],
+        "feature_importance": [],
+        "slices": [],
+        "summary": "predictive modeling request could not be computed",
+        "warnings": [
+          "join validation failed for 'events': Merge keys are not unique in right dataset; not a many-to-one merge"
+        ],
+        "diagnostics": {}
+      }
+    },
+    {
+      "seed": 20261111,
+      "id": "single_timestamp",
+      "error": null,
+      "evidence": {
+        "task_id": "predictive_benchmark",
+        "request_id": "single_timestamp",
+        "task_type": "regression",
+        "status": "invalid",
+        "target": "",
+        "features": [],
+        "selected_model": "",
+        "primary_metric": "",
+        "train_size": 0,
+        "test_size": 0,
+        "split_strategy": "",
+        "metrics": [],
+        "candidates": [],
+        "feature_importance": [],
+        "slices": [],
+        "summary": "predictive modeling request could not be computed",
+        "warnings": [
+          "temporal split requires distinct timestamps before the holdout"
+        ],
+        "diagnostics": {}
+      }
+    }
+  ],
+  "summary": {
+    "integrity_errors": [],
+    "passed": true,
+    "cases_passed": 30,
+    "cases_total": 30,
+    "results": [
+      {
+        "seed": 20261109,
+        "id": "classification_signal",
+        "category": "signal",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "minimum_metric": true,
+          "minimum_baseline_improvement": true,
+          "probability_loss_beats_baseline": true,
+          "subgroup_coverage": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261109,
+        "id": "regression_signal",
+        "category": "signal",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "maximum_metric": true,
+          "minimum_baseline_improvement": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261109,
+        "id": "temporal_cohorts",
+        "category": "split",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "maximum_metric": true,
+          "minimum_baseline_improvement": true,
+          "strict_holdout_time_boundary": true,
+          "strict_cv_time_boundaries": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261109,
+        "id": "group_holdout",
+        "category": "split",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "maximum_metric": true,
+          "minimum_baseline_improvement": true,
+          "no_entity_overlap": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261109,
+        "id": "no_signal",
+        "category": "negative_control",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "minimum_metric": true,
+          "maximum_metric": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261109,
+        "id": "temporal_shift",
+        "category": "negative_control",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "minimum_metric": true,
+          "maximum_baseline_improvement": true,
+          "strict_holdout_time_boundary": true,
+          "strict_cv_time_boundaries": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261109,
+        "id": "target_leakage",
+        "category": "rejection",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "no_model_or_metrics": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261109,
+        "id": "identifier_leakage",
+        "category": "rejection",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "no_model_or_metrics": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261109,
+        "id": "join_fanout",
+        "category": "rejection",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "no_model_or_metrics": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261109,
+        "id": "single_timestamp",
+        "category": "rejection",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "no_model_or_metrics": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261110,
+        "id": "classification_signal",
+        "category": "signal",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "minimum_metric": true,
+          "minimum_baseline_improvement": true,
+          "probability_loss_beats_baseline": true,
+          "subgroup_coverage": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261110,
+        "id": "regression_signal",
+        "category": "signal",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "maximum_metric": true,
+          "minimum_baseline_improvement": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261110,
+        "id": "temporal_cohorts",
+        "category": "split",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "maximum_metric": true,
+          "minimum_baseline_improvement": true,
+          "strict_holdout_time_boundary": true,
+          "strict_cv_time_boundaries": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261110,
+        "id": "group_holdout",
+        "category": "split",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "maximum_metric": true,
+          "minimum_baseline_improvement": true,
+          "no_entity_overlap": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261110,
+        "id": "no_signal",
+        "category": "negative_control",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "minimum_metric": true,
+          "maximum_metric": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261110,
+        "id": "temporal_shift",
+        "category": "negative_control",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "minimum_metric": true,
+          "maximum_baseline_improvement": true,
+          "strict_holdout_time_boundary": true,
+          "strict_cv_time_boundaries": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261110,
+        "id": "target_leakage",
+        "category": "rejection",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "no_model_or_metrics": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261110,
+        "id": "identifier_leakage",
+        "category": "rejection",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "no_model_or_metrics": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261110,
+        "id": "join_fanout",
+        "category": "rejection",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "no_model_or_metrics": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261110,
+        "id": "single_timestamp",
+        "category": "rejection",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "no_model_or_metrics": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261111,
+        "id": "classification_signal",
+        "category": "signal",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "minimum_metric": true,
+          "minimum_baseline_improvement": true,
+          "probability_loss_beats_baseline": true,
+          "subgroup_coverage": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261111,
+        "id": "regression_signal",
+        "category": "signal",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "maximum_metric": true,
+          "minimum_baseline_improvement": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261111,
+        "id": "temporal_cohorts",
+        "category": "split",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "maximum_metric": true,
+          "minimum_baseline_improvement": true,
+          "strict_holdout_time_boundary": true,
+          "strict_cv_time_boundaries": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261111,
+        "id": "group_holdout",
+        "category": "split",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "maximum_metric": true,
+          "minimum_baseline_improvement": true,
+          "no_entity_overlap": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261111,
+        "id": "no_signal",
+        "category": "negative_control",
+        "checks": {
+          "expected_status": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "minimum_metric": true,
+          "maximum_metric": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261111,
+        "id": "temporal_shift",
+        "category": "negative_control",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "request_specification": true,
+          "all_rows_accounted_for": true,
+          "requested_split": true,
+          "primary_metric_present": true,
+          "finite_metrics_and_baselines": true,
+          "finite_training_cv": true,
+          "requested_candidates": true,
+          "bootstrap_interval": true,
+          "selected_by_training_cv": true,
+          "minimum_metric": true,
+          "maximum_baseline_improvement": true,
+          "strict_holdout_time_boundary": true,
+          "strict_cv_time_boundaries": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261111,
+        "id": "target_leakage",
+        "category": "rejection",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "no_model_or_metrics": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261111,
+        "id": "identifier_leakage",
+        "category": "rejection",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "no_model_or_metrics": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261111,
+        "id": "join_fanout",
+        "category": "rejection",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "no_model_or_metrics": true,
+          "request_identity": true
+        },
+        "passed": true
+      },
+      {
+        "seed": 20261111,
+        "id": "single_timestamp",
+        "category": "rejection",
+        "checks": {
+          "expected_status": true,
+          "expected_warning": true,
+          "no_model_or_metrics": true,
+          "request_identity": true
+        },
+        "passed": true
+      }
+    ]
+  }
+}

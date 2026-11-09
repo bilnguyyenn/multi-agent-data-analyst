@@ -105,6 +105,11 @@ def main(argv: list[str] | None = None) -> int:
     )
     heldout_scorecard.add_argument("--out-dir", default="heldout_eval_results")
 
+    predictive = sub.add_parser(
+        "predictive-benchmark", help="run the API-free predictive reliability suite (fixed seeds)",
+    )
+    predictive.add_argument("--out-dir", default="predictive_eval_results")
+
     tv = sub.add_parser("trap-variance",
                         help="repeat only the tier-4 traps K times for a 95%% CI on "
                              "the noisy trap column")
@@ -117,6 +122,15 @@ def main(argv: list[str] | None = None) -> int:
     tv.add_argument("--timeout", type=int, default=60)
 
     args = p.parse_args(argv)
+
+    if args.cmd == "predictive-benchmark":
+        from analyst.eval.predictive_benchmark import run_benchmark, write_report
+
+        raw, report, passed = write_report(run_benchmark(), args.out_dir)
+        print(f"predictive reliability: {'PASS' if passed else 'FAIL'}")
+        print(f"raw evidence: {raw}")
+        print(f"report: {report}")
+        return 0 if passed else 1
 
     if args.cmd == "gen-data":
         from analyst.eval.data_gen import generate

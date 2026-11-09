@@ -54,7 +54,10 @@ holdout.
 
 - `random`: stratified for classification; deterministic seed.
 - `temporal`: sorts by `time_column`, trains on the past, tests on the latest rows,
-  and records the train/test time boundary. Training CV uses forward time splits.
+  and records the train/test time boundary. Equal timestamps stay together in both
+  holdout and forward CV splits. The boundary cohort moves entirely into holdout,
+  so its actual fraction can exceed `test_size`; diagnostics report that fraction
+  and every CV time boundary. Too few distinct training timestamps fail visibly.
 - `group`: keeps every `group_column` value entirely in train or test and records a
   zero-overlap diagnostic. Training CV also respects groups.
 
@@ -68,6 +71,7 @@ The engine rejects:
 - ambiguous overlapping non-key columns across joins;
 - fewer than 50 complete target rows, non-binary classification targets, or a
   train/holdout classification split missing either class;
+- non-finite cross-validation scores;
 - more than 100,000 rows or 50 input features in this local product version.
 
 The identifier override is deliberately visible because some legitimate entity
@@ -111,6 +115,11 @@ answer, persisted in JSON/Postgres run records, streamed/replayed over WebSocket
 included in CLI JSON, and rendered in a dedicated React panel.
 
 ## Honest boundaries
+
+The [predictive reliability benchmark](PREDICTIVE_BENCHMARK.md) exercises ten fixed
+synthetic scenarios across three seeds, including no-signal/temporal-shift controls
+and leakage rejections. Its 30/30 published result measures deterministic engine
+behavior, not LLM specification accuracy or external predictive performance.
 
 - This evaluates models; it does not yet serialize a production model artifact or
   serve online predictions.

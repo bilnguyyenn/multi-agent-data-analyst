@@ -23,6 +23,14 @@ jobs:
       - run: pip install -e ".[dev]"
       - name: unit + replay e2e tests ($0, deterministic)
         run: python -m pytest tests/ -q
+      - name: predictive reliability benchmark ($0, no LLM)
+        run: python -m analyst predictive-benchmark --out-dir /tmp/predictive-results
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: predictive-reliability
+          path: /tmp/predictive-results/
+          if-no-files-found: ignore
 
   frontend:
     runs-on: ubuntu-latest

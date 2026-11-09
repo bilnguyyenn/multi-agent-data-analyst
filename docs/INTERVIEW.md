@@ -52,6 +52,17 @@ default rather than defended as sunk complexity.
 
 ## The hard questions
 
+### Q. How do you know the predictive layer isn't leaking its test data?
+**Answer:** "The application owns model fitting rather than trusting generated
+training code. Model selection uses training-only CV, with preprocessing inside
+each pipeline. Temporal holdout and CV keep entire timestamp cohorts together;
+group splits keep entities apart. A regression test changes only holdout labels
+and verifies identical candidate CV scores and model selection. The versioned
+engine benchmark passes 30 case instances across three synthetic seeds, including
+target/identifier leakage, join fanout, no-signal, and temporal-shift controls.
+Those are reliability checks of fixed specifications, not evidence that an LLM
+always selects the correct features or that synthetic accuracy transfers to production."
+
 ### Q. What makes this genuinely multi-agent rather than a chain of prompts?
 **What they're testing:** whether agents have independent state, work, and conflict.
 **Answer:** "The executor pipeline alone is role-based, so I added an analysis

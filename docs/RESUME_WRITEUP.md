@@ -1,7 +1,9 @@
 # Resume and portfolio writeup — `analyst`
 
-All numbers below come from complete, zero-error, 25-question runs in the committed
-scorecard. The benchmark model routing is held constant across configurations.
+Agent accuracy numbers come from complete, zero-error, 25-question runs in the
+committed scorecard, with model routing held constant across configurations.
+The predictive reliability result comes from a separate synthetic development
+suite of fixed model specifications; it is a behavioral pass count, not accuracy.
 
 **Recommendation for Bill's data-science resume:** replace the county-level obesity
 project with this project. The tennis engine already demonstrates conventional
@@ -17,17 +19,18 @@ Docker · Pandas · DuckDB
 
 - Built a multi-agent data analyst that converts natural-language questions into
   parallel task DAGs, executes generated Python/SQL in isolated Docker sandboxes,
-  and automatically profiles uploaded relational data for missingness, duplicates,
-  invalid/orphaned keys, distributions, and outliers before analysis.
-- Implemented deterministic confidence intervals, hypothesis tests, Simpson-
-  detecting stratified adjustment, and leakage-aware scikit-learn pipelines with
-  training-only CV selection, temporal/group holdouts, baseline comparisons,
-  bootstrap metrics, permutation importance, and subgroup diagnostics.
-- Designed an integrity-gated 25-question ablation benchmark plus a separate
-  20-question held-out statistical suite with runtime-derived ground truth,
-  component rubrics, and multi-seed uncertainty; improved original-benchmark
-  accuracy from **0.56 to 0.86** versus a bare planner/executor and removed review
-  components that failed to justify their token cost.
+  and streams statistical evidence through a FastAPI/React interface.
+- Designed a 25-question ablation benchmark with planted statistical traps;
+  achieved **0.86 vs. 0.56** for a bare planner/executor and selected a lower-cost
+  **0.80** Standard mode based on measured token/accuracy tradeoffs.
+- Engineered leakage-aware scikit-learn pipelines with training-only model
+  selection, timestamp-safe CV, and baseline comparisons; passed **30/30 synthetic
+  reliability cases across three seeds**, including leakage and temporal-shift controls.
+
+Use the first two bullets for an AI engineering resume; include the third for
+data-science/MLE roles. The third metric counts case instances, not distinct
+scenarios or prediction accuracy. See the
+[reproducible report](../predictive_eval_results/REPORT.md).
 
 ## Compact one-bullet version
 
@@ -44,6 +47,9 @@ Docker · Pandas · DuckDB
   generated code runs in networkless, resource-limited Docker sandboxes.
 - Instrumented tokens and latency per configuration and built replayable, key-free
   CI plus a provenance-linked scorecard that rejects incomplete or errored runs.
+- Added an API-free predictive reliability CI gate with raw model evidence, fixed
+  scenario contracts, dataset/source hashes, and no-signal/shift controls; fixed
+  temporal leakage at both holdout and CV boundaries.
 - Selected a 0.80/3,429-token Standard mode and a 0.86/17,223-token High-assurance
   mode after controlled ablations showed the critic and adaptive router did not earn
   default status.
@@ -61,6 +67,10 @@ For prediction requests, a governed modeling layer—not generated model-trainin
 code—owns validated joins, temporal/group/random holdouts, training-only CV model
 selection, dummy baselines, bootstrap metric intervals, permutation importance, and
 slice diagnostics. It rejects target/identifier leakage and row-multiplying joins.
+A separate engine reliability suite passes 30 synthetic case instances across
+three fixed seeds and preserves complete evidence; it checks expected failures
+and weak models as well as strong signals. Timestamp cohorts stay together in
+holdout and CV, and changing only holdout labels cannot affect model selection.
 Standard mode sends the resulting claims through a statistical validator.
 High-assurance mode additionally fans the same immutable evidence to
 metric, statistical, and data-quality specialists; deterministic consensus avoids
@@ -100,6 +110,8 @@ Chroma, Postgres, Redis, OpenTelemetry/Jaeger, GitHub Actions.
 - Standard: **0.80**, 3,429 mean tokens, 27.6s mean latency.
 - Bare planner/executor: **0.56**.
 - No validator: **0.68**, with zero trap flagging.
+- Predictive engine reliability: **30/30 case instances**, ten synthetic scenarios
+  across three development seeds; **not** external predictive accuracy.
 - Critic-bench: **0.83 recall**, **0.71 precision**, **0.50 false-positive rate**.
 - Held-out suite: **20 questions**, four balanced categories; performance pending a
   complete live run, so do not quote an accuracy number yet.

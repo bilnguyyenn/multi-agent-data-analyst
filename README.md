@@ -246,8 +246,24 @@ With only two seeds, the uncertainty interval is wide, so I treat this as an ear
 out-of-sample result rather than a final performance estimate. The full report is
 in [heldout_eval_results/SCORECARD.md](heldout_eval_results/SCORECARD.md).
 
-There is not yet a locked predictive-model benchmark, so this repository does not
-claim a predictive accuracy number.
+### Predictive reliability benchmark
+
+The deterministic modeling engine passes **30/30 case instances** in a versioned,
+API-free suite: ten scenarios across three fixed generated-data seeds. It covers
+classification/regression signals, timestamp-safe and entity-disjoint holdouts,
+no-signal and temporal-shift controls, and target/identifier/join leakage rejections.
+The suite exposed and helped fix timestamp overlap in temporal holdout/CV splits
+and acceptance of non-finite CV scores.
+
+This is synthetic development coverage of fixed model specifications, separate
+from agent accuracy and external predictive performance. The
+[report and metrics](predictive_eval_results/REPORT.md),
+[raw evidence](predictive_eval_results/results.json), and
+[benchmark contract](docs/PREDICTIVE_BENCHMARK.md) document its scope and provenance.
+
+```bash
+python -m analyst predictive-benchmark
+```
 
 ### Reproduce the scorecards
 
@@ -343,7 +359,8 @@ cd frontend
 npm run build
 ```
 
-GitHub Actions runs both checks on every push.
+GitHub Actions runs both checks plus the predictive reliability benchmark on every
+push and uploads the benchmark's JSON evidence and Markdown report.
 
 ## Current limitations
 
@@ -389,3 +406,5 @@ More detail is available in:
 - [Data-quality rules](docs/DATA_QUALITY.md)
 - [Held-out benchmark](docs/HELDOUT_BENCHMARK.md)
 - [Predictive modeling](docs/PREDICTIVE_MODELING.md)
+- [Predictive reliability benchmark](docs/PREDICTIVE_BENCHMARK.md)
+- [Resume-ready project bullets](docs/RESUME_WRITEUP.md)

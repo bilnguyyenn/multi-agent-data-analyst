@@ -225,14 +225,21 @@ def _split(
             raise ValueError(
                 f"time_column {request.time_column!r} contains {int(times.isna().sum())} invalid values"
             )
-        order = np.argsort(times.to_numpy())
+        order = np.argsort(times.to_numpy(), kind="stable")
         ordered_frame = frame.iloc[order]
         ordered_target = target.iloc[order]
         cut = int(len(frame) * (1 - request.test_size))
+        # An observation's timestamp is an availability boundary. Keep the entire
+        # boundary cohort in holdout rather than learning from simultaneous rows.
+        ordered_times = times.iloc[order]
+        cut = int(ordered_times.searchsorted(ordered_times.iloc[cut], side="left"))
+        if cut == 0:
+            raise ValueError("temporal split requires distinct timestamps before the holdout")
         train_frame, test_frame = ordered_frame.iloc[:cut], ordered_frame.iloc[cut:]
         y_train, y_test = ordered_target.iloc[:cut], ordered_target.iloc[cut:]
         diagnostics["train_time_max"] = times.loc[train_frame.index].max().isoformat()
         diagnostics["test_time_min"] = times.loc[test_frame.index].min().isoformat()
+        diagnostics["actual_test_fraction"] = _round(len(test_frame) / len(frame))
     elif request.split_strategy == "group":
         groups = frame[request.group_column]
         if groups.isna().any():
@@ -371,8 +378,19 @@ def _cv_splitter(
     folds = request.cv_folds
     groups = None
     if request.split_strategy == "temporal":
-        folds = min(folds, max(2, len(train_frame) // 20))
-        return TimeSeriesSplit(n_splits=folds), groups, folds
+        times = pd.to_datetime(train_frame[request.time_column], utc=True)
+        unique_times = np.sort(times.unique())
+        folds = min(folds, len(unique_times) - 1, max(2, len(train_frame) // 20))
+        if folds < 2:
+            raise ValueError("temporal CV requires at least three distinct training timestamps")
+        # Split time cohorts first, then map them to row positions. Row-based
+        # TimeSeriesSplit can otherwise leak the same timestamp across a fold.
+        codes = np.searchsorted(unique_times, times.to_numpy())
+        splits = [
+            (np.flatnonzero(np.isin(codes, train)), np.flatnonzero(np.isin(codes, valid)))
+            for train, valid in TimeSeriesSplit(n_splits=folds).split(unique_times)
+        ]
+        return splits, groups, folds
     if request.split_strategy == "group":
         groups = train_frame[request.group_column]
         folds = min(folds, groups.nunique())
@@ -534,6 +552,13 @@ def _compute(
     x_test = test_frame[request.features]
     primary, scoring, higher_is_better = _primary_metric(request)
     cv, cv_groups, folds = _cv_splitter(request, y_train, train_frame)
+    if request.split_strategy == "temporal":
+        times = pd.to_datetime(train_frame[request.time_column], utc=True)
+        diagnostics["cv_time_boundaries"] = [
+            {"train_time_max": times.iloc[train].max().isoformat(),
+             "validation_time_min": times.iloc[valid].min().isoformat()}
+            for train, valid in cv
+        ]
 
     model_names = request.models or list(_supported_models(request.task_type))
     if len(set(model_names)) != len(model_names):
@@ -555,6 +580,8 @@ def _compute(
             )
         except ValueError as exc:
             raise ValueError(f"cross-validation failed for {model_name}: {exc}") from exc
+        if not np.isfinite(scores).all():
+            raise ValueError(f"non-finite cross-validation scores for {model_name}")
         natural_scores = scores if higher_is_better else -scores
         candidates.append(
             ModelCandidate(

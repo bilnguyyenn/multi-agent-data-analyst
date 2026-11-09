@@ -14,6 +14,7 @@ def test_top_level_help_renders_all_commands(capsys):
     assert "heldout-eval" in output
     assert "heldout-scorecard" in output
     assert "gen-heldout-data" in output
+    assert "predictive-benchmark" in output
 
 
 def test_generate_heldout_data_command(tmp_path, capsys):

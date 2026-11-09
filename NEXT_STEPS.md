@@ -88,8 +88,12 @@ in the React UI. Invalid/leaky specifications fail visibly.
 4. Add survivorship-aware cohort reconstruction for historical fleet comparisons.
 5. Add multiple-comparison correction and power/equivalence analysis.
 6. Add regression adjustment for continuous or high-cardinality confounders.
-7. Add a locked predictive benchmark covering calibration, temporal drift, entity
-   leakage, and baseline-relative performance before claiming model accuracy.
+7. Completed: a versioned predictive reliability suite covers baseline-relative
+   signal recovery, no-signal/temporal-shift controls, entity/time splits, and
+   leakage rejections (30/30 synthetic case instances). External predictive data,
+   full calibration/drift assessment, and LLM specification evaluation remain
+   necessary before claiming general predictive accuracy. See
+   [the benchmark contract](docs/PREDICTIVE_BENCHMARK.md).
 8. Add model-artifact serialization/model cards only if the product needs reusable
    batch or online inference.
 9. Measure memory reuse on a second pass of repeated questions.
