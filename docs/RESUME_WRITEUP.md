@@ -19,7 +19,8 @@ Docker · Pandas · DuckDB
 
 - Built a multi-agent data analyst that converts natural-language questions into
   parallel task DAGs, executes generated Python/SQL in isolated Docker sandboxes,
-  and streams statistical evidence through a FastAPI/React interface.
+  and delivers statistical evidence through a FastAPI/React interface with
+  portable HTML/JSON reports and dataset provenance.
 - Designed a 25-question ablation benchmark with planted statistical traps;
   achieved **0.86 vs. 0.56** for a bare planner/executor and selected a lower-cost
   **0.80** Standard mode based on measured token/accuracy tradeoffs.

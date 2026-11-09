@@ -16,6 +16,7 @@ Event protocol (one JSON object per message):
 from __future__ import annotations
 
 import traceback
+import time
 import uuid
 from typing import Callable
 
@@ -24,6 +25,7 @@ from analyst.data import build_manifest
 from analyst.graph.control_loop import build_graph
 from analyst.graph.state import Budgets
 from analyst.llm.client import make_client
+from analyst.reporting import dataset_provenance
 from analyst.sandbox.runner import make_runner
 
 
@@ -75,7 +77,7 @@ def execute_run(
     """Synchronous; callers wrap it in a thread (dev mode) or arq job (prod).
     `publish` must be thread-safe for the caller's event loop."""
     try:
-        store.update(run_id, status="running")
+        store.update(run_id, status="running", started_at=time.time())
         publish({"type": "status", "status": "running"})
 
         llm = make_client(provider=options.get("provider"))
@@ -97,10 +99,12 @@ def execute_run(
             memory=memory,
         )
 
+        dataset = build_manifest(data_dir)
+        store.update(run_id, dataset_provenance=dataset_provenance(dataset))
         initial = {
             "run_id": run_id,
             "question": question,
-            "dataset": build_manifest(data_dir),
+            "dataset": dataset,
             "budgets": Budgets(),
         }
         seen_events = 0
@@ -133,7 +137,7 @@ def execute_run(
         predictive_evidence = _predictive_snapshot(final or {})
         data_quality_report = _quality_snapshot(final or {})
         store.update(
-            run_id, status="done", answer=answer, claims=claims,
+            run_id, status="done", finished_at=time.time(), answer=answer, claims=claims,
             dag={t["id"]: t for t in _tasks_snapshot((final or {}).get("dag", {}))},
             council_findings=council_findings,
             council_decisions=council_decisions,
@@ -155,7 +159,7 @@ def execute_run(
         })
         publish({"type": "status", "status": "done"})
     except Exception as e:  # a crashed run must still tell the client it died
-        store.update(run_id, status="error", answer=f"run crashed: {e}")
+        store.update(run_id, status="error", finished_at=time.time(), answer=f"run crashed: {e}")
         publish({"type": "status", "status": "error",
                  "detail": f"{e}\n{traceback.format_exc()[-1500:]}"})
     finally:

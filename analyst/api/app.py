@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import asyncio
 import csv
+import json
 import os
 import shutil
 import uuid
@@ -25,12 +26,14 @@ from typing import Literal
 
 from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import Response
 from pydantic import BaseModel
 
 from analyst.api.events import make_event_bus
 from analyst.api.pgstore import make_run_store
 from analyst.api.runner import execute_run, new_run_id
 from analyst.data import build_manifest
+from analyst.reporting import render_report, report_payload
 
 app = FastAPI(title="analyst", version="0.1.0")
 app.add_middleware(  # dev: vite serves the UI from :5173
@@ -170,6 +173,28 @@ async def get_run(run_id: str):
     if run is None:
         raise HTTPException(404, f"no run {run_id}")
     return run
+
+
+@app.get("/runs/{run_id}/report")
+async def export_run_report(run_id: str, format: Literal["html", "json"] = "html"):
+    run = store.read(run_id)
+    if run is None:
+        raise HTTPException(404, f"no run {run_id}")
+    try:
+        payload = report_payload(run)
+    except ValueError as exc:
+        raise HTTPException(409, str(exc)) from exc
+    content = (render_report(payload) if format == "html"
+               else json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False))
+    return Response(
+        content=content, media_type="text/html" if format == "html" else "application/json",
+        headers={
+            "Content-Disposition": f'attachment; filename="analysis-report.{format}"',
+            "X-Content-Type-Options": "nosniff",
+            "Content-Security-Policy": "default-src 'none'; style-src 'unsafe-inline'; "
+                                       "base-uri 'none'; form-action 'none'",
+        },
+    )
 
 
 @app.websocket("/runs/{run_id}/stream")

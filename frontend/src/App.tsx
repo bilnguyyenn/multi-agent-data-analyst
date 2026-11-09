@@ -379,7 +379,19 @@ export default function App() {
 
         {answer && (
           <section className="answer">
-            <h2>answer</h2>
+            <div className="section-heading">
+              <h2>answer</h2>
+              {status === "done" && activeRun && (
+                <div className="report-actions" aria-label="Download analysis">
+                  <a href={`/runs/${encodeURIComponent(activeRun)}/report`} download>
+                    Download report
+                  </a>
+                  <a href={`/runs/${encodeURIComponent(activeRun)}/report?format=json`} download>
+                    JSON evidence
+                  </a>
+                </div>
+              )}
+            </div>
             <pre>{answer}</pre>
             {claims.filter((c) => c.verdict !== "pass").length > 0 && (
               <div className="caveats">

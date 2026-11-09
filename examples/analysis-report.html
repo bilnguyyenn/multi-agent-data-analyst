@@ -1,0 +1,436 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; style-src &#39;unsafe-inline&#39;; base-uri &#39;none&#39;; form-action &#39;none&#39;"><title>Analyst · Analysis report</title><style>
+:root{font-family:system-ui,-apple-system,sans-serif;color:#18283b;background:#edf2f6}
+*{box-sizing:border-box}body{margin:0}main{max-width:1080px;margin:40px auto;background:white;
+padding:48px;border:1px solid #d9e2eb;border-radius:14px}header{border-bottom:3px solid #147d92;
+padding-bottom:26px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:#147d92;
+font-size:12px;font-weight:750}h1{font-size:34px;line-height:1.2;letter-spacing:-.03em;margin:12px 0}
+h2{font-size:21px;margin:0 0 14px}h3{font-size:16px;margin:0 0 10px}
+p,li{line-height:1.6}p{margin:8px 0}.muted,small{color:#586b80}.question{font-size:18px}
+nav{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}a{color:#126d82}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}
+.card{padding:16px;border:1px solid #d9e2eb;border-radius:8px}.card strong{display:block;font-size:23px}
+.card span{color:#586b80;font-size:12px}.notice,.warnings{background:#fff7e7;border-left:3px solid
+#d38a18;padding:14px 18px}.warnings{padding-left:34px}section{margin-top:34px;min-width:0}
+article{border:1px solid #d9e2eb;border-radius:8px;padding:20px;margin-top:14px}
+.answer{white-space:pre-wrap;overflow-wrap:anywhere;font-size:15px;line-height:1.75}
+.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+th{text-align:left;background:#f1f6fa;color:#324960}th,td{padding:10px;border-bottom:1px solid
+#e2e9f0;vertical-align:top;overflow-wrap:anywhere}td{max-width:360px}code{overflow-wrap:anywhere}
+details{margin-top:16px}summary{cursor:pointer;color:#126d82}pre{white-space:pre-wrap;
+overflow-wrap:anywhere;font-size:12px;background:#f4f7fa;padding:16px;line-height:1.5}
+footer{margin-top:36px;padding-top:20px;border-top:1px solid #d9e2eb;font-size:12px;color:#586b80}
+@media(max-width:700px){main{margin:0;padding:22px;border:0;border-radius:0}h1{font-size:27px}
+.cards{grid-template-columns:repeat(2,1fr)}article{padding:14px}th,td{padding:7px}}
+@media print{@page{margin:16mm}body{background:white}main{margin:0;padding:0;border:0;max-width:none}
+nav{display:none}article,.card,tr{break-inside:avoid}.table-wrap{overflow:visible}
+details{display:none}a{color:inherit;text-decoration:none}h2,h3{break-after:avoid}}
+</style></head><body><main><header><div class="eyebrow">Analyst · evidence report</div><h1>From question to evidence</h1><p class="question">Can we predict conversion, and does a model remain useful after a shift?</p><p class="muted">Run <code>synthetic-report-demo</code> · completed</p><nav aria-label="Report sections"><a href="#answer">Answer</a><a href="#evidence">Evidence</a><a href="#quality">Data quality</a><a href="#provenance">Provenance</a></nav></header><p class="notice">Deterministic synthetic example built from published benchmark evidence. Narrative and task labels are illustrative. No LLM or council review was run.</p><div class="cards"><div class="card"><strong>2</strong><span>analysis tasks</span></div><div class="card"><strong>0</strong><span>validator claims recorded</span></div><div class="card"><strong>2</strong><span>model evaluations requested</span></div><div class="card"><strong>92</strong><span>data readiness / 100</span></div></div><section id="answer"><h2>Answer</h2><div class="answer">On this generated dataset, the conversion model achieves holdout ROC AUC 0.906, compared with 0.500 for the naive baseline.
+
+A separate regression stress test reverses the target relationship in the final three time cohorts. Holdout RMSE rises to 5.822, worse than the baseline&#x27;s 2.996. The engine surfaces that failure rather than presenting the model as useful.
+
+These are synthetic demonstrations of evaluation behavior, not evidence of real-world predictive accuracy or causal effects.</div><h3>Claim review</h3><p class="muted">None recorded.</p></section><section id="evidence"><h2>Statistical & predictive evidence</h2><article><h3>observed_conversion · computed</h3><p>converted rate=0.5219 (95% CI 0.4903–0.5533)</p><div class="table-wrap"><table><thead><tr><th scope="col">Parameter</th><th scope="col">Estimate</th><th scope="col">Lower</th><th scope="col">Upper</th><th scope="col">Level</th><th scope="col">Method</th></tr></thead><tbody><tr><td>rate:converted</td><td>0.521875</td><td>0.490252</td><td>0.553323</td><td>0.95</td><td>Wilson score</td></tr></tbody></table></div><p class="muted">None recorded.</p></article><article><h3>classification_signal · computed</h3><p>logistic_regression selected by 3-fold training CV; holdout roc_auc=0.9062 (95% bootstrap CI 0.864–0.944), baseline=0.5, n_train=768, n_test=192</p><p class="muted">Target: converted · Split: random · Train / holdout: 768 / 192</p><div class="table-wrap"><table><thead><tr><th scope="col">Metric</th><th scope="col">Model</th><th scope="col">Naive baseline</th><th scope="col">Bootstrap interval</th><th scope="col">Direction</th></tr></thead><tbody><tr><td>roc_auc</td><td>0.906196</td><td>0.5</td><td>[0.863812, 0.943699] (0.95)</td><td>higher is better</td></tr><tr><td>accuracy</td><td>0.828125</td><td>0.520833</td><td>—</td><td>higher is better</td></tr><tr><td>balanced_accuracy</td><td>0.827609</td><td>0.5</td><td>—</td><td>higher is better</td></tr><tr><td>precision</td><td>0.831683</td><td>0.520833</td><td>—</td><td>higher is better</td></tr><tr><td>recall</td><td>0.84</td><td>1</td><td>—</td><td>higher is better</td></tr><tr><td>f1</td><td>0.835821</td><td>0.684932</td><td>—</td><td>higher is better</td></tr><tr><td>log_loss</td><td>0.389613</td><td>0.692282</td><td>—</td><td>lower is better</td></tr></tbody></table></div><h3>Training-only model selection</h3><div class="table-wrap"><table><thead><tr><th scope="col">Candidate</th><th scope="col">CV mean</th><th scope="col">CV std</th><th scope="col">Folds</th></tr></thead><tbody><tr><td>logistic_regression</td><td>0.897056</td><td>0.00548696</td><td>3</td></tr><tr><td>random_forest</td><td>0.893204</td><td>0.0104196</td><td>3</td></tr></tbody></table></div></article><article><h3>temporal_shift · computed</h3><p>ridge selected by 3-fold training CV; holdout rmse=5.822 (95% bootstrap CI 5.32–6.36), baseline=2.996, n_train=720, n_test=240</p><p class="muted">Target: shifted · Split: temporal · Train / holdout: 720 / 240</p><ul class="warnings"><li>selected model does not beat the naive baseline on holdout rmse</li><li>possible overfitting: holdout rmse is more than 1.5x training</li></ul><div class="table-wrap"><table><thead><tr><th scope="col">Metric</th><th scope="col">Model</th><th scope="col">Naive baseline</th><th scope="col">Bootstrap interval</th><th scope="col">Direction</th></tr></thead><tbody><tr><td>rmse</td><td>5.82186</td><td>2.99552</td><td>[5.32266, 6.35705] (0.95)</td><td>lower is better</td></tr><tr><td>mae</td><td>4.60762</td><td>2.36491</td><td>—</td><td>lower is better</td></tr><tr><td>r2</td><td>-2.96637</td><td>-0.0500579</td><td>—</td><td>higher is better</td></tr></tbody></table></div><h3>Training-only model selection</h3><div class="table-wrap"><table><thead><tr><th scope="col">Candidate</th><th scope="col">CV mean</th><th scope="col">CV std</th><th scope="col">Folds</th></tr></thead><tbody><tr><td>ridge</td><td>0.369655</td><td>0.0167173</td><td>3</td></tr></tbody></table></div></article></section><section id="quality"><h2>Data quality</h2><p>Profiled 2 tables and 2880 rows: 0 errors, 1 warnings, and 4 informational EDA signals.</p><div class="table-wrap"><table><thead><tr><th scope="col">Severity</th><th scope="col">Location</th><th scope="col">Finding</th><th scope="col">Recommendation</th></tr></thead><tbody><tr><td>warning</td><td>observations.same_time</td><td>The column has only one non-null value and cannot explain variation.</td><td>Remove it from modeling features unless the constant is operationally meaningful.</td></tr><tr><td>info</td><td>observations.noise</td><td>6 values fall outside the 1.5×IQR fences.</td><td>Inspect these records; use robust statistics rather than deleting them automatically.</td></tr><tr><td>info</td><td>observations.shifted</td><td>10 values fall outside the 1.5×IQR fences.</td><td>Inspect these records; use robust statistics rather than deleting them automatically.</td></tr><tr><td>info</td><td>observations.value</td><td>8 values fall outside the 1.5×IQR fences.</td><td>Inspect these records; use robust statistics rather than deleting them automatically.</td></tr><tr><td>info</td><td>observations.x</td><td>6 values fall outside the 1.5×IQR fences.</td><td>Inspect these records; use robust statistics rather than deleting them automatically.</td></tr></tbody></table></div></section><section id="provenance"><h2>Dataset & execution provenance</h2><p>Dataset SHA-256: <code>5e63db10fcf585f748cba3bf918199af04c8a71c8291ea1debfbc294f864ae79</code></p><div class="table-wrap"><table><thead><tr><th scope="col">Table</th><th scope="col">Rows</th><th scope="col">Columns</th></tr></thead><tbody><tr><td>events</td><td>1920</td><td>[&quot;event_id&quot;, &quot;row_id&quot;]</td></tr><tr><td>observations</td><td>960</td><td>[&quot;row_id&quot;, &quot;account_group&quot;, &quot;observed_at&quot;, &quot;same_time&quot;, &quot;x&quot;, &quot;segment&quot;, &quot;value&quot;, &quot;converted&quot;, &quot;noise&quot;, &quot;shifted&quot;]</td></tr></tbody></table></div><div class="table-wrap"><table><thead><tr><th scope="col">Task</th><th scope="col">Kind</th><th scope="col">Status</th><th scope="col">Goal</th><th scope="col">Depends on</th></tr></thead><tbody><tr><td>descriptive</td><td>python</td><td>done</td><td>Compute observed conversion and Wilson interval</td><td>[]</td></tr><tr><td>predictive_benchmark</td><td>python</td><td>done</td><td>Evaluate baseline-relative prediction and a temporal-shift control</td><td>[]</td></tr></tbody></table></div><details><summary>Complete exported evidence packet</summary><pre>{
+  &quot;report_version&quot;: &quot;analysis-report-v1&quot;,
+  &quot;run_id&quot;: &quot;synthetic-report-demo&quot;,
+  &quot;status&quot;: &quot;done&quot;,
+  &quot;question&quot;: &quot;Can we predict conversion, and does a model remain useful after a shift?&quot;,
+  &quot;answer&quot;: &quot;On this generated dataset, the conversion model achieves holdout ROC AUC 0.906, compared with 0.500 for the naive baseline.\n\nA separate regression stress test reverses the target relationship in the final three time cohorts. Holdout RMSE rises to 5.822, worse than the baseline&#x27;s 2.996. The engine surfaces that failure rather than presenting the model as useful.\n\nThese are synthetic demonstrations of evaluation behavior, not evidence of real-world predictive accuracy or causal effects.&quot;,
+  &quot;demo_note&quot;: &quot;Deterministic synthetic example built from published benchmark evidence. Narrative and task labels are illustrative. No LLM or council review was run.&quot;,
+  &quot;dataset&quot;: {
+    &quot;content_hash&quot;: &quot;5e63db10fcf585f748cba3bf918199af04c8a71c8291ea1debfbc294f864ae79&quot;,
+    &quot;tables&quot;: [
+      {
+        &quot;name&quot;: &quot;events&quot;,
+        &quot;row_count&quot;: 1920,
+        &quot;columns&quot;: [
+          &quot;event_id&quot;,
+          &quot;row_id&quot;
+        ],
+        &quot;dtypes&quot;: {
+          &quot;event_id&quot;: &quot;object&quot;,
+          &quot;row_id&quot;: &quot;object&quot;
+        }
+      },
+      {
+        &quot;name&quot;: &quot;observations&quot;,
+        &quot;row_count&quot;: 960,
+        &quot;columns&quot;: [
+          &quot;row_id&quot;,
+          &quot;account_group&quot;,
+          &quot;observed_at&quot;,
+          &quot;same_time&quot;,
+          &quot;x&quot;,
+          &quot;segment&quot;,
+          &quot;value&quot;,
+          &quot;converted&quot;,
+          &quot;noise&quot;,
+          &quot;shifted&quot;
+        ],
+        &quot;dtypes&quot;: {
+          &quot;row_id&quot;: &quot;object&quot;,
+          &quot;account_group&quot;: &quot;object&quot;,
+          &quot;observed_at&quot;: &quot;object&quot;,
+          &quot;same_time&quot;: &quot;object&quot;,
+          &quot;x&quot;: &quot;float64&quot;,
+          &quot;segment&quot;: &quot;object&quot;,
+          &quot;value&quot;: &quot;float64&quot;,
+          &quot;converted&quot;: &quot;int64&quot;,
+          &quot;noise&quot;: &quot;float64&quot;,
+          &quot;shifted&quot;: &quot;float64&quot;
+        }
+      }
+    ]
+  },
+  &quot;tasks&quot;: [
+    {
+      &quot;id&quot;: &quot;descriptive&quot;,
+      &quot;goal&quot;: &quot;Compute observed conversion and Wilson interval&quot;,
+      &quot;kind&quot;: &quot;python&quot;,
+      &quot;status&quot;: &quot;done&quot;,
+      &quot;depends_on&quot;: []
+    },
+    {
+      &quot;id&quot;: &quot;predictive_benchmark&quot;,
+      &quot;goal&quot;: &quot;Evaluate baseline-relative prediction and a temporal-shift control&quot;,
+      &quot;kind&quot;: &quot;python&quot;,
+      &quot;status&quot;: &quot;done&quot;,
+      &quot;depends_on&quot;: []
+    }
+  ],
+  &quot;claims&quot;: [],
+  &quot;data_quality&quot;: {
+    &quot;quality_score&quot;: 92.0,
+    &quot;score_method&quot;: &quot;Heuristic readiness score: 100 minus 8 + 12×affected-rate per error and 2 + 6×affected-rate per warning; informational EDA signals do not reduce the score.&quot;,
+    &quot;table_count&quot;: 2,
+    &quot;total_rows&quot;: 2880,
+    &quot;summary&quot;: &quot;Profiled 2 tables and 2880 rows: 0 errors, 1 warnings, and 4 informational EDA signals.&quot;,
+    &quot;issue_counts&quot;: {
+      &quot;error&quot;: 0,
+      &quot;warning&quot;: 1,
+      &quot;info&quot;: 4
+    },
+    &quot;issues&quot;: [
+      {
+        &quot;code&quot;: &quot;constant_column&quot;,
+        &quot;severity&quot;: &quot;warning&quot;,
+        &quot;table&quot;: &quot;observations&quot;,
+        &quot;column&quot;: &quot;same_time&quot;,
+        &quot;message&quot;: &quot;The column has only one non-null value and cannot explain variation.&quot;,
+        &quot;recommendation&quot;: &quot;Remove it from modeling features unless the constant is operationally meaningful.&quot;,
+        &quot;affected_count&quot;: 960,
+        &quot;affected_rate&quot;: 1.0
+      },
+      {
+        &quot;code&quot;: &quot;iqr_outliers&quot;,
+        &quot;severity&quot;: &quot;info&quot;,
+        &quot;table&quot;: &quot;observations&quot;,
+        &quot;column&quot;: &quot;noise&quot;,
+        &quot;message&quot;: &quot;6 values fall outside the 1.5×IQR fences.&quot;,
+        &quot;recommendation&quot;: &quot;Inspect these records; use robust statistics rather than deleting them automatically.&quot;,
+        &quot;affected_count&quot;: 6,
+        &quot;affected_rate&quot;: 0.00625
+      },
+      {
+        &quot;code&quot;: &quot;iqr_outliers&quot;,
+        &quot;severity&quot;: &quot;info&quot;,
+        &quot;table&quot;: &quot;observations&quot;,
+        &quot;column&quot;: &quot;shifted&quot;,
+        &quot;message&quot;: &quot;10 values fall outside the 1.5×IQR fences.&quot;,
+        &quot;recommendation&quot;: &quot;Inspect these records; use robust statistics rather than deleting them automatically.&quot;,
+        &quot;affected_count&quot;: 10,
+        &quot;affected_rate&quot;: 0.010417
+      },
+      {
+        &quot;code&quot;: &quot;iqr_outliers&quot;,
+        &quot;severity&quot;: &quot;info&quot;,
+        &quot;table&quot;: &quot;observations&quot;,
+        &quot;column&quot;: &quot;value&quot;,
+        &quot;message&quot;: &quot;8 values fall outside the 1.5×IQR fences.&quot;,
+        &quot;recommendation&quot;: &quot;Inspect these records; use robust statistics rather than deleting them automatically.&quot;,
+        &quot;affected_count&quot;: 8,
+        &quot;affected_rate&quot;: 0.008333
+      },
+      {
+        &quot;code&quot;: &quot;iqr_outliers&quot;,
+        &quot;severity&quot;: &quot;info&quot;,
+        &quot;table&quot;: &quot;observations&quot;,
+        &quot;column&quot;: &quot;x&quot;,
+        &quot;message&quot;: &quot;6 values fall outside the 1.5×IQR fences.&quot;,
+        &quot;recommendation&quot;: &quot;Inspect these records; use robust statistics rather than deleting them automatically.&quot;,
+        &quot;affected_count&quot;: 6,
+        &quot;affected_rate&quot;: 0.00625
+      }
+    ]
+  },
+  &quot;statistical_evidence&quot;: [
+    {
+      &quot;task_id&quot;: &quot;descriptive&quot;,
+      &quot;request_id&quot;: &quot;observed_conversion&quot;,
+      &quot;kind&quot;: &quot;one_proportion&quot;,
+      &quot;status&quot;: &quot;computed&quot;,
+      &quot;sample_size&quot;: 960,
+      &quot;summary&quot;: &quot;converted rate=0.5219 (95% CI 0.4903–0.5533)&quot;,
+      &quot;warnings&quot;: [],
+      &quot;intervals&quot;: [
+        {
+          &quot;parameter&quot;: &quot;rate:converted&quot;,
+          &quot;estimate&quot;: 0.521875,
+          &quot;lower&quot;: 0.4902522284,
+          &quot;upper&quot;: 0.5533234028,
+          &quot;level&quot;: 0.95,
+          &quot;method&quot;: &quot;Wilson score&quot;
+        }
+      ],
+      &quot;effects&quot;: [],
+      &quot;test&quot;: null,
+      &quot;diagnostics&quot;: {}
+    }
+  ],
+  &quot;predictive_evidence&quot;: [
+    {
+      &quot;task_id&quot;: &quot;predictive_benchmark&quot;,
+      &quot;request_id&quot;: &quot;classification_signal&quot;,
+      &quot;task_type&quot;: &quot;classification&quot;,
+      &quot;status&quot;: &quot;computed&quot;,
+      &quot;target&quot;: &quot;converted&quot;,
+      &quot;features&quot;: [
+        &quot;x&quot;,
+        &quot;segment&quot;
+      ],
+      &quot;selected_model&quot;: &quot;logistic_regression&quot;,
+      &quot;primary_metric&quot;: &quot;roc_auc&quot;,
+      &quot;train_size&quot;: 768,
+      &quot;test_size&quot;: 192,
+      &quot;split_strategy&quot;: &quot;random&quot;,
+      &quot;summary&quot;: &quot;logistic_regression selected by 3-fold training CV; holdout roc_auc=0.9062 (95% bootstrap CI 0.864–0.944), baseline=0.5, n_train=768, n_test=192&quot;,
+      &quot;warnings&quot;: [],
+      &quot;metrics&quot;: [
+        {
+          &quot;name&quot;: &quot;roc_auc&quot;,
+          &quot;value&quot;: 0.9061956522,
+          &quot;baseline_value&quot;: 0.5,
+          &quot;higher_is_better&quot;: true,
+          &quot;lower&quot;: 0.86381172,
+          &quot;upper&quot;: 0.9436988442,
+          &quot;confidence&quot;: 0.95
+        },
+        {
+          &quot;name&quot;: &quot;accuracy&quot;,
+          &quot;value&quot;: 0.828125,
+          &quot;baseline_value&quot;: 0.5208333333,
+          &quot;higher_is_better&quot;: true,
+          &quot;lower&quot;: null,
+          &quot;upper&quot;: null,
+          &quot;confidence&quot;: null
+        },
+        {
+          &quot;name&quot;: &quot;balanced_accuracy&quot;,
+          &quot;value&quot;: 0.8276086957,
+          &quot;baseline_value&quot;: 0.5,
+          &quot;higher_is_better&quot;: true,
+          &quot;lower&quot;: null,
+          &quot;upper&quot;: null,
+          &quot;confidence&quot;: null
+        },
+        {
+          &quot;name&quot;: &quot;precision&quot;,
+          &quot;value&quot;: 0.8316831683,
+          &quot;baseline_value&quot;: 0.5208333333,
+          &quot;higher_is_better&quot;: true,
+          &quot;lower&quot;: null,
+          &quot;upper&quot;: null,
+          &quot;confidence&quot;: null
+        },
+        {
+          &quot;name&quot;: &quot;recall&quot;,
+          &quot;value&quot;: 0.84,
+          &quot;baseline_value&quot;: 1.0,
+          &quot;higher_is_better&quot;: true,
+          &quot;lower&quot;: null,
+          &quot;upper&quot;: null,
+          &quot;confidence&quot;: null
+        },
+        {
+          &quot;name&quot;: &quot;f1&quot;,
+          &quot;value&quot;: 0.8358208955,
+          &quot;baseline_value&quot;: 0.6849315068,
+          &quot;higher_is_better&quot;: true,
+          &quot;lower&quot;: null,
+          &quot;upper&quot;: null,
+          &quot;confidence&quot;: null
+        },
+        {
+          &quot;name&quot;: &quot;log_loss&quot;,
+          &quot;value&quot;: 0.3896131829,
+          &quot;baseline_value&quot;: 0.6922822709,
+          &quot;higher_is_better&quot;: false,
+          &quot;lower&quot;: null,
+          &quot;upper&quot;: null,
+          &quot;confidence&quot;: null
+        }
+      ],
+      &quot;candidates&quot;: [
+        {
+          &quot;name&quot;: &quot;logistic_regression&quot;,
+          &quot;cv_mean&quot;: 0.8970557377,
+          &quot;cv_std&quot;: 0.005486963786,
+          &quot;folds&quot;: 3
+        },
+        {
+          &quot;name&quot;: &quot;random_forest&quot;,
+          &quot;cv_mean&quot;: 0.8932041873,
+          &quot;cv_std&quot;: 0.01041957131,
+          &quot;folds&quot;: 3
+        }
+      ],
+      &quot;feature_importance&quot;: [
+        {
+          &quot;feature&quot;: &quot;x&quot;,
+          &quot;importance&quot;: 0.3564565217,
+          &quot;std&quot;: 0.07158450398
+        },
+        {
+          &quot;feature&quot;: &quot;segment&quot;,
+          &quot;importance&quot;: 0.0055,
+          &quot;std&quot;: 0.002937277522
+        }
+      ],
+      &quot;slices&quot;: [
+        {
+          &quot;column&quot;: &quot;segment&quot;,
+          &quot;value&quot;: &quot;north&quot;,
+          &quot;n&quot;: 78,
+          &quot;metric&quot;: &quot;roc_auc&quot;,
+          &quot;score&quot;: 0.8843853821,
+          &quot;warning&quot;: &quot;&quot;
+        },
+        {
+          &quot;column&quot;: &quot;segment&quot;,
+          &quot;value&quot;: &quot;south&quot;,
+          &quot;n&quot;: 56,
+          &quot;metric&quot;: &quot;roc_auc&quot;,
+          &quot;score&quot;: 0.9361979167,
+          &quot;warning&quot;: &quot;&quot;
+        },
+        {
+          &quot;column&quot;: &quot;segment&quot;,
+          &quot;value&quot;: &quot;west&quot;,
+          &quot;n&quot;: 58,
+          &quot;metric&quot;: &quot;roc_auc&quot;,
+          &quot;score&quot;: 0.8933333333,
+          &quot;warning&quot;: &quot;&quot;
+        }
+      ],
+      &quot;diagnostics&quot;: {
+        &quot;target_rows_dropped&quot;: 0,
+        &quot;positive_label&quot;: &quot;1&quot;,
+        &quot;negative_label&quot;: &quot;0&quot;,
+        &quot;positive_rate&quot;: 0.521875,
+        &quot;train_primary_metric&quot;: 0.8986661412,
+        &quot;test_primary_metric&quot;: 0.9061956522,
+        &quot;baseline_primary_metric&quot;: 0.5,
+        &quot;baseline_improvement&quot;: 0.4061956522,
+        &quot;random_seed&quot;: 42,
+        &quot;bootstrap_iterations&quot;: 100
+      }
+    },
+    {
+      &quot;task_id&quot;: &quot;predictive_benchmark&quot;,
+      &quot;request_id&quot;: &quot;temporal_shift&quot;,
+      &quot;task_type&quot;: &quot;regression&quot;,
+      &quot;status&quot;: &quot;computed&quot;,
+      &quot;target&quot;: &quot;shifted&quot;,
+      &quot;features&quot;: [
+        &quot;x&quot;,
+        &quot;segment&quot;
+      ],
+      &quot;selected_model&quot;: &quot;ridge&quot;,
+      &quot;primary_metric&quot;: &quot;rmse&quot;,
+      &quot;train_size&quot;: 720,
+      &quot;test_size&quot;: 240,
+      &quot;split_strategy&quot;: &quot;temporal&quot;,
+      &quot;summary&quot;: &quot;ridge selected by 3-fold training CV; holdout rmse=5.822 (95% bootstrap CI 5.32–6.36), baseline=2.996, n_train=720, n_test=240&quot;,
+      &quot;warnings&quot;: [
+        &quot;selected model does not beat the naive baseline on holdout rmse&quot;,
+        &quot;possible overfitting: holdout rmse is more than 1.5x training&quot;
+      ],
+      &quot;metrics&quot;: [
+        {
+          &quot;name&quot;: &quot;rmse&quot;,
+          &quot;value&quot;: 5.821862467,
+          &quot;baseline_value&quot;: 2.995517761,
+          &quot;higher_is_better&quot;: false,
+          &quot;lower&quot;: 5.322661513,
+          &quot;upper&quot;: 6.35705386,
+          &quot;confidence&quot;: 0.95
+        },
+        {
+          &quot;name&quot;: &quot;mae&quot;,
+          &quot;value&quot;: 4.607621592,
+          &quot;baseline_value&quot;: 2.364909755,
+          &quot;higher_is_better&quot;: false,
+          &quot;lower&quot;: null,
+          &quot;upper&quot;: null,
+          &quot;confidence&quot;: null
+        },
+        {
+          &quot;name&quot;: &quot;r2&quot;,
+          &quot;value&quot;: -2.966371062,
+          &quot;baseline_value&quot;: -0.05005792147,
+          &quot;higher_is_better&quot;: true,
+          &quot;lower&quot;: null,
+          &quot;upper&quot;: null,
+          &quot;confidence&quot;: null
+        }
+      ],
+      &quot;candidates&quot;: [
+        {
+          &quot;name&quot;: &quot;ridge&quot;,
+          &quot;cv_mean&quot;: 0.3696547453,
+          &quot;cv_std&quot;: 0.01671727584,
+          &quot;folds&quot;: 3
+        }
+      ],
+      &quot;feature_importance&quot;: [
+        {
+          &quot;feature&quot;: &quot;x&quot;,
+          &quot;importance&quot;: -1.701024092,
+          &quot;std&quot;: 0.08420487583
+        },
+        {
+          &quot;feature&quot;: &quot;segment&quot;,
+          &quot;importance&quot;: 0.01090336256,
+          &quot;std&quot;: 0.01397605645
+        }
+      ],
+      &quot;slices&quot;: [],
+      &quot;diagnostics&quot;: {
+        &quot;target_rows_dropped&quot;: 0,
+        &quot;train_time_max&quot;: &quot;2025-01-09T00:00:00+00:00&quot;,
+        &quot;test_time_min&quot;: &quot;2025-01-10T00:00:00+00:00&quot;,
+        &quot;actual_test_fraction&quot;: 0.25,
+        &quot;cv_time_boundaries&quot;: [
+          {
+            &quot;train_time_max&quot;: &quot;2025-01-03T00:00:00+00:00&quot;,
+            &quot;validation_time_min&quot;: &quot;2025-01-04T00:00:00+00:00&quot;
+          },
+          {
+            &quot;train_time_max&quot;: &quot;2025-01-05T00:00:00+00:00&quot;,
+            &quot;validation_time_min&quot;: &quot;2025-01-06T00:00:00+00:00&quot;
+          },
+          {
+            &quot;train_time_max&quot;: &quot;2025-01-07T00:00:00+00:00&quot;,
+            &quot;validation_time_min&quot;: &quot;2025-01-08T00:00:00+00:00&quot;
+          }
+        ],
+        &quot;train_primary_metric&quot;: 0.3591312526,
+        &quot;test_primary_metric&quot;: 5.821862467,
+        &quot;baseline_primary_metric&quot;: 2.995517761,
+        &quot;baseline_improvement&quot;: -2.826344706,
+        &quot;random_seed&quot;: 42,
+        &quot;bootstrap_iterations&quot;: 100
+      }
+    }
+  ],
+  &quot;council_findings&quot;: [],
+  &quot;council_decisions&quot;: []
+}</pre></details></section><footer>This report preserves recorded results and caveats; completion is not an independent correctness guarantee. Bootstrap intervals condition on the fitted model and observed holdout. Permutation importance is predictive, not causal. Use your browser’s Print command to save a PDF.</footer></main></body></html>

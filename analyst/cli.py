@@ -110,6 +110,11 @@ def main(argv: list[str] | None = None) -> int:
     )
     predictive.add_argument("--out-dir", default="predictive_eval_results")
 
+    export = sub.add_parser("export-report", help="export a completed run JSON as a portable report")
+    export.add_argument("input", help="saved run JSON or the output of ask --json")
+    export.add_argument("--out", required=True, help="destination .html or .json file")
+    export.add_argument("--format", choices=["html", "json"], default=None)
+
     tv = sub.add_parser("trap-variance",
                         help="repeat only the tier-4 traps K times for a 95%% CI on "
                              "the noisy trap column")
@@ -122,6 +127,24 @@ def main(argv: list[str] | None = None) -> int:
     tv.add_argument("--timeout", type=int, default=60)
 
     args = p.parse_args(argv)
+
+    if args.cmd == "export-report":
+        from pathlib import Path
+
+        from analyst.reporting import render_report, report_payload
+
+        try:
+            run = json.loads(Path(args.input).read_text())
+            payload = report_payload(run)
+            format_name = args.format or ("json" if Path(args.out).suffix.lower() == ".json" else "html")
+            content = (render_report(payload) if format_name == "html"
+                       else json.dumps(payload, indent=2, ensure_ascii=False, allow_nan=False) + "\n")
+            Path(args.out).write_text(content)
+        except (OSError, ValueError, TypeError) as exc:
+            print(f"could not export report: {exc}")
+            return 1
+        print(f"report: {args.out}")
+        return 0
 
     if args.cmd == "predictive-benchmark":
         from analyst.eval.predictive_benchmark import run_benchmark, write_report
@@ -389,6 +412,7 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.json:
         out = dict(state)
+        out["status"] = "done"
         out["dataset"] = state["dataset"].model_dump()
         out["dag"] = {k: v.model_dump() for k, v in state.get("dag", {}).items()}
         out["artifacts"] = {
@@ -420,11 +444,15 @@ def main(argv: list[str] | None = None) -> int:
     # on an 8GB machine, debugging from a file is free.
     from pathlib import Path
 
+    from analyst.reporting import dataset_provenance
+
     dump_dir = Path(".analyst_runs")
     dump_dir.mkdir(exist_ok=True)
     (dump_dir / "last_run.json").write_text(
         json.dumps(
             {
+                "run_id": state.get("run_id"),
+                "status": "done",
                 "question": state.get("question"),
                 "answer": state.get("answer"),
                 "dag": {k: v.model_dump() for k, v in state.get("dag", {}).items()},
@@ -449,6 +477,12 @@ def main(argv: list[str] | None = None) -> int:
                     if state.get("dataset") and state["dataset"].quality_report
                     else None
                 ),
+                "dataset_provenance": dataset_provenance(state.get("dataset")),
+                "claims": [claim.model_dump() for claim in state.get("claims", [])],
+                "statistical_evidence": {
+                    key: value.model_dump()
+                    for key, value in state.get("statistical_evidence", {}).items()
+                },
                 "predictive_evidence": {
                     key: value.model_dump()
                     for key, value in state.get("predictive_evidence", {}).items()

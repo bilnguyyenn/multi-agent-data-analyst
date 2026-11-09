@@ -12,7 +12,20 @@ and the raw runs behind the published metrics.
 
 The browser interface streams the task graph while it runs. It also shows data
 quality findings, statistical evidence, model evaluation results, reviewer
-decisions, and unresolved objections.
+decisions, and unresolved objections. Completed runs export self-contained HTML
+reports and JSON evidence with dataset provenance and visible caveats.
+
+**Try a key-free example:** download [the sample analysis report](examples/analysis-report.html)
+and open it in a browser, or run:
+
+```bash
+pip install -e "."
+python -m analyst export-report examples/report_run.json --out report.html
+```
+
+The sample uses published synthetic modeling evidence and an illustrative
+narrative; it does not run or impersonate the agent pipeline. See
+[report export and provenance](docs/REPORTS.md).
 
 ## Results at a glance
 
@@ -334,6 +347,13 @@ python -m analyst ask "Which shift has the best quality record?" \
 
 Add `--council-mode always` to use High-assurance mode.
 
+After a run finishes, use **Download report** beside its answer, or export a CLI
+snapshot without making more model calls:
+
+```bash
+python -m analyst export-report .analyst_runs/last_run.json --out report.html
+```
+
 ### Full local stack
 
 The complete stack includes Postgres, Redis, an arq worker, the React frontend, and
@@ -393,6 +413,7 @@ analyst/modeling/   governed scikit-learn evaluation pipelines
 analyst/api/        FastAPI, WebSockets, arq worker, JSON and Postgres stores
 analyst/eval/       generators, benchmarks, harnesses, and scorecards
 analyst/quality.py  deterministic profiling and data-quality rules
+analyst/reporting.py portable HTML/JSON evidence reports
 frontend/           React, TypeScript, Vite, and React Flow interface
 docker/             sandbox, API, frontend, and Compose configuration
 docs/               architecture, methods, limitations, and build history
@@ -408,3 +429,4 @@ More detail is available in:
 - [Predictive modeling](docs/PREDICTIVE_MODELING.md)
 - [Predictive reliability benchmark](docs/PREDICTIVE_BENCHMARK.md)
 - [Resume-ready project bullets](docs/RESUME_WRITEUP.md)
+- [Report export and provenance](docs/REPORTS.md)

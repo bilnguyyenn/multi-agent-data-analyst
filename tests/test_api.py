@@ -98,6 +98,25 @@ def test_create_stream_and_persist(client):
     assert run["data_quality_report"]["total_rows"] > 0
     assert api.get("/runs").json()[0]["run_id"] == run_id
 
+    report = api.get(f"/runs/{run_id}/report")
+    assert report.status_code == 200
+    assert "3000 work orders" in report.text
+    assert "attachment" in report.headers["content-disposition"]
+    assert report.headers["x-content-type-options"] == "nosniff"
+    assert "default-src 'none'" in report.headers["content-security-policy"]
+    evidence = api.get(f"/runs/{run_id}/report?format=json").json()
+    assert evidence["dataset"]["content_hash"] == run["dataset_provenance"]["content_hash"]
+    assert len(evidence["dataset"]["tables"]) == 7
+    assert len(evidence["council_findings"]) == 3
+    assert "events" not in evidence and "options" not in evidence
+    assert run["created_at"] <= run["started_at"] <= run["finished_at"]
+
+    # Export describes the data used during execution, even if source files change.
+    from pathlib import Path
+
+    (Path(data_dir) / "work_orders.csv").write_text("changed,data\n1,2\n")
+    assert api.get(f"/runs/{run_id}/report?format=json").json()["dataset"] == evidence["dataset"]
+
 
 def test_late_joiner_gets_full_replay(client):
     api, data_dir = client
@@ -132,6 +151,18 @@ def test_evidence_backed_product_defaults():
 def test_unknown_run_404(client):
     api, _ = client
     assert api.get("/runs/nope").status_code == 404
+    assert api.get("/runs/nope/report").status_code == 404
+
+
+@pytest.mark.parametrize("status", ["queued", "running", "error"])
+def test_report_requires_a_completed_run(client, status):
+    api, _ = client
+    import analyst.api.app as app_module
+
+    app_module.store.create("incomplete", "a question", "data/sample", {})
+    app_module.store.update("incomplete", status=status)
+    assert api.get("/runs/incomplete/report").status_code == 409
+    assert api.get("/runs/incomplete/report?format=exe").status_code == 422
 
 
 def test_browser_csv_upload_builds_dataset_manifest(client):
