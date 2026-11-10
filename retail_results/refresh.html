@@ -1,0 +1,674 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; style-src &#39;unsafe-inline&#39;; base-uri &#39;none&#39;; form-action &#39;none&#39;"><title>Analyst · Analysis report</title><style>
+:root{font-family:system-ui,-apple-system,sans-serif;color:#18283b;background:#edf2f6}
+*{box-sizing:border-box}body{margin:0}main{max-width:1080px;margin:40px auto;background:white;
+padding:48px;border:1px solid #d9e2eb;border-radius:14px}header{border-bottom:3px solid #147d92;
+padding-bottom:26px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:#147d92;
+font-size:12px;font-weight:750}h1{font-size:34px;line-height:1.2;letter-spacing:-.03em;margin:12px 0}
+h2{font-size:21px;margin:0 0 14px}h3{font-size:16px;margin:0 0 10px}
+p,li{line-height:1.6}p{margin:8px 0}.muted,small{color:#586b80}.question{font-size:18px}
+nav{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}a{color:#126d82}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}
+.card{padding:16px;border:1px solid #d9e2eb;border-radius:8px}.card strong{display:block;font-size:23px}
+.card span{color:#586b80;font-size:12px}.notice,.warnings{background:#fff7e7;border-left:3px solid
+#d38a18;padding:14px 18px}.warnings{padding-left:34px}section{margin-top:34px;min-width:0}
+article{border:1px solid #d9e2eb;border-radius:8px;padding:20px;margin-top:14px}
+.answer{white-space:pre-wrap;overflow-wrap:anywhere;font-size:15px;line-height:1.75}
+.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+th{text-align:left;background:#f1f6fa;color:#324960}th,td{padding:10px;border-bottom:1px solid
+#e2e9f0;vertical-align:top;overflow-wrap:anywhere}td{max-width:360px}code{overflow-wrap:anywhere}
+details{margin-top:16px}summary{cursor:pointer;color:#126d82}pre{white-space:pre-wrap;
+overflow-wrap:anywhere;font-size:12px;background:#f4f7fa;padding:16px;line-height:1.5}
+footer{margin-top:36px;padding-top:20px;border-top:1px solid #d9e2eb;font-size:12px;color:#586b80}
+@media(max-width:700px){main{margin:0;padding:22px;border:0;border-radius:0}h1{font-size:27px}
+.cards{grid-template-columns:repeat(2,1fr)}article{padding:14px}th,td{padding:7px}}
+@media print{@page{margin:16mm}body{background:white}main{margin:0;padding:0;border:0;max-width:none}
+nav{display:none}article,.card,tr{break-inside:avoid}.table-wrap{overflow:visible}
+details{display:none}a{color:inherit;text-decoration:none}h2,h3{break-after:avoid}}
+</style></head><body><main><header><div class="eyebrow">Analyst · evidence report</div><h1>From question to evidence</h1><p class="question">Retail operations review</p><p class="muted">Run <code>32fdf2650655463f821db64fd82a75ae</code> · completed</p><nav aria-label="Report sections"><a href="#answer">Answer</a><a href="#evidence">Evidence</a><a href="#quality">Data quality</a><a href="#provenance">Provenance</a></nav></header><p class="notice">Deterministic metric-contract review. No LLM approval or causal inference is claimed.</p><div class="cards"><div class="card"><strong>0</strong><span>analysis tasks</span></div><div class="card"><strong>0</strong><span>validator claims recorded</span></div><div class="card"><strong>0</strong><span>model evaluations requested</span></div><div class="card"><strong>—</strong><span>data readiness / 100</span></div></div><section id="answer"><h2>Answer</h2><div class="answer"><p><a href="#computation-6279ed0d28a2e6e4c816e9415f2e9d0e22e4de784dccc99943cba83a46b9d582">gross_sales (GBP)</a>: [{&quot;all&quot;: 398583.05}]</p><p><a href="#computation-b9ef3adc21d7238adf472d32d324667afce6828d9b3816659396a4cd203e07f6">cancellation_value (GBP)</a>: [{&quot;all&quot;: 9882.88}]</p><p><a href="#computation-540d785152aa116f87e60b4bc5b8dabf397be73e9a7b99d3f55d0653751ae65a">net_sales (GBP)</a>: [{&quot;all&quot;: 388700.17}]</p><p><a href="#computation-770ffc6bb3cadf68ee98cc68ce16ddce976667065ef9d84175f35ba5bb19e6e5">order_count (invoices)</a>: [{&quot;all&quot;: 655}]</p><p><a href="#computation-99e07797c979948331f90f1b6dc62e9b9beea3a7956fec3356b7b900f73fa0e3">units_sold (units)</a>: [{&quot;all&quot;: 200170}]</p><p><a href="#computation-0a65ad7bf6c53c64a51692f5ebfaeb87f543bab4fa26db5390d7f06176df6236">active_customers (customers)</a>: [{&quot;all&quot;: 526}]</p><p><a href="#computation-20d9ea2dfc1fecf10a2640c4f2814bbfa4355ff6cd7649ebe61fc4df8c0bd366">cancellation_rate (fraction)</a>: [{&quot;all&quot;: 0.15809768637532134}]</p><p><a href="#computation-1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b">net_sales (GBP)</a>: [{&quot;United Kingdom&quot;: 350982.31}, {&quot;Netherlands&quot;: 9823.12}, {&quot;EIRE&quot;: 9085.5}, {&quot;France&quot;: 8725.53}, {&quot;Germany&quot;: 4046.21}, {&quot;Sweden&quot;: 1441.31}, {&quot;Spain&quot;: 1365.7}, {&quot;Austria&quot;: 1329.78}, {&quot;Portugal&quot;: 816.39}, {&quot;Belgium&quot;: 486.6}, {&quot;Finland&quot;: 408.34}, {&quot;Switzerland&quot;: 292.58}, {&quot;Hong Kong&quot;: 0.0}, {&quot;Italy&quot;: -103.2}]</p></div><h3>Claim review</h3><p class="muted">None recorded.</p></section><section id="evidence"><h2>Statistical & predictive evidence</h2><p class="muted">No deterministic statistical or predictive requests recorded.</p></section><section><h2>Metric contracts & computation references</h2><article id="computation-6279ed0d28a2e6e4c816e9415f2e9d0e22e4de784dccc99943cba83a46b9d582"><h3>gross_sales</h3><p>Positive-quantity, non-cancellation invoice lines at positive prices; rounded line unit prices in pence.</p><p>Version: retail-metrics-v1</p><p>Metric definition SHA-256: <code>4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412</code></p><p>Snapshot SHA-256: <code>e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e</code></p><div class="table-wrap"><table><thead><tr><th scope="col">Segment</th><th scope="col">Value</th><th scope="col">Numerator</th><th scope="col">Denominator</th><th scope="col">Source rows</th></tr></thead><tbody><tr><td>all</td><td>398583.05</td><td>39858305</td><td>—</td><td>20722</td></tr></tbody></table></div><pre>SELECT &#x27;all&#x27; AS segment, COALESCE(SUM(CASE WHEN NOT cancelled AND qty &gt; 0 THEN qty * pence ELSE 0 END), 0) AS numerator,
+              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows
+              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC</pre><p>Parameters: [&quot;2011-11-08&quot;, &quot;2011-11-15&quot;]</p><details><summary>Source parsing transformation</summary><pre>CREATE TEMP VIEW lines AS SELECT
+        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,
+        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,
+        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,
+        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)
+             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,
+        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)
+             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,
+        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,
+        coalesce(try_cast(InvoiceDate AS TIMESTAMP),
+                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,
+        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw</pre></details><p>Snapshot quality diagnostics: {&quot;invalid_fields&quot;: 0, &quot;missing_customer_ids&quot;: 4819, &quot;nonpositive_prices&quot;: 43, &quot;source_rows&quot;: 20765, &quot;unexpected_quantity_sign&quot;: 27}</p><ul class="warnings"><li>Descriptive contribution only; no causal effect or profit is inferred.</li><li>Invoice timestamps are naive source-local times; no timezone conversion is assumed.</li><li>Exact duplicate rows are retained; source corrections require a new snapshot.</li></ul></article><article id="computation-b9ef3adc21d7238adf472d32d324667afce6828d9b3816659396a4cd203e07f6"><h3>cancellation_value</h3><p>Absolute value of negative-quantity cancellation invoice lines; not verified physical returns.</p><p>Version: retail-metrics-v1</p><p>Metric definition SHA-256: <code>4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412</code></p><p>Snapshot SHA-256: <code>e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e</code></p><div class="table-wrap"><table><thead><tr><th scope="col">Segment</th><th scope="col">Value</th><th scope="col">Numerator</th><th scope="col">Denominator</th><th scope="col">Source rows</th></tr></thead><tbody><tr><td>all</td><td>9882.88</td><td>988288</td><td>—</td><td>20722</td></tr></tbody></table></div><pre>SELECT &#x27;all&#x27; AS segment, COALESCE(SUM(CASE WHEN cancelled AND qty &lt; 0 THEN -qty * pence ELSE 0 END), 0) AS numerator,
+              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows
+              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC</pre><p>Parameters: [&quot;2011-11-08&quot;, &quot;2011-11-15&quot;]</p><details><summary>Source parsing transformation</summary><pre>CREATE TEMP VIEW lines AS SELECT
+        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,
+        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,
+        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,
+        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)
+             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,
+        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)
+             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,
+        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,
+        coalesce(try_cast(InvoiceDate AS TIMESTAMP),
+                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,
+        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw</pre></details><p>Snapshot quality diagnostics: {&quot;invalid_fields&quot;: 0, &quot;missing_customer_ids&quot;: 4819, &quot;nonpositive_prices&quot;: 43, &quot;source_rows&quot;: 20765, &quot;unexpected_quantity_sign&quot;: 27}</p><ul class="warnings"><li>Descriptive contribution only; no causal effect or profit is inferred.</li><li>Invoice timestamps are naive source-local times; no timezone conversion is assumed.</li><li>Exact duplicate rows are retained; source corrections require a new snapshot.</li></ul></article><article id="computation-540d785152aa116f87e60b4bc5b8dabf397be73e9a7b99d3f55d0653751ae65a"><h3>net_sales</h3><p>Gross sales minus cancellation value on eligible lines; not profit or cash receipts.</p><p>Version: retail-metrics-v1</p><p>Metric definition SHA-256: <code>4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412</code></p><p>Snapshot SHA-256: <code>e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e</code></p><div class="table-wrap"><table><thead><tr><th scope="col">Segment</th><th scope="col">Value</th><th scope="col">Numerator</th><th scope="col">Denominator</th><th scope="col">Source rows</th></tr></thead><tbody><tr><td>all</td><td>388700.17</td><td>38870017</td><td>—</td><td>20722</td></tr></tbody></table></div><pre>SELECT &#x27;all&#x27; AS segment, COALESCE(SUM(qty * pence), 0) AS numerator,
+              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows
+              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC</pre><p>Parameters: [&quot;2011-11-08&quot;, &quot;2011-11-15&quot;]</p><details><summary>Source parsing transformation</summary><pre>CREATE TEMP VIEW lines AS SELECT
+        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,
+        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,
+        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,
+        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)
+             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,
+        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)
+             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,
+        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,
+        coalesce(try_cast(InvoiceDate AS TIMESTAMP),
+                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,
+        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw</pre></details><p>Snapshot quality diagnostics: {&quot;invalid_fields&quot;: 0, &quot;missing_customer_ids&quot;: 4819, &quot;nonpositive_prices&quot;: 43, &quot;source_rows&quot;: 20765, &quot;unexpected_quantity_sign&quot;: 27}</p><ul class="warnings"><li>Descriptive contribution only; no causal effect or profit is inferred.</li><li>Invoice timestamps are naive source-local times; no timezone conversion is assumed.</li><li>Exact duplicate rows are retained; source corrections require a new snapshot.</li></ul></article><article id="computation-770ffc6bb3cadf68ee98cc68ce16ddce976667065ef9d84175f35ba5bb19e6e5"><h3>order_count</h3><p>Distinct non-cancellation invoices with at least one eligible positive-quantity line.</p><p>Version: retail-metrics-v1</p><p>Metric definition SHA-256: <code>4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412</code></p><p>Snapshot SHA-256: <code>e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e</code></p><div class="table-wrap"><table><thead><tr><th scope="col">Segment</th><th scope="col">Value</th><th scope="col">Numerator</th><th scope="col">Denominator</th><th scope="col">Source rows</th></tr></thead><tbody><tr><td>all</td><td>655</td><td>655</td><td>—</td><td>20722</td></tr></tbody></table></div><pre>SELECT &#x27;all&#x27; AS segment, COALESCE(COUNT(DISTINCT CASE WHEN NOT cancelled AND qty &gt; 0 THEN invoice END), 0) AS numerator,
+              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows
+              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC</pre><p>Parameters: [&quot;2011-11-08&quot;, &quot;2011-11-15&quot;]</p><details><summary>Source parsing transformation</summary><pre>CREATE TEMP VIEW lines AS SELECT
+        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,
+        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,
+        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,
+        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)
+             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,
+        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)
+             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,
+        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,
+        coalesce(try_cast(InvoiceDate AS TIMESTAMP),
+                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,
+        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw</pre></details><p>Snapshot quality diagnostics: {&quot;invalid_fields&quot;: 0, &quot;missing_customer_ids&quot;: 4819, &quot;nonpositive_prices&quot;: 43, &quot;source_rows&quot;: 20765, &quot;unexpected_quantity_sign&quot;: 27}</p><ul class="warnings"><li>Descriptive contribution only; no causal effect or profit is inferred.</li><li>Invoice timestamps are naive source-local times; no timezone conversion is assumed.</li><li>Exact duplicate rows are retained; source corrections require a new snapshot.</li></ul></article><article id="computation-99e07797c979948331f90f1b6dc62e9b9beea3a7956fec3356b7b900f73fa0e3"><h3>units_sold</h3><p>Sum of positive quantities on eligible non-cancellation lines.</p><p>Version: retail-metrics-v1</p><p>Metric definition SHA-256: <code>4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412</code></p><p>Snapshot SHA-256: <code>e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e</code></p><div class="table-wrap"><table><thead><tr><th scope="col">Segment</th><th scope="col">Value</th><th scope="col">Numerator</th><th scope="col">Denominator</th><th scope="col">Source rows</th></tr></thead><tbody><tr><td>all</td><td>200170</td><td>200170</td><td>—</td><td>20722</td></tr></tbody></table></div><pre>SELECT &#x27;all&#x27; AS segment, COALESCE(SUM(CASE WHEN NOT cancelled AND qty &gt; 0 THEN qty ELSE 0 END), 0) AS numerator,
+              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows
+              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC</pre><p>Parameters: [&quot;2011-11-08&quot;, &quot;2011-11-15&quot;]</p><details><summary>Source parsing transformation</summary><pre>CREATE TEMP VIEW lines AS SELECT
+        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,
+        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,
+        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,
+        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)
+             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,
+        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)
+             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,
+        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,
+        coalesce(try_cast(InvoiceDate AS TIMESTAMP),
+                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,
+        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw</pre></details><p>Snapshot quality diagnostics: {&quot;invalid_fields&quot;: 0, &quot;missing_customer_ids&quot;: 4819, &quot;nonpositive_prices&quot;: 43, &quot;source_rows&quot;: 20765, &quot;unexpected_quantity_sign&quot;: 27}</p><ul class="warnings"><li>Descriptive contribution only; no causal effect or profit is inferred.</li><li>Invoice timestamps are naive source-local times; no timezone conversion is assumed.</li><li>Exact duplicate rows are retained; source corrections require a new snapshot.</li></ul></article><article id="computation-0a65ad7bf6c53c64a51692f5ebfaeb87f543bab4fa26db5390d7f06176df6236"><h3>active_customers</h3><p>Distinct non-missing customer identifiers on eligible non-cancellation lines.</p><p>Version: retail-metrics-v1</p><p>Metric definition SHA-256: <code>4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412</code></p><p>Snapshot SHA-256: <code>e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e</code></p><div class="table-wrap"><table><thead><tr><th scope="col">Segment</th><th scope="col">Value</th><th scope="col">Numerator</th><th scope="col">Denominator</th><th scope="col">Source rows</th></tr></thead><tbody><tr><td>all</td><td>526</td><td>526</td><td>—</td><td>20722</td></tr></tbody></table></div><pre>SELECT &#x27;all&#x27; AS segment, COALESCE(COUNT(DISTINCT CASE WHEN NOT cancelled AND qty &gt; 0 THEN customer END), 0) AS numerator,
+              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows
+              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC</pre><p>Parameters: [&quot;2011-11-08&quot;, &quot;2011-11-15&quot;]</p><details><summary>Source parsing transformation</summary><pre>CREATE TEMP VIEW lines AS SELECT
+        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,
+        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,
+        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,
+        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)
+             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,
+        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)
+             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,
+        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,
+        coalesce(try_cast(InvoiceDate AS TIMESTAMP),
+                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,
+        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw</pre></details><p>Snapshot quality diagnostics: {&quot;invalid_fields&quot;: 0, &quot;missing_customer_ids&quot;: 4819, &quot;nonpositive_prices&quot;: 43, &quot;source_rows&quot;: 20765, &quot;unexpected_quantity_sign&quot;: 27}</p><ul class="warnings"><li>Descriptive contribution only; no causal effect or profit is inferred.</li><li>Invoice timestamps are naive source-local times; no timezone conversion is assumed.</li><li>Exact duplicate rows are retained; source corrections require a new snapshot.</li><li>Missing customer identifiers are excluded from distinct-customer counts; the count covers known IDs only.</li></ul></article><article id="computation-20d9ea2dfc1fecf10a2640c4f2814bbfa4355ff6cd7649ebe61fc4df8c0bd366"><h3>cancellation_rate</h3><p>Cancellation invoice count / all eligible distinct invoices; not a cohort cancellation probability.</p><p>Version: retail-metrics-v1</p><p>Metric definition SHA-256: <code>4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412</code></p><p>Snapshot SHA-256: <code>e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e</code></p><div class="table-wrap"><table><thead><tr><th scope="col">Segment</th><th scope="col">Value</th><th scope="col">Numerator</th><th scope="col">Denominator</th><th scope="col">Source rows</th></tr></thead><tbody><tr><td>all</td><td>0.15809768637532134</td><td>123</td><td>778</td><td>20722</td></tr></tbody></table></div><pre>SELECT &#x27;all&#x27; AS segment, COALESCE(COUNT(DISTINCT CASE WHEN cancelled THEN invoice END), 0) AS numerator,
+              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows
+              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC</pre><p>Parameters: [&quot;2011-11-08&quot;, &quot;2011-11-15&quot;]</p><details><summary>Source parsing transformation</summary><pre>CREATE TEMP VIEW lines AS SELECT
+        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,
+        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,
+        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,
+        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)
+             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,
+        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)
+             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,
+        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,
+        coalesce(try_cast(InvoiceDate AS TIMESTAMP),
+                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,
+        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw</pre></details><p>Snapshot quality diagnostics: {&quot;invalid_fields&quot;: 0, &quot;missing_customer_ids&quot;: 4819, &quot;nonpositive_prices&quot;: 43, &quot;source_rows&quot;: 20765, &quot;unexpected_quantity_sign&quot;: 27}</p><ul class="warnings"><li>Descriptive contribution only; no causal effect or profit is inferred.</li><li>Invoice timestamps are naive source-local times; no timezone conversion is assumed.</li><li>Exact duplicate rows are retained; source corrections require a new snapshot.</li></ul></article><article id="computation-1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"><h3>net_sales</h3><p>Gross sales minus cancellation value on eligible lines; not profit or cash receipts.</p><p>Version: retail-metrics-v1</p><p>Metric definition SHA-256: <code>4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412</code></p><p>Snapshot SHA-256: <code>e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e</code></p><div class="table-wrap"><table><thead><tr><th scope="col">Segment</th><th scope="col">Value</th><th scope="col">Numerator</th><th scope="col">Denominator</th><th scope="col">Source rows</th></tr></thead><tbody><tr><td>United Kingdom</td><td>350982.31</td><td>35098231</td><td>—</td><td>19327</td></tr><tr><td>Netherlands</td><td>9823.12</td><td>982312</td><td>—</td><td>65</td></tr><tr><td>EIRE</td><td>9085.50</td><td>908550</td><td>—</td><td>317</td></tr><tr><td>France</td><td>8725.53</td><td>872553</td><td>—</td><td>489</td></tr><tr><td>Germany</td><td>4046.21</td><td>404621</td><td>—</td><td>262</td></tr><tr><td>Sweden</td><td>1441.31</td><td>144131</td><td>—</td><td>25</td></tr><tr><td>Spain</td><td>1365.70</td><td>136570</td><td>—</td><td>70</td></tr><tr><td>Austria</td><td>1329.78</td><td>132978</td><td>—</td><td>70</td></tr><tr><td>Portugal</td><td>816.39</td><td>81639</td><td>—</td><td>29</td></tr><tr><td>Belgium</td><td>486.60</td><td>48660</td><td>—</td><td>29</td></tr><tr><td>Finland</td><td>408.34</td><td>40834</td><td>—</td><td>15</td></tr><tr><td>Switzerland</td><td>292.58</td><td>29258</td><td>—</td><td>13</td></tr><tr><td>Hong Kong</td><td>0.00</td><td>0</td><td>—</td><td>2</td></tr><tr><td>Italy</td><td>-103.20</td><td>-10320</td><td>—</td><td>9</td></tr></tbody></table></div><pre>SELECT COALESCE(country, &#x27;(missing)&#x27;) AS segment, COALESCE(SUM(qty * pence), 0) AS numerator,
+              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows
+              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC</pre><p>Parameters: [&quot;2011-11-08&quot;, &quot;2011-11-15&quot;]</p><details><summary>Source parsing transformation</summary><pre>CREATE TEMP VIEW lines AS SELECT
+        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,
+        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,
+        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,
+        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)
+             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,
+        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)
+             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,
+        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,
+        coalesce(try_cast(InvoiceDate AS TIMESTAMP),
+                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,
+        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw</pre></details><p>Snapshot quality diagnostics: {&quot;invalid_fields&quot;: 0, &quot;missing_customer_ids&quot;: 4819, &quot;nonpositive_prices&quot;: 43, &quot;source_rows&quot;: 20765, &quot;unexpected_quantity_sign&quot;: 27}</p><ul class="warnings"><li>Descriptive contribution only; no causal effect or profit is inferred.</li><li>Invoice timestamps are naive source-local times; no timezone conversion is assumed.</li><li>Exact duplicate rows are retained; source corrections require a new snapshot.</li></ul></article></section><section id="quality"><h2>Data quality</h2><p>Snapshot diagnostics (not a readiness score): source_rows=20765; invalid_fields=0; nonpositive_prices=43; unexpected_quantity_sign=27; missing_customer_ids=4819</p><div class="table-wrap"><table><thead><tr><th scope="col">Severity</th><th scope="col">Location</th><th scope="col">Finding</th><th scope="col">Recommendation</th></tr></thead><tbody><tr><td>warning</td><td>transactions</td><td>43 source rows flagged for nonpositive_prices.</td><td>Inspect the source and metric eligibility rules; counts can overlap. Source rows remain unchanged.</td></tr><tr><td>warning</td><td>transactions</td><td>27 source rows flagged for unexpected_quantity_sign.</td><td>Inspect the source and metric eligibility rules; counts can overlap. Source rows remain unchanged.</td></tr><tr><td>warning</td><td>transactions</td><td>4819 source rows flagged for missing_customer_ids.</td><td>Inspect the source and metric eligibility rules; counts can overlap. Source rows remain unchanged.</td></tr></tbody></table></div></section><section id="provenance"><h2>Dataset & execution provenance</h2><p>Dataset SHA-256: <code>e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e</code></p><div class="table-wrap"><table><thead><tr><th scope="col">Table</th><th scope="col">Rows</th><th scope="col">Columns</th></tr></thead><tbody><tr><td>transactions</td><td>20765</td><td>[&quot;InvoiceNo&quot;, &quot;StockCode&quot;, &quot;Description&quot;, &quot;Quantity&quot;, &quot;InvoiceDate&quot;, &quot;UnitPrice&quot;, &quot;CustomerID&quot;, &quot;Country&quot;]</td></tr></tbody></table></div><p class="muted">None recorded.</p><details><summary>Complete exported evidence packet</summary><pre>{
+  &quot;report_version&quot;: &quot;analysis-report-v1&quot;,
+  &quot;run_id&quot;: &quot;32fdf2650655463f821db64fd82a75ae&quot;,
+  &quot;status&quot;: &quot;done&quot;,
+  &quot;question&quot;: &quot;Retail operations review&quot;,
+  &quot;answer&quot;: &quot;gross_sales: [{&#x27;segment&#x27;: &#x27;all&#x27;, &#x27;value&#x27;: 398583.05, &#x27;numerator&#x27;: 39858305, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 20722}] [6279ed0d28a2e6e4c816e9415f2e9d0e22e4de784dccc99943cba83a46b9d582]\ncancellation_value: [{&#x27;segment&#x27;: &#x27;all&#x27;, &#x27;value&#x27;: 9882.88, &#x27;numerator&#x27;: 988288, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 20722}] [b9ef3adc21d7238adf472d32d324667afce6828d9b3816659396a4cd203e07f6]\nnet_sales: [{&#x27;segment&#x27;: &#x27;all&#x27;, &#x27;value&#x27;: 388700.17, &#x27;numerator&#x27;: 38870017, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 20722}] [540d785152aa116f87e60b4bc5b8dabf397be73e9a7b99d3f55d0653751ae65a]\norder_count: [{&#x27;segment&#x27;: &#x27;all&#x27;, &#x27;value&#x27;: 655, &#x27;numerator&#x27;: 655, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 20722}] [770ffc6bb3cadf68ee98cc68ce16ddce976667065ef9d84175f35ba5bb19e6e5]\nunits_sold: [{&#x27;segment&#x27;: &#x27;all&#x27;, &#x27;value&#x27;: 200170, &#x27;numerator&#x27;: 200170, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 20722}] [99e07797c979948331f90f1b6dc62e9b9beea3a7956fec3356b7b900f73fa0e3]\nactive_customers: [{&#x27;segment&#x27;: &#x27;all&#x27;, &#x27;value&#x27;: 526, &#x27;numerator&#x27;: 526, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 20722}] [0a65ad7bf6c53c64a51692f5ebfaeb87f543bab4fa26db5390d7f06176df6236]\ncancellation_rate: [{&#x27;segment&#x27;: &#x27;all&#x27;, &#x27;value&#x27;: 0.15809768637532134, &#x27;numerator&#x27;: 123, &#x27;denominator&#x27;: 778, &#x27;source_rows&#x27;: 20722}] [20d9ea2dfc1fecf10a2640c4f2814bbfa4355ff6cd7649ebe61fc4df8c0bd366]\nnet_sales: [{&#x27;segment&#x27;: &#x27;United Kingdom&#x27;, &#x27;value&#x27;: 350982.31, &#x27;numerator&#x27;: 35098231, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 19327}, {&#x27;segment&#x27;: &#x27;Netherlands&#x27;, &#x27;value&#x27;: 9823.12, &#x27;numerator&#x27;: 982312, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 65}, {&#x27;segment&#x27;: &#x27;EIRE&#x27;, &#x27;value&#x27;: 9085.5, &#x27;numerator&#x27;: 908550, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 317}, {&#x27;segment&#x27;: &#x27;France&#x27;, &#x27;value&#x27;: 8725.53, &#x27;numerator&#x27;: 872553, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 489}, {&#x27;segment&#x27;: &#x27;Germany&#x27;, &#x27;value&#x27;: 4046.21, &#x27;numerator&#x27;: 404621, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 262}, {&#x27;segment&#x27;: &#x27;Sweden&#x27;, &#x27;value&#x27;: 1441.31, &#x27;numerator&#x27;: 144131, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 25}, {&#x27;segment&#x27;: &#x27;Spain&#x27;, &#x27;value&#x27;: 1365.7, &#x27;numerator&#x27;: 136570, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 70}, {&#x27;segment&#x27;: &#x27;Austria&#x27;, &#x27;value&#x27;: 1329.78, &#x27;numerator&#x27;: 132978, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 70}, {&#x27;segment&#x27;: &#x27;Portugal&#x27;, &#x27;value&#x27;: 816.39, &#x27;numerator&#x27;: 81639, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 29}, {&#x27;segment&#x27;: &#x27;Belgium&#x27;, &#x27;value&#x27;: 486.6, &#x27;numerator&#x27;: 48660, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 29}, {&#x27;segment&#x27;: &#x27;Finland&#x27;, &#x27;value&#x27;: 408.34, &#x27;numerator&#x27;: 40834, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 15}, {&#x27;segment&#x27;: &#x27;Switzerland&#x27;, &#x27;value&#x27;: 292.58, &#x27;numerator&#x27;: 29258, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 13}, {&#x27;segment&#x27;: &#x27;Hong Kong&#x27;, &#x27;value&#x27;: 0.0, &#x27;numerator&#x27;: 0, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 2}, {&#x27;segment&#x27;: &#x27;Italy&#x27;, &#x27;value&#x27;: -103.2, &#x27;numerator&#x27;: -10320, &#x27;denominator&#x27;: None, &#x27;source_rows&#x27;: 9}] [1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b]&quot;,
+  &quot;created_at&quot;: 1794287725.30477,
+  &quot;demo_note&quot;: &quot;Deterministic metric-contract review. No LLM approval or causal inference is claimed.&quot;,
+  &quot;dataset&quot;: {
+    &quot;content_hash&quot;: &quot;e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e&quot;,
+    &quot;tables&quot;: [
+      {
+        &quot;name&quot;: &quot;transactions&quot;,
+        &quot;row_count&quot;: 20765,
+        &quot;columns&quot;: [
+          &quot;InvoiceNo&quot;,
+          &quot;StockCode&quot;,
+          &quot;Description&quot;,
+          &quot;Quantity&quot;,
+          &quot;InvoiceDate&quot;,
+          &quot;UnitPrice&quot;,
+          &quot;CustomerID&quot;,
+          &quot;Country&quot;
+        ]
+      }
+    ]
+  },
+  &quot;tasks&quot;: [],
+  &quot;claims&quot;: [],
+  &quot;data_quality&quot;: {
+    &quot;score_method&quot;: &quot;diagnostics only; no readiness score computed&quot;,
+    &quot;table_count&quot;: 1,
+    &quot;total_rows&quot;: 20765,
+    &quot;summary&quot;: &quot;Snapshot diagnostics (not a readiness score): source_rows=20765; invalid_fields=0; nonpositive_prices=43; unexpected_quantity_sign=27; missing_customer_ids=4819&quot;,
+    &quot;issues&quot;: [
+      {
+        &quot;code&quot;: &quot;nonpositive_prices&quot;,
+        &quot;severity&quot;: &quot;warning&quot;,
+        &quot;table&quot;: &quot;transactions&quot;,
+        &quot;column&quot;: null,
+        &quot;message&quot;: &quot;43 source rows flagged for nonpositive_prices.&quot;,
+        &quot;recommendation&quot;: &quot;Inspect the source and metric eligibility rules; counts can overlap. Source rows remain unchanged.&quot;
+      },
+      {
+        &quot;code&quot;: &quot;unexpected_quantity_sign&quot;,
+        &quot;severity&quot;: &quot;warning&quot;,
+        &quot;table&quot;: &quot;transactions&quot;,
+        &quot;column&quot;: null,
+        &quot;message&quot;: &quot;27 source rows flagged for unexpected_quantity_sign.&quot;,
+        &quot;recommendation&quot;: &quot;Inspect the source and metric eligibility rules; counts can overlap. Source rows remain unchanged.&quot;
+      },
+      {
+        &quot;code&quot;: &quot;missing_customer_ids&quot;,
+        &quot;severity&quot;: &quot;warning&quot;,
+        &quot;table&quot;: &quot;transactions&quot;,
+        &quot;column&quot;: null,
+        &quot;message&quot;: &quot;4819 source rows flagged for missing_customer_ids.&quot;,
+        &quot;recommendation&quot;: &quot;Inspect the source and metric eligibility rules; counts can overlap. Source rows remain unchanged.&quot;
+      }
+    ]
+  },
+  &quot;statistical_evidence&quot;: [],
+  &quot;predictive_evidence&quot;: [],
+  &quot;council_findings&quot;: [],
+  &quot;council_decisions&quot;: [],
+  &quot;operations_evidence&quot;: [
+    {
+      &quot;metric_version&quot;: &quot;retail-metrics-v1&quot;,
+      &quot;metric&quot;: &quot;gross_sales&quot;,
+      &quot;unit&quot;: &quot;GBP&quot;,
+      &quot;definition&quot;: &quot;Positive-quantity, non-cancellation invoice lines at positive prices; rounded line unit prices in pence.&quot;,
+      &quot;grain&quot;: &quot;source invoice-product line&quot;,
+      &quot;snapshot_hash&quot;: &quot;e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e&quot;,
+      &quot;request&quot;: {
+        &quot;metric&quot;: &quot;gross_sales&quot;,
+        &quot;group_by&quot;: null,
+        &quot;country&quot;: null,
+        &quot;start&quot;: &quot;2011-11-08&quot;,
+        &quot;end&quot;: &quot;2011-11-15&quot;,
+        &quot;limit&quot;: 20
+      },
+      &quot;sql&quot;: &quot;SELECT &#x27;all&#x27; AS segment, COALESCE(SUM(CASE WHEN NOT cancelled AND qty &gt; 0 THEN qty * pence ELSE 0 END), 0) AS numerator,\n              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows\n              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC&quot;,
+      &quot;preparation_sql&quot;: &quot;CREATE TEMP VIEW lines AS SELECT\n        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,\n        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,\n        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,\n        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)\n             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,\n        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)\n             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,\n        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,\n        coalesce(try_cast(InvoiceDate AS TIMESTAMP),\n                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,\n        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw&quot;,
+      &quot;metric_contract_hash&quot;: &quot;4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412&quot;,
+      &quot;engine_sha256&quot;: &quot;3d51e00b21c1b85ddc2a0fe90dd62672339b2cc00b1964f4682faa9512197b06&quot;,
+      &quot;parameters&quot;: [
+        &quot;2011-11-08&quot;,
+        &quot;2011-11-15&quot;
+      ],
+      &quot;values&quot;: [
+        {
+          &quot;segment&quot;: &quot;all&quot;,
+          &quot;value&quot;: 398583.05,
+          &quot;numerator&quot;: 39858305,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 20722
+        }
+      ],
+      &quot;warnings&quot;: [
+        &quot;Descriptive contribution only; no causal effect or profit is inferred.&quot;,
+        &quot;Invoice timestamps are naive source-local times; no timezone conversion is assumed.&quot;,
+        &quot;Exact duplicate rows are retained; source corrections require a new snapshot.&quot;
+      ],
+      &quot;quality&quot;: {
+        &quot;source_rows&quot;: 20765,
+        &quot;invalid_fields&quot;: 0,
+        &quot;nonpositive_prices&quot;: 43,
+        &quot;unexpected_quantity_sign&quot;: 27,
+        &quot;missing_customer_ids&quot;: 4819
+      },
+      &quot;duplicate_rows_retained&quot;: 283,
+      &quot;group_count&quot;: 1,
+      &quot;computation_id&quot;: &quot;6279ed0d28a2e6e4c816e9415f2e9d0e22e4de784dccc99943cba83a46b9d582&quot;
+    },
+    {
+      &quot;metric_version&quot;: &quot;retail-metrics-v1&quot;,
+      &quot;metric&quot;: &quot;cancellation_value&quot;,
+      &quot;unit&quot;: &quot;GBP&quot;,
+      &quot;definition&quot;: &quot;Absolute value of negative-quantity cancellation invoice lines; not verified physical returns.&quot;,
+      &quot;grain&quot;: &quot;source invoice-product line&quot;,
+      &quot;snapshot_hash&quot;: &quot;e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e&quot;,
+      &quot;request&quot;: {
+        &quot;metric&quot;: &quot;cancellation_value&quot;,
+        &quot;group_by&quot;: null,
+        &quot;country&quot;: null,
+        &quot;start&quot;: &quot;2011-11-08&quot;,
+        &quot;end&quot;: &quot;2011-11-15&quot;,
+        &quot;limit&quot;: 20
+      },
+      &quot;sql&quot;: &quot;SELECT &#x27;all&#x27; AS segment, COALESCE(SUM(CASE WHEN cancelled AND qty &lt; 0 THEN -qty * pence ELSE 0 END), 0) AS numerator,\n              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows\n              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC&quot;,
+      &quot;preparation_sql&quot;: &quot;CREATE TEMP VIEW lines AS SELECT\n        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,\n        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,\n        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,\n        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)\n             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,\n        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)\n             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,\n        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,\n        coalesce(try_cast(InvoiceDate AS TIMESTAMP),\n                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,\n        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw&quot;,
+      &quot;metric_contract_hash&quot;: &quot;4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412&quot;,
+      &quot;engine_sha256&quot;: &quot;3d51e00b21c1b85ddc2a0fe90dd62672339b2cc00b1964f4682faa9512197b06&quot;,
+      &quot;parameters&quot;: [
+        &quot;2011-11-08&quot;,
+        &quot;2011-11-15&quot;
+      ],
+      &quot;values&quot;: [
+        {
+          &quot;segment&quot;: &quot;all&quot;,
+          &quot;value&quot;: 9882.88,
+          &quot;numerator&quot;: 988288,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 20722
+        }
+      ],
+      &quot;warnings&quot;: [
+        &quot;Descriptive contribution only; no causal effect or profit is inferred.&quot;,
+        &quot;Invoice timestamps are naive source-local times; no timezone conversion is assumed.&quot;,
+        &quot;Exact duplicate rows are retained; source corrections require a new snapshot.&quot;
+      ],
+      &quot;quality&quot;: {
+        &quot;source_rows&quot;: 20765,
+        &quot;invalid_fields&quot;: 0,
+        &quot;nonpositive_prices&quot;: 43,
+        &quot;unexpected_quantity_sign&quot;: 27,
+        &quot;missing_customer_ids&quot;: 4819
+      },
+      &quot;duplicate_rows_retained&quot;: 283,
+      &quot;group_count&quot;: 1,
+      &quot;computation_id&quot;: &quot;b9ef3adc21d7238adf472d32d324667afce6828d9b3816659396a4cd203e07f6&quot;
+    },
+    {
+      &quot;metric_version&quot;: &quot;retail-metrics-v1&quot;,
+      &quot;metric&quot;: &quot;net_sales&quot;,
+      &quot;unit&quot;: &quot;GBP&quot;,
+      &quot;definition&quot;: &quot;Gross sales minus cancellation value on eligible lines; not profit or cash receipts.&quot;,
+      &quot;grain&quot;: &quot;source invoice-product line&quot;,
+      &quot;snapshot_hash&quot;: &quot;e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e&quot;,
+      &quot;request&quot;: {
+        &quot;metric&quot;: &quot;net_sales&quot;,
+        &quot;group_by&quot;: null,
+        &quot;country&quot;: null,
+        &quot;start&quot;: &quot;2011-11-08&quot;,
+        &quot;end&quot;: &quot;2011-11-15&quot;,
+        &quot;limit&quot;: 20
+      },
+      &quot;sql&quot;: &quot;SELECT &#x27;all&#x27; AS segment, COALESCE(SUM(qty * pence), 0) AS numerator,\n              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows\n              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC&quot;,
+      &quot;preparation_sql&quot;: &quot;CREATE TEMP VIEW lines AS SELECT\n        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,\n        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,\n        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,\n        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)\n             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,\n        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)\n             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,\n        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,\n        coalesce(try_cast(InvoiceDate AS TIMESTAMP),\n                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,\n        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw&quot;,
+      &quot;metric_contract_hash&quot;: &quot;4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412&quot;,
+      &quot;engine_sha256&quot;: &quot;3d51e00b21c1b85ddc2a0fe90dd62672339b2cc00b1964f4682faa9512197b06&quot;,
+      &quot;parameters&quot;: [
+        &quot;2011-11-08&quot;,
+        &quot;2011-11-15&quot;
+      ],
+      &quot;values&quot;: [
+        {
+          &quot;segment&quot;: &quot;all&quot;,
+          &quot;value&quot;: 388700.17,
+          &quot;numerator&quot;: 38870017,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 20722
+        }
+      ],
+      &quot;warnings&quot;: [
+        &quot;Descriptive contribution only; no causal effect or profit is inferred.&quot;,
+        &quot;Invoice timestamps are naive source-local times; no timezone conversion is assumed.&quot;,
+        &quot;Exact duplicate rows are retained; source corrections require a new snapshot.&quot;
+      ],
+      &quot;quality&quot;: {
+        &quot;source_rows&quot;: 20765,
+        &quot;invalid_fields&quot;: 0,
+        &quot;nonpositive_prices&quot;: 43,
+        &quot;unexpected_quantity_sign&quot;: 27,
+        &quot;missing_customer_ids&quot;: 4819
+      },
+      &quot;duplicate_rows_retained&quot;: 283,
+      &quot;group_count&quot;: 1,
+      &quot;computation_id&quot;: &quot;540d785152aa116f87e60b4bc5b8dabf397be73e9a7b99d3f55d0653751ae65a&quot;
+    },
+    {
+      &quot;metric_version&quot;: &quot;retail-metrics-v1&quot;,
+      &quot;metric&quot;: &quot;order_count&quot;,
+      &quot;unit&quot;: &quot;invoices&quot;,
+      &quot;definition&quot;: &quot;Distinct non-cancellation invoices with at least one eligible positive-quantity line.&quot;,
+      &quot;grain&quot;: &quot;source invoice-product line&quot;,
+      &quot;snapshot_hash&quot;: &quot;e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e&quot;,
+      &quot;request&quot;: {
+        &quot;metric&quot;: &quot;order_count&quot;,
+        &quot;group_by&quot;: null,
+        &quot;country&quot;: null,
+        &quot;start&quot;: &quot;2011-11-08&quot;,
+        &quot;end&quot;: &quot;2011-11-15&quot;,
+        &quot;limit&quot;: 20
+      },
+      &quot;sql&quot;: &quot;SELECT &#x27;all&#x27; AS segment, COALESCE(COUNT(DISTINCT CASE WHEN NOT cancelled AND qty &gt; 0 THEN invoice END), 0) AS numerator,\n              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows\n              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC&quot;,
+      &quot;preparation_sql&quot;: &quot;CREATE TEMP VIEW lines AS SELECT\n        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,\n        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,\n        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,\n        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)\n             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,\n        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)\n             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,\n        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,\n        coalesce(try_cast(InvoiceDate AS TIMESTAMP),\n                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,\n        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw&quot;,
+      &quot;metric_contract_hash&quot;: &quot;4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412&quot;,
+      &quot;engine_sha256&quot;: &quot;3d51e00b21c1b85ddc2a0fe90dd62672339b2cc00b1964f4682faa9512197b06&quot;,
+      &quot;parameters&quot;: [
+        &quot;2011-11-08&quot;,
+        &quot;2011-11-15&quot;
+      ],
+      &quot;values&quot;: [
+        {
+          &quot;segment&quot;: &quot;all&quot;,
+          &quot;value&quot;: 655,
+          &quot;numerator&quot;: 655,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 20722
+        }
+      ],
+      &quot;warnings&quot;: [
+        &quot;Descriptive contribution only; no causal effect or profit is inferred.&quot;,
+        &quot;Invoice timestamps are naive source-local times; no timezone conversion is assumed.&quot;,
+        &quot;Exact duplicate rows are retained; source corrections require a new snapshot.&quot;
+      ],
+      &quot;quality&quot;: {
+        &quot;source_rows&quot;: 20765,
+        &quot;invalid_fields&quot;: 0,
+        &quot;nonpositive_prices&quot;: 43,
+        &quot;unexpected_quantity_sign&quot;: 27,
+        &quot;missing_customer_ids&quot;: 4819
+      },
+      &quot;duplicate_rows_retained&quot;: 283,
+      &quot;group_count&quot;: 1,
+      &quot;computation_id&quot;: &quot;770ffc6bb3cadf68ee98cc68ce16ddce976667065ef9d84175f35ba5bb19e6e5&quot;
+    },
+    {
+      &quot;metric_version&quot;: &quot;retail-metrics-v1&quot;,
+      &quot;metric&quot;: &quot;units_sold&quot;,
+      &quot;unit&quot;: &quot;units&quot;,
+      &quot;definition&quot;: &quot;Sum of positive quantities on eligible non-cancellation lines.&quot;,
+      &quot;grain&quot;: &quot;source invoice-product line&quot;,
+      &quot;snapshot_hash&quot;: &quot;e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e&quot;,
+      &quot;request&quot;: {
+        &quot;metric&quot;: &quot;units_sold&quot;,
+        &quot;group_by&quot;: null,
+        &quot;country&quot;: null,
+        &quot;start&quot;: &quot;2011-11-08&quot;,
+        &quot;end&quot;: &quot;2011-11-15&quot;,
+        &quot;limit&quot;: 20
+      },
+      &quot;sql&quot;: &quot;SELECT &#x27;all&#x27; AS segment, COALESCE(SUM(CASE WHEN NOT cancelled AND qty &gt; 0 THEN qty ELSE 0 END), 0) AS numerator,\n              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows\n              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC&quot;,
+      &quot;preparation_sql&quot;: &quot;CREATE TEMP VIEW lines AS SELECT\n        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,\n        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,\n        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,\n        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)\n             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,\n        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)\n             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,\n        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,\n        coalesce(try_cast(InvoiceDate AS TIMESTAMP),\n                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,\n        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw&quot;,
+      &quot;metric_contract_hash&quot;: &quot;4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412&quot;,
+      &quot;engine_sha256&quot;: &quot;3d51e00b21c1b85ddc2a0fe90dd62672339b2cc00b1964f4682faa9512197b06&quot;,
+      &quot;parameters&quot;: [
+        &quot;2011-11-08&quot;,
+        &quot;2011-11-15&quot;
+      ],
+      &quot;values&quot;: [
+        {
+          &quot;segment&quot;: &quot;all&quot;,
+          &quot;value&quot;: 200170,
+          &quot;numerator&quot;: 200170,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 20722
+        }
+      ],
+      &quot;warnings&quot;: [
+        &quot;Descriptive contribution only; no causal effect or profit is inferred.&quot;,
+        &quot;Invoice timestamps are naive source-local times; no timezone conversion is assumed.&quot;,
+        &quot;Exact duplicate rows are retained; source corrections require a new snapshot.&quot;
+      ],
+      &quot;quality&quot;: {
+        &quot;source_rows&quot;: 20765,
+        &quot;invalid_fields&quot;: 0,
+        &quot;nonpositive_prices&quot;: 43,
+        &quot;unexpected_quantity_sign&quot;: 27,
+        &quot;missing_customer_ids&quot;: 4819
+      },
+      &quot;duplicate_rows_retained&quot;: 283,
+      &quot;group_count&quot;: 1,
+      &quot;computation_id&quot;: &quot;99e07797c979948331f90f1b6dc62e9b9beea3a7956fec3356b7b900f73fa0e3&quot;
+    },
+    {
+      &quot;metric_version&quot;: &quot;retail-metrics-v1&quot;,
+      &quot;metric&quot;: &quot;active_customers&quot;,
+      &quot;unit&quot;: &quot;customers&quot;,
+      &quot;definition&quot;: &quot;Distinct non-missing customer identifiers on eligible non-cancellation lines.&quot;,
+      &quot;grain&quot;: &quot;source invoice-product line&quot;,
+      &quot;snapshot_hash&quot;: &quot;e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e&quot;,
+      &quot;request&quot;: {
+        &quot;metric&quot;: &quot;active_customers&quot;,
+        &quot;group_by&quot;: null,
+        &quot;country&quot;: null,
+        &quot;start&quot;: &quot;2011-11-08&quot;,
+        &quot;end&quot;: &quot;2011-11-15&quot;,
+        &quot;limit&quot;: 20
+      },
+      &quot;sql&quot;: &quot;SELECT &#x27;all&#x27; AS segment, COALESCE(COUNT(DISTINCT CASE WHEN NOT cancelled AND qty &gt; 0 THEN customer END), 0) AS numerator,\n              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows\n              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC&quot;,
+      &quot;preparation_sql&quot;: &quot;CREATE TEMP VIEW lines AS SELECT\n        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,\n        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,\n        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,\n        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)\n             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,\n        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)\n             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,\n        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,\n        coalesce(try_cast(InvoiceDate AS TIMESTAMP),\n                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,\n        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw&quot;,
+      &quot;metric_contract_hash&quot;: &quot;4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412&quot;,
+      &quot;engine_sha256&quot;: &quot;3d51e00b21c1b85ddc2a0fe90dd62672339b2cc00b1964f4682faa9512197b06&quot;,
+      &quot;parameters&quot;: [
+        &quot;2011-11-08&quot;,
+        &quot;2011-11-15&quot;
+      ],
+      &quot;values&quot;: [
+        {
+          &quot;segment&quot;: &quot;all&quot;,
+          &quot;value&quot;: 526,
+          &quot;numerator&quot;: 526,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 20722
+        }
+      ],
+      &quot;warnings&quot;: [
+        &quot;Descriptive contribution only; no causal effect or profit is inferred.&quot;,
+        &quot;Invoice timestamps are naive source-local times; no timezone conversion is assumed.&quot;,
+        &quot;Exact duplicate rows are retained; source corrections require a new snapshot.&quot;,
+        &quot;Missing customer identifiers are excluded from distinct-customer counts; the count covers known IDs only.&quot;
+      ],
+      &quot;quality&quot;: {
+        &quot;source_rows&quot;: 20765,
+        &quot;invalid_fields&quot;: 0,
+        &quot;nonpositive_prices&quot;: 43,
+        &quot;unexpected_quantity_sign&quot;: 27,
+        &quot;missing_customer_ids&quot;: 4819
+      },
+      &quot;duplicate_rows_retained&quot;: 283,
+      &quot;group_count&quot;: 1,
+      &quot;computation_id&quot;: &quot;0a65ad7bf6c53c64a51692f5ebfaeb87f543bab4fa26db5390d7f06176df6236&quot;
+    },
+    {
+      &quot;metric_version&quot;: &quot;retail-metrics-v1&quot;,
+      &quot;metric&quot;: &quot;cancellation_rate&quot;,
+      &quot;unit&quot;: &quot;fraction&quot;,
+      &quot;definition&quot;: &quot;Cancellation invoice count / all eligible distinct invoices; not a cohort cancellation probability.&quot;,
+      &quot;grain&quot;: &quot;source invoice-product line&quot;,
+      &quot;snapshot_hash&quot;: &quot;e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e&quot;,
+      &quot;request&quot;: {
+        &quot;metric&quot;: &quot;cancellation_rate&quot;,
+        &quot;group_by&quot;: null,
+        &quot;country&quot;: null,
+        &quot;start&quot;: &quot;2011-11-08&quot;,
+        &quot;end&quot;: &quot;2011-11-15&quot;,
+        &quot;limit&quot;: 20
+      },
+      &quot;sql&quot;: &quot;SELECT &#x27;all&#x27; AS segment, COALESCE(COUNT(DISTINCT CASE WHEN cancelled THEN invoice END), 0) AS numerator,\n              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows\n              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC&quot;,
+      &quot;preparation_sql&quot;: &quot;CREATE TEMP VIEW lines AS SELECT\n        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,\n        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,\n        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,\n        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)\n             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,\n        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)\n             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,\n        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,\n        coalesce(try_cast(InvoiceDate AS TIMESTAMP),\n                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,\n        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw&quot;,
+      &quot;metric_contract_hash&quot;: &quot;4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412&quot;,
+      &quot;engine_sha256&quot;: &quot;3d51e00b21c1b85ddc2a0fe90dd62672339b2cc00b1964f4682faa9512197b06&quot;,
+      &quot;parameters&quot;: [
+        &quot;2011-11-08&quot;,
+        &quot;2011-11-15&quot;
+      ],
+      &quot;values&quot;: [
+        {
+          &quot;segment&quot;: &quot;all&quot;,
+          &quot;value&quot;: 0.15809768637532134,
+          &quot;numerator&quot;: 123,
+          &quot;denominator&quot;: 778,
+          &quot;source_rows&quot;: 20722
+        }
+      ],
+      &quot;warnings&quot;: [
+        &quot;Descriptive contribution only; no causal effect or profit is inferred.&quot;,
+        &quot;Invoice timestamps are naive source-local times; no timezone conversion is assumed.&quot;,
+        &quot;Exact duplicate rows are retained; source corrections require a new snapshot.&quot;
+      ],
+      &quot;quality&quot;: {
+        &quot;source_rows&quot;: 20765,
+        &quot;invalid_fields&quot;: 0,
+        &quot;nonpositive_prices&quot;: 43,
+        &quot;unexpected_quantity_sign&quot;: 27,
+        &quot;missing_customer_ids&quot;: 4819
+      },
+      &quot;duplicate_rows_retained&quot;: 283,
+      &quot;group_count&quot;: 1,
+      &quot;computation_id&quot;: &quot;20d9ea2dfc1fecf10a2640c4f2814bbfa4355ff6cd7649ebe61fc4df8c0bd366&quot;
+    },
+    {
+      &quot;metric_version&quot;: &quot;retail-metrics-v1&quot;,
+      &quot;metric&quot;: &quot;net_sales&quot;,
+      &quot;unit&quot;: &quot;GBP&quot;,
+      &quot;definition&quot;: &quot;Gross sales minus cancellation value on eligible lines; not profit or cash receipts.&quot;,
+      &quot;grain&quot;: &quot;source invoice-product line&quot;,
+      &quot;snapshot_hash&quot;: &quot;e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e&quot;,
+      &quot;request&quot;: {
+        &quot;metric&quot;: &quot;net_sales&quot;,
+        &quot;group_by&quot;: &quot;country&quot;,
+        &quot;country&quot;: null,
+        &quot;start&quot;: &quot;2011-11-08&quot;,
+        &quot;end&quot;: &quot;2011-11-15&quot;,
+        &quot;limit&quot;: 100
+      },
+      &quot;sql&quot;: &quot;SELECT COALESCE(country, &#x27;(missing)&#x27;) AS segment, COALESCE(SUM(qty * pence), 0) AS numerator,\n              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows\n              FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY numerator DESC, segment ASC&quot;,
+      &quot;preparation_sql&quot;: &quot;CREATE TEMP VIEW lines AS SELECT\n        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,\n        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,\n        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,\n        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)\n             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,\n        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)\n             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,\n        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,\n        coalesce(try_cast(InvoiceDate AS TIMESTAMP),\n                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,\n        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw&quot;,
+      &quot;metric_contract_hash&quot;: &quot;4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412&quot;,
+      &quot;engine_sha256&quot;: &quot;3d51e00b21c1b85ddc2a0fe90dd62672339b2cc00b1964f4682faa9512197b06&quot;,
+      &quot;parameters&quot;: [
+        &quot;2011-11-08&quot;,
+        &quot;2011-11-15&quot;
+      ],
+      &quot;values&quot;: [
+        {
+          &quot;segment&quot;: &quot;United Kingdom&quot;,
+          &quot;value&quot;: 350982.31,
+          &quot;numerator&quot;: 35098231,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 19327
+        },
+        {
+          &quot;segment&quot;: &quot;Netherlands&quot;,
+          &quot;value&quot;: 9823.12,
+          &quot;numerator&quot;: 982312,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 65
+        },
+        {
+          &quot;segment&quot;: &quot;EIRE&quot;,
+          &quot;value&quot;: 9085.5,
+          &quot;numerator&quot;: 908550,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 317
+        },
+        {
+          &quot;segment&quot;: &quot;France&quot;,
+          &quot;value&quot;: 8725.53,
+          &quot;numerator&quot;: 872553,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 489
+        },
+        {
+          &quot;segment&quot;: &quot;Germany&quot;,
+          &quot;value&quot;: 4046.21,
+          &quot;numerator&quot;: 404621,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 262
+        },
+        {
+          &quot;segment&quot;: &quot;Sweden&quot;,
+          &quot;value&quot;: 1441.31,
+          &quot;numerator&quot;: 144131,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 25
+        },
+        {
+          &quot;segment&quot;: &quot;Spain&quot;,
+          &quot;value&quot;: 1365.7,
+          &quot;numerator&quot;: 136570,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 70
+        },
+        {
+          &quot;segment&quot;: &quot;Austria&quot;,
+          &quot;value&quot;: 1329.78,
+          &quot;numerator&quot;: 132978,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 70
+        },
+        {
+          &quot;segment&quot;: &quot;Portugal&quot;,
+          &quot;value&quot;: 816.39,
+          &quot;numerator&quot;: 81639,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 29
+        },
+        {
+          &quot;segment&quot;: &quot;Belgium&quot;,
+          &quot;value&quot;: 486.6,
+          &quot;numerator&quot;: 48660,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 29
+        },
+        {
+          &quot;segment&quot;: &quot;Finland&quot;,
+          &quot;value&quot;: 408.34,
+          &quot;numerator&quot;: 40834,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 15
+        },
+        {
+          &quot;segment&quot;: &quot;Switzerland&quot;,
+          &quot;value&quot;: 292.58,
+          &quot;numerator&quot;: 29258,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 13
+        },
+        {
+          &quot;segment&quot;: &quot;Hong Kong&quot;,
+          &quot;value&quot;: 0.0,
+          &quot;numerator&quot;: 0,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 2
+        },
+        {
+          &quot;segment&quot;: &quot;Italy&quot;,
+          &quot;value&quot;: -103.2,
+          &quot;numerator&quot;: -10320,
+          &quot;denominator&quot;: null,
+          &quot;source_rows&quot;: 9
+        }
+      ],
+      &quot;warnings&quot;: [
+        &quot;Descriptive contribution only; no causal effect or profit is inferred.&quot;,
+        &quot;Invoice timestamps are naive source-local times; no timezone conversion is assumed.&quot;,
+        &quot;Exact duplicate rows are retained; source corrections require a new snapshot.&quot;
+      ],
+      &quot;quality&quot;: {
+        &quot;source_rows&quot;: 20765,
+        &quot;invalid_fields&quot;: 0,
+        &quot;nonpositive_prices&quot;: 43,
+        &quot;unexpected_quantity_sign&quot;: 27,
+        &quot;missing_customer_ids&quot;: 4819
+      },
+      &quot;duplicate_rows_retained&quot;: 283,
+      &quot;group_count&quot;: 14,
+      &quot;computation_id&quot;: &quot;1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b&quot;
+    }
+  ]
+}</pre></details></section><footer>This report preserves recorded results and caveats; completion is not an independent correctness guarantee. Bootstrap intervals condition on the fitted model and observed holdout. Permutation importance is predictive, not causal. Use your browser’s Print command to save a PDF.</footer></main></body></html>

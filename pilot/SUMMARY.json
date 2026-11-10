@@ -1,0 +1,21 @@
+{
+  "status": "pending_participants",
+  "participants": 0,
+  "observed_trials": 0,
+  "expected_trials": 0,
+  "conditions": {
+    "manual": {
+      "trials": 0,
+      "correct": 0,
+      "median_seconds_correct_only": null,
+      "interventions": 0
+    },
+    "analyst": {
+      "trials": 0,
+      "correct": 0,
+      "median_seconds_correct_only": null,
+      "interventions": 0
+    }
+  },
+  "limitations": "Small volunteer pilot; task learning, period differences, and self-recorded timings limit inference. No causal time-saving claim."
+}

@@ -1,0 +1,3128 @@
+{
+  "scope": "deterministic metric-engine/oracle agreement only; no live-model accuracy",
+  "results": [
+    {
+      "id": "q001",
+      "passed": true,
+      "computation_id": "32a69254876265d0d1658320deb571dee9a88ba5f62b48a460ba56a90f5b016b",
+      "values": [
+        {
+          "segment": "all",
+          "value": 324008.27,
+          "numerator": 32400827,
+          "denominator": null,
+          "source_rows": 20366
+        }
+      ]
+    },
+    {
+      "id": "q002",
+      "passed": true,
+      "computation_id": "f20a8770eb2b89c3d8b30aef44f1a8f550dca3e993a744a921602893a71f2398",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 268488.23,
+          "numerator": 26848823,
+          "denominator": null,
+          "source_rows": 18609
+        },
+        {
+          "segment": "EIRE",
+          "value": 11358.72,
+          "numerator": 1135872,
+          "denominator": null,
+          "source_rows": 345
+        },
+        {
+          "segment": "Germany",
+          "value": 10299.56,
+          "numerator": 1029956,
+          "denominator": null,
+          "source_rows": 374
+        },
+        {
+          "segment": "France",
+          "value": 7957.63,
+          "numerator": 795763,
+          "denominator": null,
+          "source_rows": 312
+        },
+        {
+          "segment": "Australia",
+          "value": 5355.4,
+          "numerator": 535540,
+          "denominator": null,
+          "source_rows": 27
+        },
+        {
+          "segment": "Japan",
+          "value": 4808.48,
+          "numerator": 480848,
+          "denominator": null,
+          "source_rows": 31
+        },
+        {
+          "segment": "Italy",
+          "value": 3368.91,
+          "numerator": 336891,
+          "denominator": null,
+          "source_rows": 137
+        },
+        {
+          "segment": "Belgium",
+          "value": 2798.53,
+          "numerator": 279853,
+          "denominator": null,
+          "source_rows": 94
+        },
+        {
+          "segment": "Spain",
+          "value": 2705.77,
+          "numerator": 270577,
+          "denominator": null,
+          "source_rows": 108
+        },
+        {
+          "segment": "Denmark",
+          "value": 1794.05,
+          "numerator": 179405,
+          "denominator": null,
+          "source_rows": 56
+        },
+        {
+          "segment": "Norway",
+          "value": 936.64,
+          "numerator": 93664,
+          "denominator": null,
+          "source_rows": 34
+        },
+        {
+          "segment": "Switzerland",
+          "value": 925.64,
+          "numerator": 92564,
+          "denominator": null,
+          "source_rows": 44
+        },
+        {
+          "segment": "Malta",
+          "value": 743.43,
+          "numerator": 74343,
+          "denominator": null,
+          "source_rows": 13
+        },
+        {
+          "segment": "Netherlands",
+          "value": 556.74,
+          "numerator": 55674,
+          "denominator": null,
+          "source_rows": 14
+        },
+        {
+          "segment": "Portugal",
+          "value": 488.83,
+          "numerator": 48883,
+          "denominator": null,
+          "source_rows": 16
+        },
+        {
+          "segment": "Cyprus",
+          "value": 460.89,
+          "numerator": 46089,
+          "denominator": null,
+          "source_rows": 100
+        },
+        {
+          "segment": "Unspecified",
+          "value": 333.2,
+          "numerator": 33320,
+          "denominator": null,
+          "source_rows": 19
+        },
+        {
+          "segment": "Finland",
+          "value": 234.33,
+          "numerator": 23433,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Channel Islands",
+          "value": 211.63,
+          "numerator": 21163,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Sweden",
+          "value": 181.66,
+          "numerator": 18166,
+          "denominator": null,
+          "source_rows": 9
+        }
+      ]
+    },
+    {
+      "id": "q003",
+      "passed": true,
+      "computation_id": "7aa74e2a5a446c87bc8eb8ab797d5562059cb331093ed1e9e13091349c31b3b9",
+      "values": [
+        {
+          "segment": "all",
+          "value": 268488.23,
+          "numerator": 26848823,
+          "denominator": null,
+          "source_rows": 18609
+        }
+      ]
+    },
+    {
+      "id": "q004",
+      "passed": true,
+      "computation_id": "01795c8902a1ec2849b0fbabf50c5f7671d8db677d863cbebcc3847b92a53fc6",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 268488.23,
+          "numerator": 26848823,
+          "denominator": null,
+          "source_rows": 18609
+        }
+      ]
+    },
+    {
+      "id": "q005",
+      "passed": true,
+      "computation_id": "2db7d2a17170e1d91e465f6b8d734f9db584fa407c3f0f967e4f7d711f1cd487",
+      "values": [
+        {
+          "segment": "all",
+          "value": 7957.63,
+          "numerator": 795763,
+          "denominator": null,
+          "source_rows": 312
+        }
+      ]
+    },
+    {
+      "id": "q006",
+      "passed": true,
+      "computation_id": "0d33a588e7dbe95f6b065d831666acaa3a09d16beedddcb19f7b3a4ef5c7b468",
+      "values": [
+        {
+          "segment": "France",
+          "value": 7957.63,
+          "numerator": 795763,
+          "denominator": null,
+          "source_rows": 312
+        }
+      ]
+    },
+    {
+      "id": "q007",
+      "passed": true,
+      "computation_id": "f18cc2ff6fbfd2ed5364ce738928b5b895d639ac46e47bf29e4ee530e5547705",
+      "values": [
+        {
+          "segment": "all",
+          "value": 7439.31,
+          "numerator": 743931,
+          "denominator": null,
+          "source_rows": 20366
+        }
+      ]
+    },
+    {
+      "id": "q008",
+      "passed": true,
+      "computation_id": "f1342159eadb4680dbc85bb2d1862e6cacab73b3914bd9366632ff5a7fe11c42",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 6610.37,
+          "numerator": 661037,
+          "denominator": null,
+          "source_rows": 18609
+        },
+        {
+          "segment": "Germany",
+          "value": 438.95,
+          "numerator": 43895,
+          "denominator": null,
+          "source_rows": 374
+        },
+        {
+          "segment": "Malta",
+          "value": 130.0,
+          "numerator": 13000,
+          "denominator": null,
+          "source_rows": 13
+        },
+        {
+          "segment": "EIRE",
+          "value": 102.55,
+          "numerator": 10255,
+          "denominator": null,
+          "source_rows": 345
+        },
+        {
+          "segment": "Czech Republic",
+          "value": 61.51,
+          "numerator": 6151,
+          "denominator": null,
+          "source_rows": 3
+        },
+        {
+          "segment": "Finland",
+          "value": 40.0,
+          "numerator": 4000,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Poland",
+          "value": 19.36,
+          "numerator": 1936,
+          "denominator": null,
+          "source_rows": 3
+        },
+        {
+          "segment": "Netherlands",
+          "value": 18.0,
+          "numerator": 1800,
+          "denominator": null,
+          "source_rows": 14
+        },
+        {
+          "segment": "France",
+          "value": 9.9,
+          "numerator": 990,
+          "denominator": null,
+          "source_rows": 312
+        },
+        {
+          "segment": "Sweden",
+          "value": 8.67,
+          "numerator": 867,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Australia",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 27
+        },
+        {
+          "segment": "Belgium",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 94
+        },
+        {
+          "segment": "Channel Islands",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Cyprus",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 100
+        },
+        {
+          "segment": "Denmark",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 56
+        },
+        {
+          "segment": "Italy",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 137
+        },
+        {
+          "segment": "Japan",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 31
+        },
+        {
+          "segment": "Norway",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 34
+        },
+        {
+          "segment": "Portugal",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 16
+        },
+        {
+          "segment": "Spain",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 108
+        }
+      ]
+    },
+    {
+      "id": "q009",
+      "passed": true,
+      "computation_id": "e2df0a9eee7f401dbf767b2953a5d14a04bc793bfc645b85e039e5d8f3537bb7",
+      "values": [
+        {
+          "segment": "all",
+          "value": 6610.37,
+          "numerator": 661037,
+          "denominator": null,
+          "source_rows": 18609
+        }
+      ]
+    },
+    {
+      "id": "q010",
+      "passed": true,
+      "computation_id": "db4cabfdc7caf9859cdf739d875afb792e7b56278eadb83d70b37b7d701ac7a7",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 6610.37,
+          "numerator": 661037,
+          "denominator": null,
+          "source_rows": 18609
+        }
+      ]
+    },
+    {
+      "id": "q011",
+      "passed": true,
+      "computation_id": "05a1ccfd7bf8363b2418ea747639062c8788f98e4c4d7e23d7ff03c2719d6a0d",
+      "values": [
+        {
+          "segment": "all",
+          "value": 9.9,
+          "numerator": 990,
+          "denominator": null,
+          "source_rows": 312
+        }
+      ]
+    },
+    {
+      "id": "q012",
+      "passed": true,
+      "computation_id": "e423b7680d0a2627dfacb31c60c4829e6e6c5f16cfb31ca27646fd054b535362",
+      "values": [
+        {
+          "segment": "France",
+          "value": 9.9,
+          "numerator": 990,
+          "denominator": null,
+          "source_rows": 312
+        }
+      ]
+    },
+    {
+      "id": "q013",
+      "passed": true,
+      "computation_id": "ec308da43d411e5a18ae034f237c4a7292822ad003925de20f3a1c3ac6623ba0",
+      "values": [
+        {
+          "segment": "all",
+          "value": 316568.96,
+          "numerator": 31656896,
+          "denominator": null,
+          "source_rows": 20366
+        }
+      ]
+    },
+    {
+      "id": "q014",
+      "passed": true,
+      "computation_id": "373ad6ea921f397832842ce1803736e2b9f857be2c38cc068381903618f3c8c9",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 261877.86,
+          "numerator": 26187786,
+          "denominator": null,
+          "source_rows": 18609
+        },
+        {
+          "segment": "EIRE",
+          "value": 11256.17,
+          "numerator": 1125617,
+          "denominator": null,
+          "source_rows": 345
+        },
+        {
+          "segment": "Germany",
+          "value": 9860.61,
+          "numerator": 986061,
+          "denominator": null,
+          "source_rows": 374
+        },
+        {
+          "segment": "France",
+          "value": 7947.73,
+          "numerator": 794773,
+          "denominator": null,
+          "source_rows": 312
+        },
+        {
+          "segment": "Australia",
+          "value": 5355.4,
+          "numerator": 535540,
+          "denominator": null,
+          "source_rows": 27
+        },
+        {
+          "segment": "Japan",
+          "value": 4808.48,
+          "numerator": 480848,
+          "denominator": null,
+          "source_rows": 31
+        },
+        {
+          "segment": "Italy",
+          "value": 3368.91,
+          "numerator": 336891,
+          "denominator": null,
+          "source_rows": 137
+        },
+        {
+          "segment": "Belgium",
+          "value": 2798.53,
+          "numerator": 279853,
+          "denominator": null,
+          "source_rows": 94
+        },
+        {
+          "segment": "Spain",
+          "value": 2705.77,
+          "numerator": 270577,
+          "denominator": null,
+          "source_rows": 108
+        },
+        {
+          "segment": "Denmark",
+          "value": 1794.05,
+          "numerator": 179405,
+          "denominator": null,
+          "source_rows": 56
+        },
+        {
+          "segment": "Norway",
+          "value": 936.64,
+          "numerator": 93664,
+          "denominator": null,
+          "source_rows": 34
+        },
+        {
+          "segment": "Switzerland",
+          "value": 925.64,
+          "numerator": 92564,
+          "denominator": null,
+          "source_rows": 44
+        },
+        {
+          "segment": "Malta",
+          "value": 613.43,
+          "numerator": 61343,
+          "denominator": null,
+          "source_rows": 13
+        },
+        {
+          "segment": "Netherlands",
+          "value": 538.74,
+          "numerator": 53874,
+          "denominator": null,
+          "source_rows": 14
+        },
+        {
+          "segment": "Portugal",
+          "value": 488.83,
+          "numerator": 48883,
+          "denominator": null,
+          "source_rows": 16
+        },
+        {
+          "segment": "Cyprus",
+          "value": 460.89,
+          "numerator": 46089,
+          "denominator": null,
+          "source_rows": 100
+        },
+        {
+          "segment": "Unspecified",
+          "value": 333.2,
+          "numerator": 33320,
+          "denominator": null,
+          "source_rows": 19
+        },
+        {
+          "segment": "Channel Islands",
+          "value": 211.63,
+          "numerator": 21163,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Finland",
+          "value": 194.33,
+          "numerator": 19433,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Sweden",
+          "value": 172.99,
+          "numerator": 17299,
+          "denominator": null,
+          "source_rows": 9
+        }
+      ]
+    },
+    {
+      "id": "q015",
+      "passed": true,
+      "computation_id": "6b217c07c7855e08407f3e7dd98b47e812c1a980d39103d7774d50dd6eb4c278",
+      "values": [
+        {
+          "segment": "all",
+          "value": 261877.86,
+          "numerator": 26187786,
+          "denominator": null,
+          "source_rows": 18609
+        }
+      ]
+    },
+    {
+      "id": "q016",
+      "passed": true,
+      "computation_id": "39fa2485b343af7898fec26ff9309decf926371975b5b0c643993179f67d4f3d",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 261877.86,
+          "numerator": 26187786,
+          "denominator": null,
+          "source_rows": 18609
+        }
+      ]
+    },
+    {
+      "id": "q017",
+      "passed": true,
+      "computation_id": "823ce17dc2b62f5313587b331423c0d54ac60c3516fac7fb4759f3e4ee60675a",
+      "values": [
+        {
+          "segment": "all",
+          "value": 7947.73,
+          "numerator": 794773,
+          "denominator": null,
+          "source_rows": 312
+        }
+      ]
+    },
+    {
+      "id": "q018",
+      "passed": true,
+      "computation_id": "27532571856d048db4af143633bcbb8f834f16cfc5a66eca3010f52951a4ddf1",
+      "values": [
+        {
+          "segment": "France",
+          "value": 7947.73,
+          "numerator": 794773,
+          "denominator": null,
+          "source_rows": 312
+        }
+      ]
+    },
+    {
+      "id": "q019",
+      "passed": true,
+      "computation_id": "4cdf4d0dea639fb694bc4d52d7f9326ee2467efb9e3012653fa99b7ad4c7d4e7",
+      "values": [
+        {
+          "segment": "all",
+          "value": 683,
+          "numerator": 683,
+          "denominator": null,
+          "source_rows": 20366
+        }
+      ]
+    },
+    {
+      "id": "q020",
+      "passed": true,
+      "computation_id": "56447b504351a81d9b431195deb0345a184509ea40fb7fde97a1aafe511e700d",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 600,
+          "numerator": 600,
+          "denominator": null,
+          "source_rows": 18609
+        },
+        {
+          "segment": "Germany",
+          "value": 24,
+          "numerator": 24,
+          "denominator": null,
+          "source_rows": 374
+        },
+        {
+          "segment": "EIRE",
+          "value": 14,
+          "numerator": 14,
+          "denominator": null,
+          "source_rows": 345
+        },
+        {
+          "segment": "France",
+          "value": 14,
+          "numerator": 14,
+          "denominator": null,
+          "source_rows": 312
+        },
+        {
+          "segment": "Spain",
+          "value": 5,
+          "numerator": 5,
+          "denominator": null,
+          "source_rows": 108
+        },
+        {
+          "segment": "Belgium",
+          "value": 4,
+          "numerator": 4,
+          "denominator": null,
+          "source_rows": 94
+        },
+        {
+          "segment": "Italy",
+          "value": 4,
+          "numerator": 4,
+          "denominator": null,
+          "source_rows": 137
+        },
+        {
+          "segment": "Netherlands",
+          "value": 3,
+          "numerator": 3,
+          "denominator": null,
+          "source_rows": 14
+        },
+        {
+          "segment": "Australia",
+          "value": 2,
+          "numerator": 2,
+          "denominator": null,
+          "source_rows": 27
+        },
+        {
+          "segment": "Finland",
+          "value": 2,
+          "numerator": 2,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Portugal",
+          "value": 2,
+          "numerator": 2,
+          "denominator": null,
+          "source_rows": 16
+        },
+        {
+          "segment": "Channel Islands",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Cyprus",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 100
+        },
+        {
+          "segment": "Denmark",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 56
+        },
+        {
+          "segment": "Japan",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 31
+        },
+        {
+          "segment": "Malta",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 13
+        },
+        {
+          "segment": "Norway",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 34
+        },
+        {
+          "segment": "Sweden",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Switzerland",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 44
+        },
+        {
+          "segment": "Unspecified",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 19
+        }
+      ]
+    },
+    {
+      "id": "q021",
+      "passed": true,
+      "computation_id": "3377724c7beb11f82d018e09ea156adcd07e96c67653f7b3b0f21ae88dd1a0c2",
+      "values": [
+        {
+          "segment": "all",
+          "value": 600,
+          "numerator": 600,
+          "denominator": null,
+          "source_rows": 18609
+        }
+      ]
+    },
+    {
+      "id": "q022",
+      "passed": true,
+      "computation_id": "5e16e41dbe7f2595b64b4d4aab5a933d160028adcc961cb12bd1dd2134fe424d",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 600,
+          "numerator": 600,
+          "denominator": null,
+          "source_rows": 18609
+        }
+      ]
+    },
+    {
+      "id": "q023",
+      "passed": true,
+      "computation_id": "736b1dd712cb56e865d31c4b62b237eb3e9488a13d61a7b3a8421a316bda515a",
+      "values": [
+        {
+          "segment": "all",
+          "value": 14,
+          "numerator": 14,
+          "denominator": null,
+          "source_rows": 312
+        }
+      ]
+    },
+    {
+      "id": "q024",
+      "passed": true,
+      "computation_id": "89242430bc2e829d581b9416f36e1cf51cd0caec3df87716ce251210379eba7e",
+      "values": [
+        {
+          "segment": "France",
+          "value": 14,
+          "numerator": 14,
+          "denominator": null,
+          "source_rows": 312
+        }
+      ]
+    },
+    {
+      "id": "q025",
+      "passed": true,
+      "computation_id": "a63a42cde34e6d6b4b931a2f55e1976f2c173364fe054267e266b11a2d53ad5d",
+      "values": [
+        {
+          "segment": "all",
+          "value": 164425,
+          "numerator": 164425,
+          "denominator": null,
+          "source_rows": 20366
+        }
+      ]
+    },
+    {
+      "id": "q026",
+      "passed": true,
+      "computation_id": "abfdb01e753b5859407283607765a9f2aef15d3d00316d6739e01930ab52d6f1",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 136986,
+          "numerator": 136986,
+          "denominator": null,
+          "source_rows": 18609
+        },
+        {
+          "segment": "EIRE",
+          "value": 6281,
+          "numerator": 6281,
+          "denominator": null,
+          "source_rows": 345
+        },
+        {
+          "segment": "Germany",
+          "value": 5023,
+          "numerator": 5023,
+          "denominator": null,
+          "source_rows": 374
+        },
+        {
+          "segment": "France",
+          "value": 3898,
+          "numerator": 3898,
+          "denominator": null,
+          "source_rows": 312
+        },
+        {
+          "segment": "Australia",
+          "value": 3130,
+          "numerator": 3130,
+          "denominator": null,
+          "source_rows": 27
+        },
+        {
+          "segment": "Japan",
+          "value": 2210,
+          "numerator": 2210,
+          "denominator": null,
+          "source_rows": 31
+        },
+        {
+          "segment": "Italy",
+          "value": 1344,
+          "numerator": 1344,
+          "denominator": null,
+          "source_rows": 137
+        },
+        {
+          "segment": "Spain",
+          "value": 1234,
+          "numerator": 1234,
+          "denominator": null,
+          "source_rows": 108
+        },
+        {
+          "segment": "Denmark",
+          "value": 1025,
+          "numerator": 1025,
+          "denominator": null,
+          "source_rows": 56
+        },
+        {
+          "segment": "Belgium",
+          "value": 974,
+          "numerator": 974,
+          "denominator": null,
+          "source_rows": 94
+        },
+        {
+          "segment": "Switzerland",
+          "value": 669,
+          "numerator": 669,
+          "denominator": null,
+          "source_rows": 44
+        },
+        {
+          "segment": "Netherlands",
+          "value": 336,
+          "numerator": 336,
+          "denominator": null,
+          "source_rows": 14
+        },
+        {
+          "segment": "Cyprus",
+          "value": 300,
+          "numerator": 300,
+          "denominator": null,
+          "source_rows": 100
+        },
+        {
+          "segment": "Norway",
+          "value": 240,
+          "numerator": 240,
+          "denominator": null,
+          "source_rows": 34
+        },
+        {
+          "segment": "Unspecified",
+          "value": 188,
+          "numerator": 188,
+          "denominator": null,
+          "source_rows": 19
+        },
+        {
+          "segment": "Malta",
+          "value": 186,
+          "numerator": 186,
+          "denominator": null,
+          "source_rows": 13
+        },
+        {
+          "segment": "Finland",
+          "value": 183,
+          "numerator": 183,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Channel Islands",
+          "value": 78,
+          "numerator": 78,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Portugal",
+          "value": 73,
+          "numerator": 73,
+          "denominator": null,
+          "source_rows": 16
+        },
+        {
+          "segment": "Sweden",
+          "value": 67,
+          "numerator": 67,
+          "denominator": null,
+          "source_rows": 9
+        }
+      ]
+    },
+    {
+      "id": "q027",
+      "passed": true,
+      "computation_id": "a661c5dfb0060071d9ab340f975b94f37fa0c21bd3bc2f328e48361a706b44d8",
+      "values": [
+        {
+          "segment": "all",
+          "value": 136986,
+          "numerator": 136986,
+          "denominator": null,
+          "source_rows": 18609
+        }
+      ]
+    },
+    {
+      "id": "q028",
+      "passed": true,
+      "computation_id": "ca5f7cc34e87771896e0a44a14c33c7774ac61393918cb492e652d71b0bd4d52",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 136986,
+          "numerator": 136986,
+          "denominator": null,
+          "source_rows": 18609
+        }
+      ]
+    },
+    {
+      "id": "q029",
+      "passed": true,
+      "computation_id": "bd19fed9a8b1d224516c953731a7e85cb6a55a63935bee7f5dca095d17bd9b9f",
+      "values": [
+        {
+          "segment": "all",
+          "value": 3898,
+          "numerator": 3898,
+          "denominator": null,
+          "source_rows": 312
+        }
+      ]
+    },
+    {
+      "id": "q030",
+      "passed": true,
+      "computation_id": "d2fe360c8520eea161ebab8f4592d2e78fdd5a710d8051ea654877667db9d462",
+      "values": [
+        {
+          "segment": "France",
+          "value": 3898,
+          "numerator": 3898,
+          "denominator": null,
+          "source_rows": 312
+        }
+      ]
+    },
+    {
+      "id": "q031",
+      "passed": true,
+      "computation_id": "ac6c15ed7733cc1cbd77639b2b7bed569964693ece92a68aa21951651f999119",
+      "values": [
+        {
+          "segment": "all",
+          "value": 562,
+          "numerator": 562,
+          "denominator": null,
+          "source_rows": 20366
+        }
+      ]
+    },
+    {
+      "id": "q032",
+      "passed": true,
+      "computation_id": "fdb574da336a6be93c44edcb5bdacdb3d88797b487a71baa4ed271ba54840835",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 502,
+          "numerator": 502,
+          "denominator": null,
+          "source_rows": 18609
+        },
+        {
+          "segment": "Germany",
+          "value": 19,
+          "numerator": 19,
+          "denominator": null,
+          "source_rows": 374
+        },
+        {
+          "segment": "France",
+          "value": 12,
+          "numerator": 12,
+          "denominator": null,
+          "source_rows": 312
+        },
+        {
+          "segment": "Spain",
+          "value": 5,
+          "numerator": 5,
+          "denominator": null,
+          "source_rows": 108
+        },
+        {
+          "segment": "Belgium",
+          "value": 4,
+          "numerator": 4,
+          "denominator": null,
+          "source_rows": 94
+        },
+        {
+          "segment": "Italy",
+          "value": 4,
+          "numerator": 4,
+          "denominator": null,
+          "source_rows": 137
+        },
+        {
+          "segment": "EIRE",
+          "value": 2,
+          "numerator": 2,
+          "denominator": null,
+          "source_rows": 345
+        },
+        {
+          "segment": "Netherlands",
+          "value": 2,
+          "numerator": 2,
+          "denominator": null,
+          "source_rows": 14
+        },
+        {
+          "segment": "Portugal",
+          "value": 2,
+          "numerator": 2,
+          "denominator": null,
+          "source_rows": 16
+        },
+        {
+          "segment": "Australia",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 27
+        },
+        {
+          "segment": "Channel Islands",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Cyprus",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 100
+        },
+        {
+          "segment": "Denmark",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 56
+        },
+        {
+          "segment": "Finland",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Japan",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 31
+        },
+        {
+          "segment": "Malta",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 13
+        },
+        {
+          "segment": "Norway",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 34
+        },
+        {
+          "segment": "Sweden",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 9
+        },
+        {
+          "segment": "Switzerland",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 44
+        },
+        {
+          "segment": "Czech Republic",
+          "value": 0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 3
+        }
+      ]
+    },
+    {
+      "id": "q033",
+      "passed": true,
+      "computation_id": "f7560518db688fcd39c0d590777e4b3ed580462ea96167a20f31a1b4bef34355",
+      "values": [
+        {
+          "segment": "all",
+          "value": 502,
+          "numerator": 502,
+          "denominator": null,
+          "source_rows": 18609
+        }
+      ]
+    },
+    {
+      "id": "q034",
+      "passed": true,
+      "computation_id": "bc5627755332078f7a1e0838dea2418120d76b362ec8302e1e50c3c12bc2a321",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 502,
+          "numerator": 502,
+          "denominator": null,
+          "source_rows": 18609
+        }
+      ]
+    },
+    {
+      "id": "q035",
+      "passed": true,
+      "computation_id": "91dce54a2364deff01498baa1c9a852e52e9f64309dc341dbb950324c166acff",
+      "values": [
+        {
+          "segment": "all",
+          "value": 12,
+          "numerator": 12,
+          "denominator": null,
+          "source_rows": 312
+        }
+      ]
+    },
+    {
+      "id": "q036",
+      "passed": true,
+      "computation_id": "ad1265320e72fa3fcbb4014b2fd510579e41af8883e9deca043b1c2307ca8745",
+      "values": [
+        {
+          "segment": "France",
+          "value": 12,
+          "numerator": 12,
+          "denominator": null,
+          "source_rows": 312
+        }
+      ]
+    },
+    {
+      "id": "q037",
+      "passed": true,
+      "computation_id": "b46e166b6bdd0e094d76129d9c790b21bfed73d1d5044224f756ca781202b061",
+      "values": [
+        {
+          "segment": "all",
+          "value": 0.13434727503168567,
+          "numerator": 106,
+          "denominator": 789,
+          "source_rows": 20366
+        }
+      ]
+    },
+    {
+      "id": "q038",
+      "passed": true,
+      "computation_id": "2815f95869600edfbd961cb16e64ad3a078e6ea38935336d9df43570eec4cd29",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 0.13043478260869565,
+          "numerator": 90,
+          "denominator": 690,
+          "source_rows": 18609
+        },
+        {
+          "segment": "Germany",
+          "value": 0.2,
+          "numerator": 6,
+          "denominator": 30,
+          "source_rows": 374
+        },
+        {
+          "segment": "Czech Republic",
+          "value": 1.0,
+          "numerator": 2,
+          "denominator": 2,
+          "source_rows": 3
+        },
+        {
+          "segment": "EIRE",
+          "value": 0.125,
+          "numerator": 2,
+          "denominator": 16,
+          "source_rows": 345
+        },
+        {
+          "segment": "Finland",
+          "value": 0.3333333333333333,
+          "numerator": 1,
+          "denominator": 3,
+          "source_rows": 9
+        },
+        {
+          "segment": "France",
+          "value": 0.06666666666666667,
+          "numerator": 1,
+          "denominator": 15,
+          "source_rows": 312
+        },
+        {
+          "segment": "Malta",
+          "value": 0.5,
+          "numerator": 1,
+          "denominator": 2,
+          "source_rows": 13
+        },
+        {
+          "segment": "Netherlands",
+          "value": 0.25,
+          "numerator": 1,
+          "denominator": 4,
+          "source_rows": 14
+        },
+        {
+          "segment": "Poland",
+          "value": 1.0,
+          "numerator": 1,
+          "denominator": 1,
+          "source_rows": 3
+        },
+        {
+          "segment": "Sweden",
+          "value": 0.5,
+          "numerator": 1,
+          "denominator": 2,
+          "source_rows": 9
+        },
+        {
+          "segment": "Australia",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 2,
+          "source_rows": 27
+        },
+        {
+          "segment": "Belgium",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 4,
+          "source_rows": 94
+        },
+        {
+          "segment": "Channel Islands",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 1,
+          "source_rows": 9
+        },
+        {
+          "segment": "Cyprus",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 1,
+          "source_rows": 100
+        },
+        {
+          "segment": "Denmark",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 1,
+          "source_rows": 56
+        },
+        {
+          "segment": "Italy",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 4,
+          "source_rows": 137
+        },
+        {
+          "segment": "Japan",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 1,
+          "source_rows": 31
+        },
+        {
+          "segment": "Norway",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 1,
+          "source_rows": 34
+        },
+        {
+          "segment": "Portugal",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 2,
+          "source_rows": 16
+        },
+        {
+          "segment": "Spain",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 5,
+          "source_rows": 108
+        }
+      ]
+    },
+    {
+      "id": "q039",
+      "passed": true,
+      "computation_id": "8f1d2c03037af9169ae7dd6ef53a9b8279bb08f49363dae7e5e57b81309e69c6",
+      "values": [
+        {
+          "segment": "all",
+          "value": 0.13043478260869565,
+          "numerator": 90,
+          "denominator": 690,
+          "source_rows": 18609
+        }
+      ]
+    },
+    {
+      "id": "q040",
+      "passed": true,
+      "computation_id": "8c07dc5a930abef2fd8614cb5207f169af67cfe62dbfeff9577c4ae85bc20c6c",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 0.13043478260869565,
+          "numerator": 90,
+          "denominator": 690,
+          "source_rows": 18609
+        }
+      ]
+    },
+    {
+      "id": "q041",
+      "passed": true,
+      "computation_id": "76742119bd9a4d2cc62cb187b3be6523bd0207cd47b08b04b74bc0060f1c9338",
+      "values": [
+        {
+          "segment": "all",
+          "value": 0.06666666666666667,
+          "numerator": 1,
+          "denominator": 15,
+          "source_rows": 312
+        }
+      ]
+    },
+    {
+      "id": "q042",
+      "passed": true,
+      "computation_id": "16d3d4bf4055c84a6137d7d4c5f3991a3ec1f6f05f1b8b0b7f1690511cf7338a",
+      "values": [
+        {
+          "segment": "France",
+          "value": 0.06666666666666667,
+          "numerator": 1,
+          "denominator": 15,
+          "source_rows": 312
+        }
+      ]
+    },
+    {
+      "id": "q043",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q044",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q045",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q046",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q047",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q048",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q049",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q050",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q051",
+      "passed": true,
+      "computation_id": "a1c6b4235d46a22ac20259a866ac6de69d63c7e8d57443a0998b6ab706074d80",
+      "values": [
+        {
+          "segment": "all",
+          "value": 323771.63,
+          "numerator": 32377163,
+          "denominator": null,
+          "source_rows": 20291
+        }
+      ]
+    },
+    {
+      "id": "q052",
+      "passed": true,
+      "computation_id": "c111a844952e30a3bfdcdbdef308210bc79473867d51dadeb8b4379b56694428",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 284464.64,
+          "numerator": 28446464,
+          "denominator": null,
+          "source_rows": 19061
+        },
+        {
+          "segment": "Netherlands",
+          "value": 10888.24,
+          "numerator": 1088824,
+          "denominator": null,
+          "source_rows": 73
+        },
+        {
+          "segment": "Germany",
+          "value": 7546.9,
+          "numerator": 754690,
+          "denominator": null,
+          "source_rows": 330
+        },
+        {
+          "segment": "France",
+          "value": 6021.53,
+          "numerator": 602153,
+          "denominator": null,
+          "source_rows": 306
+        },
+        {
+          "segment": "EIRE",
+          "value": 5442.2,
+          "numerator": 544220,
+          "denominator": null,
+          "source_rows": 243
+        },
+        {
+          "segment": "Spain",
+          "value": 3168.48,
+          "numerator": 316848,
+          "denominator": null,
+          "source_rows": 13
+        },
+        {
+          "segment": "Norway",
+          "value": 2016.78,
+          "numerator": 201678,
+          "denominator": null,
+          "source_rows": 49
+        },
+        {
+          "segment": "Italy",
+          "value": 996.25,
+          "numerator": 99625,
+          "denominator": null,
+          "source_rows": 38
+        },
+        {
+          "segment": "Portugal",
+          "value": 859.12,
+          "numerator": 85912,
+          "denominator": null,
+          "source_rows": 74
+        },
+        {
+          "segment": "Unspecified",
+          "value": 632.55,
+          "numerator": 63255,
+          "denominator": null,
+          "source_rows": 34
+        },
+        {
+          "segment": "Switzerland",
+          "value": 430.57,
+          "numerator": 43057,
+          "denominator": null,
+          "source_rows": 23
+        },
+        {
+          "segment": "Sweden",
+          "value": 406.72,
+          "numerator": 40672,
+          "denominator": null,
+          "source_rows": 7
+        },
+        {
+          "segment": "Finland",
+          "value": 310.0,
+          "numerator": 31000,
+          "denominator": null,
+          "source_rows": 2
+        },
+        {
+          "segment": "Belgium",
+          "value": 301.25,
+          "numerator": 30125,
+          "denominator": null,
+          "source_rows": 25
+        },
+        {
+          "segment": "Australia",
+          "value": 286.4,
+          "numerator": 28640,
+          "denominator": null,
+          "source_rows": 8
+        },
+        {
+          "segment": "Malta",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 5
+        }
+      ]
+    },
+    {
+      "id": "q053",
+      "passed": true,
+      "computation_id": "9741982d400c643f8fcd68a110c029f3ad4ec8cba7cc88a4898ba4ae3d879dfd",
+      "values": [
+        {
+          "segment": "all",
+          "value": 284464.64,
+          "numerator": 28446464,
+          "denominator": null,
+          "source_rows": 19061
+        }
+      ]
+    },
+    {
+      "id": "q054",
+      "passed": true,
+      "computation_id": "fcb538e3e462fddbc9f0e26b4488f929eefa78d867f4df88caa4743f648e1324",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 284464.64,
+          "numerator": 28446464,
+          "denominator": null,
+          "source_rows": 19061
+        }
+      ]
+    },
+    {
+      "id": "q055",
+      "passed": true,
+      "computation_id": "9935494c003971c4fa81f842857df33aa65bfeeeede2d12b45f33548401b7ecd",
+      "values": [
+        {
+          "segment": "all",
+          "value": 6021.53,
+          "numerator": 602153,
+          "denominator": null,
+          "source_rows": 306
+        }
+      ]
+    },
+    {
+      "id": "q056",
+      "passed": true,
+      "computation_id": "94b00bb547595f82004eca699796b8567581fcf457f2b1ffd74387522ccacf48",
+      "values": [
+        {
+          "segment": "France",
+          "value": 6021.53,
+          "numerator": 602153,
+          "denominator": null,
+          "source_rows": 306
+        }
+      ]
+    },
+    {
+      "id": "q057",
+      "passed": true,
+      "computation_id": "2c23facff71041e0786d91c99b1b1188ae83d52b22c4f2982cb5ecf2585345c9",
+      "values": [
+        {
+          "segment": "all",
+          "value": 8447.09,
+          "numerator": 844709,
+          "denominator": null,
+          "source_rows": 20291
+        }
+      ]
+    },
+    {
+      "id": "q058",
+      "passed": true,
+      "computation_id": "c40f3101b5f6130bc39a3cebbae060f388618430a0515f0fce68969bb51ac509",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 7299.47,
+          "numerator": 729947,
+          "denominator": null,
+          "source_rows": 19061
+        },
+        {
+          "segment": "France",
+          "value": 807.27,
+          "numerator": 80727,
+          "denominator": null,
+          "source_rows": 306
+        },
+        {
+          "segment": "Germany",
+          "value": 97.08,
+          "numerator": 9708,
+          "denominator": null,
+          "source_rows": 330
+        },
+        {
+          "segment": "Sweden",
+          "value": 80.0,
+          "numerator": 8000,
+          "denominator": null,
+          "source_rows": 7
+        },
+        {
+          "segment": "EIRE",
+          "value": 52.73,
+          "numerator": 5273,
+          "denominator": null,
+          "source_rows": 243
+        },
+        {
+          "segment": "Belgium",
+          "value": 51.4,
+          "numerator": 5140,
+          "denominator": null,
+          "source_rows": 25
+        },
+        {
+          "segment": "Malta",
+          "value": 30.81,
+          "numerator": 3081,
+          "denominator": null,
+          "source_rows": 5
+        },
+        {
+          "segment": "Italy",
+          "value": 26.33,
+          "numerator": 2633,
+          "denominator": null,
+          "source_rows": 38
+        },
+        {
+          "segment": "Switzerland",
+          "value": 2.0,
+          "numerator": 200,
+          "denominator": null,
+          "source_rows": 23
+        },
+        {
+          "segment": "Australia",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 8
+        },
+        {
+          "segment": "Finland",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 2
+        },
+        {
+          "segment": "Netherlands",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 73
+        },
+        {
+          "segment": "Norway",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 49
+        },
+        {
+          "segment": "Portugal",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 74
+        },
+        {
+          "segment": "Spain",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 13
+        },
+        {
+          "segment": "Unspecified",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 34
+        }
+      ]
+    },
+    {
+      "id": "q059",
+      "passed": true,
+      "computation_id": "78c18455c47aac99d1bd96795e620cb45b222a842934b48aa9d061e5dbcf6b46",
+      "values": [
+        {
+          "segment": "all",
+          "value": 7299.47,
+          "numerator": 729947,
+          "denominator": null,
+          "source_rows": 19061
+        }
+      ]
+    },
+    {
+      "id": "q060",
+      "passed": true,
+      "computation_id": "79fd8128be01996567a8eb8af84dc937479ab88d3a5ea52470a1a8547232ad31",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 7299.47,
+          "numerator": 729947,
+          "denominator": null,
+          "source_rows": 19061
+        }
+      ]
+    },
+    {
+      "id": "q061",
+      "passed": true,
+      "computation_id": "93af329f99ab4f61acedf780e74b547a78aeaf72d01c217cf4791f1547491d12",
+      "values": [
+        {
+          "segment": "all",
+          "value": 807.27,
+          "numerator": 80727,
+          "denominator": null,
+          "source_rows": 306
+        }
+      ]
+    },
+    {
+      "id": "q062",
+      "passed": true,
+      "computation_id": "160adffaa165eccc4fdbf9c5c68a0caaf1952c6db50d36e960bdaa5544fd95cd",
+      "values": [
+        {
+          "segment": "France",
+          "value": 807.27,
+          "numerator": 80727,
+          "denominator": null,
+          "source_rows": 306
+        }
+      ]
+    },
+    {
+      "id": "q063",
+      "passed": true,
+      "computation_id": "376c8e55b486432c162b1acf84ef5872fed8bf6b1c024370d8e09f7cceb382b1",
+      "values": [
+        {
+          "segment": "all",
+          "value": 315324.54,
+          "numerator": 31532454,
+          "denominator": null,
+          "source_rows": 20291
+        }
+      ]
+    },
+    {
+      "id": "q064",
+      "passed": true,
+      "computation_id": "5b8f43813fdb0b4f2bf2360b47ee9fbd64db5089eaeb9af38fa97295e1dd748f",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 277165.17,
+          "numerator": 27716517,
+          "denominator": null,
+          "source_rows": 19061
+        },
+        {
+          "segment": "Netherlands",
+          "value": 10888.24,
+          "numerator": 1088824,
+          "denominator": null,
+          "source_rows": 73
+        },
+        {
+          "segment": "Germany",
+          "value": 7449.82,
+          "numerator": 744982,
+          "denominator": null,
+          "source_rows": 330
+        },
+        {
+          "segment": "EIRE",
+          "value": 5389.47,
+          "numerator": 538947,
+          "denominator": null,
+          "source_rows": 243
+        },
+        {
+          "segment": "France",
+          "value": 5214.26,
+          "numerator": 521426,
+          "denominator": null,
+          "source_rows": 306
+        },
+        {
+          "segment": "Spain",
+          "value": 3168.48,
+          "numerator": 316848,
+          "denominator": null,
+          "source_rows": 13
+        },
+        {
+          "segment": "Norway",
+          "value": 2016.78,
+          "numerator": 201678,
+          "denominator": null,
+          "source_rows": 49
+        },
+        {
+          "segment": "Italy",
+          "value": 969.92,
+          "numerator": 96992,
+          "denominator": null,
+          "source_rows": 38
+        },
+        {
+          "segment": "Portugal",
+          "value": 859.12,
+          "numerator": 85912,
+          "denominator": null,
+          "source_rows": 74
+        },
+        {
+          "segment": "Unspecified",
+          "value": 632.55,
+          "numerator": 63255,
+          "denominator": null,
+          "source_rows": 34
+        },
+        {
+          "segment": "Switzerland",
+          "value": 428.57,
+          "numerator": 42857,
+          "denominator": null,
+          "source_rows": 23
+        },
+        {
+          "segment": "Sweden",
+          "value": 326.72,
+          "numerator": 32672,
+          "denominator": null,
+          "source_rows": 7
+        },
+        {
+          "segment": "Finland",
+          "value": 310.0,
+          "numerator": 31000,
+          "denominator": null,
+          "source_rows": 2
+        },
+        {
+          "segment": "Australia",
+          "value": 286.4,
+          "numerator": 28640,
+          "denominator": null,
+          "source_rows": 8
+        },
+        {
+          "segment": "Belgium",
+          "value": 249.85,
+          "numerator": 24985,
+          "denominator": null,
+          "source_rows": 25
+        },
+        {
+          "segment": "Malta",
+          "value": -30.81,
+          "numerator": -3081,
+          "denominator": null,
+          "source_rows": 5
+        }
+      ]
+    },
+    {
+      "id": "q065",
+      "passed": true,
+      "computation_id": "105079f2651e5a8c069a0a00ea88937abd485c7b512d5ed3a53fd88736b0d585",
+      "values": [
+        {
+          "segment": "all",
+          "value": 277165.17,
+          "numerator": 27716517,
+          "denominator": null,
+          "source_rows": 19061
+        }
+      ]
+    },
+    {
+      "id": "q066",
+      "passed": true,
+      "computation_id": "bd80364ce2f0ea11dd15105e30b8b801cd7ae95cd914fb087c4030357c576536",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 277165.17,
+          "numerator": 27716517,
+          "denominator": null,
+          "source_rows": 19061
+        }
+      ]
+    },
+    {
+      "id": "q067",
+      "passed": true,
+      "computation_id": "1e4181a52264853156fdce48106612e008ecafaa567ec39025d5f7c1b743678c",
+      "values": [
+        {
+          "segment": "all",
+          "value": 5214.26,
+          "numerator": 521426,
+          "denominator": null,
+          "source_rows": 306
+        }
+      ]
+    },
+    {
+      "id": "q068",
+      "passed": true,
+      "computation_id": "14792fe83dc15fad7b4161214c34f16958aac76894063d076d79f1831208c9d6",
+      "values": [
+        {
+          "segment": "France",
+          "value": 5214.26,
+          "numerator": 521426,
+          "denominator": null,
+          "source_rows": 306
+        }
+      ]
+    },
+    {
+      "id": "q069",
+      "passed": true,
+      "computation_id": "224661e7ff3be3a45a48744296f8ddd27fd12832c14f930d293dcf41ada92d63",
+      "values": [
+        {
+          "segment": "all",
+          "value": 634,
+          "numerator": 634,
+          "denominator": null,
+          "source_rows": 20291
+        }
+      ]
+    },
+    {
+      "id": "q070",
+      "passed": true,
+      "computation_id": "c39d1bc794e6cc6e8fecee43370d61c097432ee6ebe2c23a28ed0bb42738f34c",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 577,
+          "numerator": 577,
+          "denominator": null,
+          "source_rows": 19061
+        },
+        {
+          "segment": "Germany",
+          "value": 16,
+          "numerator": 16,
+          "denominator": null,
+          "source_rows": 330
+        },
+        {
+          "segment": "France",
+          "value": 12,
+          "numerator": 12,
+          "denominator": null,
+          "source_rows": 306
+        },
+        {
+          "segment": "EIRE",
+          "value": 9,
+          "numerator": 9,
+          "denominator": null,
+          "source_rows": 243
+        },
+        {
+          "segment": "Netherlands",
+          "value": 5,
+          "numerator": 5,
+          "denominator": null,
+          "source_rows": 73
+        },
+        {
+          "segment": "Italy",
+          "value": 3,
+          "numerator": 3,
+          "denominator": null,
+          "source_rows": 38
+        },
+        {
+          "segment": "Portugal",
+          "value": 2,
+          "numerator": 2,
+          "denominator": null,
+          "source_rows": 74
+        },
+        {
+          "segment": "Spain",
+          "value": 2,
+          "numerator": 2,
+          "denominator": null,
+          "source_rows": 13
+        },
+        {
+          "segment": "Switzerland",
+          "value": 2,
+          "numerator": 2,
+          "denominator": null,
+          "source_rows": 23
+        },
+        {
+          "segment": "Australia",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 8
+        },
+        {
+          "segment": "Belgium",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 25
+        },
+        {
+          "segment": "Finland",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 2
+        },
+        {
+          "segment": "Norway",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 49
+        },
+        {
+          "segment": "Sweden",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 7
+        },
+        {
+          "segment": "Unspecified",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 34
+        },
+        {
+          "segment": "Malta",
+          "value": 0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 5
+        }
+      ]
+    },
+    {
+      "id": "q071",
+      "passed": true,
+      "computation_id": "537e975ca152a2c8f9a45934a34324617b891efb709840321d73a9c2343fbb1a",
+      "values": [
+        {
+          "segment": "all",
+          "value": 577,
+          "numerator": 577,
+          "denominator": null,
+          "source_rows": 19061
+        }
+      ]
+    },
+    {
+      "id": "q072",
+      "passed": true,
+      "computation_id": "036963b1ae9759a279e1b9150f028f52afb2727d7c38be752138737d3b63d6ff",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 577,
+          "numerator": 577,
+          "denominator": null,
+          "source_rows": 19061
+        }
+      ]
+    },
+    {
+      "id": "q073",
+      "passed": true,
+      "computation_id": "67a3f238f3bac574b06de33c664073a07512e43c3fe14b3ab55be3cba365c903",
+      "values": [
+        {
+          "segment": "all",
+          "value": 12,
+          "numerator": 12,
+          "denominator": null,
+          "source_rows": 306
+        }
+      ]
+    },
+    {
+      "id": "q074",
+      "passed": true,
+      "computation_id": "3dd2b623c3e73b0ed193094ad111fff9486415b9cf8f0bcd171f084bf23308f0",
+      "values": [
+        {
+          "segment": "France",
+          "value": 12,
+          "numerator": 12,
+          "denominator": null,
+          "source_rows": 306
+        }
+      ]
+    },
+    {
+      "id": "q075",
+      "passed": true,
+      "computation_id": "855c021f124bb89124bb07c3a3bee3654d6a18f03c5f7a447d1be130babe08e4",
+      "values": [
+        {
+          "segment": "all",
+          "value": 161048,
+          "numerator": 161048,
+          "denominator": null,
+          "source_rows": 20291
+        }
+      ]
+    },
+    {
+      "id": "q076",
+      "passed": true,
+      "computation_id": "890ccf258af8e3a4a970cf9ac16ad747e384b354afb2742da8d4271776f3d6fe",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 139313,
+          "numerator": 139313,
+          "denominator": null,
+          "source_rows": 19061
+        },
+        {
+          "segment": "Netherlands",
+          "value": 7758,
+          "numerator": 7758,
+          "denominator": null,
+          "source_rows": 73
+        },
+        {
+          "segment": "Germany",
+          "value": 3796,
+          "numerator": 3796,
+          "denominator": null,
+          "source_rows": 330
+        },
+        {
+          "segment": "France",
+          "value": 3274,
+          "numerator": 3274,
+          "denominator": null,
+          "source_rows": 306
+        },
+        {
+          "segment": "EIRE",
+          "value": 2950,
+          "numerator": 2950,
+          "denominator": null,
+          "source_rows": 243
+        },
+        {
+          "segment": "Spain",
+          "value": 997,
+          "numerator": 997,
+          "denominator": null,
+          "source_rows": 13
+        },
+        {
+          "segment": "Italy",
+          "value": 668,
+          "numerator": 668,
+          "denominator": null,
+          "source_rows": 38
+        },
+        {
+          "segment": "Norway",
+          "value": 594,
+          "numerator": 594,
+          "denominator": null,
+          "source_rows": 49
+        },
+        {
+          "segment": "Portugal",
+          "value": 458,
+          "numerator": 458,
+          "denominator": null,
+          "source_rows": 74
+        },
+        {
+          "segment": "Unspecified",
+          "value": 453,
+          "numerator": 453,
+          "denominator": null,
+          "source_rows": 34
+        },
+        {
+          "segment": "Australia",
+          "value": 224,
+          "numerator": 224,
+          "denominator": null,
+          "source_rows": 8
+        },
+        {
+          "segment": "Belgium",
+          "value": 185,
+          "numerator": 185,
+          "denominator": null,
+          "source_rows": 25
+        },
+        {
+          "segment": "Switzerland",
+          "value": 185,
+          "numerator": 185,
+          "denominator": null,
+          "source_rows": 23
+        },
+        {
+          "segment": "Sweden",
+          "value": 120,
+          "numerator": 120,
+          "denominator": null,
+          "source_rows": 7
+        },
+        {
+          "segment": "Finland",
+          "value": 73,
+          "numerator": 73,
+          "denominator": null,
+          "source_rows": 2
+        },
+        {
+          "segment": "Malta",
+          "value": 0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 5
+        }
+      ]
+    },
+    {
+      "id": "q077",
+      "passed": true,
+      "computation_id": "2cad5afa0dbe43e74399d6e6877589530de9c78d0533b9d7c5ba117ea8d8b975",
+      "values": [
+        {
+          "segment": "all",
+          "value": 139313,
+          "numerator": 139313,
+          "denominator": null,
+          "source_rows": 19061
+        }
+      ]
+    },
+    {
+      "id": "q078",
+      "passed": true,
+      "computation_id": "8d66add562a0ab33270235d7526a2f8eac7cecd7e86c0e368f7f0321a6e7d6f0",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 139313,
+          "numerator": 139313,
+          "denominator": null,
+          "source_rows": 19061
+        }
+      ]
+    },
+    {
+      "id": "q079",
+      "passed": true,
+      "computation_id": "0239b81788f9ee40f9369fac1c912f9780593c496b77421d2ae359828e4c2862",
+      "values": [
+        {
+          "segment": "all",
+          "value": 3274,
+          "numerator": 3274,
+          "denominator": null,
+          "source_rows": 306
+        }
+      ]
+    },
+    {
+      "id": "q080",
+      "passed": true,
+      "computation_id": "b85db665499eb455495b31b131a5ae97cd48a1c45d9cf645609d862722ea76dc",
+      "values": [
+        {
+          "segment": "France",
+          "value": 3274,
+          "numerator": 3274,
+          "denominator": null,
+          "source_rows": 306
+        }
+      ]
+    },
+    {
+      "id": "q081",
+      "passed": true,
+      "computation_id": "d433851d4203a2f50d22585af2cf3ed6686bccbbdfa8b69d1ed7ce921604161b",
+      "values": [
+        {
+          "segment": "all",
+          "value": 498,
+          "numerator": 498,
+          "denominator": null,
+          "source_rows": 20291
+        }
+      ]
+    },
+    {
+      "id": "q082",
+      "passed": true,
+      "computation_id": "87edba56a40da0ea9bf16af8d511fbd1ed8e9997fbc22fe2a04447c87a2b83bc",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 460,
+          "numerator": 460,
+          "denominator": null,
+          "source_rows": 19061
+        },
+        {
+          "segment": "Germany",
+          "value": 12,
+          "numerator": 12,
+          "denominator": null,
+          "source_rows": 330
+        },
+        {
+          "segment": "France",
+          "value": 10,
+          "numerator": 10,
+          "denominator": null,
+          "source_rows": 306
+        },
+        {
+          "segment": "Italy",
+          "value": 3,
+          "numerator": 3,
+          "denominator": null,
+          "source_rows": 38
+        },
+        {
+          "segment": "Netherlands",
+          "value": 2,
+          "numerator": 2,
+          "denominator": null,
+          "source_rows": 73
+        },
+        {
+          "segment": "Portugal",
+          "value": 2,
+          "numerator": 2,
+          "denominator": null,
+          "source_rows": 74
+        },
+        {
+          "segment": "Spain",
+          "value": 2,
+          "numerator": 2,
+          "denominator": null,
+          "source_rows": 13
+        },
+        {
+          "segment": "Australia",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 8
+        },
+        {
+          "segment": "Belgium",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 25
+        },
+        {
+          "segment": "EIRE",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 243
+        },
+        {
+          "segment": "Finland",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 2
+        },
+        {
+          "segment": "Norway",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 49
+        },
+        {
+          "segment": "Sweden",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 7
+        },
+        {
+          "segment": "Switzerland",
+          "value": 1,
+          "numerator": 1,
+          "denominator": null,
+          "source_rows": 23
+        },
+        {
+          "segment": "Malta",
+          "value": 0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 5
+        },
+        {
+          "segment": "Unspecified",
+          "value": 0,
+          "numerator": 0,
+          "denominator": null,
+          "source_rows": 34
+        }
+      ]
+    },
+    {
+      "id": "q083",
+      "passed": true,
+      "computation_id": "d3429e379395a39dff355f85d2fdee248b1e91e9bb15656d7d2cc16f2c35ee57",
+      "values": [
+        {
+          "segment": "all",
+          "value": 460,
+          "numerator": 460,
+          "denominator": null,
+          "source_rows": 19061
+        }
+      ]
+    },
+    {
+      "id": "q084",
+      "passed": true,
+      "computation_id": "6b557ee4ed8ae54dc90a6add13bca710b14a3f04abb0008683a7380ba73d80f4",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 460,
+          "numerator": 460,
+          "denominator": null,
+          "source_rows": 19061
+        }
+      ]
+    },
+    {
+      "id": "q085",
+      "passed": true,
+      "computation_id": "9d5895f08b90de37f83e2460187bda1b03afaf89e15f6d15c322ec550490e8a2",
+      "values": [
+        {
+          "segment": "all",
+          "value": 10,
+          "numerator": 10,
+          "denominator": null,
+          "source_rows": 306
+        }
+      ]
+    },
+    {
+      "id": "q086",
+      "passed": true,
+      "computation_id": "416c7844c39e86d58e24328b2b3e44821c12db58aaff551251337949dd33cacf",
+      "values": [
+        {
+          "segment": "France",
+          "value": 10,
+          "numerator": 10,
+          "denominator": null,
+          "source_rows": 306
+        }
+      ]
+    },
+    {
+      "id": "q087",
+      "passed": true,
+      "computation_id": "58dfbee6be645ed478b27c368f48b318e83a979d87f2efbfc31b7a03dd9da85c",
+      "values": [
+        {
+          "segment": "all",
+          "value": 0.09298998569384835,
+          "numerator": 65,
+          "denominator": 699,
+          "source_rows": 20291
+        }
+      ]
+    },
+    {
+      "id": "q088",
+      "passed": true,
+      "computation_id": "f8effd2f17ffd04fe6ba0a9c62e70e232b85cad19ef10168fd0b45dc417155c4",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 0.08121019108280254,
+          "numerator": 51,
+          "denominator": 628,
+          "source_rows": 19061
+        },
+        {
+          "segment": "France",
+          "value": 0.25,
+          "numerator": 4,
+          "denominator": 16,
+          "source_rows": 306
+        },
+        {
+          "segment": "Belgium",
+          "value": 0.6666666666666666,
+          "numerator": 2,
+          "denominator": 3,
+          "source_rows": 25
+        },
+        {
+          "segment": "EIRE",
+          "value": 0.18181818181818182,
+          "numerator": 2,
+          "denominator": 11,
+          "source_rows": 243
+        },
+        {
+          "segment": "Germany",
+          "value": 0.1111111111111111,
+          "numerator": 2,
+          "denominator": 18,
+          "source_rows": 330
+        },
+        {
+          "segment": "Italy",
+          "value": 0.25,
+          "numerator": 1,
+          "denominator": 4,
+          "source_rows": 38
+        },
+        {
+          "segment": "Malta",
+          "value": 1.0,
+          "numerator": 1,
+          "denominator": 1,
+          "source_rows": 5
+        },
+        {
+          "segment": "Sweden",
+          "value": 0.5,
+          "numerator": 1,
+          "denominator": 2,
+          "source_rows": 7
+        },
+        {
+          "segment": "Switzerland",
+          "value": 0.3333333333333333,
+          "numerator": 1,
+          "denominator": 3,
+          "source_rows": 23
+        },
+        {
+          "segment": "Australia",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 1,
+          "source_rows": 8
+        },
+        {
+          "segment": "Finland",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 1,
+          "source_rows": 2
+        },
+        {
+          "segment": "Netherlands",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 5,
+          "source_rows": 73
+        },
+        {
+          "segment": "Norway",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 1,
+          "source_rows": 49
+        },
+        {
+          "segment": "Portugal",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 2,
+          "source_rows": 74
+        },
+        {
+          "segment": "Spain",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 2,
+          "source_rows": 13
+        },
+        {
+          "segment": "Unspecified",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 1,
+          "source_rows": 34
+        }
+      ]
+    },
+    {
+      "id": "q089",
+      "passed": true,
+      "computation_id": "3b1fd3f43546c13575e199c490237d8d154d946944a9cfbe5b2e466c9034da7d",
+      "values": [
+        {
+          "segment": "all",
+          "value": 0.08121019108280254,
+          "numerator": 51,
+          "denominator": 628,
+          "source_rows": 19061
+        }
+      ]
+    },
+    {
+      "id": "q090",
+      "passed": true,
+      "computation_id": "8ff3f156e9bce530b654b33df09a15ef9b1c7378636a11ade148a34d16fca1ac",
+      "values": [
+        {
+          "segment": "United Kingdom",
+          "value": 0.08121019108280254,
+          "numerator": 51,
+          "denominator": 628,
+          "source_rows": 19061
+        }
+      ]
+    },
+    {
+      "id": "q091",
+      "passed": true,
+      "computation_id": "48358a44f15cf3a267490ed3dac46afa4b1eea25397ec06ebf27288a853bf50a",
+      "values": [
+        {
+          "segment": "all",
+          "value": 0.25,
+          "numerator": 4,
+          "denominator": 16,
+          "source_rows": 306
+        }
+      ]
+    },
+    {
+      "id": "q092",
+      "passed": true,
+      "computation_id": "f569306f0f6f08cfb289c65ad900523d673526f2ce750fc210292190c0b3d69b",
+      "values": [
+        {
+          "segment": "France",
+          "value": 0.25,
+          "numerator": 4,
+          "denominator": 16,
+          "source_rows": 306
+        }
+      ]
+    },
+    {
+      "id": "q093",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q094",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q095",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q096",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q097",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q098",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q099",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "q100",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "chain01/0",
+      "passed": true,
+      "computation_id": "32a69254876265d0d1658320deb571dee9a88ba5f62b48a460ba56a90f5b016b"
+    },
+    {
+      "id": "chain01/1",
+      "passed": true,
+      "computation_id": "2db7d2a17170e1d91e465f6b8d734f9db584fa407c3f0f967e4f7d711f1cd487"
+    },
+    {
+      "id": "chain02/0",
+      "passed": true,
+      "computation_id": "05a1ccfd7bf8363b2418ea747639062c8788f98e4c4d7e23d7ff03c2719d6a0d"
+    },
+    {
+      "id": "chain02/1",
+      "passed": true,
+      "computation_id": "e2df0a9eee7f401dbf767b2953a5d14a04bc793bfc645b85e039e5d8f3537bb7"
+    },
+    {
+      "id": "chain03/0",
+      "passed": true,
+      "computation_id": "373ad6ea921f397832842ce1803736e2b9f857be2c38cc068381903618f3c8c9"
+    },
+    {
+      "id": "chain03/1",
+      "passed": true,
+      "computation_id": "ec308da43d411e5a18ae034f237c4a7292822ad003925de20f3a1c3ac6623ba0"
+    },
+    {
+      "id": "chain04/0",
+      "passed": true,
+      "computation_id": "4cdf4d0dea639fb694bc4d52d7f9326ee2467efb9e3012653fa99b7ad4c7d4e7"
+    },
+    {
+      "id": "chain04/1",
+      "passed": true,
+      "computation_id": "ec308da43d411e5a18ae034f237c4a7292822ad003925de20f3a1c3ac6623ba0"
+    },
+    {
+      "id": "chain05/0",
+      "passed": true,
+      "computation_id": "a63a42cde34e6d6b4b931a2f55e1976f2c173364fe054267e266b11a2d53ad5d"
+    },
+    {
+      "id": "chain05/1",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "chain06/0",
+      "passed": true,
+      "computation_id": "ac6c15ed7733cc1cbd77639b2b7bed569964693ece92a68aa21951651f999119"
+    },
+    {
+      "id": "chain06/1",
+      "passed": true,
+      "computation_id": "91dce54a2364deff01498baa1c9a852e52e9f64309dc341dbb950324c166acff"
+    },
+    {
+      "id": "chain07/0",
+      "passed": true,
+      "computation_id": "76742119bd9a4d2cc62cb187b3be6523bd0207cd47b08b04b74bc0060f1c9338"
+    },
+    {
+      "id": "chain07/1",
+      "passed": true,
+      "computation_id": "8f1d2c03037af9169ae7dd6ef53a9b8279bb08f49363dae7e5e57b81309e69c6"
+    },
+    {
+      "id": "chain08/0",
+      "passed": true,
+      "computation_id": "f20a8770eb2b89c3d8b30aef44f1a8f550dca3e993a744a921602893a71f2398"
+    },
+    {
+      "id": "chain08/1",
+      "passed": true,
+      "computation_id": "32a69254876265d0d1658320deb571dee9a88ba5f62b48a460ba56a90f5b016b"
+    },
+    {
+      "id": "chain09/0",
+      "passed": true,
+      "computation_id": "f18cc2ff6fbfd2ed5364ce738928b5b895d639ac46e47bf29e4ee530e5547705"
+    },
+    {
+      "id": "chain09/1",
+      "passed": true,
+      "computation_id": "ec308da43d411e5a18ae034f237c4a7292822ad003925de20f3a1c3ac6623ba0"
+    },
+    {
+      "id": "chain10/0",
+      "passed": true,
+      "computation_id": "ec308da43d411e5a18ae034f237c4a7292822ad003925de20f3a1c3ac6623ba0"
+    },
+    {
+      "id": "chain10/1",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "chain11/0",
+      "passed": true,
+      "computation_id": "224661e7ff3be3a45a48744296f8ddd27fd12832c14f930d293dcf41ada92d63"
+    },
+    {
+      "id": "chain11/1",
+      "passed": true,
+      "computation_id": "67a3f238f3bac574b06de33c664073a07512e43c3fe14b3ab55be3cba365c903"
+    },
+    {
+      "id": "chain12/0",
+      "passed": true,
+      "computation_id": "0239b81788f9ee40f9369fac1c912f9780593c496b77421d2ae359828e4c2862"
+    },
+    {
+      "id": "chain12/1",
+      "passed": true,
+      "computation_id": "2cad5afa0dbe43e74399d6e6877589530de9c78d0533b9d7c5ba117ea8d8b975"
+    },
+    {
+      "id": "chain13/0",
+      "passed": true,
+      "computation_id": "87edba56a40da0ea9bf16af8d511fbd1ed8e9997fbc22fe2a04447c87a2b83bc"
+    },
+    {
+      "id": "chain13/1",
+      "passed": true,
+      "computation_id": "d433851d4203a2f50d22585af2cf3ed6686bccbbdfa8b69d1ed7ce921604161b"
+    },
+    {
+      "id": "chain14/0",
+      "passed": true,
+      "computation_id": "58dfbee6be645ed478b27c368f48b318e83a979d87f2efbfc31b7a03dd9da85c"
+    },
+    {
+      "id": "chain14/1",
+      "passed": true,
+      "computation_id": "376c8e55b486432c162b1acf84ef5872fed8bf6b1c024370d8e09f7cceb382b1"
+    },
+    {
+      "id": "chain15/0",
+      "passed": true,
+      "computation_id": "a1c6b4235d46a22ac20259a866ac6de69d63c7e8d57443a0998b6ab706074d80"
+    },
+    {
+      "id": "chain15/1",
+      "passed": true,
+      "kind": "definition_guard"
+    },
+    {
+      "id": "chain16/0",
+      "passed": true,
+      "computation_id": "2c23facff71041e0786d91c99b1b1188ae83d52b22c4f2982cb5ecf2585345c9"
+    },
+    {
+      "id": "chain16/1",
+      "passed": true,
+      "computation_id": "93af329f99ab4f61acedf780e74b547a78aeaf72d01c217cf4791f1547491d12"
+    },
+    {
+      "id": "chain17/0",
+      "passed": true,
+      "computation_id": "1e4181a52264853156fdce48106612e008ecafaa567ec39025d5f7c1b743678c"
+    },
+    {
+      "id": "chain17/1",
+      "passed": true,
+      "computation_id": "105079f2651e5a8c069a0a00ea88937abd485c7b512d5ed3a53fd88736b0d585"
+    },
+    {
+      "id": "chain18/0",
+      "passed": true,
+      "computation_id": "c39d1bc794e6cc6e8fecee43370d61c097432ee6ebe2c23a28ed0bb42738f34c"
+    },
+    {
+      "id": "chain18/1",
+      "passed": true,
+      "computation_id": "224661e7ff3be3a45a48744296f8ddd27fd12832c14f930d293dcf41ada92d63"
+    },
+    {
+      "id": "chain19/0",
+      "passed": true,
+      "computation_id": "855c021f124bb89124bb07c3a3bee3654d6a18f03c5f7a447d1be130babe08e4"
+    },
+    {
+      "id": "chain19/1",
+      "passed": true,
+      "computation_id": "376c8e55b486432c162b1acf84ef5872fed8bf6b1c024370d8e09f7cceb382b1"
+    },
+    {
+      "id": "chain20/0",
+      "passed": true,
+      "computation_id": "d433851d4203a2f50d22585af2cf3ed6686bccbbdfa8b69d1ed7ce921604161b"
+    },
+    {
+      "id": "chain20/1",
+      "passed": true,
+      "kind": "definition_guard"
+    }
+  ],
+  "passed": true
+}

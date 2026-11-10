@@ -16,6 +16,37 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="analyst")
     sub = p.add_subparsers(dest="cmd", required=True)
 
+    reproduction = sub.add_parser("verify-results", help="verify historical scorecard provenance offline")
+    reproduction.add_argument("--out-dir", default="/tmp/analyst-verified-results")
+
+    retail_import = sub.add_parser("retail-import", help="stream-convert the pinned public UCI workbook")
+    retail_import.add_argument("--cache", default=".retail_source")
+    retail_import.add_argument("--out", default="data/retail")
+    retail_import.add_argument("--download", action="store_true")
+    review = sub.add_parser("retail-review", help="run an immutable retail review without a model")
+    review.add_argument("--data", default="data/retail/development/transactions.csv")
+    review.add_argument("--start", required=True)
+    review.add_argument("--end", required=True)
+    review.add_argument("--root", default=".operations")
+    review.add_argument("--out", default="retail-review.html")
+    comparison = sub.add_parser("retail-compare", help="compare compatible completed reviews")
+    comparison.add_argument("previous")
+    comparison.add_argument("current")
+    comparison.add_argument("--root", default=".operations")
+    execute = sub.add_parser("retail-execute", help="resume queued or expired-leased review jobs")
+    execute.add_argument("job_id")
+    execute.add_argument("--root", default=".operations")
+    retail_eval = sub.add_parser("retail-eval", help="frozen real-data metric checks and optional free local-agent evaluation")
+    retail_eval.add_argument("--data-root", default="data/retail")
+    retail_eval.add_argument("--out-dir", default="retail_eval_results")
+    retail_eval.add_argument("--live-local", action="store_true")
+    retail_eval.add_argument("--policies", default="single,standard,high")
+    retail_eval.add_argument("--max-calls", type=int, default=1000)
+    pilot = sub.add_parser("retail-pilot", help="prepare or analyze the consented, counterbalanced pilot")
+    pilot.add_argument("--data-root", default="data/retail")
+    pilot.add_argument("--out-dir", default="pilot")
+    pilot.add_argument("--analyze", action="store_true")
+
     ask = sub.add_parser("ask", help="answer a business question against a dataset")
     ask.add_argument("question")
     ask.add_argument("--data", required=True, help="directory of CSV files")
@@ -127,6 +158,93 @@ def main(argv: list[str] | None = None) -> int:
     tv.add_argument("--timeout", type=int, default=60)
 
     args = p.parse_args(argv)
+
+    if args.cmd == "retail-pilot":
+        from pathlib import Path
+
+        from analyst.operations.pilot import analyze, prepare_pilot
+
+        output = Path(args.out_dir)
+        protocol = prepare_pilot(Path(args.data_root), output)
+        if args.analyze:
+            result = analyze(protocol, json.loads((output / "observations.json").read_text()))
+            (output / "SUMMARY.json").write_text(json.dumps(result, indent=2) + "\n")
+            print(json.dumps(result, indent=2))
+        else:
+            print(f"Pilot protocol and empty observations: {output}")
+        return 0
+
+    if args.cmd == "retail-eval":
+        from pathlib import Path
+
+        from analyst.eval.retail import build_contract, contract_checks, evaluate_local
+
+        output, data_root = Path(args.out_dir), Path(args.data_root)
+        output.mkdir(parents=True, exist_ok=True)
+        contract = build_contract(data_root)
+        path = output / "contract.json"
+        if path.exists() and json.loads(path.read_text()) != contract:
+            raise ValueError("frozen evaluation contract changed; choose a new output directory")
+        path.write_text(json.dumps(contract, indent=2) + "\n")
+        checks = contract_checks(contract, data_root)
+        (output / "contract-results.json").write_text(json.dumps(checks, indent=2) + "\n")
+        print(f"Deterministic contract/oracle checks: {sum(r['passed'] for r in checks['results'])}/{len(checks['results'])}")
+        if args.live_local:
+            from analyst.config import load_routing
+            from analyst.llm.client import make_client
+            from analyst.operations.preflight import local_preflight
+
+            preflight = local_preflight()
+            (output / "local-preflight.json").write_text(json.dumps(preflight, indent=2) + "\n")
+            if not preflight["allowed"]:
+                print("Live evaluation pending: " + "; ".join(preflight["reasons"]))
+                return 2
+            routing = load_routing()
+            routing.limits.update(max_output_tokens=256, request_timeout_s=90)
+            result = evaluate_local(contract, data_root, output, make_client("local", routing),
+                                    args.policies.split(","), args.max_calls)
+            print(json.dumps(result, indent=2))
+        return 0 if checks["passed"] else 1
+
+    if args.cmd in {"retail-import", "retail-review", "retail-compare", "retail-execute"}:
+        from pathlib import Path
+
+        from analyst.operations.service import Operations
+
+        if args.cmd == "retail-import":
+            from analyst.operations.source import import_uci
+
+            print(json.dumps(import_uci(Path(args.cache), Path(args.out), args.download), indent=2))
+            return 0
+        service = Operations(args.root)
+        if args.cmd == "retail-compare":
+            print(json.dumps(service.compare(args.previous, args.current), indent=2))
+            return 0
+        if args.cmd == "retail-execute":
+            result = service.execute(args.job_id)
+        else:
+            from analyst.operations.metrics import REGISTRY
+            from analyst.reporting import render_report, report_payload
+
+            snapshot = service.ingest(args.data, {"label": args.data})
+            book = service.save_playbook({"name": "Weekly retail review", "metrics": [
+                {"metric": name} for name in REGISTRY] + [{"metric": "net_sales", "group_by": "country"}]})
+            job = service.submit({"snapshot_id": snapshot["snapshot_id"], "playbook_id": book["playbook_id"],
+                                  "start": args.start, "end": args.end})
+            result = service.execute(job["job_id"])
+            if result["status"] == "done":
+                Path(args.out).write_text(render_report(report_payload(service.report_record(job["job_id"]))))
+        print(json.dumps(result, indent=2))
+        return 0 if result["status"] == "done" else 1
+
+    if args.cmd == "verify-results":
+        from pathlib import Path
+
+        from analyst.eval.reproduce import reproduce
+
+        result = reproduce(Path.cwd(), Path(args.out_dir))
+        print(json.dumps(result, indent=2))
+        return 0
 
     if args.cmd == "export-report":
         from pathlib import Path

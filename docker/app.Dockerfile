@@ -5,7 +5,7 @@ WORKDIR /app
 COPY pyproject.toml ./
 COPY analyst ./analyst
 COPY config ./config
-RUN pip install --no-cache-dir -e ".[postgres,otel]"
+RUN pip install --no-cache-dir -e ".[postgres,otel,retail]"
 
 # api:    uvicorn analyst.api.app:app --host 0.0.0.0 --port 8000
 # worker: arq analyst.api.worker.WorkerSettings

@@ -11,6 +11,7 @@ export default defineConfig(({ mode }) => {
       proxy: {
         "/runs": { target: apiTarget, ws: true },
         "/datasets": { target: apiTarget },
+        "/operations": { target: apiTarget },
       },
     },
   };

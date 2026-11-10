@@ -1,3 +1,22 @@
+# Current execution status
+
+The engineering roadmap is implemented and verified; see
+[ROADMAP_STATUS.md](docs/ROADMAP_STATUS.md) for exact completion gates and evidence.
+The user explicitly deferred live-model evaluation and actual pilot participants.
+Keep both results unclaimed until measured. The historical notes below predate
+this execution and do not define the current work queue.
+
+---
+
+# Current roadmap status
+
+Implementation of [the impact roadmap](docs/RESUME_IMPACT_ROADMAP.md) is now authorized.
+The user requires $0 spending and a prepared pilot with actual testers deferred.
+Historical scorecards reproduce offline with `python -m analyst verify-results`.
+The original notes below are historical; publication and CI have already occurred.
+
+---
+
 # Next Steps — evaluation complete
 
 The core build and ablation study are complete. The integrity-gated scorecard now

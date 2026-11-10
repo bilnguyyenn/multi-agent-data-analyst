@@ -32,11 +32,13 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 from analyst.api.events import make_event_bus
 from analyst.api.pgstore import make_run_store
 from analyst.api.runner import execute_run, new_run_id
+from analyst.api.operations import lifespan, router as operations_router
 from analyst.data import build_manifest, dataset_content_hash
 from analyst.followups import build_context
 from analyst.reporting import render_report, report_payload
 
-app = FastAPI(title="analyst", version="0.1.0")
+app = FastAPI(title="analyst", version="0.1.0", lifespan=lifespan)
+app.include_router(operations_router)
 app.add_middleware(  # dev: vite serves the UI from :5173
     CORSMiddleware, allow_origins=["http://localhost:5173"],
     allow_methods=["*"], allow_headers=["*"],

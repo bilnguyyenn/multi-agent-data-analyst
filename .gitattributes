@@ -1,0 +1,3 @@
+data/retail/**/*.csv linguist-generated=true
+retail_results/*.html linguist-generated=true
+examples/retail-walkthrough.html linguist-generated=true

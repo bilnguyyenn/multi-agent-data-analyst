@@ -1,16 +1,15 @@
-# Held-out evaluation results
+# Held-out statistical evaluation
 
-This directory is reserved for the independent 20-question statistical benchmark.
-No live score is committed yet. `SCORECARD.md` is created only after the integrity
-gate finds at least one complete, zero-error run.
+Two historical, complete, zero-error 20-question runs are published with their raw
+inputs: 40 question instances, overall component-rubric score 0.719. The two-seed
+uncertainty interval is very wide; this is early evidence on generated data, not
+external real-world accuracy. See [SCORECARD.md](SCORECARD.md).
 
-Run:
+Reproduce both historical scorecards without a model or network:
 
 ```bash
-python -m analyst heldout-eval --provider hosted --configs no-critic \
-  --seeds 20260717,20260718
+python -m analyst verify-results
 ```
 
-Generated CSVs live under ignored `.heldout_data/seed_<seed>/`. Raw attempts remain
-available locally for diagnosis. When publishing a score, explicitly unignore only
-the complete raw files listed in `SCORECARD.md` provenance.
+These July 2026 results describe the evaluated historical implementation, not
+subsequent report, follow-up, or operations-workflow changes.

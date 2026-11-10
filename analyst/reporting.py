@@ -67,6 +67,17 @@ def report_payload(run: dict) -> dict:
         context = FollowupContext.model_validate(run["followup_context"])
         payload["followup_context"] = context.model_dump()
         payload["parent_run_id"] = context.parent_run_id
+    if run.get("operations_evidence"):
+        from analyst.operations.metrics import fingerprint
+
+        packets = run["operations_evidence"]
+        for packet in packets:
+            allowed = set("metric_version metric_contract_hash engine_sha256 metric unit definition grain snapshot_hash request sql preparation_sql parameters values warnings quality duplicate_rows_retained group_count computation_id".split())
+            if set(packet) - allowed:
+                raise ValueError("unknown operations evidence fields are not exportable")
+            if fingerprint({k: v for k, v in packet.items() if k != "computation_id"}) != packet["computation_id"]:
+                raise ValueError("unresolvable operations evidence fingerprint")
+        payload["operations_evidence"] = packets
     for item in _records(run.get("statistical_evidence")):
         payload["statistical_evidence"].append({
             **_pick(item, "task_id request_id kind status sample_size summary warnings"),
@@ -196,7 +207,13 @@ def render_report(payload: dict) -> str:
             (len(payload["predictive_evidence"]), "model evaluations requested"),
             (quality.get("quality_score"), "data readiness / 100"),
         ]) + "</div>")
-    body += [f'<section id="answer"><h2>Answer</h2><div class="answer">{_e(payload["answer"])}</div>',
+    answer_markup = _e(payload["answer"])
+    if payload.get("operations_evidence"):
+        answer_markup = "".join(
+            f'<p><a href="#computation-{_e(p["computation_id"])}">{_e(p["metric"])} ({_e(p["unit"])})</a>: '
+            + _e([{r["segment"]: r["value"]} for r in p["values"]]) + '</p>'
+            for p in payload["operations_evidence"])
+    body += [f'<section id="answer"><h2>Answer</h2><div class="answer">{answer_markup}</div>',
              '<h3>Claim review</h3>', _table(["Task", "Claim", "Verdict", "Note"], [
                  [c.get(k) for k in ("task_id", "claim", "verdict", "note")] for c in claims]),
              '</section><section id="evidence"><h2>Statistical & predictive evidence</h2>']
@@ -233,6 +250,22 @@ def render_report(payload: dict) -> str:
                      [c.get(k) for k in ("name", "cv_mean", "cv_std", "folds")]
                      for c in item["candidates"]]), '</article>']
     body.append('</section>')
+    if payload.get("operations_evidence"):
+        body.append('<section><h2>Metric contracts & computation references</h2>')
+        for packet in payload["operations_evidence"]:
+            body += [f'<article id="computation-{_e(packet["computation_id"])}"><h3>{_e(packet["metric"])}</h3>',
+                     f'<p>{_e(packet["definition"])}</p><p>Version: {_e(packet["metric_version"])}</p>',
+                     f'<p>Metric definition SHA-256: <code>{_e(packet["metric_contract_hash"])}</code></p>',
+                     f'<p>Snapshot SHA-256: <code>{_e(packet["snapshot_hash"])}</code></p>',
+                     _table(["Segment", "Value", "Numerator", "Denominator", "Source rows"], [
+                         [r["segment"], (f'{r["value"]:.2f}' if packet["unit"] == "GBP" else str(r["value"])) if r["value"] is not None else None,
+                          r["numerator"], r["denominator"], r["source_rows"]]
+                         for r in packet["values"]]),
+                     f'<pre>{_e(packet["sql"])}</pre><p>Parameters: {_e(packet["parameters"])}</p>',
+                     f'<details><summary>Source parsing transformation</summary><pre>{_e(packet["preparation_sql"])}</pre></details>',
+                     f'<p>Snapshot quality diagnostics: {_e(packet["quality"])}</p>',
+                     _warnings(packet["warnings"]), '</article>']
+        body.append('</section>')
     body += ['<section id="quality"><h2>Data quality</h2>',
              f'<p>{_e(quality.get("summary", "No data-quality report recorded."))}</p>',
              _table(["Severity", "Location", "Finding", "Recommendation"], [

@@ -1,0 +1,284 @@
+{
+  "previous_job": "a132376863fd414fb65ecddb375a4b2f",
+  "current_job": "32fdf2650655463f821db64fd82a75ae",
+  "rows": [
+    {
+      "metric": "gross_sales",
+      "segment": "all",
+      "previous": 330410.49,
+      "current": 398583.05,
+      "delta": 68172.56,
+      "evidence_refs": [
+        "d19801d2c2feb7731679e768f6baecf84b1c30197a37248826abb0198cc358e7",
+        "6279ed0d28a2e6e4c816e9415f2e9d0e22e4de784dccc99943cba83a46b9d582"
+      ]
+    },
+    {
+      "metric": "cancellation_value",
+      "segment": "all",
+      "previous": 20618.09,
+      "current": 9882.88,
+      "delta": -10735.21,
+      "evidence_refs": [
+        "05231b7a7283c6e3036eda43464c0e949bc326f98f32bac3d743580d48862c44",
+        "b9ef3adc21d7238adf472d32d324667afce6828d9b3816659396a4cd203e07f6"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "all",
+      "previous": 309792.4,
+      "current": 388700.17,
+      "delta": 78907.77,
+      "evidence_refs": [
+        "74bedf5498045ee7ed59dbc8f02fe5bf259acb70eac3ccb5e8b908769bdad593",
+        "540d785152aa116f87e60b4bc5b8dabf397be73e9a7b99d3f55d0653751ae65a"
+      ]
+    },
+    {
+      "metric": "order_count",
+      "segment": "all",
+      "previous": 554,
+      "current": 655,
+      "delta": 101,
+      "evidence_refs": [
+        "7f0164d37f078d51e0ebb18eff4250188a3fffa92d62eed63f0435a4ee7d2355",
+        "770ffc6bb3cadf68ee98cc68ce16ddce976667065ef9d84175f35ba5bb19e6e5"
+      ]
+    },
+    {
+      "metric": "units_sold",
+      "segment": "all",
+      "previous": 169572,
+      "current": 200170,
+      "delta": 30598,
+      "evidence_refs": [
+        "6a9cb49111e711a95596147be707492d284b625e8791689283b3078c996c6dec",
+        "99e07797c979948331f90f1b6dc62e9b9beea3a7956fec3356b7b900f73fa0e3"
+      ]
+    },
+    {
+      "metric": "active_customers",
+      "segment": "all",
+      "previous": 452,
+      "current": 526,
+      "delta": 74,
+      "evidence_refs": [
+        "49f3313ee9606c65b9bba17302c03aab6e61f3eb7cbd96adb829c265edc70468",
+        "0a65ad7bf6c53c64a51692f5ebfaeb87f543bab4fa26db5390d7f06176df6236"
+      ]
+    },
+    {
+      "metric": "cancellation_rate",
+      "segment": "all",
+      "previous": 0.1529051987767584,
+      "current": 0.15809768637532134,
+      "delta": 0.0051924876,
+      "evidence_refs": [
+        "f94b4b47d0c0681b9fd7df7a6bc752c113a053c7843b3ca7e0008141e3345e2a",
+        "20d9ea2dfc1fecf10a2640c4f2814bbfa4355ff6cd7649ebe61fc4df8c0bd366"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Australia",
+      "previous": 1164.19,
+      "current": 0,
+      "delta": -1164.19,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Austria",
+      "previous": 0,
+      "current": 1329.78,
+      "delta": 1329.78,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Belgium",
+      "previous": 2412.53,
+      "current": 486.6,
+      "delta": -1925.93,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Channel Islands",
+      "previous": 1303.14,
+      "current": 0,
+      "delta": -1303.14,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "EIRE",
+      "previous": 3087.27,
+      "current": 9085.5,
+      "delta": 5998.23,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Finland",
+      "previous": 1241.28,
+      "current": 408.34,
+      "delta": -832.94,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "France",
+      "previous": 4718.81,
+      "current": 8725.53,
+      "delta": 4006.72,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Germany",
+      "previous": 2649.45,
+      "current": 4046.21,
+      "delta": 1396.76,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Hong Kong",
+      "previous": 0,
+      "current": 0.0,
+      "delta": 0.0,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Italy",
+      "previous": 205.92,
+      "current": -103.2,
+      "delta": -309.12,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Netherlands",
+      "previous": 4486.91,
+      "current": 9823.12,
+      "delta": 5336.21,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Norway",
+      "previous": 730.79,
+      "current": 0,
+      "delta": -730.79,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Poland",
+      "previous": 1361.23,
+      "current": 0,
+      "delta": -1361.23,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Portugal",
+      "previous": 424.56,
+      "current": 816.39,
+      "delta": 391.83,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Spain",
+      "previous": 1123.18,
+      "current": 1365.7,
+      "delta": 242.52,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Sweden",
+      "previous": 671.69,
+      "current": 1441.31,
+      "delta": 769.62,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "Switzerland",
+      "previous": 6207.67,
+      "current": 292.58,
+      "delta": -5915.09,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    },
+    {
+      "metric": "net_sales",
+      "segment": "United Kingdom",
+      "previous": 278003.78,
+      "current": 350982.31,
+      "delta": 72978.53,
+      "evidence_refs": [
+        "73653f6a2fab0f0939b8f93ed35a3f5fe89ed188e79a57a0d65b05387e81daee",
+        "1478bfad60adb1855c9cebbca71318c909c737da831ad58b2d876e7cce86292b"
+      ]
+    }
+  ],
+  "warnings": [
+    "Descriptive changes, not causal attribution. Check snapshot coverage and truncated group lists."
+  ]
+}

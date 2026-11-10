@@ -1,0 +1,2088 @@
+[
+  {
+    "suite": "heldout-statistical-v1",
+    "config": "no-critic",
+    "seed": 20260717,
+    "dataset_hash": "cb761458c6fbd877fb522a1d500b8b3aa6cf91340470b348cbd9ad04a7620791",
+    "results": [
+      {
+        "id": "he_b_conversion_ci",
+        "category": "estimation",
+        "method": "Wilson proportion interval",
+        "question": "Estimate variant B's conversion rate and a 95% confidence interval. Use the user as the unit of analysis.",
+        "score": 0.5,
+        "checks_passed": 2,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "rate",
+            "description": "conversion-rate point estimate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.15002005615724026
+          },
+          {
+            "id": "lower",
+            "description": "Wilson lower bound",
+            "passed": false,
+            "weight": 1.0,
+            "expected": 0.13654159986029973
+          },
+          {
+            "id": "upper",
+            "description": "Wilson upper bound",
+            "passed": false,
+            "weight": 1.0,
+            "expected": 0.16457541987062185
+          },
+          {
+            "id": "method",
+            "description": "interval method or uncertainty named",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 35.1,
+        "tokens": 5270,
+        "answer": "The conversion rate for variant B is 0.1500 based on 2493 observations.\n  data: {'conversion_rate': 0.15002005615724026, 'successes': 374, 'n': 2493}\n\n[!] Statistical caveats (validator):\n  - t1: The point estimate is based on a sufficient sample size, but no 95% confidence interval was provided. Deterministic statistical evidence flagged the request as invalid (\"one_proportion requires exactly one group\"), so the uncertainty around the estimate is missing. Compute a proper 95% CI (e.g., Wilson or exact binomial) and report it to fully answer the question.\n\n[=] Deterministic statistical evidence:\n  - t1:variant_b_conversion: deterministic statistical request could not be computed\n    warning: one_proportion requires exactly one group",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "variant_b_conversion",
+            "kind": "one_proportion",
+            "status": "invalid",
+            "sample_size": 0,
+            "intervals": [],
+            "effects": [],
+            "test": null,
+            "summary": "deterministic statistical request could not be computed",
+            "warnings": [
+              "one_proportion requires exactly one group"
+            ],
+            "diagnostics": {}
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "he_a_session_ci",
+        "category": "estimation",
+        "method": "one-mean t interval",
+        "question": "Estimate the mean session duration for variant A with a 95% confidence interval.",
+        "score": 1.0,
+        "checks_passed": 4,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "mean",
+            "description": "mean session duration",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 29.383765456721182
+          },
+          {
+            "id": "lower",
+            "description": "t-interval lower bound",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 28.970221137943938
+          },
+          {
+            "id": "upper",
+            "description": "t-interval upper bound",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 29.797309775498427
+          },
+          {
+            "id": "method",
+            "description": "mean interval is identified",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 9.9,
+        "tokens": 4969,
+        "answer": "The mean session_minutes for variant A is 29.38.\n  data: {'mean': 29.383765456721182, 'std': 10.559450714081484, 'n': 2507}\n\n[=] Deterministic statistical evidence:\n  - t1:session_minutes_ci: variant_A mean=29.38 (95% CI 28.97\u201329.8)",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "session_minutes_ci",
+            "kind": "one_mean",
+            "status": "computed",
+            "sample_size": 2507,
+            "intervals": [
+              {
+                "parameter": "mean:variant_A",
+                "estimate": 29.38376546,
+                "lower": 28.97022114,
+                "upper": 29.79730978,
+                "level": 0.95,
+                "method": "Student t"
+              }
+            ],
+            "effects": [],
+            "test": null,
+            "summary": "variant_A mean=29.38 (95% CI 28.97\u201329.8)",
+            "warnings": [],
+            "diagnostics": {}
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "he_alpha_sla_ci",
+        "category": "estimation",
+        "method": "Wilson proportion interval",
+        "question": "What proportion of Alpha-team tickets met SLA? Report a 95% confidence interval without adjusting for severity yet.",
+        "score": 0.75,
+        "checks_passed": 3,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "rate",
+            "description": "crude Alpha SLA rate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.6820020222446916
+          },
+          {
+            "id": "lower",
+            "description": "Wilson lower bound",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.6611431495509769
+          },
+          {
+            "id": "upper",
+            "description": "Wilson upper bound",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.7021553357014408
+          },
+          {
+            "id": "crude",
+            "description": "unadjusted estimand is explicit",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 65.3,
+        "tokens": 9368,
+        "answer": "The proportion of tickets for team Alpha that met SLA is 0.6820 with a 95% confidence interval of [0.6611, 0.7022].\n  data: {'proportion': 0.6820020222446916, 'lower_bound': 0.6611427604188321, 'upper_bound': 0.7021556989535013, 'successes': 1349, 'n': 1978}\n\n[=] Deterministic statistical evidence:\n  - t1:sla_alpha_proportion: deterministic statistical request could not be computed\n    warning: one_proportion requires exactly one group\n\n[!] Caveats \u2014 reviewer objections that could not be resolved:\n  - t1 [stats]: Deterministic statistical evidence indicates the one_proportion request is invalid (requires exactly one group). The proportion and confidence interval cannot be trusted as computed. Recompute the proportion for the single group (team='Alpha') using a valid binomial proportion method (e.g., Wilson score interval) with the correct successes and sample size.",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "sla_alpha_proportion",
+            "kind": "one_proportion",
+            "status": "invalid",
+            "sample_size": 0,
+            "intervals": [],
+            "effects": [],
+            "test": null,
+            "summary": "deterministic statistical request could not be computed",
+            "warnings": [
+              "one_proportion requires exactly one group"
+            ],
+            "diagnostics": {}
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "he_b_order_value_ci",
+        "category": "estimation",
+        "method": "conditional mean t interval",
+        "question": "Among converted variant-B users, estimate average order value with a 95% confidence interval. State the conditioning population.",
+        "score": 0.75,
+        "checks_passed": 3,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "mean",
+            "description": "conditional order-value mean",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 67.9975935828877
+          },
+          {
+            "id": "lower",
+            "description": "mean lower bound",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 63.90141335652039
+          },
+          {
+            "id": "upper",
+            "description": "mean upper bound",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 72.09377380925501
+          },
+          {
+            "id": "population",
+            "description": "conditioning on converted users",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 6.3,
+        "tokens": 5333,
+        "answer": "The mean order_value for converted variant-B users is 68.00.\n  data: {'mean': 67.9975935828877, 'std': 40.286106348256276, 'n': 374}\n\n[!] Statistical caveats (validator):\n  - t1: The statistical evidence (mean\u202f=\u202f67.9976, CI\u202f=\u202f[63.9014,\u202f72.0938], n\u202f=\u202f374) is sound, but the reported numbers are overly precise. Round to a sensible number of decimal places (e.g., two) to reflect the data's precision.\n\n[=] Deterministic statistical evidence:\n  - t1:order_value_ci: converted variant-B users mean=68 (95% CI 63.9\u201372.09)",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "order_value_ci",
+            "kind": "one_mean",
+            "status": "computed",
+            "sample_size": 374,
+            "intervals": [
+              {
+                "parameter": "mean:converted variant-B users",
+                "estimate": 67.99759358,
+                "lower": 63.90141336,
+                "upper": 72.09377381,
+                "level": 0.95,
+                "method": "Student t"
+              }
+            ],
+            "effects": [],
+            "test": null,
+            "summary": "converted variant-B users mean=68 (95% CI 63.9\u201372.09)",
+            "warnings": [],
+            "diagnostics": {}
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "he_island_small_n",
+        "category": "estimation",
+        "method": "small-subgroup proportion",
+        "question": "Does variant B appear to convert well in the island region? Estimate its rate, but explain how much confidence the small subgroup supports.",
+        "score": 0.75,
+        "checks_passed": 3,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "rate",
+            "description": "island/B point estimate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.12121212121212122
+          },
+          {
+            "id": "n",
+            "description": "island/B sample size",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 33.0
+          },
+          {
+            "id": "small_n",
+            "description": "small-sample limitation",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "uncertainty",
+            "description": "uncertainty is not overstated",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 5.6,
+        "tokens": 5266,
+        "answer": "The conversion rate for variant B in the island region is 12.12%.\n  data: {'conversion_rate': 0.12121212121212122, 'successes': 4, 'n': 33}\n\n[!] Statistical caveats (validator):\n  - t1: The deterministic statistical evidence is marked invalid (one_proportion requires exactly one group) and no confidence interval was provided. With only 4 conversions out of 33 users, the sample is very small, so the point estimate alone is insufficient. Compute a 95% Wilson confidence interval for the proportion (e.g., using successes=4, n=33) and report that interval alongside the rate to convey the uncertainty. Until the interval is supplied, the claim should be presented with this caveat about limited confidence.\n\n[=] Deterministic statistical evidence:\n  - t1:island_variant_b_conv: deterministic statistical request could not be computed\n    warning: one_proportion requires exactly one group",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "island_variant_b_conv",
+            "kind": "one_proportion",
+            "status": "invalid",
+            "sample_size": 0,
+            "intervals": [],
+            "effects": [],
+            "test": null,
+            "summary": "deterministic statistical request could not be computed",
+            "warnings": [
+              "one_proportion requires exactly one group"
+            ],
+            "diagnostics": {}
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "ht_conversion_effect",
+        "category": "testing_effects",
+        "method": "two-proportion comparison",
+        "question": "Compare conversion between B and A. Report the absolute effect, a hypothesis test, and a standardized effect size; distinguish statistical from practical importance.",
+        "score": 0.8,
+        "checks_passed": 4,
+        "checks_total": 5,
+        "check_results": [
+          {
+            "id": "difference",
+            "description": "B-minus-A risk difference",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.019585273548544613
+          },
+          {
+            "id": "p_value",
+            "description": "two-proportion p-value",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.04610938497023341
+          },
+          {
+            "id": "cohen_h",
+            "description": "Cohen's h",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.056437118099222916
+          },
+          {
+            "id": "decision",
+            "description": "correct significance decision",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "practical",
+            "description": "practical magnitude discussed",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 60.9,
+        "tokens": 6105,
+        "answer": "Variant B had a conversion rate of 15.00% compared to Variant A's 13.04%, resulting in an absolute difference of 1.96%.\n  data: {'rate_a': 0.13043478260869565, 'rate_b': 0.15002005615724026, 'abs_diff': 0.019585273548544613, 'cohens_h': 0.056437118099222916}\n\n[!] Statistical caveats (validator):\n  - t1: The statistical evidence (sample sizes, Wilson confidence intervals, two\u2011proportion z\u2011test) is sound, but the reported numbers are overly precise. Round rates and effect sizes to a sensible number of decimal places (e.g., 15.0% vs 13.0%, diff\u202f\u2248\u202f2.0%, h\u202f\u2248\u202f0.06) and emphasize that, despite statistical significance, the practical importance is negligible.\n\n[=] Deterministic statistical evidence:\n  - t1:conv_compare: A\u2212B rate difference=-0.01959 (95% CI -0.03885\u2013-0.0003305); p=0.04611\n    effects: risk difference=-0.01959 (absolute probability difference), odds ratio=0.8499 (A vs B), Cohen's h=-0.05644 (negligible)",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "conv_compare",
+            "kind": "two_proportion",
+            "status": "computed",
+            "sample_size": 5000,
+            "intervals": [
+              {
+                "parameter": "rate:A",
+                "estimate": 0.1304347826,
+                "lower": 0.1178150228,
+                "upper": 0.1441853741,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "rate:B",
+                "estimate": 0.1500200562,
+                "lower": 0.1365415999,
+                "upper": 0.1645754199,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "rate_difference:A-B",
+                "estimate": -0.01958527355,
+                "lower": -0.0388496695,
+                "upper": -0.0003304676695,
+                "level": 0.95,
+                "method": "Newcombe-Wilson"
+              }
+            ],
+            "effects": [
+              {
+                "name": "risk difference",
+                "value": -0.01958527355,
+                "interpretation": "absolute probability difference"
+              },
+              {
+                "name": "odds ratio",
+                "value": 0.8498663102,
+                "interpretation": "A vs B"
+              },
+              {
+                "name": "Cohen's h",
+                "value": -0.0564371181,
+                "interpretation": "negligible"
+              }
+            ],
+            "test": {
+              "name": "two-proportion z-test",
+              "statistic": -1.9943906,
+              "p_value": 0.04610938497,
+              "alternative": "two-sided",
+              "null_value": 0.0,
+              "alpha": 0.05,
+              "significant": true
+            },
+            "summary": "A\u2212B rate difference=-0.01959 (95% CI -0.03885\u2013-0.0003305); p=0.04611",
+            "warnings": [],
+            "diagnostics": {}
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "ht_session_effect",
+        "category": "testing_effects",
+        "method": "Welch mean comparison",
+        "question": "Compare mean session duration for B versus A using Welch's test and an effect size. Is a statistically detectable difference large in practice?",
+        "score": 0.2,
+        "checks_passed": 1,
+        "checks_total": 5,
+        "check_results": [
+          {
+            "id": "difference",
+            "description": "B-minus-A mean difference",
+            "passed": false,
+            "weight": 1.0,
+            "expected": 1.11652335194308
+          },
+          {
+            "id": "p_value",
+            "description": "Welch p-value",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.00013874478438509428
+          },
+          {
+            "id": "hedges_g",
+            "description": "Hedges' g",
+            "passed": false,
+            "weight": 1.0,
+            "expected": 0.10783010553806734
+          },
+          {
+            "id": "method",
+            "description": "Welch comparison named",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "magnitude",
+            "description": "small standardized magnitude recognized",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 4.8,
+        "tokens": 6348,
+        "answer": "Variant A mean session_minutes was 29.38 and Variant B was 30.50, with a Cohen's d of -0.108.\n  data: {'mean_a': 29.383765456721182, 'mean_b': 30.500288808664262, 'cohens_d': -0.1078462897644339, 't_stat': -3.8133587835793414, 'df': 4991.9481935144495}\n\n[!] Statistical caveats (validator):\n  - t1: The reported means, standard deviations, and test statistics are given with excessive decimal precision; rounding to two decimal places is appropriate. The effect size is negligible, so while the difference is statistically detectable, it is not large in practical terms.\n\n[=] Deterministic statistical evidence:\n  - t1:session_minutes_compare: A\u2212B mean difference=-1.117 (95% CI -1.691\u2013-0.5425); p=0.0001387\n    effects: mean difference=-1.117 (A minus B), Hedges' g=-0.1078 (negligible)",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "session_minutes_compare",
+            "kind": "two_mean",
+            "status": "computed",
+            "sample_size": 5000,
+            "intervals": [
+              {
+                "parameter": "mean:A",
+                "estimate": 29.38376546,
+                "lower": 28.97022114,
+                "upper": 29.79730978,
+                "level": 0.95,
+                "method": "Student t"
+              },
+              {
+                "parameter": "mean:B",
+                "estimate": 30.50028881,
+                "lower": 30.10201873,
+                "upper": 30.89855889,
+                "level": 0.95,
+                "method": "Student t"
+              },
+              {
+                "parameter": "mean_difference:A-B",
+                "estimate": -1.116523352,
+                "lower": -1.690525538,
+                "upper": -0.5425211659,
+                "level": 0.95,
+                "method": "Welch t"
+              }
+            ],
+            "effects": [
+              {
+                "name": "mean difference",
+                "value": -1.116523352,
+                "interpretation": "A minus B"
+              },
+              {
+                "name": "Hedges' g",
+                "value": -0.1078301055,
+                "interpretation": "negligible"
+              }
+            ],
+            "test": {
+              "name": "Welch's t-test",
+              "statistic": -3.813358784,
+              "p_value": 0.0001387447844,
+              "alternative": "two-sided",
+              "null_value": 0.0,
+              "alpha": 0.05,
+              "significant": true
+            },
+            "summary": "A\u2212B mean difference=-1.117 (95% CI -1.691\u2013-0.5425); p=0.0001387",
+            "warnings": [],
+            "diagnostics": {}
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "ht_device_conversion",
+        "category": "testing_effects",
+        "method": "chi-square association",
+        "question": "Test whether device type and conversion are associated. Include a chi-square p-value and Cramer's V, and avoid causal language.",
+        "score": 0.75,
+        "checks_passed": 3,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "p_value",
+            "description": "chi-square p-value",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 7.86732620031673e-11
+          },
+          {
+            "id": "cramers_v",
+            "description": "Cramer's V",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.09196794356816544
+          },
+          {
+            "id": "method",
+            "description": "chi-square method named",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "association",
+            "description": "association rather than causation",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 6.0,
+        "tokens": 6063,
+        "answer": "The association between device type and conversion was analyzed, yielding a Cramer's V of 0.0926.\n  data: {'cramers_v': 0.09257180399868523, 'chi2_stat': 42.84769447785497}\n\n[!] Statistical caveats (validator):\n  - t1: The chi\u2011square test could not be computed because the column identifiers were supplied as integers rather than strings, causing a validation error. Consequently, the p\u2011value is missing, and the reported chi\u2011square statistic cannot be trusted. Re\u2011run the test with proper categorical column labels (e.g., \"converted_0\" and \"converted_1\") and include the p\u2011value to confirm significance before drawing conclusions.\n\n[=] Deterministic statistical evidence:\n  - t1:device_conversion_assoc: deterministic statistical request could not be computed\n    warning: 2 validation errors for StatisticalRequest\ncolumns.0\n  Input should be a valid string [type=string_type, input_value=0, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type\ncolumns.1",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "device_conversion_assoc",
+            "kind": "chi_square",
+            "status": "invalid",
+            "sample_size": 0,
+            "intervals": [],
+            "effects": [],
+            "test": null,
+            "summary": "deterministic statistical request could not be computed",
+            "warnings": [
+              "2 validation errors for StatisticalRequest\ncolumns.0\n  Input should be a valid string [type=string_type, input_value=0, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type\ncolumns.1\n  Input should be a valid string [type=string_type, input_value=1, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type"
+            ],
+            "diagnostics": {}
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "ht_b_target",
+        "category": "testing_effects",
+        "method": "exact one-proportion test",
+        "question": "Test whether variant B's conversion rate differs from a 13% target. Report the test result and uncertainty.",
+        "score": 0.5,
+        "checks_passed": 2,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "rate",
+            "description": "observed B rate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.15002005615724026
+          },
+          {
+            "id": "p_value",
+            "description": "exact-binomial p-value",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.003504559015638354
+          },
+          {
+            "id": "decision",
+            "description": "correct significance decision",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "method",
+            "description": "binomial/proportion test named",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 60.3,
+        "tokens": 5581,
+        "answer": "The conversion rate for variant B is 0.1500 based on 374 conversions out of 2493 users.\n  data: {'conversion_rate': 0.15002005615724026, 'successes': 374, 'n': 2493}\n\n[=] Deterministic statistical evidence:\n  - t1:variant_b_conversion_test: variant_B rate=0.15 (95% CI 0.1365\u20130.1646); p=0.003505\n    effects: Cohen's h=0.05773 (negligible)",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "variant_b_conversion_test",
+            "kind": "one_proportion",
+            "status": "computed",
+            "sample_size": 2493,
+            "intervals": [
+              {
+                "parameter": "rate:variant_B",
+                "estimate": 0.1500200562,
+                "lower": 0.1365415999,
+                "upper": 0.1645754199,
+                "level": 0.95,
+                "method": "Wilson score"
+              }
+            ],
+            "effects": [
+              {
+                "name": "Cohen's h",
+                "value": 0.05772902866,
+                "interpretation": "negligible"
+              }
+            ],
+            "test": {
+              "name": "exact binomial test",
+              "statistic": 0.1500200562,
+              "p_value": 0.003504559016,
+              "alternative": "two-sided",
+              "null_value": 0.13,
+              "alpha": 0.05,
+              "significant": true
+            },
+            "summary": "variant_B rate=0.15 (95% CI 0.1365\u20130.1646); p=0.003505",
+            "warnings": [],
+            "diagnostics": {}
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "ht_resolution_effect",
+        "category": "testing_effects",
+        "method": "unadjusted Welch comparison",
+        "question": "As a deliberately unadjusted descriptive comparison, quantify Alpha minus Beta mean resolution time with Welch's test and Hedges' g. Flag the severity-mix limitation.",
+        "score": 1.0,
+        "checks_passed": 4,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "difference",
+            "description": "Alpha-minus-Beta mean difference",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 5.348342114395841
+          },
+          {
+            "id": "p_value",
+            "description": "Welch p-value",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 6.023719102993288e-72
+          },
+          {
+            "id": "hedges_g",
+            "description": "Hedges' g",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.5815595211373821
+          },
+          {
+            "id": "confounding",
+            "description": "severity composition limitation",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 4.8,
+        "tokens": 7690,
+        "answer": "The mean resolution time for team Alpha was 13.49 hours and for team Beta was 8.14 hours; a potential severity-mix confounder was identified.\n  data: {'alpha_mean': 13.489494438827098, 'beta_mean': 8.141152324431257, 'alpha_n': 1978, 'beta_n': 2022}\n\n[=] Deterministic statistical evidence:\n  - t1:resolution_time_compare: Alpha\u2212Beta mean difference=5.348 (95% CI 4.777\u20135.92); p=6.024e-72\n    effects: mean difference=5.348 (Alpha minus Beta), Hedges' g=0.5816 (medium)\n  - t1:severity_mix_adjustment: pooled-standardized rates: Alpha=0.7699, Beta=0.6735; crude winner=Beta, adjusted winner=Alpha; winner reversed after adjustment\n    effects: standardization change:Alpha=0.0879 (adjusted rate minus crude rate), standardization change:Beta=-0.1025 (adjusted rate minus crude rate), crude risk difference:Alpha-Beta=-0.09396 (unadjusted probability difference), adjusted risk difference:Alpha-Beta=0.0964 (direct-standardized probability difference), Mantel-Haenszel common odds ratio=1.75 (Alpha vs",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "resolution_time_compare",
+            "kind": "two_mean",
+            "status": "computed",
+            "sample_size": 4000,
+            "intervals": [
+              {
+                "parameter": "mean:Alpha",
+                "estimate": 13.48949444,
+                "lower": 13.03147914,
+                "upper": 13.94750974,
+                "level": 0.95,
+                "method": "Student t"
+              },
+              {
+                "parameter": "mean:Beta",
+                "estimate": 8.141152324,
+                "lower": 7.798536173,
+                "upper": 8.483768476,
+                "level": 0.95,
+                "method": "Student t"
+              },
+              {
+                "parameter": "mean_difference:Alpha-Beta",
+                "estimate": 5.348342114,
+                "lower": 4.77651916,
+                "upper": 5.920165069,
+                "level": 0.95,
+                "method": "Welch t"
+              }
+            ],
+            "effects": [
+              {
+                "name": "mean difference",
+                "value": 5.348342114,
+                "interpretation": "Alpha minus Beta"
+              },
+              {
+                "name": "Hedges' g",
+                "value": 0.5815595211,
+                "interpretation": "medium"
+              }
+            ],
+            "test": {
+              "name": "Welch's t-test",
+              "statistic": 18.33785385,
+              "p_value": 6.023719103e-72,
+              "alternative": "two-sided",
+              "null_value": 0.0,
+              "alpha": 0.05,
+              "significant": true
+            },
+            "summary": "Alpha\u2212Beta mean difference=5.348 (95% CI 4.777\u20135.92); p=6.024e-72",
+            "warnings": [],
+            "diagnostics": {}
+          },
+          {
+            "task_id": "t1",
+            "request_id": "severity_mix_adjustment",
+            "kind": "stratified_proportion",
+            "status": "computed",
+            "sample_size": 4000,
+            "intervals": [
+              {
+                "parameter": "crude_rate:Alpha",
+                "estimate": 0.6820020222,
+                "lower": 0.6611431496,
+                "upper": 0.7021553357,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "adjusted_rate:Alpha",
+                "estimate": 0.7699026241,
+                "lower": 0.752125649,
+                "upper": 0.7876795993,
+                "level": 0.95,
+                "method": "direct standardization (pooled weights)"
+              },
+              {
+                "parameter": "crude_rate:Beta",
+                "estimate": 0.7759643917,
+                "lower": 0.7572773678,
+                "upper": 0.7936048324,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "adjusted_rate:Beta",
+                "estimate": 0.6734997924,
+                "lower": 0.6484176062,
+                "upper": 0.6985819787,
+                "level": 0.95,
+                "method": "direct standardization (pooled weights)"
+              },
+              {
+                "parameter": "adjusted_rate_difference:Alpha-Beta",
+                "estimate": 0.0964028317,
+                "lower": 0.06565975265,
+                "upper": 0.1271459107,
+                "level": 0.95,
+                "method": "direct standardization (pooled weights)"
+              }
+            ],
+            "effects": [
+              {
+                "name": "standardization change:Alpha",
+                "value": 0.0879006019,
+                "interpretation": "adjusted rate minus crude rate"
+              },
+              {
+                "name": "standardization change:Beta",
+                "value": -0.1024645992,
+                "interpretation": "adjusted rate minus crude rate"
+              },
+              {
+                "name": "crude risk difference:Alpha-Beta",
+                "value": -0.09396236945,
+                "interpretation": "unadjusted probability difference"
+              },
+              {
+                "name": "adjusted risk difference:Alpha-Beta",
+                "value": 0.0964028317,
+                "interpretation": "direct-standardized probability difference"
+              },
+              {
+                "name": "Mantel-Haenszel common odds ratio",
+                "value": 1.749590127,
+                "interpretation": "Alpha vs Beta, adjusted for strata"
+              }
+            ],
+            "test": {
+              "name": "Cochran-Mantel-Haenszel test (df=1)",
+              "statistic": 34.81001468,
+              "p_value": 3.634988326e-09,
+              "alternative": "two-sided",
+              "null_value": 1.0,
+              "alpha": 0.05,
+              "significant": true
+            },
+            "summary": "pooled-standardized rates: Alpha=0.7699, Beta=0.6735; crude winner=Beta, adjusted winner=Alpha; winner reversed after adjustment",
+            "warnings": [
+              "Simpson's paradox detected: the crude direction reverses the consistent within-stratum direction for Alpha vs Beta"
+            ],
+            "diagnostics": {
+              "standardization": "pooled",
+              "direction": "higher",
+              "reference_weights": {
+                "hard": 0.50275,
+                "easy": 0.49725
+              },
+              "crude_rates": {
+                "Alpha": 0.6820020222,
+                "Beta": 0.7759643917
+              },
+              "adjusted_rates": {
+                "Alpha": 0.7699026241,
+                "Beta": 0.6734997924
+              },
+              "stratum_rates": {
+                "Alpha": {
+                  "hard": 0.6204704387,
+                  "easy": 0.9209876543
+                },
+                "Beta": {
+                  "hard": 0.49543379,
+                  "easy": 0.8535353535
+                }
+              },
+              "crude_ranking": [
+                "Beta",
+                "Alpha"
+              ],
+              "adjusted_ranking": [
+                "Alpha",
+                "Beta"
+              ],
+              "ranking_reversal": true,
+              "winner_reversal": true,
+              "simpson_reversal": true,
+              "simpson_pairs": [
+                [
+                  "Alpha",
+                  "Beta"
+                ]
+              ]
+            }
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "hc_team_simpson",
+        "category": "confounding",
+        "method": "pooled direct standardization",
+        "question": "Which support team has the better SLA record after adjusting for ticket severity? Compare the crude and standardized conclusions and check for Simpson's paradox.",
+        "score": 1.0,
+        "checks_passed": 5,
+        "checks_total": 5,
+        "check_results": [
+          {
+            "id": "crude",
+            "description": "Beta identified as crude winner",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "adjusted",
+            "description": "Alpha identified as adjusted winner",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "alpha_adjusted",
+            "description": "standardized Alpha rate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.7699026241435332
+          },
+          {
+            "id": "beta_adjusted",
+            "description": "standardized Beta rate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.6734997924449979
+          },
+          {
+            "id": "simpson",
+            "description": "Simpson/composition reversal named",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 6.2,
+        "tokens": 6731,
+        "answer": "Crude SLA rankings are Beta, Alpha. A stratified analysis by severity is requested to check for Simpson's Paradox.\n  data: {'Beta': 0.7759643916913946, 'Alpha': 0.6820020222446916}\n\n[=] Deterministic statistical evidence:\n  - t1:sla_adjustment: pooled-standardized rates: Alpha=0.7699, Beta=0.6735; crude winner=Beta, adjusted winner=Alpha; winner reversed after adjustment\n    effects: standardization change:Alpha=0.0879 (adjusted rate minus crude rate), standardization change:Beta=-0.1025 (adjusted rate minus crude rate), crude risk difference:Alpha-Beta=-0.09396 (unadjusted probability difference), adjusted risk difference:Alpha-Beta=0.0964 (direct-standardized probability difference), Mantel-Haenszel common odds ratio=1.75 (Alpha vs Beta, adjusted for strata)\n    warning: Simpson's paradox detected: the crude direction reverses the consistent within-stratum direction for Alpha vs Beta",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "sla_adjustment",
+            "kind": "stratified_proportion",
+            "status": "computed",
+            "sample_size": 4000,
+            "intervals": [
+              {
+                "parameter": "crude_rate:Alpha",
+                "estimate": 0.6820020222,
+                "lower": 0.6611431496,
+                "upper": 0.7021553357,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "adjusted_rate:Alpha",
+                "estimate": 0.7699026241,
+                "lower": 0.752125649,
+                "upper": 0.7876795993,
+                "level": 0.95,
+                "method": "direct standardization (pooled weights)"
+              },
+              {
+                "parameter": "crude_rate:Beta",
+                "estimate": 0.7759643917,
+                "lower": 0.7572773678,
+                "upper": 0.7936048324,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "adjusted_rate:Beta",
+                "estimate": 0.6734997924,
+                "lower": 0.6484176062,
+                "upper": 0.6985819787,
+                "level": 0.95,
+                "method": "direct standardization (pooled weights)"
+              },
+              {
+                "parameter": "adjusted_rate_difference:Alpha-Beta",
+                "estimate": 0.0964028317,
+                "lower": 0.06565975265,
+                "upper": 0.1271459107,
+                "level": 0.95,
+                "method": "direct standardization (pooled weights)"
+              }
+            ],
+            "effects": [
+              {
+                "name": "standardization change:Alpha",
+                "value": 0.0879006019,
+                "interpretation": "adjusted rate minus crude rate"
+              },
+              {
+                "name": "standardization change:Beta",
+                "value": -0.1024645992,
+                "interpretation": "adjusted rate minus crude rate"
+              },
+              {
+                "name": "crude risk difference:Alpha-Beta",
+                "value": -0.09396236945,
+                "interpretation": "unadjusted probability difference"
+              },
+              {
+                "name": "adjusted risk difference:Alpha-Beta",
+                "value": 0.0964028317,
+                "interpretation": "direct-standardized probability difference"
+              },
+              {
+                "name": "Mantel-Haenszel common odds ratio",
+                "value": 1.749590127,
+                "interpretation": "Alpha vs Beta, adjusted for strata"
+              }
+            ],
+            "test": {
+              "name": "Cochran-Mantel-Haenszel test (df=1)",
+              "statistic": 34.81001468,
+              "p_value": 3.634988326e-09,
+              "alternative": "two-sided",
+              "null_value": 1.0,
+              "alpha": 0.05,
+              "significant": true
+            },
+            "summary": "pooled-standardized rates: Alpha=0.7699, Beta=0.6735; crude winner=Beta, adjusted winner=Alpha; winner reversed after adjustment",
+            "warnings": [
+              "Simpson's paradox detected: the crude direction reverses the consistent within-stratum direction for Alpha vs Beta"
+            ],
+            "diagnostics": {
+              "standardization": "pooled",
+              "direction": "higher",
+              "reference_weights": {
+                "easy": 0.49725,
+                "hard": 0.50275
+              },
+              "crude_rates": {
+                "Alpha": 0.6820020222,
+                "Beta": 0.7759643917
+              },
+              "adjusted_rates": {
+                "Alpha": 0.7699026241,
+                "Beta": 0.6734997924
+              },
+              "stratum_rates": {
+                "Alpha": {
+                  "easy": 0.9209876543,
+                  "hard": 0.6204704387
+                },
+                "Beta": {
+                  "easy": 0.8535353535,
+                  "hard": 0.49543379
+                }
+              },
+              "crude_ranking": [
+                "Beta",
+                "Alpha"
+              ],
+              "adjusted_ranking": [
+                "Alpha",
+                "Beta"
+              ],
+              "ranking_reversal": true,
+              "winner_reversal": true,
+              "simpson_reversal": true,
+              "simpson_pairs": [
+                [
+                  "Alpha",
+                  "Beta"
+                ]
+              ]
+            }
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "hc_rollout_simpson",
+        "category": "confounding",
+        "method": "pooled direct standardization",
+        "question": "Does the new feature experience have higher adoption than legacy after standardizing for plan? Show whether the crude winner changes.",
+        "score": 0.4,
+        "checks_passed": 2,
+        "checks_total": 5,
+        "check_results": [
+          {
+            "id": "crude",
+            "description": "legacy identified as crude winner",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "adjusted",
+            "description": "new identified as adjusted winner",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "new_adjusted",
+            "description": "standardized new rate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.1603240481767692
+          },
+          {
+            "id": "legacy_adjusted",
+            "description": "standardized legacy rate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.10772249271821747
+          },
+          {
+            "id": "plan",
+            "description": "plan composition/reversal explained",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 62.4,
+        "tokens": 14731,
+        "answer": "The crude winner was legacy and the standardized winner was new, meaning the winner changed after standardization.\n  data: {'crude_winner': 'legacy', 'standardized_winner': 'new', 'winner_changed': True, 'crude_rates': {'legacy': 0.15247252747252749, 'new': 0.13649706457925637}, 'standardized_rates': {'legacy': 0.10796840781166653, 'new': 0.16050786294056762}}\n\n[!] Statistical caveats (validator):\n  - t4: The conclusion is based on point estimates only; no confidence intervals, hypothesis tests, or p\u2011values were provided. The observed differences could be due to sampling variability. Report uncertainty (e.g., 95% confidence intervals) before asserting a statistically significant change.",
+        "statistical_evidence": [],
+        "error": null
+      },
+      {
+        "id": "hc_experiment_sound_control",
+        "category": "confounding",
+        "method": "stratified sound control",
+        "question": "Recompute A/B conversion standardized across device. Does adjustment reverse the experiment's winner, or is the B result robust?",
+        "score": 1.0,
+        "checks_passed": 4,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "winner",
+            "description": "B remains the adjusted winner",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "a_adjusted",
+            "description": "device-standardized A rate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.1309827888931368
+          },
+          {
+            "id": "b_adjusted",
+            "description": "device-standardized B rate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.14936498835835296
+          },
+          {
+            "id": "no_reversal",
+            "description": "sound control is not falsely called a reversal",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 5.2,
+        "tokens": 7039,
+        "answer": "Raw conversion rates were {'A': 0.13043478260869565, 'B': 0.15002005615724026}; after device standardization, rates were {'A': 0.1309827888931368, 'B': 0.14936498835835296}. The variant with the higher conversion did not change after standardization.\n  data: {'raw_rates': {'A': 0.13043478260869565, 'B': 0.15002005615724026}, 'standardized_rates': {'A': 0.1309827888931368, 'B': 0.14936498835835296}, 'winner_changed': False}\n\n[!] Statistical caveats (validator):\n  - t1: The point estimates show B > A (0.1494 vs 0.1310) and the winner does not change, but the 95% CI for the adjusted risk difference (-0.0375 to 0.00078) includes zero and the Cochran\u2011Mantel\u2011Haenszel p\u2011value is 0.060 (> 0.05). Therefore the superiority of B is not statistically confirmed; the claim of robustness requires this caveat.\n\n[=] Deterministic statistical evidence:\n  - t1:device_adjustment: pooled-standardized rates: B=0.1494, A=0.131; crude winner=B, adjusted winner=B\n    effects: standardization change:A=0.000548 ",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "device_adjustment",
+            "kind": "stratified_proportion",
+            "status": "computed",
+            "sample_size": 5000,
+            "intervals": [
+              {
+                "parameter": "crude_rate:A",
+                "estimate": 0.1304347826,
+                "lower": 0.1178150228,
+                "upper": 0.1441853741,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "adjusted_rate:A",
+                "estimate": 0.1309827889,
+                "lower": 0.1178000996,
+                "upper": 0.1441654782,
+                "level": 0.95,
+                "method": "direct standardization (pooled weights)"
+              },
+              {
+                "parameter": "crude_rate:B",
+                "estimate": 0.1500200562,
+                "lower": 0.1365415999,
+                "upper": 0.1645754199,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "adjusted_rate:B",
+                "estimate": 0.1493649884,
+                "lower": 0.135461238,
+                "upper": 0.1632687387,
+                "level": 0.95,
+                "method": "direct standardization (pooled weights)"
+              },
+              {
+                "parameter": "adjusted_rate_difference:A-B",
+                "estimate": -0.01838219947,
+                "lower": -0.03754198997,
+                "upper": 0.0007775910358,
+                "level": 0.95,
+                "method": "direct standardization (pooled weights)"
+              }
+            ],
+            "effects": [
+              {
+                "name": "standardization change:A",
+                "value": 0.0005480062844,
+                "interpretation": "adjusted rate minus crude rate"
+              },
+              {
+                "name": "standardization change:B",
+                "value": -0.0006550677989,
+                "interpretation": "adjusted rate minus crude rate"
+              },
+              {
+                "name": "crude risk difference:A-B",
+                "value": -0.01958527355,
+                "interpretation": "unadjusted probability difference"
+              },
+              {
+                "name": "adjusted risk difference:A-B",
+                "value": -0.01838219947,
+                "interpretation": "direct-standardized probability difference"
+              },
+              {
+                "name": "Mantel-Haenszel common odds ratio",
+                "value": 0.8572695205,
+                "interpretation": "A vs B, adjusted for strata"
+              }
+            ],
+            "test": {
+              "name": "Cochran-Mantel-Haenszel test (df=1)",
+              "statistic": 3.531301916,
+              "p_value": 0.06022048452,
+              "alternative": "two-sided",
+              "null_value": 1.0,
+              "alpha": 0.05,
+              "significant": false
+            },
+            "summary": "pooled-standardized rates: B=0.1494, A=0.131; crude winner=B, adjusted winner=B",
+            "warnings": [],
+            "diagnostics": {
+              "standardization": "pooled",
+              "direction": "higher",
+              "reference_weights": {
+                "desktop": 0.35,
+                "mobile": 0.65
+              },
+              "crude_rates": {
+                "A": 0.1304347826,
+                "B": 0.1500200562
+              },
+              "adjusted_rates": {
+                "A": 0.1309827889,
+                "B": 0.1493649884
+              },
+              "stratum_rates": {
+                "A": {
+                  "desktop": 0.1707602339,
+                  "mobile": 0.1095641646
+                },
+                "B": {
+                  "desktop": 0.1966480447,
+                  "mobile": 0.1239048811
+                }
+              },
+              "crude_ranking": [
+                "B",
+                "A"
+              ],
+              "adjusted_ranking": [
+                "B",
+                "A"
+              ],
+              "ranking_reversal": false,
+              "winner_reversal": false,
+              "simpson_reversal": false,
+              "simpson_pairs": []
+            }
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "hc_team_equal_standard",
+        "category": "confounding",
+        "method": "equal-weight direct standardization",
+        "question": "Standardize each team's SLA rate to a population that is exactly 50% easy and 50% hard. Report both adjusted rates and the winner.",
+        "score": 0.5,
+        "checks_passed": 2,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "alpha",
+            "description": "equal-weight Alpha rate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.7707290464866222
+          },
+          {
+            "id": "beta",
+            "description": "equal-weight Beta rate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.6744845717448457
+          },
+          {
+            "id": "winner",
+            "description": "Alpha wins equal-weight comparison",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "weights",
+            "description": "50/50 target population explicit",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 14.2,
+        "tokens": 5391,
+        "answer": "The winning team is Alpha with an adjusted SLA rate of 0.7707.\n  data: [{'team': 'Alpha', 'adjusted_sla_rate': 0.7707290464866222}, {'team': 'Beta', 'adjusted_sla_rate': 0.6744845717448457}]\n\n[!] Statistical caveats (validator):\n  - t1: The adjusted SLA rates are point estimates derived from raw severity-specific rates, but no confidence intervals, standard errors, or hypothesis tests were provided. Without uncertainty quantification (e.g., Wilson or Agresti\u2011Coull intervals for each severity rate and propagated to the adjusted rate), we cannot assess whether Alpha\u2019s advantage over Beta is statistically significant. Additionally, the sample sizes for each team\u2011severity subgroup are not shown; small counts could make the estimate unstable. Include subgroup counts and appropriate confidence intervals to determine if the winner is robust.",
+        "statistical_evidence": [],
+        "error": null
+      },
+      {
+        "id": "hc_rollout_causality",
+        "category": "confounding",
+        "method": "observational causal restraint",
+        "question": "After plan adjustment the new experience is associated with higher adoption. Can we conclude that it caused the increase? Explain the design limitation.",
+        "score": 0.5,
+        "checks_passed": 2,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "no_cause",
+            "description": "causal claim rejected",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "observational",
+            "description": "observational/nonrandomized design named",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "residual",
+            "description": "residual confounding acknowledged",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "next_step",
+            "description": "causal validation proposed",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 80.1,
+        "tokens": 12187,
+        "answer": "The crude adoption rates for the experiences are {'legacy': 0.15247252747252749, 'new': 0.13649706457925637}, with a difference of 0.0160.\n  data: {'rates': {'legacy': 0.15247252747252749, 'new': 0.13649706457925637}, 'difference': 0.01597546289327112}\n\n[=] Deterministic statistical evidence:\n  - t1:adoption_stratified: pooled-standardized rates: new=0.1603, legacy=0.1077; crude winner=legacy, adjusted winner=new; winner reversed after adjustment\n    effects: standardization change:legacy=-0.04475 (adjusted rate minus crude rate), standardization change:new=0.02383 (adjusted rate minus crude rate), crude risk difference:legacy-new=0.01598 (unadjusted probability difference), adjusted risk difference:legacy-new=-0.0526 (direct-standardized probability difference), Mantel-Haenszel common odds ratio=0.5914 (legacy vs new, adjusted for strata)\n    warning: Simpson's paradox detected: the crude direction reverses the consistent within-stratum direction for legacy vs new\n\n[!] Caveats \u2014 revie",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "adoption_stratified",
+            "kind": "stratified_proportion",
+            "status": "computed",
+            "sample_size": 3500,
+            "intervals": [
+              {
+                "parameter": "crude_rate:legacy",
+                "estimate": 0.1524725275,
+                "lower": 0.134924059,
+                "upper": 0.1718499788,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "adjusted_rate:legacy",
+                "estimate": 0.1077224927,
+                "lower": 0.09129122294,
+                "upper": 0.1241537625,
+                "level": 0.95,
+                "method": "direct standardization (pooled weights)"
+              },
+              {
+                "parameter": "crude_rate:new",
+                "estimate": 0.1364970646,
+                "lower": 0.1222939161,
+                "upper": 0.1520639725,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "adjusted_rate:new",
+                "estimate": 0.1603240482,
+                "lower": 0.1372706786,
+                "upper": 0.1833774178,
+                "level": 0.95,
+                "method": "direct standardization (pooled weights)"
+              },
+              {
+                "parameter": "adjusted_rate_difference:legacy-new",
+                "estimate": -0.05260155546,
+                "lower": -0.08091135015,
+                "upper": -0.02429176077,
+                "level": 0.95,
+                "method": "direct standardization (pooled weights)"
+              }
+            ],
+            "effects": [
+              {
+                "name": "standardization change:legacy",
+                "value": -0.04475003475,
+                "interpretation": "adjusted rate minus crude rate"
+              },
+              {
+                "name": "standardization change:new",
+                "value": 0.0238269836,
+                "interpretation": "adjusted rate minus crude rate"
+              },
+              {
+                "name": "crude risk difference:legacy-new",
+                "value": 0.01597546289,
+                "interpretation": "unadjusted probability difference"
+              },
+              {
+                "name": "adjusted risk difference:legacy-new",
+                "value": -0.05260155546,
+                "interpretation": "direct-standardized probability difference"
+              },
+              {
+                "name": "Mantel-Haenszel common odds ratio",
+                "value": 0.5914058149,
+                "interpretation": "legacy vs new, adjusted for strata"
+              }
+            ],
+            "test": {
+              "name": "Cochran-Mantel-Haenszel test (df=1)",
+              "statistic": 14.67509187,
+              "p_value": 0.0001277230127,
+              "alternative": "two-sided",
+              "null_value": 1.0,
+              "alpha": 0.05,
+              "significant": true
+            },
+            "summary": "pooled-standardized rates: new=0.1603, legacy=0.1077; crude winner=legacy, adjusted winner=new; winner reversed after adjustment",
+            "warnings": [
+              "Simpson's paradox detected: the crude direction reverses the consistent within-stratum direction for legacy vs new"
+            ],
+            "diagnostics": {
+              "standardization": "pooled",
+              "direction": "higher",
+              "reference_weights": {
+                "basic": 0.7031428571,
+                "pro": 0.2968571429
+              },
+              "crude_rates": {
+                "legacy": 0.1524725275,
+                "new": 0.1364970646
+              },
+              "adjusted_rates": {
+                "legacy": 0.1077224927,
+                "new": 0.1603240482
+              },
+              "stratum_rates": {
+                "legacy": {
+                  "basic": 0.06583629893,
+                  "pro": 0.206935123
+                },
+                "new": {
+                  "basic": 0.1290152712,
+                  "pro": 0.2344827586
+                }
+              },
+              "crude_ranking": [
+                "legacy",
+                "new"
+              ],
+              "adjusted_ranking": [
+                "new",
+                "legacy"
+              ],
+              "ranking_reversal": true,
+              "winner_reversal": true,
+              "simpson_reversal": true,
+              "simpson_pairs": [
+                [
+                  "legacy",
+                  "new"
+                ]
+              ]
+            }
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "hd_event_fanout",
+        "category": "design_quality",
+        "method": "analysis-grain/fanout check",
+        "question": "Using experiment outcomes and page events, what is the overall user conversion rate? Explain how to join without event-level fanout bias.",
+        "score": 0.25,
+        "checks_passed": 1,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "correct_rate",
+            "description": "one-row-per-user conversion rate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.1402
+          },
+          {
+            "id": "naive_rate",
+            "description": "biased event-weighted rate recognized",
+            "passed": false,
+            "weight": 1.0,
+            "expected": 0.2658971523361902
+          },
+          {
+            "id": "grain",
+            "description": "user grain/deduplication specified",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "fanout",
+            "description": "one-to-many inflation named",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 4.6,
+        "tokens": 5173,
+        "answer": "The overall user conversion rate for users present in both datasets is 0.1402.\n  data: {'conversion_rate': 0.1402, 'total_users_joined': 5000}\n\n[!] Statistical caveats (validator):\n  - t1: The point estimate is based on 5,000 joined users, which is a reasonable sample size, and the join method (aggregating page_events to distinct user_ids before joining) avoids fan\u2011out bias. However, no uncertainty measure (e.g., confidence interval or standard error) is provided, so the precision of the 0.1402 figure cannot be assessed. Report the conversion rate together with an appropriate confidence interval (e.g., Wilson or normal approximation) to make the claim fully sound.",
+        "statistical_evidence": [],
+        "error": null
+      },
+      {
+        "id": "hd_survey_nonresponse",
+        "category": "design_quality",
+        "method": "missing-outcome bias",
+        "question": "Compare observed satisfaction for A and B, but assess whether survey nonresponse permits a population-level conclusion. Quantify response rates.",
+        "score": 0.4,
+        "checks_passed": 2,
+        "checks_total": 5,
+        "check_results": [
+          {
+            "id": "a_response",
+            "description": "A response rate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.5540486637415237
+          },
+          {
+            "id": "b_response",
+            "description": "B response rate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.6221419975932612
+          },
+          {
+            "id": "observed_diff",
+            "description": "observed B-minus-A satisfaction",
+            "passed": false,
+            "weight": 1.0,
+            "expected": 0.1590780281097821
+          },
+          {
+            "id": "bias",
+            "description": "nonresponse/selection bias named",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "limit",
+            "description": "population generalization limited",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 6.3,
+        "tokens": 5681,
+        "answer": "Variant A response rate was 55.40% and Variant B was 62.21%, with mean satisfaction scores of 3.60 and 3.76 respectively.\n  data: {'B': {'response_rate': 0.6221419975932612, 'mean_satisfaction': 3.759509993552547, 'missing_satisfaction': 0}, 'A': {'response_rate': 0.5540486637415237, 'mean_satisfaction': 3.600431965442765, 'missing_satisfaction': 0}}\n\n[!] Statistical caveats (validator):\n  - t1: The reported response rates are computed as sum(responded)/count(*), but the 'invited' column has only one non\u2011null value, so the denominator may be incorrect; the true response rate should be based on the number actually invited. No confidence intervals or standard errors are provided for either the response rates or the mean satisfaction scores, making it unclear whether the observed differences exceed sampling variability. Additionally, the original data has 41.2% missing satisfaction values, yet the answer reports zero missing; this discrepancy suggests the join may have filtered out non\u2011re",
+        "statistical_evidence": [],
+        "error": null
+      },
+      {
+        "id": "hd_channel_multiplicity",
+        "category": "design_quality",
+        "method": "multiple-comparison control",
+        "question": "Which acquisition channel has the highest observed conversion rate, and is there evidence it is truly best after accounting for five-channel comparison?",
+        "score": 0.75,
+        "checks_passed": 3,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "observed",
+            "description": "observed winner named",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "global_p",
+            "description": "global chi-square p-value",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.5124576404543427
+          },
+          {
+            "id": "multiplicity",
+            "description": "multiple comparisons recognized",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "restraint",
+            "description": "winner not overclaimed",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 68.2,
+        "tokens": 15299,
+        "answer": "The channel with the highest observed conversion rate is email.\n  data: {'top_channel': 'email', 'conversion_rates': {'email': 0.1496881496881497, 'search': 0.1484126984126984, 'social': 0.14270270270270272, 'organic': 0.13817480719794345, 'partner': 0.12210796915167095}}\n\n[=] Deterministic statistical evidence:\n  - t1:compare_email_vs_search: email\u2212search rate difference=0.001275 (95% CI -0.03444\u20130.04059); p=0.9467\n    effects: risk difference=0.001275 (absolute probability difference), odds ratio=1.01 (email vs search), Cohen's h=0.003581 (negligible)\n  - t1:compare_email_vs_social: email\u2212social rate difference=0.006985 (95% CI -0.03075\u20130.04754); p=0.7242\n    effects: risk difference=0.006985 (absolute probability difference), odds ratio=1.058 (email vs social), Cohen's h=0.01977 (negligible)\n  - t1:compare_email_vs_organic: email\u2212organic rate difference=0.01151 (95% CI -0.02273\u20130.04979); p=0.5259\n    effects: risk difference=0.01151 (absolute probability difference), odds ratio=1.09",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "compare_email_vs_search",
+            "kind": "two_proportion",
+            "status": "computed",
+            "sample_size": 1741,
+            "intervals": [
+              {
+                "parameter": "rate:email",
+                "estimate": 0.1496881497,
+                "lower": 0.1205862661,
+                "upper": 0.1843411614,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "rate:search",
+                "estimate": 0.1484126984,
+                "lower": 0.1298524275,
+                "upper": 0.1691102756,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "rate_difference:email-search",
+                "estimate": 0.001275451275,
+                "lower": -0.03443602209,
+                "upper": 0.04058594449,
+                "level": 0.95,
+                "method": "Newcombe-Wilson"
+              }
+            ],
+            "effects": [
+              {
+                "name": "risk difference",
+                "value": 0.001275451275,
+                "interpretation": "absolute probability difference"
+              },
+              {
+                "name": "odds ratio",
+                "value": 1.010106821,
+                "interpretation": "email vs search"
+              },
+              {
+                "name": "Cohen's h",
+                "value": 0.003581345824,
+                "interpretation": "negligible"
+              }
+            ],
+            "test": {
+              "name": "two-proportion z-test",
+              "statistic": 0.06687242693,
+              "p_value": 0.946683264,
+              "alternative": "two-sided",
+              "null_value": 0.0,
+              "alpha": 0.05,
+              "significant": false
+            },
+            "summary": "email\u2212search rate difference=0.001275 (95% CI -0.03444\u20130.04059); p=0.9467",
+            "warnings": [],
+            "diagnostics": {}
+          },
+          {
+            "task_id": "t1",
+            "request_id": "compare_email_vs_social",
+            "kind": "two_proportion",
+            "status": "computed",
+            "sample_size": 1406,
+            "intervals": [
+              {
+                "parameter": "rate:email",
+                "estimate": 0.1496881497,
+                "lower": 0.1205862661,
+                "upper": 0.1843411614,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "rate:social",
+                "estimate": 0.1427027027,
+                "lower": 0.1216383026,
+                "upper": 0.1667224895,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "rate_difference:email-social",
+                "estimate": 0.006985446985,
+                "lower": -0.03074875217,
+                "upper": 0.04753837749,
+                "level": 0.95,
+                "method": "Newcombe-Wilson"
+              }
+            ],
+            "effects": [
+              {
+                "name": "risk difference",
+                "value": 0.006985446985,
+                "interpretation": "absolute probability difference"
+              },
+              {
+                "name": "odds ratio",
+                "value": 1.057568349,
+                "interpretation": "email vs social"
+              },
+              {
+                "name": "Cohen's h",
+                "value": 0.01977317602,
+                "interpretation": "negligible"
+              }
+            ],
+            "test": {
+              "name": "two-proportion z-test",
+              "statistic": 0.3528279232,
+              "p_value": 0.7242174487,
+              "alternative": "two-sided",
+              "null_value": 0.0,
+              "alpha": 0.05,
+              "significant": false
+            },
+            "summary": "email\u2212social rate difference=0.006985 (95% CI -0.03075\u20130.04754); p=0.7242",
+            "warnings": [],
+            "diagnostics": {}
+          },
+          {
+            "task_id": "t1",
+            "request_id": "compare_email_vs_organic",
+            "kind": "two_proportion",
+            "status": "computed",
+            "sample_size": 2037,
+            "intervals": [
+              {
+                "parameter": "rate:email",
+                "estimate": 0.1496881497,
+                "lower": 0.1205862661,
+                "upper": 0.1843411614,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "rate:organic",
+                "estimate": 0.1381748072,
+                "lower": 0.121917664,
+                "upper": 0.1562141015,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "rate_difference:email-organic",
+                "estimate": 0.01151334249,
+                "lower": -0.02272604663,
+                "upper": 0.04979030587,
+                "level": 0.95,
+                "method": "Newcombe-Wilson"
+              }
+            ],
+            "effects": [
+              {
+                "name": "risk difference",
+                "value": 0.01151334249,
+                "interpretation": "absolute probability difference"
+              },
+              {
+                "name": "odds ratio",
+                "value": 1.097992836,
+                "interpretation": "email vs organic"
+              },
+              {
+                "name": "Cohen's h",
+                "value": 0.03280566739,
+                "interpretation": "negligible"
+              }
+            ],
+            "test": {
+              "name": "two-proportion z-test",
+              "statistic": 0.6343286107,
+              "p_value": 0.5258663885,
+              "alternative": "two-sided",
+              "null_value": 0.0,
+              "alpha": 0.05,
+              "significant": false
+            },
+            "summary": "email\u2212organic rate difference=0.01151 (95% CI -0.02273\u20130.04979); p=0.5259",
+            "warnings": [],
+            "diagnostics": {}
+          },
+          {
+            "task_id": "t1",
+            "request_id": "compare_email_vs_partner",
+            "kind": "two_proportion",
+            "status": "computed",
+            "sample_size": 1259,
+            "intervals": [
+              {
+                "parameter": "rate:email",
+                "estimate": 0.1496881497,
+                "lower": 0.1205862661,
+                "upper": 0.1843411614,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "rate:partner",
+                "estimate": 0.1221079692,
+                "lower": 0.1009397732,
+                "upper": 0.1469895949,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "rate_difference:email-partner",
+                "estimate": 0.02758018054,
+                "lower": -0.01070839385,
+                "upper": 0.06818712256,
+                "level": 0.95,
+                "method": "Newcombe-Wilson"
+              }
+            ],
+            "effects": [
+              {
+                "name": "risk difference",
+                "value": 0.02758018054,
+                "interpretation": "absolute probability difference"
+              },
+              {
+                "name": "odds ratio",
+                "value": 1.265628619,
+                "interpretation": "email vs partner"
+              },
+              {
+                "name": "Cohen's h",
+                "value": 0.08057943524,
+                "interpretation": "negligible"
+              }
+            ],
+            "test": {
+              "name": "two-proportion z-test",
+              "statistic": 1.401853892,
+              "p_value": 0.1609588816,
+              "alternative": "two-sided",
+              "null_value": 0.0,
+              "alpha": 0.05,
+              "significant": false
+            },
+            "summary": "email\u2212partner rate difference=0.02758 (95% CI -0.01071\u20130.06819); p=0.161",
+            "warnings": [],
+            "diagnostics": {}
+          }
+        ],
+        "error": null
+      },
+      {
+        "id": "hd_age_missingness",
+        "category": "design_quality",
+        "method": "missing-data audit",
+        "question": "Audit the age field before using it in a model. Quantify missingness and recommend an analysis-safe next step without silently filling values.",
+        "score": 1.0,
+        "checks_passed": 4,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "missing_rate",
+            "description": "age missing rate",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.02
+          },
+          {
+            "id": "missing",
+            "description": "missingness explicitly identified",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "mechanism",
+            "description": "missingness mechanism investigated",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "safe",
+            "description": "no silent imputation",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 6.1,
+        "tokens": 5133,
+        "answer": "The users.age column has 100 missing values (2.00%). Missingness is low; consider dropping rows with missing age values.\n  data: {'missing_count': 100, 'missing_percentage': 2.0, 'total_rows': 5000}\n\n[!] Statistical caveats (validator):\n  - t1: Dropping rows is acceptable only if the missingness is plausibly MCAR. Without evidence of the missingness mechanism, a safer recommendation would be to keep missing as a separate indicator or use a model that handles missing values.",
+        "statistical_evidence": [],
+        "error": null
+      },
+      {
+        "id": "hd_practical_significance",
+        "category": "design_quality",
+        "method": "practical significance",
+        "question": "The A/B conversion result may be statistically significant. Is the effect large enough to matter? Use absolute and standardized effect sizes and state what additional business input is needed.",
+        "score": 0.75,
+        "checks_passed": 3,
+        "checks_total": 4,
+        "check_results": [
+          {
+            "id": "difference",
+            "description": "absolute conversion uplift",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.019585273548544613
+          },
+          {
+            "id": "cohen_h",
+            "description": "standardized effect",
+            "passed": true,
+            "weight": 1.0,
+            "expected": 0.056437118099222916
+          },
+          {
+            "id": "magnitude",
+            "description": "small/modest magnitude recognized",
+            "passed": false,
+            "weight": 1.0,
+            "expected": null
+          },
+          {
+            "id": "business",
+            "description": "business threshold/economics requested",
+            "passed": true,
+            "weight": 1.0,
+            "expected": null
+          }
+        ],
+        "latency_s": 6.3,
+        "tokens": 6880,
+        "answer": "The conversion rates were calculated for both variants; to determine practical significance, business inputs such as the monetary value per conversion and the minimum viable lift (MVL) are required.\n  data: {'variants': {'A': 0.13043478260869565, 'B': 0.15002005615724026}, 'absolute_difference': 0.019585273548544613, 'relative_difference': 0.15015376387217536, 'cohens_h': 0.056437118099222916}\n\n[!] Statistical caveats (validator):\n  - t1: The reported rates are over\u2011precise; the data do not support more than 3\u20134 significant digits. Round to e.g., 0.130 and 0.150.\n  - t1: Over\u2011precision; reporting to three decimal places (0.020) is sufficient given the sample size.\n  - t1: Over\u2011precision; a rounded value such as 15.0% is appropriate.\n  - t1: Effect size is over\u2011precise; reporting as 0.056 (or 0.06) is adequate.\n\n[=] Deterministic statistical evidence:\n  - t1:conv_compare: A\u2212B rate difference=-0.01918 (95% CI -0.03844\u20135.945e-05); p=0.05062\n    effects: risk difference=-0.01918 (absolute ",
+        "statistical_evidence": [
+          {
+            "task_id": "t1",
+            "request_id": "conv_compare",
+            "kind": "two_proportion",
+            "status": "computed",
+            "sample_size": 5000,
+            "intervals": [
+              {
+                "parameter": "rate:A",
+                "estimate": 0.1304347826,
+                "lower": 0.1178150228,
+                "upper": 0.1441853741,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "rate:B",
+                "estimate": 0.149618933,
+                "lower": 0.1361564964,
+                "upper": 0.1641595113,
+                "level": 0.95,
+                "method": "Wilson score"
+              },
+              {
+                "parameter": "rate_difference:A-B",
+                "estimate": -0.0191841504,
+                "lower": -0.03843737752,
+                "upper": 5.944504785e-05,
+                "level": 0.95,
+                "method": "Newcombe-Wilson"
+              }
+            ],
+            "effects": [
+              {
+                "name": "risk difference",
+                "value": -0.0191841504,
+                "interpretation": "absolute probability difference"
+              },
+              {
+                "name": "odds ratio",
+                "value": 0.8525469169,
+                "interpretation": "A vs B"
+              },
+              {
+                "name": "Cohen's h",
+                "value": -0.05531319117,
+                "interpretation": "negligible"
+              }
+            ],
+            "test": {
+              "name": "two-proportion z-test",
+              "statistic": -1.954711334,
+              "p_value": 0.05061715151,
+              "alternative": "two-sided",
+              "null_value": 0.0,
+              "alpha": 0.05,
+              "significant": false
+            },
+            "summary": "A\u2212B rate difference=-0.01918 (95% CI -0.03844\u20135.945e-05); p=0.05062",
+            "warnings": [],
+            "diagnostics": {}
+          }
+        ],
+        "error": null
+      }
+    ],
+    "aborted": false
+  }
+]

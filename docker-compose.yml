@@ -44,6 +44,7 @@ services:
       ANALYST_HOSTED_API_KEY: ${ANALYST_HOSTED_API_KEY}
       OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4318
       ANALYST_MEMORY_DIR: /state/memory
+      ANALYST_OPERATIONS_DIR: /state/operations
     volumes:
       - ./data:/app/data:ro
       - appstate:/state

@@ -27,7 +27,7 @@ reasoning / `gemma-4-31b` mechanical, model held constant across ablation config
 > council-without-critic policy scores 0.86 against 0.56 for a naive baseline. A
 > separate 20-question product-analytics suite now tests statistical
 > generalization across independently generated held-out seeds without changing the
-> original scorecard; I have not claimed its accuracy before a full live run. The
+> original scorecard; two historical runs score 0.719 across 40 instances, with wide uncertainty. The
 > ablations let me remove two mechanisms that did not justify their cost."
 
 That last sentence is the whole project. Lead with the evaluation, not the agents —

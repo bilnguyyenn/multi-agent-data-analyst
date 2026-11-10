@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import DagView from "./DagView";
+import OperationsPanel from "./OperationsPanel";
 import type {
   AgentEvent,
   Claim,
@@ -28,6 +29,7 @@ function eventLine(e: AgentEvent): string {
 }
 
 export default function App() {
+  const [operationsView, setOperationsView] = useState(new URLSearchParams(location.search).get("workspace") === "operations");
   const [question, setQuestion] = useState("Which shift has the best quality record?");
   const [dataDir, setDataDir] = useState("data/sample");
   const [files, setFiles] = useState<File[]>([]);
@@ -196,10 +198,13 @@ export default function App() {
 
   const busy = ["running", "queued", "connecting", "submitting", "uploading dataset"].includes(status);
 
+  if (operationsView) return <OperationsPanel onBack={() => setOperationsView(false)} />;
+
   return (
     <div className="layout">
       <aside className="sidebar">
         <h1>analyst</h1>
+        <button type="button" onClick={() => setOperationsView(true)}>Retail operations reviews</button>
         <textarea
           value={question}
           onChange={(e) => setQuestion(e.target.value)}

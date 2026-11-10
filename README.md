@@ -4,6 +4,30 @@ Analyst takes a business question and a set of related CSV files, plans the work
 runs Python or SQL in isolated containers, and returns an answer with statistical
 checks and visible caveats.
 
+## Retail operations workflow
+
+A versioned review desk now runs on attributed, real UCI retail transactions:
+freeze a data snapshot, choose explicit KPI definitions, run a saved playbook,
+inspect each computation, and compare the next period. Calculations require no model.
+
+```bash
+python -m pip install -e ".[retail]"
+sh scripts/run_local_demo.sh
+```
+
+The demo uses committed weekly slices and two reusable reviews. Open the printed
+local URL. Full-source processing was also measured on 541,909 rows; see the
+[resource record](retail_results/runtime.json), [case study](docs/RETAIL_CASE_STUDY.md),
+and [workflow guide](docs/OPERATIONS.md).
+Download and open the [90-second recorded-state walkthrough](examples/retail-walkthrough.html)
+for a portable tour. Its pacing is presentation timing, not a performance benchmark.
+
+**Evidence:** 140/140 deterministic metric/oracle and definition-guard checks on
+100 fixed real-data questions and 20 two-turn scenarios. These are **not live-model
+accuracy scores**. Free local-agent evaluation and actual pilot users are deferred
+at the user's request. Their harness and protocol are ready. Current milestone
+status is recorded in [ROADMAP_STATUS.md](docs/ROADMAP_STATUS.md).
+
 I built this project because a convincing data agent needs more than a good demo.
 It should handle messy relational data, show how it reached an answer, and prove
 that its extra agents actually improve the result. The repository therefore
@@ -287,6 +311,9 @@ python -m analyst predictive-benchmark
 # Rebuild the original ablation scorecard from saved raw runs
 python -m analyst scorecard
 
+# Verify both published historical tables and every cited raw input offline
+python -m analyst verify-results
+
 # Rebuild the held-out scorecard from saved raw runs
 python -m analyst heldout-scorecard
 
@@ -438,3 +465,5 @@ More detail is available in:
 - [Resume-ready project bullets](docs/RESUME_WRITEUP.md)
 - [Report export and provenance](docs/REPORTS.md)
 - [Follow-up analyses](docs/FOLLOWUPS.md)
+- [Retail operations](docs/OPERATIONS.md)
+- [Roadmap completion and deferred measurements](docs/ROADMAP_STATUS.md)

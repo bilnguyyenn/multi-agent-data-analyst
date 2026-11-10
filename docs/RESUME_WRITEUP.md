@@ -33,6 +33,32 @@ data-science/MLE roles. The third metric counts case instances, not distinct
 scenarios or prediction accuracy. See the
 [reproducible report](../predictive_eval_results/REPORT.md).
 
+## Real-data operations evidence — current implementation
+
+For AI/ML engineering applications:
+
+- Built a governed retail-analysis workflow with typed model tool proposals,
+  versioned metric contracts, content-addressed snapshots, and query-linked reports;
+  implemented durable, idempotent jobs with cancellation, retry budgets, and
+  restart recovery.
+- Verified 140 deterministic metric/oracle and definition-guard checks across
+  100 real-data questions and 20 two-turn scenarios; prepared matched local-agent
+  policies with resumable call accounting and explicit cost/resource ceilings.
+
+For data science/analytics applications:
+
+- Defined seven auditable retail KPIs over a 541,909-row historical transaction
+  source, preserving cancellation, missing-ID, duplicate, and denominator caveats;
+  produced reproducible weekly reviews with independent Decimal reference checks.
+- Compared immutable weekly snapshots using consistent definitions and
+  computation-level provenance; prepared a counterbalanced usability pilot with
+  consent, correctness scoring, and full accounting of unsuccessful tasks.
+
+These bullets describe completed engineering and deterministic validation. Live
+model accuracy and measured user time savings remain unclaimed: both measurements
+were explicitly deferred. The local resource measurements are one-process runs,
+not hosted production or agent-response benchmarks. See [the case study](RETAIL_CASE_STUDY.md).
+
 ## Compact one-bullet version
 
 - Built and evaluated a multi-agent data analyst (LangGraph, FastAPI, Docker) that
@@ -101,7 +127,7 @@ on independently generated product-analytics data. It covers interval estimation
 hypothesis tests/effect sizes, stratified confounding, and design/data-quality
 failure modes; exact item-set/content-hash integrity and a stratified no-reversal
 sound control prevent partial runs and indiscriminate trap flagging from earning
-credit. No held-out performance number is claimed until a live run passes the gate.
+credit. Two historical runs pass the gate: 0.719 across 40 question instances, with wide two-seed uncertainty. This is generated-data rubric performance, not external predictive accuracy.
 
 Tech: Python, SQL, LangGraph, FastAPI, React/TypeScript, Docker, pandas, scikit-learn, DuckDB,
 Chroma, Postgres, Redis, OpenTelemetry/Jaeger, GitHub Actions.
@@ -121,8 +147,8 @@ Chroma, Postgres, Redis, OpenTelemetry/Jaeger, GitHub Actions.
 - Predictive engine reliability: **30/30 case instances**, ten synthetic scenarios
   across three development seeds; **not** external predictive accuracy.
 - Critic-bench: **0.83 recall**, **0.71 precision**, **0.50 false-positive rate**.
-- Held-out suite: **20 questions**, four balanced categories; performance pending a
-  complete live run, so do not quote an accuracy number yet.
+- Held-out statistical suite: **0.719 component-rubric score** across 40 instances
+  and two generated-data seeds; very wide uncertainty. Historical implementation only.
 
 Tier-4 uses five planted trap questions per configuration, so describe trap-specific
 deltas as directional. The 0.86 and 0.56 headline scores each use all 25 questions.

@@ -1,0 +1,105 @@
+{
+  "version": "retail-pilot-v1",
+  "minimum_participants": 3,
+  "assignment": "Alternate AB and BA by signup order. AB uses manual for A and analyst for B; BA reverses conditions.",
+  "tasks": [
+    {
+      "id": "pair1A",
+      "variant": "A",
+      "split": "development",
+      "question": "Find net sales for United Kingdom in the development CSV. Report rates as fractions rounded to four decimal places, not percentages.",
+      "request": {
+        "metric": "net_sales",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      },
+      "source_hash": "17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9",
+      "expected": 278003.78
+    },
+    {
+      "id": "pair2A",
+      "variant": "A",
+      "split": "development",
+      "question": "Find order count for France in the development CSV. Report rates as fractions rounded to four decimal places, not percentages.",
+      "request": {
+        "metric": "order_count",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      },
+      "source_hash": "17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9",
+      "expected": 10
+    },
+    {
+      "id": "pair3A",
+      "variant": "A",
+      "split": "development",
+      "question": "Find cancellation rate for all countries in the development CSV. Report rates as fractions rounded to four decimal places, not percentages.",
+      "request": {
+        "metric": "cancellation_rate",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      },
+      "source_hash": "17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9",
+      "expected": 0.1529051987767584
+    },
+    {
+      "id": "pair1B",
+      "variant": "B",
+      "split": "refresh",
+      "question": "Find net sales for United Kingdom in the refresh CSV. Report rates as fractions rounded to four decimal places, not percentages.",
+      "request": {
+        "metric": "net_sales",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      },
+      "source_hash": "e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e",
+      "expected": 350982.31
+    },
+    {
+      "id": "pair2B",
+      "variant": "B",
+      "split": "refresh",
+      "question": "Find order count for France in the refresh CSV. Report rates as fractions rounded to four decimal places, not percentages.",
+      "request": {
+        "metric": "order_count",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      },
+      "source_hash": "e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e",
+      "expected": 21
+    },
+    {
+      "id": "pair3B",
+      "variant": "B",
+      "split": "refresh",
+      "question": "Find cancellation rate for all countries in the refresh CSV. Report rates as fractions rounded to four decimal places, not percentages.",
+      "request": {
+        "metric": "cancellation_rate",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      },
+      "source_hash": "e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e",
+      "expected": 0.15809768637532134
+    }
+  ],
+  "privacy": "Use aliases only. Obtain consent. No identities, recordings, or quotes are required.",
+  "protocol_hash": "597496b551681a0e428e32af3c1cdb67655d207114f094129bff5c96d4f09296"
+}

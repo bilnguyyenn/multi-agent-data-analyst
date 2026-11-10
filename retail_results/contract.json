@@ -1,0 +1,1614 @@
+{
+  "suite": "retail-operations-eval-v1",
+  "metric_version": "retail-metrics-v1",
+  "metric_contract_hash": "4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412",
+  "tasks": [
+    {
+      "id": "q001",
+      "split": "evaluation_a",
+      "question": "What is gross sales?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "gross_sales",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q002",
+      "split": "evaluation_a",
+      "question": "What is gross sales grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "gross_sales",
+        "group_by": "country",
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q003",
+      "split": "evaluation_a",
+      "question": "What is gross sales for United Kingdom?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "gross_sales",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q004",
+      "split": "evaluation_a",
+      "question": "What is gross sales for United Kingdom grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "gross_sales",
+        "group_by": "country",
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q005",
+      "split": "evaluation_a",
+      "question": "What is gross sales for France?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "gross_sales",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q006",
+      "split": "evaluation_a",
+      "question": "What is gross sales for France grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "gross_sales",
+        "group_by": "country",
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q007",
+      "split": "evaluation_a",
+      "question": "What is cancellation value?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_value",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q008",
+      "split": "evaluation_a",
+      "question": "What is cancellation value grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_value",
+        "group_by": "country",
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q009",
+      "split": "evaluation_a",
+      "question": "What is cancellation value for United Kingdom?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_value",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q010",
+      "split": "evaluation_a",
+      "question": "What is cancellation value for United Kingdom grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_value",
+        "group_by": "country",
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q011",
+      "split": "evaluation_a",
+      "question": "What is cancellation value for France?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_value",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q012",
+      "split": "evaluation_a",
+      "question": "What is cancellation value for France grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_value",
+        "group_by": "country",
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q013",
+      "split": "evaluation_a",
+      "question": "What is net sales?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "net_sales",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q014",
+      "split": "evaluation_a",
+      "question": "What is net sales grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "net_sales",
+        "group_by": "country",
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q015",
+      "split": "evaluation_a",
+      "question": "What is net sales for United Kingdom?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "net_sales",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q016",
+      "split": "evaluation_a",
+      "question": "What is net sales for United Kingdom grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "net_sales",
+        "group_by": "country",
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q017",
+      "split": "evaluation_a",
+      "question": "What is net sales for France?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "net_sales",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q018",
+      "split": "evaluation_a",
+      "question": "What is net sales for France grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "net_sales",
+        "group_by": "country",
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q019",
+      "split": "evaluation_a",
+      "question": "What is order count?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "order_count",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q020",
+      "split": "evaluation_a",
+      "question": "What is order count grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "order_count",
+        "group_by": "country",
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q021",
+      "split": "evaluation_a",
+      "question": "What is order count for United Kingdom?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "order_count",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q022",
+      "split": "evaluation_a",
+      "question": "What is order count for United Kingdom grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "order_count",
+        "group_by": "country",
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q023",
+      "split": "evaluation_a",
+      "question": "What is order count for France?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "order_count",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q024",
+      "split": "evaluation_a",
+      "question": "What is order count for France grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "order_count",
+        "group_by": "country",
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q025",
+      "split": "evaluation_a",
+      "question": "What is units sold?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "units_sold",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q026",
+      "split": "evaluation_a",
+      "question": "What is units sold grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "units_sold",
+        "group_by": "country",
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q027",
+      "split": "evaluation_a",
+      "question": "What is units sold for United Kingdom?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "units_sold",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q028",
+      "split": "evaluation_a",
+      "question": "What is units sold for United Kingdom grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "units_sold",
+        "group_by": "country",
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q029",
+      "split": "evaluation_a",
+      "question": "What is units sold for France?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "units_sold",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q030",
+      "split": "evaluation_a",
+      "question": "What is units sold for France grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "units_sold",
+        "group_by": "country",
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q031",
+      "split": "evaluation_a",
+      "question": "What is active customers?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "active_customers",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q032",
+      "split": "evaluation_a",
+      "question": "What is active customers grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "active_customers",
+        "group_by": "country",
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q033",
+      "split": "evaluation_a",
+      "question": "What is active customers for United Kingdom?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "active_customers",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q034",
+      "split": "evaluation_a",
+      "question": "What is active customers for United Kingdom grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "active_customers",
+        "group_by": "country",
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q035",
+      "split": "evaluation_a",
+      "question": "What is active customers for France?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "active_customers",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q036",
+      "split": "evaluation_a",
+      "question": "What is active customers for France grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "active_customers",
+        "group_by": "country",
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q037",
+      "split": "evaluation_a",
+      "question": "What is cancellation rate?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_rate",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q038",
+      "split": "evaluation_a",
+      "question": "What is cancellation rate grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_rate",
+        "group_by": "country",
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q039",
+      "split": "evaluation_a",
+      "question": "What is cancellation rate for United Kingdom?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_rate",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q040",
+      "split": "evaluation_a",
+      "question": "What is cancellation rate for United Kingdom grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_rate",
+        "group_by": "country",
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q041",
+      "split": "evaluation_a",
+      "question": "What is cancellation rate for France?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_rate",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q042",
+      "split": "evaluation_a",
+      "question": "What is cancellation rate for France grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_rate",
+        "group_by": "country",
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q043",
+      "split": "evaluation_a",
+      "question": "What is revenue?",
+      "expected_status": "clarify"
+    },
+    {
+      "id": "q044",
+      "split": "evaluation_a",
+      "question": "Which country is best?",
+      "expected_status": "clarify"
+    },
+    {
+      "id": "q045",
+      "split": "evaluation_a",
+      "question": "What are sales?",
+      "expected_status": "clarify"
+    },
+    {
+      "id": "q046",
+      "split": "evaluation_a",
+      "question": "Which customers should we prioritize?",
+      "expected_status": "clarify"
+    },
+    {
+      "id": "q047",
+      "split": "evaluation_a",
+      "question": "What is profit?",
+      "expected_status": "unsupported"
+    },
+    {
+      "id": "q048",
+      "split": "evaluation_a",
+      "question": "Forecast sales next year",
+      "expected_status": "unsupported"
+    },
+    {
+      "id": "q049",
+      "split": "evaluation_a",
+      "question": "What caused revenue to increase?",
+      "expected_status": "unsupported"
+    },
+    {
+      "id": "q050",
+      "split": "evaluation_a",
+      "question": "What is the margin?",
+      "expected_status": "unsupported"
+    },
+    {
+      "id": "q051",
+      "split": "evaluation_b",
+      "question": "What is gross sales?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "gross_sales",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q052",
+      "split": "evaluation_b",
+      "question": "What is gross sales grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "gross_sales",
+        "group_by": "country",
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q053",
+      "split": "evaluation_b",
+      "question": "What is gross sales for United Kingdom?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "gross_sales",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q054",
+      "split": "evaluation_b",
+      "question": "What is gross sales for United Kingdom grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "gross_sales",
+        "group_by": "country",
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q055",
+      "split": "evaluation_b",
+      "question": "What is gross sales for France?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "gross_sales",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q056",
+      "split": "evaluation_b",
+      "question": "What is gross sales for France grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "gross_sales",
+        "group_by": "country",
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q057",
+      "split": "evaluation_b",
+      "question": "What is cancellation value?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_value",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q058",
+      "split": "evaluation_b",
+      "question": "What is cancellation value grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_value",
+        "group_by": "country",
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q059",
+      "split": "evaluation_b",
+      "question": "What is cancellation value for United Kingdom?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_value",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q060",
+      "split": "evaluation_b",
+      "question": "What is cancellation value for United Kingdom grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_value",
+        "group_by": "country",
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q061",
+      "split": "evaluation_b",
+      "question": "What is cancellation value for France?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_value",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q062",
+      "split": "evaluation_b",
+      "question": "What is cancellation value for France grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_value",
+        "group_by": "country",
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q063",
+      "split": "evaluation_b",
+      "question": "What is net sales?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "net_sales",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q064",
+      "split": "evaluation_b",
+      "question": "What is net sales grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "net_sales",
+        "group_by": "country",
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q065",
+      "split": "evaluation_b",
+      "question": "What is net sales for United Kingdom?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "net_sales",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q066",
+      "split": "evaluation_b",
+      "question": "What is net sales for United Kingdom grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "net_sales",
+        "group_by": "country",
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q067",
+      "split": "evaluation_b",
+      "question": "What is net sales for France?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "net_sales",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q068",
+      "split": "evaluation_b",
+      "question": "What is net sales for France grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "net_sales",
+        "group_by": "country",
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q069",
+      "split": "evaluation_b",
+      "question": "What is order count?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "order_count",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q070",
+      "split": "evaluation_b",
+      "question": "What is order count grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "order_count",
+        "group_by": "country",
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q071",
+      "split": "evaluation_b",
+      "question": "What is order count for United Kingdom?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "order_count",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q072",
+      "split": "evaluation_b",
+      "question": "What is order count for United Kingdom grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "order_count",
+        "group_by": "country",
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q073",
+      "split": "evaluation_b",
+      "question": "What is order count for France?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "order_count",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q074",
+      "split": "evaluation_b",
+      "question": "What is order count for France grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "order_count",
+        "group_by": "country",
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q075",
+      "split": "evaluation_b",
+      "question": "What is units sold?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "units_sold",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q076",
+      "split": "evaluation_b",
+      "question": "What is units sold grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "units_sold",
+        "group_by": "country",
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q077",
+      "split": "evaluation_b",
+      "question": "What is units sold for United Kingdom?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "units_sold",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q078",
+      "split": "evaluation_b",
+      "question": "What is units sold for United Kingdom grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "units_sold",
+        "group_by": "country",
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q079",
+      "split": "evaluation_b",
+      "question": "What is units sold for France?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "units_sold",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q080",
+      "split": "evaluation_b",
+      "question": "What is units sold for France grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "units_sold",
+        "group_by": "country",
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q081",
+      "split": "evaluation_b",
+      "question": "What is active customers?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "active_customers",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q082",
+      "split": "evaluation_b",
+      "question": "What is active customers grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "active_customers",
+        "group_by": "country",
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q083",
+      "split": "evaluation_b",
+      "question": "What is active customers for United Kingdom?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "active_customers",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q084",
+      "split": "evaluation_b",
+      "question": "What is active customers for United Kingdom grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "active_customers",
+        "group_by": "country",
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q085",
+      "split": "evaluation_b",
+      "question": "What is active customers for France?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "active_customers",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q086",
+      "split": "evaluation_b",
+      "question": "What is active customers for France grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "active_customers",
+        "group_by": "country",
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q087",
+      "split": "evaluation_b",
+      "question": "What is cancellation rate?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_rate",
+        "group_by": null,
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q088",
+      "split": "evaluation_b",
+      "question": "What is cancellation rate grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_rate",
+        "group_by": "country",
+        "country": null,
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q089",
+      "split": "evaluation_b",
+      "question": "What is cancellation rate for United Kingdom?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_rate",
+        "group_by": null,
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q090",
+      "split": "evaluation_b",
+      "question": "What is cancellation rate for United Kingdom grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_rate",
+        "group_by": "country",
+        "country": "United Kingdom",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q091",
+      "split": "evaluation_b",
+      "question": "What is cancellation rate for France?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_rate",
+        "group_by": null,
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q092",
+      "split": "evaluation_b",
+      "question": "What is cancellation rate for France grouped by country?",
+      "expected_status": "compute",
+      "request": {
+        "metric": "cancellation_rate",
+        "group_by": "country",
+        "country": "France",
+        "start": null,
+        "end": null,
+        "limit": 20
+      }
+    },
+    {
+      "id": "q093",
+      "split": "evaluation_b",
+      "question": "What is revenue?",
+      "expected_status": "clarify"
+    },
+    {
+      "id": "q094",
+      "split": "evaluation_b",
+      "question": "Which country is best?",
+      "expected_status": "clarify"
+    },
+    {
+      "id": "q095",
+      "split": "evaluation_b",
+      "question": "What are sales?",
+      "expected_status": "clarify"
+    },
+    {
+      "id": "q096",
+      "split": "evaluation_b",
+      "question": "Which customers should we prioritize?",
+      "expected_status": "clarify"
+    },
+    {
+      "id": "q097",
+      "split": "evaluation_b",
+      "question": "What is profit?",
+      "expected_status": "unsupported"
+    },
+    {
+      "id": "q098",
+      "split": "evaluation_b",
+      "question": "Forecast sales next year",
+      "expected_status": "unsupported"
+    },
+    {
+      "id": "q099",
+      "split": "evaluation_b",
+      "question": "What caused revenue to increase?",
+      "expected_status": "unsupported"
+    },
+    {
+      "id": "q100",
+      "split": "evaluation_b",
+      "question": "What is the margin?",
+      "expected_status": "unsupported"
+    }
+  ],
+  "chains": [
+    {
+      "id": "chain01",
+      "split": "evaluation_a",
+      "turns": [
+        {
+          "question": "What is gross sales?",
+          "metric": "gross_sales",
+          "country": null
+        },
+        {
+          "question": "And for France?",
+          "metric": "gross_sales",
+          "country": "France"
+        }
+      ]
+    },
+    {
+      "id": "chain02",
+      "split": "evaluation_a",
+      "turns": [
+        {
+          "question": "What is cancellation value for France?",
+          "metric": "cancellation_value",
+          "country": "France"
+        },
+        {
+          "question": "Actually, use the United Kingdom instead",
+          "metric": "cancellation_value",
+          "country": "United Kingdom"
+        }
+      ]
+    },
+    {
+      "id": "chain03",
+      "split": "evaluation_a",
+      "turns": [
+        {
+          "question": "What is net sales grouped by country?",
+          "metric": "net_sales",
+          "country": null,
+          "group_by": "country"
+        },
+        {
+          "question": "Show the overall value instead",
+          "metric": "net_sales",
+          "country": null
+        }
+      ]
+    },
+    {
+      "id": "chain04",
+      "split": "evaluation_a",
+      "turns": [
+        {
+          "question": "What is order count?",
+          "metric": "order_count",
+          "country": null
+        },
+        {
+          "question": "Use net sales instead",
+          "metric": "net_sales",
+          "country": null
+        }
+      ]
+    },
+    {
+      "id": "chain05",
+      "split": "evaluation_a",
+      "turns": [
+        {
+          "question": "What is units sold?",
+          "metric": "units_sold",
+          "country": null
+        },
+        {
+          "question": "What caused that value?",
+          "metric": "units_sold",
+          "country": null,
+          "expected_status": "unsupported"
+        }
+      ]
+    },
+    {
+      "id": "chain06",
+      "split": "evaluation_a",
+      "turns": [
+        {
+          "question": "What is active customers?",
+          "metric": "active_customers",
+          "country": null
+        },
+        {
+          "question": "And for France?",
+          "metric": "active_customers",
+          "country": "France"
+        }
+      ]
+    },
+    {
+      "id": "chain07",
+      "split": "evaluation_a",
+      "turns": [
+        {
+          "question": "What is cancellation rate for France?",
+          "metric": "cancellation_rate",
+          "country": "France"
+        },
+        {
+          "question": "Actually, use the United Kingdom instead",
+          "metric": "cancellation_rate",
+          "country": "United Kingdom"
+        }
+      ]
+    },
+    {
+      "id": "chain08",
+      "split": "evaluation_a",
+      "turns": [
+        {
+          "question": "What is gross sales grouped by country?",
+          "metric": "gross_sales",
+          "country": null,
+          "group_by": "country"
+        },
+        {
+          "question": "Show the overall value instead",
+          "metric": "gross_sales",
+          "country": null
+        }
+      ]
+    },
+    {
+      "id": "chain09",
+      "split": "evaluation_a",
+      "turns": [
+        {
+          "question": "What is cancellation value?",
+          "metric": "cancellation_value",
+          "country": null
+        },
+        {
+          "question": "Use net sales instead",
+          "metric": "net_sales",
+          "country": null
+        }
+      ]
+    },
+    {
+      "id": "chain10",
+      "split": "evaluation_a",
+      "turns": [
+        {
+          "question": "What is net sales?",
+          "metric": "net_sales",
+          "country": null
+        },
+        {
+          "question": "What caused that value?",
+          "metric": "net_sales",
+          "country": null,
+          "expected_status": "unsupported"
+        }
+      ]
+    },
+    {
+      "id": "chain11",
+      "split": "evaluation_b",
+      "turns": [
+        {
+          "question": "What is order count?",
+          "metric": "order_count",
+          "country": null
+        },
+        {
+          "question": "And for France?",
+          "metric": "order_count",
+          "country": "France"
+        }
+      ]
+    },
+    {
+      "id": "chain12",
+      "split": "evaluation_b",
+      "turns": [
+        {
+          "question": "What is units sold for France?",
+          "metric": "units_sold",
+          "country": "France"
+        },
+        {
+          "question": "Actually, use the United Kingdom instead",
+          "metric": "units_sold",
+          "country": "United Kingdom"
+        }
+      ]
+    },
+    {
+      "id": "chain13",
+      "split": "evaluation_b",
+      "turns": [
+        {
+          "question": "What is active customers grouped by country?",
+          "metric": "active_customers",
+          "country": null,
+          "group_by": "country"
+        },
+        {
+          "question": "Show the overall value instead",
+          "metric": "active_customers",
+          "country": null
+        }
+      ]
+    },
+    {
+      "id": "chain14",
+      "split": "evaluation_b",
+      "turns": [
+        {
+          "question": "What is cancellation rate?",
+          "metric": "cancellation_rate",
+          "country": null
+        },
+        {
+          "question": "Use net sales instead",
+          "metric": "net_sales",
+          "country": null
+        }
+      ]
+    },
+    {
+      "id": "chain15",
+      "split": "evaluation_b",
+      "turns": [
+        {
+          "question": "What is gross sales?",
+          "metric": "gross_sales",
+          "country": null
+        },
+        {
+          "question": "What caused that value?",
+          "metric": "gross_sales",
+          "country": null,
+          "expected_status": "unsupported"
+        }
+      ]
+    },
+    {
+      "id": "chain16",
+      "split": "evaluation_b",
+      "turns": [
+        {
+          "question": "What is cancellation value?",
+          "metric": "cancellation_value",
+          "country": null
+        },
+        {
+          "question": "And for France?",
+          "metric": "cancellation_value",
+          "country": "France"
+        }
+      ]
+    },
+    {
+      "id": "chain17",
+      "split": "evaluation_b",
+      "turns": [
+        {
+          "question": "What is net sales for France?",
+          "metric": "net_sales",
+          "country": "France"
+        },
+        {
+          "question": "Actually, use the United Kingdom instead",
+          "metric": "net_sales",
+          "country": "United Kingdom"
+        }
+      ]
+    },
+    {
+      "id": "chain18",
+      "split": "evaluation_b",
+      "turns": [
+        {
+          "question": "What is order count grouped by country?",
+          "metric": "order_count",
+          "country": null,
+          "group_by": "country"
+        },
+        {
+          "question": "Show the overall value instead",
+          "metric": "order_count",
+          "country": null
+        }
+      ]
+    },
+    {
+      "id": "chain19",
+      "split": "evaluation_b",
+      "turns": [
+        {
+          "question": "What is units sold?",
+          "metric": "units_sold",
+          "country": null
+        },
+        {
+          "question": "Use net sales instead",
+          "metric": "net_sales",
+          "country": null
+        }
+      ]
+    },
+    {
+      "id": "chain20",
+      "split": "evaluation_b",
+      "turns": [
+        {
+          "question": "What is active customers?",
+          "metric": "active_customers",
+          "country": null
+        },
+        {
+          "question": "What caused that value?",
+          "metric": "active_customers",
+          "country": null,
+          "expected_status": "unsupported"
+        }
+      ]
+    }
+  ],
+  "data_hashes": {
+    "evaluation_a": "1a94496f6eb32acada4206c5182e48089cf497357187336622075468c2ea4df8",
+    "evaluation_b": "8a3dd97bbae56f7f00daf0a4f91ec1d08288166bac3ade7fc5ae5905cd2a137d"
+  },
+  "scope": "public real-data temporal split; fixed governed requests, not generic SQL/planning accuracy"
+}

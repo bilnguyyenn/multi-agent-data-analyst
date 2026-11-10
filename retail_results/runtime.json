@@ -1,0 +1,29 @@
+{
+  "measurements": [
+    {
+      "case": "development",
+      "source_rows": 15384,
+      "csv_bytes": 1356725,
+      "duration_s": 0.3613,
+      "process_peak_rss_mb": 174.31,
+      "memory_scope": "process lifetime high-water mark"
+    },
+    {
+      "case": "refresh",
+      "source_rows": 20765,
+      "csv_bytes": 1821122,
+      "duration_s": 0.6685,
+      "process_peak_rss_mb": 174.31,
+      "memory_scope": "process lifetime high-water mark"
+    },
+    {
+      "case": "full",
+      "source_rows": 541909,
+      "csv_bytes": 47217062,
+      "duration_s": 8.2984,
+      "process_peak_rss_mb": 340.94,
+      "memory_scope": "process lifetime high-water mark"
+    }
+  ],
+  "scope": "One local process, sequential warm runs; not an agent/API latency benchmark. RSS is the process-lifetime high-water mark, not per-job allocation."
+}

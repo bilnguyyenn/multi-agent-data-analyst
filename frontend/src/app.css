@@ -1,5 +1,29 @@
 * { box-sizing: border-box; margin: 0; }
 body { font-family: ui-sans-serif, system-ui, sans-serif; color: #111827; }
+.operations-page { min-height: 100vh; padding: 28px; background: #f5f8fc; max-width: 1500px; margin: auto; }
+.operations-page > header { padding: 20px 0; }
+.operations-page header > span { margin-left: 18px; color: #147d92; font-size: 11px; letter-spacing: .12em; }
+.operations-page h1 { margin: 16px 0 8px; font-size: 32px; }
+.operations-page p { line-height: 1.6; margin: 8px 0; }
+.operations-page small { color: #64748b; font-size: 11px; }
+.operations-page button { border: 1px solid #cbd5e1; background: white; border-radius: 6px; padding: 8px 12px; cursor: pointer; margin: 6px 5px 6px 0; color: #1e3a5f; }
+.operations-page button:disabled { opacity: .5; cursor: default; }
+.ops-setup { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+.ops-setup section,.ops-results,.ops-history { padding: 18px; background: white; border: 1px solid #dbe3ee; border-radius: 9px; margin-bottom: 18px; }
+.operations-page h2 { font-size: 17px; margin-bottom: 14px; }
+.operations-page label { display: block; margin: 10px 0; font-size: 12px; font-weight: 600; }
+.operations-page input:not([type=checkbox]),.operations-page select { display: block; width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 5px; font: inherit; margin-top: 5px; }
+.operations-page label.ops-metric-choice { display: flex; gap: 8px; font-weight: 400; }
+.ops-metric-choice small { display: block; line-height: 1.4; margin-top: 3px; }
+.ops-results article { margin: 14px 0; border: 1px solid #dbe3ee; border-radius: 6px; padding: 16px; overflow-x: auto; }
+.ops-results table { border-collapse: collapse; width: 100%; font-size: 13px; margin: 12px 0; }
+.ops-results td,.ops-results th { text-align: left; padding: 8px; border-bottom: 1px solid #e2e8f0; }
+.ops-results details { font-size: 12px; margin-top: 12px; }
+.ops-results summary { cursor: pointer; color: #147d92; }
+.ops-results pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #f5f8fc; padding: 12px; margin-top: 10px; }
+.ops-error { border-left: 3px solid #dc2626; background: #fff1f2; padding: 12px; }
+.ops-notice { background: #fff8e8; padding: 10px; font-size: 12px; }
+@media(max-width:900px) { .ops-setup { grid-template-columns: 1fr; } .operations-page { padding: 14px; } }
 
 .layout { display: flex; height: 100vh; }
 

@@ -1,0 +1,35 @@
+{
+  "source_url": "https://archive.ics.uci.edu/static/public/352/online%2Bretail.zip",
+  "source_sha256": "f5385cbb54bbebf7196389109c6b0621faab0c304e3702548165e71c84aede8b",
+  "workbook_sha256": "43465a06f2ccf7c8b5bd2892bc7defb52f97487934fe93b16ae4c3936424676d",
+  "attribution": "Chen, D. (2015). Online Retail. UCI Machine Learning Repository. https://doi.org/10.24432/C5BW33 (CC BY 4.0).",
+  "conversion": "openpyxl read-only; all rows retained; nulls become empty CSV cells; ISO local timestamps; integral IDs preserved",
+  "timezone": "unspecified source-local",
+  "splits": {
+    "development": {
+      "rows": 15384,
+      "sha256": "17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9",
+      "bytes": 1356725
+    },
+    "refresh": {
+      "rows": 20765,
+      "sha256": "e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e",
+      "bytes": 1821122
+    },
+    "evaluation_a": {
+      "rows": 20445,
+      "sha256": "1a94496f6eb32acada4206c5182e48089cf497357187336622075468c2ea4df8",
+      "bytes": 1788260
+    },
+    "evaluation_b": {
+      "rows": 20350,
+      "sha256": "8a3dd97bbae56f7f00daf0a4f91ec1d08288166bac3ade7fc5ae5905cd2a137d",
+      "bytes": 1781794
+    },
+    "full": {
+      "rows": 541909,
+      "sha256": "7615e19743f2c3e8e641375743c276dbb0ed64a70cf210464ce72c335db3d221",
+      "bytes": 47217062
+    }
+  }
+}

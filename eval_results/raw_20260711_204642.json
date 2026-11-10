@@ -1,0 +1,283 @@
+[
+  {
+    "config": "council-no-critic",
+    "results": [
+      {
+        "id": "t1_wo_count",
+        "tier": 1,
+        "question": "How many work orders are in the dataset?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 62.9,
+        "tokens": 6172,
+        "answer": "There are 3000 work orders in the work_orders table.\n  data: {'total_work_orders': 3000}\n\n[council: consensus] The result directly answers the question by counting rows in the work_orders table, using the correct metric (row count) and denominator (entire dataset).",
+        "error": null
+      },
+      {
+        "id": "t1_active_machines",
+        "tier": 1,
+        "question": "How many machines are currently active?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 115.8,
+        "tokens": 14855,
+        "answer": "There are 11 active machines that have not been decommissioned.\n  data: {'active_machines_count': 11}\n\n[council: adjudicated] There are 11 active machines that have not been decommissioned.",
+        "error": null
+      },
+      {
+        "id": "t1_top_downtime",
+        "tier": 1,
+        "question": "Which machine had the most downtime hours?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 117.5,
+        "tokens": 8696,
+        "answer": "The machine with the highest total downtime hours is M13 with 196.53999999999994 hours.\n  data: {'machine_id': 'M13', 'total_downtime': 196.53999999999994}\n\n[council: adjudicated] Machine M13 has the most downtime hours, with a total of 196.53999999999994 hours.\n\n[!] Statistical caveats (validator):\n  - t1: The total downtime value is over\u2011precise; report it with appropriate rounding (e.g., 196.54",
+        "error": null
+      },
+      {
+        "id": "t1_total_downtime",
+        "tier": 1,
+        "question": "What is the total downtime across all machines, in hours?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 60.1,
+        "tokens": 7834,
+        "answer": "The total downtime across all events is 1963.79 hours.\n  data: {'total_downtime_hours': 1963.7900000000002}\n\n[council: adjudicated] The total downtime across all machines is 1963.79 hours.",
+        "error": null
+      },
+      {
+        "id": "t1_avg_qty",
+        "tier": 1,
+        "question": "What is the average quantity produced per work order?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 186.6,
+        "tokens": 7831,
+        "answer": "The average quantity produced across all work orders is 225.68.\n  data: {'average_qty_produced': 225.68133333333333}\n\n[council: adjudicated] The average quantity produced per work order is 225.68 (rounded to two decimal places).",
+        "error": null
+      },
+      {
+        "id": "t1_top_reason",
+        "tier": 1,
+        "question": "What is the most common downtime reason?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 186.5,
+        "tokens": 6554,
+        "answer": "The most frequent downtime reason is electrical with 155 occurrences.\n  data: {'top_reason': 'electrical', 'count': 155}\n\n[council: consensus] The most common downtime reason is electrical.",
+        "error": null
+      },
+      {
+        "id": "t2_total_defects",
+        "tier": 2,
+        "question": "How many defective parts were produced in total?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 60.6,
+        "tokens": 7581,
+        "answer": "The total number of defective parts produced is 12992.\n  data: {'total_defective_parts': 12992}\n\n[council: adjudicated] The total number of defective parts produced is 12,992.",
+        "error": null
+      },
+      {
+        "id": "t2_worst_machine_defects",
+        "tier": 2,
+        "question": "Which machine produced the most defective parts in total?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 313.5,
+        "tokens": 19331,
+        "answer": "The machine with the highest total defects is M14 with 1296 defects.\n  data: {'total_defect_rows': 5433, 'joined_rows': 5433, 'per_machine_totals': [{'machine_id': 'M01', 'total_defects': 1123}, {'machine_id': 'M02', 'total_defects': 1112}, {'machine_id': 'M03', 'total_defects': 540}, {'machine_id': 'M04', 'total_defects': 1110}, {'machine_id': 'M05', 'total_defects': 1016}, {'machine_id': 'M06', ",
+        "error": null
+      },
+      {
+        "id": "t2_shift_production",
+        "tier": 2,
+        "question": "Which shift produced the largest total quantity?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 187.8,
+        "tokens": 8129,
+        "answer": "The shift with the largest total quantity produced is day with a total of 282410 units.\n  data: {'shift': 'day', 'total_qty': 282410}\n\n[council: adjudicated] The shift with the largest total quantity produced is day with a total of 282410 units.",
+        "error": null
+      },
+      {
+        "id": "t2_type_downtime",
+        "tier": 2,
+        "question": "Which machine type accumulated the most downtime hours?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 188.2,
+        "tokens": 9645,
+        "answer": "The machine type with the highest total downtime is press with 1090.42 hours.\n  data: {'machine_type': 'press', 'total_downtime': 1090.4199999999996}\n\n[council: adjudicated] According to the executed query (task t1), the machine type with the highest accumulated downtime hours is press with approximately 1090.42 hours.\n  dissent:\n  - The data_quality specialist challenges the result, noting that a",
+        "error": null
+      },
+      {
+        "id": "t2_complexity_rate",
+        "tier": 2,
+        "question": "What is the overall defect rate for high-complexity products, as a percentage?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 313.4,
+        "tokens": 19969,
+        "answer": "The overall defect rate for high-complexity products is 4.05%.\n  data: {'total_defects': 5946.0, 'total_produced': 146849.0, 'defect_rate_percentage': 4.049057194805548}\n\n[council: caveat] Recompute the defect rate to include work orders with zero defects, as the current inner join excludes them and may inflate the percentage.\n  dissent:\n  - statistical specialist supports the 4.05% result and rec",
+        "error": null
+      },
+      {
+        "id": "t2_busiest_operator",
+        "tier": 2,
+        "question": "Which operator handled the most work orders?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 188.5,
+        "tokens": 8153,
+        "answer": "The operator with the highest number of work orders is OP18 with 163 orders.\n  data: {'operator_id': 'OP18', 'count': 163}\n\n[council: adjudicated] Operator OP18 handled the most work orders, with 163 orders.",
+        "error": null
+      },
+      {
+        "id": "t2_worst_steel",
+        "tier": 2,
+        "question": "Which supplier has the highest defect rate for steel lots?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 313.2,
+        "tokens": 17675,
+        "answer": "The supplier with the highest defect rate for steel material is Borealis Supply with a rate of 0.0303.\n  data: {'supplier_name': 'Borealis Supply', 'defect_rate': 0.030332598835229874}\n\n[council: adjudicated] The supplier with the highest defect rate for steel material lots is Borealis Supply, with a defect rate of approximately 0.0303.\n\n[!] Statistical caveats (validator):\n  - t1: The reported ra",
+        "error": null
+      },
+      {
+        "id": "t3_day_vs_evening",
+        "tier": 3,
+        "question": "Is the evening shift's defect rate meaningfully different from the day shift's?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 315.6,
+        "tokens": 20969,
+        "answer": "The day shift defect rate was 0.0101 and evening was 0.0102; the difference of -0.0001 is not statistically significant (p=0.6796).\n  data: {'day_rate': 0.01007012339019621, 'evening_rate': 0.01015115333367942, 'difference': -8.102994348320978e-05, 'p_value': 0.6796325994419883, 'significant': False, 'day_total_qty': 593240, 'evening_total_qty': 462312, 'day_ci': [0.009816049246762827, 0.010324197",
+        "error": null
+      },
+      {
+        "id": "t3_downtime_outlier",
+        "tier": 3,
+        "question": "Which machines have downtime significantly above the fleet average?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 326.8,
+        "tokens": 52387,
+        "answer": "Machines exceeding the fleet average downtime of 140.27 hours are: M01, M02, M06, M07, M12, M13.\n  data: {'fleet_average': 140.2707142857143, 'exceeding_machines': ['M01', 'M02', 'M06', 'M07', 'M12', 'M13']}\n\n[council: caveat] No conclusion supplied.\n  dissent:\n  - metric\n  - statistical\n  - data_quality\n  - Requested recomputation could not run: council budget exhausted.\n\n[!] Statistical caveats ",
+        "error": null
+      },
+      {
+        "id": "t3_defect_trend",
+        "tier": 3,
+        "question": "Has the overall defect rate changed over time? Quantify the trend and its reliability.",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 315.4,
+        "tokens": 26969,
+        "answer": "The monthly average defect rate shows a trend with a slope of -0.000297 and an R-squared of 0.3713.\n  data: {'monthly_rates': {'2025-01': 0.022110911770228378, '2025-02': 0.02102915111109975, '2025-03': 0.0216019668291676, '2025-04': 0.023071949365998292, '2025-05': 0.024174983688902245, '2025-06': 0.02183694847120176, '2025-07': 0.017732078835083317, '2025-08': 0.016033050442929724, '2025-09': 0.",
+        "error": null
+      },
+      {
+        "id": "t3_supplier_ci",
+        "tier": 3,
+        "question": "Estimate the defect rate of each supplier with a measure of uncertainty.",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 187.6,
+        "tokens": 10038,
+        "answer": "Computed defect rates and uncertainty for 3 suppliers.\n  data: [{'supplier_name': 'Apex Metals', 'defect_rate': 0.052306747209992836, 'standard_error': 0.00045056987637852054}, {'supplier_name': 'Cyclone Materials', 'defect_rate': 0.05108709139288324, 'standard_error': 0.0005780773426392822}, {'supplier_name': 'Borealis Supply', 'defect_rate': 0.03892035734651207, 'standard_error': 0.0003770934123",
+        "error": null
+      },
+      {
+        "id": "t3_operator_effect",
+        "tier": 3,
+        "question": "Do defect rates differ meaningfully between operators, or is the variation noise?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 313.5,
+        "tokens": 24436,
+        "answer": "The analysis shows a defect rate range of 0.0026 and a CV of 0.0671 across operators, with an ANOVA p-value of 0.0051 and eta-squared of 0.0081.\n  data: {'operator_details': [{'operator_id': 'OP18', 'total_defects': 645.0, 'total_qty_produced': 74198.0, 'defect_rate': 0.008692956683468558, 'num_work_orders': 140, 'ci_lower': 0.008025000729245023, 'ci_upper': 0.009360912637692093}, {'operator_id': ",
+        "error": null
+      },
+      {
+        "id": "t3_small_n",
+        "tier": 3,
+        "question": "Which product has the best quality record, and how confident can we be?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 316.1,
+        "tokens": 32351,
+        "answer": "Product P2 has the lowest defect rate of 0.00731, with a 95% confidence interval of [0.00675, 0.00788].\n  data: {'product_id': 'P2', 'defect_rate': 0.007313206586514539, 'ci_lower': 0.0067451239751620444, 'ci_upper': 0.007881289197867033, 'standard_error': 0.00028983806701657886}\n\n[council: caveat] Current evidence cannot be trusted because the aggregation in task t1 may have joined on the wrong k",
+        "error": null
+      },
+      {
+        "id": "t3_downtime_dist",
+        "tier": 3,
+        "question": "What is the typical downtime event duration, and is the mean a good summary of it?",
+        "correct": 1.0,
+        "flagged": null,
+        "latency_s": 310.3,
+        "tokens": 19203,
+        "answer": "The mean may be misleading due to significant skewness. (Nulls handled: 0 excluded)\n  data: {'mean': 3.2675374376039934, 'median': 2.69, 'std': 2.3456815482241877, 'min': 0.07, 'max': 14.11, 'null_count': 0, 'relative_difference': 0.2146979321947931}\n\n[council: adjudicated] The typical downtime event duration is about 2.69 hours (median). The mean is 3.27 hours, and the relative difference to the ",
+        "error": null
+      },
+      {
+        "id": "t4_shift_trap",
+        "tier": 4,
+        "question": "Which shift has the best quality record?",
+        "correct": 0.5,
+        "flagged": true,
+        "latency_s": 313.3,
+        "tokens": 21608,
+        "answer": "The shift with the lowest defect rate is night with a rate of 0.0139.\n  data: {'shift_metrics': [{'shift': 'day', 'defect_rate': 0.0211536418682058, 'total_defects': 5974, 'total_qty': 282410, 'lower_ci': 0.020629408128017696, 'upper_ci': 0.02169090236768233, 'is_significantly_lowest': False}, {'shift': 'evening', 'defect_rate': 0.020692148623683317, 'total_defects': 4693, 'total_qty': 226801, 'lo",
+        "error": null
+      },
+      {
+        "id": "t4_supplier_trap",
+        "tier": 4,
+        "question": "Which supplier has the best quality?",
+        "correct": 0.5,
+        "flagged": true,
+        "latency_s": 254.1,
+        "tokens": 19657,
+        "answer": "The supplier with the lowest defect rate is Borealis Supply.\n  data: [{'supplier_name': 'Apex Metals', 'total_units': 244175.0, 'total_lots': 333, 'defect_rate': 0.052306747209992836, 'lower_ci': 0.05143066851870969, 'upper_ci': 0.05319691225851004, 'indistinguishable': False}, {'supplier_name': 'Cyclone Materials', 'total_units': 145066.0, 'total_lots': 206, 'defect_rate': 0.05108709139288324, 'l",
+        "error": null
+      },
+      {
+        "id": "t4_survivorship",
+        "tier": 4,
+        "question": "Has average machine downtime improved since July 2025?",
+        "correct": 0.0,
+        "flagged": false,
+        "latency_s": 120.4,
+        "tokens": 19928,
+        "answer": "The average downtime decreased from 3.51 to 3.11 hours, indicating an improvement of True.\n  data: {'mean_before': 3.509751037344398, 'mean_after': 3.105388888888889, 'improved': True, 'count_before': 241, 'count_after': 360, 'std_before': 2.709313862295397, 'std_after': 2.054980732110876, 'ci_before': [3.165960074253653, 3.8535420004351426], 'ci_after': [2.8923930103747204, 3.318384767403058], 'p",
+        "error": null
+      },
+      {
+        "id": "t4_fanout",
+        "tier": 4,
+        "question": "Using the defects table joined to work orders, what fraction of total production was defective?",
+        "correct": 0.0,
+        "flagged": false,
+        "latency_s": 120.1,
+        "tokens": 18640,
+        "answer": "The fraction of total defects to total production is 0.019189.\n  data: {'total_defects': 12992.0, 'total_production': 677044.0, 'defect_fraction': 0.019189299366067787}\n\n[council: adjudicated] The fraction of total production that was defective is 0.019189 (approximately 1.92%).\n\n[!] Statistical caveats (validator):\n  - t1: The calculation assumes every defect row successfully joins to a work orde",
+        "error": null
+      },
+      {
+        "id": "t4_fleet_trap",
+        "tier": 4,
+        "question": "Is the current fleet more reliable than the fleet was in early 2025?",
+        "correct": 0.5,
+        "flagged": true,
+        "latency_s": 120.2,
+        "tokens": 21970,
+        "answer": "The recent average downtime per machine (26.75) is not significantly lower than the early 2025 average (25.46).\n  data: {'avg_early_2025': 25.455714285714286, 'ci_early_2025': [15.126504330796001, 35.78492424063257], 'avg_recent_window': 26.75272727272727, 'ci_recent_window': [18.954443798869605, 34.551010746584936], 'p_value': 0.8287216743424564, 'is_more_reliable': False}\n\n[council: caveat] Curr",
+        "error": null
+      }
+    ],
+    "aborted": false
+  }
+]
