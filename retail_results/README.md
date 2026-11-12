@@ -10,6 +10,9 @@ Decimal-oracle agreement and definition-guard behavior, **not live-model accurac
 - [8/8 independent change reconciliations](change-validation.json): every aggregate group checked;
   2,619 product codes / 18 countries; zero-pence residuals. HTML/JSON reports retain all omitted
   groups in an explicit remainder. These checks are separate from the frozen 140-check suite.
+- [Source inspection of fee entries](inspection-amazonfee.html), [JSON and parent](inspection-amazonfee.json)
+- [6/6 independent source inspections](inspection-validation.json): component totals, source counts,
+  sampled-record membership/multiplicity, and exact signed pence for both periods.
 - [Recorded runtime and process memory](runtime.json)
 - [Local-model preflight](local-preflight.json)
 
@@ -28,3 +31,5 @@ Do not tune on the final task outcomes or describe this public temporal split as
 sealed or guaranteed absent from model pretraining.
 
 Rebuild the contribution evidence: `python scripts/build_change_evidence.py`.
+
+Rebuild source-inspection evidence: `python scripts/build_inspection_evidence.py`.

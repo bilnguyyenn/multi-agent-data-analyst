@@ -70,6 +70,30 @@ query is interrupted after 30 seconds, uses one DuckDB thread and the existing
 results and hashes are persisted in the evidence ledger; portable HTML/JSON retain
 reconciliation, parameters, source hashes, and caveats.
 
+### Inspect a recorded contributor
+
+Click a product-code or country contributor to open source inspection. Its full
+eligible gross, cancellation, net, and units totals are computed before sampling,
+then checked against the saved contribution and its row counts. Daily aggregates
+also reconcile to those totals. Country filters, original unit-price rounding,
+source timestamps, eligibility, and duplicate retention remain unchanged.
+
+The view shows at most ten source rows per period by default; CLI/API can request
+1–25. Counts state exactly how many eligible records are omitted. Rows use a
+stable ordering by parsed time and original fields; this is a deterministic
+preview, not random or representative sampling. Only groups displayed in the
+parent contribution can be inspected. Source descriptions remain original text,
+not model-generated product classifications. An empty window is explicitly shown.
+
+Each period has a 30-second query deadline, one DuckDB thread and the existing
+query-memory setting. More than 3,660 observed days or a packet exceeding 512 KiB
+are rejected, and source hashes are checked before and after reading. The
+inspection is stored in the ledger with its parent reference, queries, bound
+parameters, preparation, and source/code/definition hashes. HTML exports include
+source fields and daily tables. Inspections and exports may contain original
+invoice/customer fields; ordinary runtime evidence remains in the ignored local
+operations directory. The committed example uses only the attributed public data.
+
 The default demo seeds two completed reviews. CLI equivalents:
 
 ```bash
@@ -77,6 +101,7 @@ python -m analyst retail-review --start 2011-11-01 --end 2011-11-08
 python -m analyst retail-review --data data/retail/refresh/transactions.csv --start 2011-11-08 --end 2011-11-15 --out refresh.html
 python -m analyst retail-compare PREVIOUS_JOB_ID CURRENT_JOB_ID
 python -m analyst retail-changes PREVIOUS_JOB_ID CURRENT_JOB_ID --group-by product --out change.html
+python -m analyst retail-inspect CONTRIBUTION_ID AMAZONFEE --out source-inspection.html
 ```
 
 Snapshots are content-addressed read-only copies. Evidence includes full preparation

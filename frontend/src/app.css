@@ -173,3 +173,9 @@ body { font-family: ui-sans-serif, system-ui, sans-serif; color: #111827; }
 .ops-change-bar.positive { background: #147d74; }
 .ops-change-bar.negative { background: #aa4351; }
 .ops-change-remainder { font-weight: 600; background: #eef4f7; }
+.ops-inspection { border: 1px solid #bdd6d4; border-radius: 8px; background: #f5faf9; margin: 20px 0; padding: 16px; }
+.ops-inspection h4 { margin-top: 0; }
+.ops-inspection h5 { font-size: 15px; margin: 8px 0; }
+.ops-source-scroll { max-width: 100%; overflow-x: auto; }
+.ops-source-scroll table { min-width: 760px; }
+.ops-source-button { color: #12675f !important; text-decoration: underline; background: transparent !important; border: 0 !important; padding: 2px 0 !important; cursor: pointer; text-align: left; }

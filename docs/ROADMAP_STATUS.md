@@ -16,7 +16,10 @@ Spending limit: **$0**. The user explicitly chose **live evaluation later** and
 
 The initial implementation is pinned by `operations-v1`. The November 12 extension
 adds exact contribution analysis, eight independent real-data reconciliations, and
-unknown-versus-zero protection for truncated comparisons. See the updated case study.
+unknown-versus-zero protection for truncated comparisons. Source inspections now
+link displayed contributors to original entries, daily/component totals, and
+bounded previews; six independent real-data inspections validate that path.
+See the updated case study.
 
 - `sh scripts/run_local_demo.sh` — local retail workspace with two completed reviews.
 - [Workflow and contracts](OPERATIONS.md).

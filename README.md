@@ -24,6 +24,12 @@ The [product-code change report](retail_results/change-product.html) reconciles
 all 2,619 observed codes to the overall change, including an explicit remainder
 for groups beyond the displayed top ten. [Eight independent real-data checks](retail_results/change-validation.json)
 cover every aggregate group across four additive metrics and two dimensions.
+Click a contributor in the workspace to inspect its recorded source descriptions,
+full gross/cancellation/net totals, daily values, and a bounded row sample. The
+[portable fee-entry example](retail_results/inspection-amazonfee.html) shows why
+an apparent sales increase can include changes in recorded adjustments.
+[Six independent source inspections](retail_results/inspection-validation.json)
+verify component totals, eligible counts, and sampled records.
 Download and open the [90-second recorded-state walkthrough](examples/retail-walkthrough.html)
 for a portable tour. Its pacing is presentation timing, not a performance benchmark.
 

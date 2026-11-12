@@ -14,6 +14,7 @@ from fastapi.responses import Response
 from pydantic import BaseModel, ConfigDict, Field
 
 from analyst.operations.changes import ChangeRequest, render_bridge
+from analyst.operations.inspection import InspectionRequest, render_inspection
 from analyst.operations.metrics import REGISTRY, VERSION, MetricRequest, resolve_question
 from analyst.operations.service import Operations, Playbook, Refresh
 from analyst.reporting import render_report, report_payload
@@ -177,6 +178,30 @@ async def changes(
     )
     return await asyncio.to_thread(
         invoke, service().explain_change, previous, current, request.model_dump()
+    )
+
+
+@router.get("/changes/{identity}/inspect")
+async def inspect_contributor(identity: str, segment: str, sample_limit: int = 10):
+    request = invoke(
+        InspectionRequest.model_validate, {"segment": segment, "sample_limit": sample_limit}
+    )
+    return await asyncio.to_thread(
+        invoke, service().inspect_contributor, identity, request.model_dump()
+    )
+
+
+@router.get("/inspections/{identity}/report")
+def inspection_report(identity: str):
+    packet = invoke(service().get, "evidence", identity)
+    return Response(
+        invoke(render_inspection, packet),
+        media_type="text/html",
+        headers={
+            "Content-Disposition": 'attachment; filename="retail-source-inspection.html"',
+            "X-Content-Type-Options": "nosniff",
+            "Content-Security-Policy": "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'",
+        },
     )
 
 

@@ -29,6 +29,8 @@ jobs:
         run: python -m analyst retail-eval --out-dir /tmp/retail-contract-results
       - name: exact contribution reconciliation against independent oracle ($0)
         run: python scripts/build_change_evidence.py --out-dir /tmp/retail-change-evidence
+      - name: source inspections against independent reference ($0)
+        run: python scripts/build_inspection_evidence.py --out-dir /tmp/retail-source-evidence
       - name: predictive reliability benchmark ($0, no LLM)
         run: python -m analyst predictive-benchmark --out-dir /tmp/predictive-results
       - uses: actions/upload-artifact@v4

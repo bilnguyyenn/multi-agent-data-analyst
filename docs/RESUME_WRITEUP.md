@@ -56,7 +56,9 @@ For data science/analytics applications:
 
 Additional engineering evidence: fixed unknown-versus-zero behavior in truncated
 comparisons; added bounded, typed contribution queries, stored evidence, portable
-reports, and rejection of nonadditive breakdowns. A counterbalanced usability pilot
+reports, and rejection of nonadditive breakdowns. Added contributor-to-source drill-down
+with bounded previews, explicit omitted-row counts, daily/component reconciliation,
+parent evidence lineage, and six independent real-data inspection cases. A counterbalanced usability pilot
 remains prepared with consent, correctness scoring, and unsuccessful-task accounting.
 
 These bullets describe completed engineering and deterministic validation. Live

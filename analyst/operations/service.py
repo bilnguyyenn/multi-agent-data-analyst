@@ -501,3 +501,27 @@ class Operations:
                 [result["computation_id"], json.dumps(result)],
             )
         return self.get("evidence", result["computation_id"])
+
+    def inspect_contributor(self, parent_id: str, raw: dict) -> dict:
+        from analyst.operations.inspection import InspectionRequest, inspection
+
+        request = InspectionRequest.model_validate(raw)
+        parent = self.get("evidence", parent_id)
+        if parent.get("version") != "retail-change-bridge-v1":
+            raise ValueError("inspection requires contribution evidence")
+        paths = [
+            self.root / "snapshots" / f"{identity}.csv" for identity in parent["snapshot_hashes"]
+        ]
+        for path, identity in zip(paths, parent["snapshot_hashes"]):
+            if file_hash(path) != identity:
+                raise ValueError("snapshot content changed")
+        result = inspection(parent, request, paths)
+        for path, identity in zip(paths, parent["snapshot_hashes"]):
+            if file_hash(path) != identity:
+                raise ValueError("snapshot changed during source inspection")
+        with self.db() as db:
+            db.execute(
+                "INSERT OR IGNORE INTO evidence VALUES (?,?)",
+                [result["computation_id"], json.dumps(result)],
+            )
+        return self.get("evidence", result["computation_id"])

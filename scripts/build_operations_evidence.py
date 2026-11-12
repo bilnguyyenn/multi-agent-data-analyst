@@ -96,6 +96,8 @@ Decimal-oracle agreement and definition-guard behavior, **not live-model accurac
 - [Exact product-code breakdown](change-product.html), [country breakdown](change-country.html)
 - [Independent change reconciliations](change-validation.json) — rebuild separately with
   `python scripts/build_change_evidence.py`; the frozen 140-check suite is unchanged.
+- [Source-entry inspection](inspection-amazonfee.html), [source validation](inspection-validation.json)
+  — rebuild with `python scripts/build_inspection_evidence.py`.
 - [Recorded runtime and process memory](runtime.json)
 - [Local-model preflight](local-preflight.json)
 

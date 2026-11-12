@@ -82,6 +82,28 @@ reference across four additive metrics and two dimensions: **8/8 reconciliations
 These deterministic checks do not measure language-model accuracy or causal effects.
 The frozen 100-question/20-chain language evaluation contract remains unchanged.
 
+## From a contributor to original entries
+
+The inspection view resolves the `AMAZONFEE` contribution to two original entries
+on November 7: `C574897` (−£5,877.18) and `C574902` (−£8,286.22), both described
+as `AMAZON FEE`. They account exactly for the earlier −£14,163.40 and the recorded
++£14,163.40 change when the later window has no eligible entries for this code.
+This demonstrates an adjustment/cancellation component in the contract; it does
+not establish merchandise demand growth or a causal business explanation.
+
+Inspecting `DOT` exposes the recorded `DOTCOM POSTAGE` descriptions. The first
+period has six eligible rows; the second has twelve. The default preview shows
+ten of the later twelve and explicitly reports the two omitted records. Full
+totals and daily values use every eligible record, including omitted samples.
+
+[Portable source inspection](../retail_results/inspection-amazonfee.html) and
+[JSON with its parent evidence](../retail_results/inspection-amazonfee.json) retain
+the source descriptions, components, samples, daily values, queries, and hashes.
+[Six independent real-data inspections](../retail_results/inspection-validation.json)
+check all four component totals and source-row counts for both periods, raw-record
+membership with duplicate multiplicity, and independently recalculated signed pence.
+These remain deterministic checks; no language-model or user-study result is implied.
+
 ## Validation and engineering evidence
 
 - The frozen real-data suite contains 100 questions and 20 two-turn scenarios.
