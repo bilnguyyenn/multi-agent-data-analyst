@@ -6,6 +6,10 @@ Decimal-oracle agreement and definition-guard behavior, **not live-model accurac
 
 - [Frozen task contract](contract.json), [all check outcomes](contract-results.json)
 - [First review](development.html), [refresh](refresh.html), [comparison](comparison.json)
+- [Exact product-code breakdown](change-product.html), [country breakdown](change-country.html)
+- [8/8 independent change reconciliations](change-validation.json): every aggregate group checked;
+  2,619 product codes / 18 countries; zero-pence residuals. HTML/JSON reports retain all omitted
+  groups in an explicit remainder. These checks are separate from the frozen 140-check suite.
 - [Recorded runtime and process memory](runtime.json)
 - [Local-model preflight](local-preflight.json)
 
@@ -22,3 +26,5 @@ Rebuild: `python scripts/build_operations_evidence.py`.
 Run the guarded free live evaluation later: `python -m analyst retail-eval --live-local`.
 Do not tune on the final task outcomes or describe this public temporal split as
 sealed or guaranteed absent from model pretraining.
+
+Rebuild the contribution evidence: `python scripts/build_change_evidence.py`.

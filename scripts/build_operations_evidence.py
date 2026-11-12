@@ -93,6 +93,9 @@ Decimal-oracle agreement and definition-guard behavior, **not live-model accurac
 
 - [Frozen task contract](contract.json), [all check outcomes](contract-results.json)
 - [First review](development.html), [refresh](refresh.html), [comparison](comparison.json)
+- [Exact product-code breakdown](change-product.html), [country breakdown](change-country.html)
+- [Independent change reconciliations](change-validation.json) — rebuild separately with
+  `python scripts/build_change_evidence.py`; the frozen 140-check suite is unchanged.
 - [Recorded runtime and process memory](runtime.json)
 - [Local-model preflight](local-preflight.json)
 

@@ -51,12 +51,32 @@ business activity occurred. Grouped distinct counts and rates are not additive.
 4. Inspect any computation, download its report/evidence, and register the next snapshot.
 5. Refresh the same playbook over an equal-length, nonoverlapping period and compare.
 
+After comparing, use **Explain change** to break an overall additive metric down
+by country or product code. All groups are aggregated before ranking by absolute
+change. Displayed rows plus the explicit remainder reconcile to the saved overall
+metric in integer pence (or integer units). Cohorts describe whether eligible
+records are present in each window; they do not establish acquisition or churn.
+Stock codes can include fees and adjustments, so inspect source descriptions
+before interpreting merchandise performance. Distinct invoices, customers, and
+rates are excluded because they are not generally additive across these groups.
+
+A plain comparison of top-N lists now marks an absent group as unknown when its
+period was truncated. It cannot silently treat an omitted group as zero. The
+complete contribution bridge reads the immutable snapshots to recover those
+missing aggregates. It requires current engine fingerprints, matching definitions,
+one overall metric request, compatible filters, and chronological periods. Each
+query is interrupted after 30 seconds, uses one DuckDB thread and the existing
+256 MB query setting, and rejects more than 100,000 groups per period. Query
+results and hashes are persisted in the evidence ledger; portable HTML/JSON retain
+reconciliation, parameters, source hashes, and caveats.
+
 The default demo seeds two completed reviews. CLI equivalents:
 
 ```bash
 python -m analyst retail-review --start 2011-11-01 --end 2011-11-08
 python -m analyst retail-review --data data/retail/refresh/transactions.csv --start 2011-11-08 --end 2011-11-15 --out refresh.html
 python -m analyst retail-compare PREVIOUS_JOB_ID CURRENT_JOB_ID
+python -m analyst retail-changes PREVIOUS_JOB_ID CURRENT_JOB_ID --group-by product --out change.html
 ```
 
 Snapshots are content-addressed read-only copies. Evidence includes full preparation

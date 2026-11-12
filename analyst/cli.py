@@ -33,6 +33,14 @@ def main(argv: list[str] | None = None) -> int:
     comparison.add_argument("previous")
     comparison.add_argument("current")
     comparison.add_argument("--root", default=".operations")
+    changes = sub.add_parser("retail-changes", help="explain an additive metric change with exact reconciliation")
+    changes.add_argument("previous")
+    changes.add_argument("current")
+    changes.add_argument("--root", default=".operations")
+    changes.add_argument("--metric", default="net_sales", choices=["gross_sales", "cancellation_value", "net_sales", "units_sold"])
+    changes.add_argument("--group-by", default="product", choices=["country", "product"])
+    changes.add_argument("--limit", type=int, default=10)
+    changes.add_argument("--out", default="retail-change.html")
     execute = sub.add_parser("retail-execute", help="resume queued or expired-leased review jobs")
     execute.add_argument("job_id")
     execute.add_argument("--root", default=".operations")
@@ -206,7 +214,7 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps(result, indent=2))
         return 0 if checks["passed"] else 1
 
-    if args.cmd in {"retail-import", "retail-review", "retail-compare", "retail-execute"}:
+    if args.cmd in {"retail-import", "retail-review", "retail-compare", "retail-execute", "retail-changes"}:
         from pathlib import Path
 
         from analyst.operations.service import Operations
@@ -217,6 +225,14 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps(import_uci(Path(args.cache), Path(args.out), args.download), indent=2))
             return 0
         service = Operations(args.root)
+        if args.cmd == "retail-changes":
+            from analyst.operations.changes import render_bridge
+
+            packet = service.explain_change(args.previous, args.current, {
+                "metric": args.metric, "group_by": args.group_by, "limit": args.limit})
+            Path(args.out).write_text(render_bridge(packet))
+            print(json.dumps(packet, indent=2))
+            return 0
         if args.cmd == "retail-compare":
             print(json.dumps(service.compare(args.previous, args.current), indent=2))
             return 0

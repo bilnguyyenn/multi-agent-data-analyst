@@ -1,6 +1,6 @@
 # Roadmap execution status
 
-Updated November 10, 2026. Target roles: AI/ML engineering and data science/analytics.
+Updated November 12, 2026. Target roles: AI/ML engineering and data science/analytics.
 Spending limit: **$0**. The user explicitly chose **live evaluation later** and
 **pilot testers later**. Neither outcome is represented as completed research.
 
@@ -14,7 +14,9 @@ Spending limit: **$0**. The user explicitly chose **live evaluation later** and
 
 ## Delivered entry points
 
-The implementation is pinned by the Git tag `operations-v1`.
+The initial implementation is pinned by `operations-v1`. The November 12 extension
+adds exact contribution analysis, eight independent real-data reconciliations, and
+unknown-versus-zero protection for truncated comparisons. See the updated case study.
 
 - `sh scripts/run_local_demo.sh` — local retail workspace with two completed reviews.
 - [Workflow and contracts](OPERATIONS.md).

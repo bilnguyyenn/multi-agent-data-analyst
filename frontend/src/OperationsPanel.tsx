@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ChangeBreakdown from "./ChangeBreakdown";
 
 type Metric = { unit: string; definition: string };
 type Snapshot = { snapshot_id: string; rows: number; observed_start: string; observed_end: string; metadata: { label?: string } };
@@ -114,7 +115,7 @@ export default function OperationsPanel({ onBack }: { onBack: () => void }) {
         })}>Confirm interpreted metric</button>}
       </section>
     </div>
-    <section className="ops-history"><h2>Review history</h2>{jobs.map(j => <button key={j.job_id} onClick={() => void perform(async () => {
+    <section className="ops-history"><h2>Review history</h2>{jobs.map(j => <button key={j.job_id} disabled={pending} onClick={() => void perform(async () => {
       setJob(await api(`jobs/${j.job_id}`)); setComparison(null);
     })}>{j.spec.start} → {j.spec.end} · {j.status} · {j.job_id.slice(0, 8)}</button>)}</section>
     {job && <section className="ops-results"><header><h2>Review {job.job_id.slice(0, 8)} · {job.status}</h2>
@@ -129,11 +130,12 @@ export default function OperationsPanel({ onBack }: { onBack: () => void }) {
           <p>Snapshot SHA-256: {packet.snapshot_hash}</p><pre>{packet.sql}</pre><p>Parameters: {JSON.stringify(packet.parameters)}</p>
           <p>Snapshot diagnostics: {JSON.stringify(packet.quality)}</p><ul>{packet.warnings.map(w => <li key={w}>{w}</li>)}</ul>
           <a href={`/operations/evidence/${packet.computation_id}`} target="_blank" rel="noreferrer">Open complete ledger entry</a></details></article>)}
-      {job.status === "done" && <div className="ops-comparison"><h3>Compare an earlier review</h3><select aria-label="Previous review" value={previous} onChange={e => setPrevious(e.target.value)}>
+      {job.status === "done" && <div className="ops-comparison"><h3>Compare an earlier review</h3><select aria-label="Previous review" value={previous} onChange={e => { setPrevious(e.target.value); setComparison(null); }}>
         <option value="">Select completed review</option>{jobs.filter(j => j.status === "done" && j.job_id !== job.job_id).map(j => <option key={j.job_id} value={j.job_id}>{j.spec.start} → {j.spec.end}</option>)}</select>
         <button disabled={!previous || pending} onClick={() => void perform(async () => {
           setComparison(await api(`compare?previous=${encodeURIComponent(previous)}&current=${job.job_id}`));
         })}>Compare periods</button>
+        <ChangeBreakdown previous={previous} current={job.job_id} />
         {comparison && <><table><thead><tr><th>Metric / segment</th><th>Earlier</th><th>Current</th><th>Change</th></tr></thead><tbody>
           {comparison.rows.map((r, i) => <tr key={i}><td>{r.metric} / {r.segment}</td><td>{r.previous ?? "Undefined"}</td><td>{r.current ?? "Undefined"}</td><td>{r.delta ?? "Undefined"}</td></tr>)}</tbody></table>
           {comparison.warnings.map(w => <p key={w}>{w}</p>)}</>}

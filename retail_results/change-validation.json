@@ -1,0 +1,184 @@
+{
+  "version": "retail-change-validation-v1",
+  "source_sha256": "04c9452f840e51bd1ec4dd5481f3e219c40aef6eadccc79c9999d42d6b5fff83",
+  "passed": true,
+  "cases": [
+    {
+      "metric": "gross_sales",
+      "group_by": "country",
+      "passed": true,
+      "period_checks": [
+        {
+          "source_sha256": "17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9",
+          "groups": 16,
+          "aggregate_sha256": "df3280a15cf32174189cfd5c2ad5ab3c34c37000c44be7ae934bed9cc1c21b58",
+          "passed": true
+        },
+        {
+          "source_sha256": "e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e",
+          "groups": 14,
+          "aggregate_sha256": "4d2d9025cdbe31f5250e2c41b941012b165d938b90ecf83966fb4ace3f4d86f0",
+          "passed": true
+        }
+      ],
+      "union_groups": 18,
+      "delta_base_units": 6817256,
+      "residual_base_units": 0
+    },
+    {
+      "metric": "gross_sales",
+      "group_by": "product",
+      "passed": true,
+      "period_checks": [
+        {
+          "source_sha256": "17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9",
+          "groups": 2211,
+          "aggregate_sha256": "6a23992fc342a6c8d9b78fb387b5c1db1b8323c96833c1936072a5012a43066b",
+          "passed": true
+        },
+        {
+          "source_sha256": "e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e",
+          "groups": 2365,
+          "aggregate_sha256": "e64ee43b73bb5962013eb10366d7ad95f00d428bed4a8df89ce341f0d42ca731",
+          "passed": true
+        }
+      ],
+      "union_groups": 2619,
+      "delta_base_units": 6817256,
+      "residual_base_units": 0
+    },
+    {
+      "metric": "cancellation_value",
+      "group_by": "country",
+      "passed": true,
+      "period_checks": [
+        {
+          "source_sha256": "17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9",
+          "groups": 16,
+          "aggregate_sha256": "69c872e80ea06d9b0123944b4ce4ef24310b437a5588300f8aa06a541c904e9e",
+          "passed": true
+        },
+        {
+          "source_sha256": "e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e",
+          "groups": 14,
+          "aggregate_sha256": "4b80f15535f5e0802ad97905a3caf0746eccb50953e3f87ea1c9f19f314076fa",
+          "passed": true
+        }
+      ],
+      "union_groups": 18,
+      "delta_base_units": -1073521,
+      "residual_base_units": 0
+    },
+    {
+      "metric": "cancellation_value",
+      "group_by": "product",
+      "passed": true,
+      "period_checks": [
+        {
+          "source_sha256": "17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9",
+          "groups": 2211,
+          "aggregate_sha256": "7dda177d866c6fac072346a6d258255f9c9673efd858dc4f44ca451c75979089",
+          "passed": true
+        },
+        {
+          "source_sha256": "e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e",
+          "groups": 2365,
+          "aggregate_sha256": "9c239bf0b55c48ec5e8f12f47677043eeac93af1c369fcbe9b42cf16c915d4b4",
+          "passed": true
+        }
+      ],
+      "union_groups": 2619,
+      "delta_base_units": -1073521,
+      "residual_base_units": 0
+    },
+    {
+      "metric": "net_sales",
+      "group_by": "country",
+      "passed": true,
+      "period_checks": [
+        {
+          "source_sha256": "17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9",
+          "groups": 16,
+          "aggregate_sha256": "7a8cbc1350f195957778ad060af33ce006808da61f57a80c0ca5cd0ac2de9ce6",
+          "passed": true
+        },
+        {
+          "source_sha256": "e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e",
+          "groups": 14,
+          "aggregate_sha256": "c47dcbde4c2c8eefb440d7bcd8b7552adf3704330ea8dccd60535139d20f35c9",
+          "passed": true
+        }
+      ],
+      "union_groups": 18,
+      "delta_base_units": 7890777,
+      "residual_base_units": 0
+    },
+    {
+      "metric": "net_sales",
+      "group_by": "product",
+      "passed": true,
+      "period_checks": [
+        {
+          "source_sha256": "17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9",
+          "groups": 2211,
+          "aggregate_sha256": "2b3daa56cdc4a4f978112d3bae032876971ba19a816ca744e3d0e45457f0a10b",
+          "passed": true
+        },
+        {
+          "source_sha256": "e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e",
+          "groups": 2365,
+          "aggregate_sha256": "f98f4c73b28ec7840c75a7c32fd7928880edd67952e955f627f556f7cb18c6e0",
+          "passed": true
+        }
+      ],
+      "union_groups": 2619,
+      "delta_base_units": 7890777,
+      "residual_base_units": 0
+    },
+    {
+      "metric": "units_sold",
+      "group_by": "country",
+      "passed": true,
+      "period_checks": [
+        {
+          "source_sha256": "17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9",
+          "groups": 16,
+          "aggregate_sha256": "0b8f63c6cae029ac720d49d11a10623e45f7c10ff6a6ed524ee836c37358a2fa",
+          "passed": true
+        },
+        {
+          "source_sha256": "e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e",
+          "groups": 14,
+          "aggregate_sha256": "5f0e8f84ede6e87bb0623a20eb1afc39d6a05e26bb0e6544eabeec94a3654d1d",
+          "passed": true
+        }
+      ],
+      "union_groups": 18,
+      "delta_base_units": 30598,
+      "residual_base_units": 0
+    },
+    {
+      "metric": "units_sold",
+      "group_by": "product",
+      "passed": true,
+      "period_checks": [
+        {
+          "source_sha256": "17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9",
+          "groups": 2211,
+          "aggregate_sha256": "e0eed51cfe567562e71ac4c05151e64e5c9f2a94f470c8077cc20683d2b11b9f",
+          "passed": true
+        },
+        {
+          "source_sha256": "e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e",
+          "groups": 2365,
+          "aggregate_sha256": "bf25564aade31c5154b8442ce5d9517599c3cfbb6286248538563d3b7283cf3e",
+          "passed": true
+        }
+      ],
+      "union_groups": 2619,
+      "delta_base_units": 30598,
+      "residual_base_units": 0
+    }
+  ],
+  "scope": "8 deterministic real-data reconciliations: 4 additive metrics \u00d7 2 dimensions. Every aggregate group is checked against independent row-wise Decimal logic. Not model accuracy or causal evidence."
+}

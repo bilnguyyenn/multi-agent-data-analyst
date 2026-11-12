@@ -8,7 +8,8 @@ checks and visible caveats.
 
 A versioned review desk now runs on attributed, real UCI retail transactions:
 freeze a data snapshot, choose explicit KPI definitions, run a saved playbook,
-inspect each computation, and compare the next period. Calculations require no model.
+inspect each computation, compare the next period, and break the change down by
+country or product code. Calculations require no model.
 
 ```bash
 python -m pip install -e ".[retail]"
@@ -19,6 +20,10 @@ The demo uses committed weekly slices and two reusable reviews. Open the printed
 local URL. Full-source processing was also measured on 541,909 rows; see the
 [resource record](retail_results/runtime.json), [case study](docs/RETAIL_CASE_STUDY.md),
 and [workflow guide](docs/OPERATIONS.md).
+The [product-code change report](retail_results/change-product.html) reconciles
+all 2,619 observed codes to the overall change, including an explicit remainder
+for groups beyond the displayed top ten. [Eight independent real-data checks](retail_results/change-validation.json)
+cover every aggregate group across four additive metrics and two dimensions.
 Download and open the [90-second recorded-state walkthrough](examples/retail-walkthrough.html)
 for a portable tour. Its pacing is presentation timing, not a performance benchmark.
 

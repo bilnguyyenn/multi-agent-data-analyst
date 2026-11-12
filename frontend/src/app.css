@@ -165,3 +165,11 @@ body { font-family: ui-sans-serif, system-ui, sans-serif; color: #111827; }
 .importance-list small { text-align: right; color: #64748b; }
 .predictive-grid .model-warning { display: block; margin-top: 5px; color: #9a3412; }
 .log { max-height: 220px; overflow-y: auto; background: #fafafa; }
+.ops-change { margin-top: 24px; border-top: 1px solid #cad7df; padding-top: 16px; }
+.ops-change-controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: end; }
+.ops-change-controls label { min-width: 160px; flex: 1; }
+.ops-change-cohort { display: block; color: #536776; }
+.ops-change-bar { display: block; height: 6px; margin-top: 6px; min-width: 0; border-radius: 3px; }
+.ops-change-bar.positive { background: #147d74; }
+.ops-change-bar.negative { background: #aa4351; }
+.ops-change-remainder { font-weight: 600; background: #eef4f7; }

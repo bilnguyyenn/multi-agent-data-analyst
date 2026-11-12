@@ -1,0 +1,317 @@
+{
+  "change": {
+    "version": "retail-change-bridge-v1",
+    "metric": "net_sales",
+    "group_by": "country",
+    "unit": "GBP",
+    "base_unit_scale": 100,
+    "previous_base_units": 30979240,
+    "current_base_units": 38870017,
+    "delta_base_units": 7890777,
+    "previous": "309792.40",
+    "current": "388700.17",
+    "delta": "78907.77",
+    "group_count": 18,
+    "rows": [
+      {
+        "segment": "United Kingdom",
+        "cohort": "continuing",
+        "previous_base_units": 27800378,
+        "current_base_units": 35098231,
+        "delta_base_units": 7297853,
+        "previous": "278003.78",
+        "current": "350982.31",
+        "delta": "72978.53",
+        "previous_source_rows": 14141,
+        "current_source_rows": 19327
+      },
+      {
+        "segment": "EIRE",
+        "cohort": "continuing",
+        "previous_base_units": 308727,
+        "current_base_units": 908550,
+        "delta_base_units": 599823,
+        "previous": "3087.27",
+        "current": "9085.50",
+        "delta": "5998.23",
+        "previous_source_rows": 135,
+        "current_source_rows": 317
+      },
+      {
+        "segment": "Switzerland",
+        "cohort": "continuing",
+        "previous_base_units": 620767,
+        "current_base_units": 29258,
+        "delta_base_units": -591509,
+        "previous": "6207.67",
+        "current": "292.58",
+        "delta": "-5915.09",
+        "previous_source_rows": 131,
+        "current_source_rows": 13
+      },
+      {
+        "segment": "Netherlands",
+        "cohort": "continuing",
+        "previous_base_units": 448691,
+        "current_base_units": 982312,
+        "delta_base_units": 533621,
+        "previous": "4486.91",
+        "current": "9823.12",
+        "delta": "5336.21",
+        "previous_source_rows": 70,
+        "current_source_rows": 65
+      },
+      {
+        "segment": "France",
+        "cohort": "continuing",
+        "previous_base_units": 471881,
+        "current_base_units": 872553,
+        "delta_base_units": 400672,
+        "previous": "4718.81",
+        "current": "8725.53",
+        "delta": "4006.72",
+        "previous_source_rows": 292,
+        "current_source_rows": 489
+      },
+      {
+        "segment": "Belgium",
+        "cohort": "continuing",
+        "previous_base_units": 241253,
+        "current_base_units": 48660,
+        "delta_base_units": -192593,
+        "previous": "2412.53",
+        "current": "486.60",
+        "delta": "-1925.93",
+        "previous_source_rows": 96,
+        "current_source_rows": 29
+      },
+      {
+        "segment": "Germany",
+        "cohort": "continuing",
+        "previous_base_units": 264945,
+        "current_base_units": 404621,
+        "delta_base_units": 139676,
+        "previous": "2649.45",
+        "current": "4046.21",
+        "delta": "1396.76",
+        "previous_source_rows": 113,
+        "current_source_rows": 262
+      },
+      {
+        "segment": "Poland",
+        "cohort": "no_longer_observed",
+        "previous_base_units": 136123,
+        "current_base_units": 0,
+        "delta_base_units": -136123,
+        "previous": "1361.23",
+        "current": "0.00",
+        "delta": "-1361.23",
+        "previous_source_rows": 71,
+        "current_source_rows": 0
+      },
+      {
+        "segment": "Austria",
+        "cohort": "newly_observed",
+        "previous_base_units": 0,
+        "current_base_units": 132978,
+        "delta_base_units": 132978,
+        "previous": "0.00",
+        "current": "1329.78",
+        "delta": "1329.78",
+        "previous_source_rows": 0,
+        "current_source_rows": 70
+      },
+      {
+        "segment": "Channel Islands",
+        "cohort": "no_longer_observed",
+        "previous_base_units": 130314,
+        "current_base_units": 0,
+        "delta_base_units": -130314,
+        "previous": "1303.14",
+        "current": "0.00",
+        "delta": "-1303.14",
+        "previous_source_rows": 64,
+        "current_source_rows": 0
+      }
+    ],
+    "remainder": {
+      "previous_base_units": 556161,
+      "current_base_units": 392854,
+      "delta_base_units": -163307,
+      "group_count": 8,
+      "previous": "5561.61",
+      "current": "3928.54",
+      "delta": "-1633.07"
+    },
+    "cohorts": [
+      {
+        "cohort": "continuing",
+        "group_count": 12,
+        "delta_base_units": 8213734,
+        "delta": "82137.34"
+      },
+      {
+        "cohort": "newly_observed",
+        "group_count": 2,
+        "delta_base_units": 132978,
+        "delta": "1329.78"
+      },
+      {
+        "cohort": "no_longer_observed",
+        "group_count": 4,
+        "delta_base_units": -455935,
+        "delta": "-4559.35"
+      }
+    ],
+    "absolute_movement_base_units": 10599263,
+    "reconciliation_residual_base_units": 0,
+    "evidence_refs": [
+      "74bedf5498045ee7ed59dbc8f02fe5bf259acb70eac3ccb5e8b908769bdad593",
+      "540d785152aa116f87e60b4bc5b8dabf397be73e9a7b99d3f55d0653751ae65a"
+    ],
+    "snapshot_hashes": [
+      "17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9",
+      "e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e"
+    ],
+    "metric_contract_hash": "4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412",
+    "source_sha256": "04c9452f840e51bd1ec4dd5481f3e219c40aef6eadccc79c9999d42d6b5fff83",
+    "metric_engine_sha256": "3d51e00b21c1b85ddc2a0fe90dd62672339b2cc00b1964f4682faa9512197b06",
+    "preparation_sql": "CREATE TEMP VIEW lines AS SELECT\n        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,\n        NULLIF(NULLIF(trim(CustomerID), ''), 'nan') AS customer,\n        COALESCE(NULLIF(trim(Country), ''), '(missing)') AS country,\n        CASE WHEN regexp_full_match(trim(Quantity), '[+-]?[0-9]+([.]0+)?')\n             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,\n        CASE WHEN regexp_full_match(trim(UnitPrice), '[+-]?[0-9]+([.][0-9]{1,4})?')\n             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,\n        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,\n        coalesce(try_cast(InvoiceDate AS TIMESTAMP),\n                 try_strptime(InvoiceDate, '%m/%d/%Y %H:%M')) AS occurred,\n        starts_with(upper(trim(InvoiceNo)), 'C') AS cancelled FROM raw",
+    "queries": [
+      {
+        "sql": "SELECT COALESCE(country, '(missing)') AS segment, COALESCE(SUM(qty * pence), 0) AS numerator, COUNT(*) AS source_rows FROM lines WHERE price > 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty > 0) OR (cancelled AND qty < 0)) AND invoice IS NOT NULL AND invoice <> '' AND occurred IS NOT NULL AND occurred >= ? AND occurred < ? GROUP BY 1 ORDER BY segment",
+        "parameters": [
+          "2011-11-01",
+          "2011-11-08"
+        ]
+      },
+      {
+        "sql": "SELECT COALESCE(country, '(missing)') AS segment, COALESCE(SUM(qty * pence), 0) AS numerator, COUNT(*) AS source_rows FROM lines WHERE price > 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty > 0) OR (cancelled AND qty < 0)) AND invoice IS NOT NULL AND invoice <> '' AND occurred IS NOT NULL AND occurred >= ? AND occurred < ? GROUP BY 1 ORDER BY segment",
+        "parameters": [
+          "2011-11-08",
+          "2011-11-15"
+        ]
+      }
+    ],
+    "periods": [
+      {
+        "start": "2011-11-01",
+        "end": "2011-11-08",
+        "country": null
+      },
+      {
+        "start": "2011-11-08",
+        "end": "2011-11-15",
+        "country": null
+      }
+    ],
+    "warnings": [
+      "Contributions are accounting changes, not causal drivers, forecasts, or profit.",
+      "Newly/no-longer observed means eligible records in these windows; it does not establish acquisition or churn.",
+      "Ranking uses absolute change. Displayed rows plus the explicit remainder equal the overall change.",
+      "Source duplicates and eligibility rules are unchanged. Missing source activity is not proof of no business activity.",
+      "Stock codes can represent fees and adjustments as well as merchandise; inspect source descriptions before interpreting a product-code change."
+    ],
+    "computation_id": "b3134ad095450c18540720905ac89985f85f8e9a37bf9c9e6a209757d1ee6238",
+    "previous_job": "816d4088053b4245b48ff1b4ba3e75a7",
+    "current_job": "8a689bbcfe1f4db2a1cdb3f999d623f4"
+  },
+  "overall_evidence": [
+    {
+      "metric_version": "retail-metrics-v1",
+      "metric": "net_sales",
+      "unit": "GBP",
+      "definition": "Gross sales minus cancellation value on eligible lines; not profit or cash receipts.",
+      "grain": "source invoice-product line",
+      "snapshot_hash": "17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9",
+      "request": {
+        "metric": "net_sales",
+        "group_by": null,
+        "country": null,
+        "start": "2011-11-01",
+        "end": "2011-11-08",
+        "limit": 20
+      },
+      "sql": "SELECT 'all' AS segment, COALESCE(SUM(qty * pence), 0) AS numerator,\n              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows\n              FROM lines WHERE price > 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty > 0) OR (cancelled AND qty < 0)) AND invoice IS NOT NULL AND invoice <> '' AND occurred IS NOT NULL AND occurred >= ? AND occurred < ? GROUP BY 1 ORDER BY numerator DESC, segment ASC",
+      "preparation_sql": "CREATE TEMP VIEW lines AS SELECT\n        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,\n        NULLIF(NULLIF(trim(CustomerID), ''), 'nan') AS customer,\n        COALESCE(NULLIF(trim(Country), ''), '(missing)') AS country,\n        CASE WHEN regexp_full_match(trim(Quantity), '[+-]?[0-9]+([.]0+)?')\n             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,\n        CASE WHEN regexp_full_match(trim(UnitPrice), '[+-]?[0-9]+([.][0-9]{1,4})?')\n             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,\n        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,\n        coalesce(try_cast(InvoiceDate AS TIMESTAMP),\n                 try_strptime(InvoiceDate, '%m/%d/%Y %H:%M')) AS occurred,\n        starts_with(upper(trim(InvoiceNo)), 'C') AS cancelled FROM raw",
+      "metric_contract_hash": "4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412",
+      "engine_sha256": "3d51e00b21c1b85ddc2a0fe90dd62672339b2cc00b1964f4682faa9512197b06",
+      "parameters": [
+        "2011-11-01",
+        "2011-11-08"
+      ],
+      "values": [
+        {
+          "segment": "all",
+          "value": 309792.4,
+          "numerator": 30979240,
+          "denominator": null,
+          "source_rows": 15324
+        }
+      ],
+      "warnings": [
+        "Descriptive contribution only; no causal effect or profit is inferred.",
+        "Invoice timestamps are naive source-local times; no timezone conversion is assumed.",
+        "Exact duplicate rows are retained; source corrections require a new snapshot."
+      ],
+      "quality": {
+        "source_rows": 15384,
+        "invalid_fields": 0,
+        "nonpositive_prices": 60,
+        "unexpected_quantity_sign": 25,
+        "missing_customer_ids": 2053
+      },
+      "duplicate_rows_retained": 261,
+      "group_count": 1,
+      "computation_id": "74bedf5498045ee7ed59dbc8f02fe5bf259acb70eac3ccb5e8b908769bdad593"
+    },
+    {
+      "metric_version": "retail-metrics-v1",
+      "metric": "net_sales",
+      "unit": "GBP",
+      "definition": "Gross sales minus cancellation value on eligible lines; not profit or cash receipts.",
+      "grain": "source invoice-product line",
+      "snapshot_hash": "e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e",
+      "request": {
+        "metric": "net_sales",
+        "group_by": null,
+        "country": null,
+        "start": "2011-11-08",
+        "end": "2011-11-15",
+        "limit": 20
+      },
+      "sql": "SELECT 'all' AS segment, COALESCE(SUM(qty * pence), 0) AS numerator,\n              COUNT(DISTINCT invoice) AS invoice_denominator, COUNT(*) AS source_rows\n              FROM lines WHERE price > 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty > 0) OR (cancelled AND qty < 0)) AND invoice IS NOT NULL AND invoice <> '' AND occurred IS NOT NULL AND occurred >= ? AND occurred < ? GROUP BY 1 ORDER BY numerator DESC, segment ASC",
+      "preparation_sql": "CREATE TEMP VIEW lines AS SELECT\n        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,\n        NULLIF(NULLIF(trim(CustomerID), ''), 'nan') AS customer,\n        COALESCE(NULLIF(trim(Country), ''), '(missing)') AS country,\n        CASE WHEN regexp_full_match(trim(Quantity), '[+-]?[0-9]+([.]0+)?')\n             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,\n        CASE WHEN regexp_full_match(trim(UnitPrice), '[+-]?[0-9]+([.][0-9]{1,4})?')\n             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,\n        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,\n        coalesce(try_cast(InvoiceDate AS TIMESTAMP),\n                 try_strptime(InvoiceDate, '%m/%d/%Y %H:%M')) AS occurred,\n        starts_with(upper(trim(InvoiceNo)), 'C') AS cancelled FROM raw",
+      "metric_contract_hash": "4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412",
+      "engine_sha256": "3d51e00b21c1b85ddc2a0fe90dd62672339b2cc00b1964f4682faa9512197b06",
+      "parameters": [
+        "2011-11-08",
+        "2011-11-15"
+      ],
+      "values": [
+        {
+          "segment": "all",
+          "value": 388700.17,
+          "numerator": 38870017,
+          "denominator": null,
+          "source_rows": 20722
+        }
+      ],
+      "warnings": [
+        "Descriptive contribution only; no causal effect or profit is inferred.",
+        "Invoice timestamps are naive source-local times; no timezone conversion is assumed.",
+        "Exact duplicate rows are retained; source corrections require a new snapshot."
+      ],
+      "quality": {
+        "source_rows": 20765,
+        "invalid_fields": 0,
+        "nonpositive_prices": 43,
+        "unexpected_quantity_sign": 27,
+        "missing_customer_ids": 4819
+      },
+      "duplicate_rows_retained": 283,
+      "group_count": 1,
+      "computation_id": "540d785152aa116f87e60b4bc5b8dabf397be73e9a7b99d3f55d0653751ae65a"
+    }
+  ]
+}

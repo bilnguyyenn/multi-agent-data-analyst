@@ -50,9 +50,14 @@ For data science/analytics applications:
 - Defined seven auditable retail KPIs over a 541,909-row historical transaction
   source, preserving cancellation, missing-ID, duplicate, and denominator caveats;
   produced reproducible weekly reviews with independent Decimal reference checks.
-- Compared immutable weekly snapshots using consistent definitions and
-  computation-level provenance; prepared a counterbalanced usability pilot with
-  consent, correctness scoring, and full accounting of unsuccessful tasks.
+- Built exact contribution analysis across 2,619 real product codes and 18 countries,
+  reconciling a recorded weekly sales change to the penny; validated every aggregate
+  group across eight metric/dimension cases against independent Decimal calculations.
+
+Additional engineering evidence: fixed unknown-versus-zero behavior in truncated
+comparisons; added bounded, typed contribution queries, stored evidence, portable
+reports, and rejection of nonadditive breakdowns. A counterbalanced usability pilot
+remains prepared with consent, correctness scoring, and unsuccessful-task accounting.
 
 These bullets describe completed engineering and deterministic validation. Live
 model accuracy and measured user time savings remain unclaimed: both measurements

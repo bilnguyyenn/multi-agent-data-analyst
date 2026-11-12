@@ -57,6 +57,31 @@ See the [first report](../retail_results/development.html),
 links to its query, transformation, parameters, numerator/denominator, source-row
 counts, and data/definition fingerprints.
 
+## Explaining the recorded change
+
+The complete breakdown includes **2,619 product codes** and **18 countries** in
+the union of the two periods. Each reconciles to **£78,907.77** with a zero-pence
+residual. The display ranks by absolute movement and retains a separately summed
+remainder; it never implies the largest ten contributors explain the entire change.
+
+- United Kingdom contributes +£72,978.53; Switzerland contributes −£5,915.09.
+- The largest product-code contribution is `AMAZONFEE`: −£14,163.40 in the earlier
+  period and no eligible records in the later period, giving +£14,163.40 under
+  this contract. It illustrates why a stock-code breakdown must not automatically
+  be described as merchandise growth. Inspect the original descriptions and
+  adjustment/cancellation entries before drawing a business conclusion.
+- Continuing product codes contribute +£64,934.36; newly observed codes +£6,417.64;
+  no-longer-observed codes +£7,555.77. The last component is positive because some
+  earlier contributions were negative. Presence labels are not customer churn.
+
+[Product-code report](../retail_results/change-product.html),
+[country report](../retail_results/change-country.html), and
+[all validation outcomes](../retail_results/change-validation.json) are portable.
+Every group in both periods is checked against the independent row-wise Decimal
+reference across four additive metrics and two dimensions: **8/8 reconciliations**.
+These deterministic checks do not measure language-model accuracy or causal effects.
+The frozen 100-question/20-chain language evaluation contract remains unchanged.
+
 ## Validation and engineering evidence
 
 - The frozen real-data suite contains 100 questions and 20 two-turn scenarios.

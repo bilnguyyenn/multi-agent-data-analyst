@@ -1,0 +1,217 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Retail change breakdown</title><style>body{font:16px system-ui;max-width:1100px;margin:40px auto;padding:16px;color:#172b44}table{border-collapse:collapse;width:100%}td,th{padding:10px;border-bottom:1px solid #ddd;text-align:left}pre{white-space:pre-wrap;overflow-wrap:anywhere}h1{color:#145e65}</style><h1>net_sales change by product</h1><p>309792.40 → 388700.17 GBP; change: <strong>78907.77</strong></p><table><thead><tr><th>Group</th><th>Observed cohort</th><th>Previous</th><th>Current</th><th>Change</th></tr></thead><tbody><tr><td>AMAZONFEE</td><td>no_longer_observed</td><td>-14163.40</td><td>0.00</td><td>14163.40</td></tr><tr><td>DOT</td><td>continuing</td><td>2534.75</td><td>8857.21</td><td>6322.46</td></tr><tr><td>21915</td><td>continuing</td><td>4062.97</td><td>950.33</td><td>-3112.64</td></tr><tr><td>85099B</td><td>continuing</td><td>2151.51</td><td>4912.37</td><td>2760.86</td></tr><tr><td>85123A</td><td>continuing</td><td>5093.26</td><td>2518.80</td><td>-2574.46</td></tr><tr><td>84879</td><td>continuing</td><td>1435.28</td><td>3122.11</td><td>1686.83</td></tr><tr><td>21733</td><td>continuing</td><td>2156.70</td><td>470.12</td><td>-1686.58</td></tr><tr><td>23084</td><td>continuing</td><td>8135.25</td><td>6553.77</td><td>-1581.48</td></tr><tr><td>23355</td><td>continuing</td><td>3916.69</td><td>2337.72</td><td>-1578.97</td></tr><tr><td>CRUK</td><td>newly_observed</td><td>0.00</td><td>-1556.26</td><td>-1556.26</td></tr><tr><td>All other groups (2609)</td><td>Remainder</td><td>294469.39</td><td>360534.00</td><td>66064.61</td></tr></tbody></table><p>Reconciliation residual: 0 base units. All 2619 groups were included before display limiting.</p><p>Contributions are accounting changes, not causal drivers, forecasts, or profit.</p><p>Newly/no-longer observed means eligible records in these windows; it does not establish acquisition or churn.</p><p>Ranking uses absolute change. Displayed rows plus the explicit remainder equal the overall change.</p><p>Source duplicates and eligibility rules are unchanged. Missing source activity is not proof of no business activity.</p><p>Stock codes can represent fees and adjustments as well as merchandise; inspect source descriptions before interpreting a product-code change.</p><h2>Complete evidence</h2><pre>{
+  &quot;version&quot;: &quot;retail-change-bridge-v1&quot;,
+  &quot;metric&quot;: &quot;net_sales&quot;,
+  &quot;group_by&quot;: &quot;product&quot;,
+  &quot;unit&quot;: &quot;GBP&quot;,
+  &quot;base_unit_scale&quot;: 100,
+  &quot;previous_base_units&quot;: 30979240,
+  &quot;current_base_units&quot;: 38870017,
+  &quot;delta_base_units&quot;: 7890777,
+  &quot;previous&quot;: &quot;309792.40&quot;,
+  &quot;current&quot;: &quot;388700.17&quot;,
+  &quot;delta&quot;: &quot;78907.77&quot;,
+  &quot;group_count&quot;: 2619,
+  &quot;rows&quot;: [
+    {
+      &quot;segment&quot;: &quot;AMAZONFEE&quot;,
+      &quot;cohort&quot;: &quot;no_longer_observed&quot;,
+      &quot;previous_base_units&quot;: -1416340,
+      &quot;current_base_units&quot;: 0,
+      &quot;delta_base_units&quot;: 1416340,
+      &quot;previous&quot;: &quot;-14163.40&quot;,
+      &quot;current&quot;: &quot;0.00&quot;,
+      &quot;delta&quot;: &quot;14163.40&quot;,
+      &quot;previous_source_rows&quot;: 2,
+      &quot;current_source_rows&quot;: 0
+    },
+    {
+      &quot;segment&quot;: &quot;DOT&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 253475,
+      &quot;current_base_units&quot;: 885721,
+      &quot;delta_base_units&quot;: 632246,
+      &quot;previous&quot;: &quot;2534.75&quot;,
+      &quot;current&quot;: &quot;8857.21&quot;,
+      &quot;delta&quot;: &quot;6322.46&quot;,
+      &quot;previous_source_rows&quot;: 6,
+      &quot;current_source_rows&quot;: 12
+    },
+    {
+      &quot;segment&quot;: &quot;21915&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 406297,
+      &quot;current_base_units&quot;: 95033,
+      &quot;delta_base_units&quot;: -311264,
+      &quot;previous&quot;: &quot;4062.97&quot;,
+      &quot;current&quot;: &quot;950.33&quot;,
+      &quot;delta&quot;: &quot;-3112.64&quot;,
+      &quot;previous_source_rows&quot;: 35,
+      &quot;current_source_rows&quot;: 13
+    },
+    {
+      &quot;segment&quot;: &quot;85099B&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 215151,
+      &quot;current_base_units&quot;: 491237,
+      &quot;delta_base_units&quot;: 276086,
+      &quot;previous&quot;: &quot;2151.51&quot;,
+      &quot;current&quot;: &quot;4912.37&quot;,
+      &quot;delta&quot;: &quot;2760.86&quot;,
+      &quot;previous_source_rows&quot;: 48,
+      &quot;current_source_rows&quot;: 69
+    },
+    {
+      &quot;segment&quot;: &quot;85123A&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 509326,
+      &quot;current_base_units&quot;: 251880,
+      &quot;delta_base_units&quot;: -257446,
+      &quot;previous&quot;: &quot;5093.26&quot;,
+      &quot;current&quot;: &quot;2518.80&quot;,
+      &quot;delta&quot;: &quot;-2574.46&quot;,
+      &quot;previous_source_rows&quot;: 49,
+      &quot;current_source_rows&quot;: 65
+    },
+    {
+      &quot;segment&quot;: &quot;84879&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 143528,
+      &quot;current_base_units&quot;: 312211,
+      &quot;delta_base_units&quot;: 168683,
+      &quot;previous&quot;: &quot;1435.28&quot;,
+      &quot;current&quot;: &quot;3122.11&quot;,
+      &quot;delta&quot;: &quot;1686.83&quot;,
+      &quot;previous_source_rows&quot;: 46,
+      &quot;current_source_rows&quot;: 49
+    },
+    {
+      &quot;segment&quot;: &quot;21733&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 215670,
+      &quot;current_base_units&quot;: 47012,
+      &quot;delta_base_units&quot;: -168658,
+      &quot;previous&quot;: &quot;2156.70&quot;,
+      &quot;current&quot;: &quot;470.12&quot;,
+      &quot;delta&quot;: &quot;-1686.58&quot;,
+      &quot;previous_source_rows&quot;: 20,
+      &quot;current_source_rows&quot;: 35
+    },
+    {
+      &quot;segment&quot;: &quot;23084&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 813525,
+      &quot;current_base_units&quot;: 655377,
+      &quot;delta_base_units&quot;: -158148,
+      &quot;previous&quot;: &quot;8135.25&quot;,
+      &quot;current&quot;: &quot;6553.77&quot;,
+      &quot;delta&quot;: &quot;-1581.48&quot;,
+      &quot;previous_source_rows&quot;: 110,
+      &quot;current_source_rows&quot;: 129
+    },
+    {
+      &quot;segment&quot;: &quot;23355&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 391669,
+      &quot;current_base_units&quot;: 233772,
+      &quot;delta_base_units&quot;: -157897,
+      &quot;previous&quot;: &quot;3916.69&quot;,
+      &quot;current&quot;: &quot;2337.72&quot;,
+      &quot;delta&quot;: &quot;-1578.97&quot;,
+      &quot;previous_source_rows&quot;: 55,
+      &quot;current_source_rows&quot;: 74
+    },
+    {
+      &quot;segment&quot;: &quot;CRUK&quot;,
+      &quot;cohort&quot;: &quot;newly_observed&quot;,
+      &quot;previous_base_units&quot;: 0,
+      &quot;current_base_units&quot;: -155626,
+      &quot;delta_base_units&quot;: -155626,
+      &quot;previous&quot;: &quot;0.00&quot;,
+      &quot;current&quot;: &quot;-1556.26&quot;,
+      &quot;delta&quot;: &quot;-1556.26&quot;,
+      &quot;previous_source_rows&quot;: 0,
+      &quot;current_source_rows&quot;: 2
+    }
+  ],
+  &quot;remainder&quot;: {
+    &quot;previous_base_units&quot;: 29446939,
+    &quot;current_base_units&quot;: 36053400,
+    &quot;delta_base_units&quot;: 6606461,
+    &quot;group_count&quot;: 2609,
+    &quot;previous&quot;: &quot;294469.39&quot;,
+    &quot;current&quot;: &quot;360534.00&quot;,
+    &quot;delta&quot;: &quot;66064.61&quot;
+  },
+  &quot;cohorts&quot;: [
+    {
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;group_count&quot;: 1957,
+      &quot;delta_base_units&quot;: 6493436,
+      &quot;delta&quot;: &quot;64934.36&quot;
+    },
+    {
+      &quot;cohort&quot;: &quot;newly_observed&quot;,
+      &quot;group_count&quot;: 408,
+      &quot;delta_base_units&quot;: 641764,
+      &quot;delta&quot;: &quot;6417.64&quot;
+    },
+    {
+      &quot;cohort&quot;: &quot;no_longer_observed&quot;,
+      &quot;group_count&quot;: 254,
+      &quot;delta_base_units&quot;: 755577,
+      &quot;delta&quot;: &quot;7555.77&quot;
+    }
+  ],
+  &quot;absolute_movement_base_units&quot;: 22935879,
+  &quot;reconciliation_residual_base_units&quot;: 0,
+  &quot;evidence_refs&quot;: [
+    &quot;74bedf5498045ee7ed59dbc8f02fe5bf259acb70eac3ccb5e8b908769bdad593&quot;,
+    &quot;540d785152aa116f87e60b4bc5b8dabf397be73e9a7b99d3f55d0653751ae65a&quot;
+  ],
+  &quot;snapshot_hashes&quot;: [
+    &quot;17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9&quot;,
+    &quot;e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e&quot;
+  ],
+  &quot;metric_contract_hash&quot;: &quot;4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412&quot;,
+  &quot;source_sha256&quot;: &quot;04c9452f840e51bd1ec4dd5481f3e219c40aef6eadccc79c9999d42d6b5fff83&quot;,
+  &quot;metric_engine_sha256&quot;: &quot;3d51e00b21c1b85ddc2a0fe90dd62672339b2cc00b1964f4682faa9512197b06&quot;,
+  &quot;preparation_sql&quot;: &quot;CREATE TEMP VIEW lines AS SELECT\n        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,\n        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,\n        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,\n        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)\n             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,\n        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)\n             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,\n        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,\n        coalesce(try_cast(InvoiceDate AS TIMESTAMP),\n                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,\n        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw&quot;,
+  &quot;queries&quot;: [
+    {
+      &quot;sql&quot;: &quot;SELECT COALESCE(product, &#x27;(missing)&#x27;) AS segment, COALESCE(SUM(qty * pence), 0) AS numerator, COUNT(*) AS source_rows FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY segment&quot;,
+      &quot;parameters&quot;: [
+        &quot;2011-11-01&quot;,
+        &quot;2011-11-08&quot;
+      ]
+    },
+    {
+      &quot;sql&quot;: &quot;SELECT COALESCE(product, &#x27;(missing)&#x27;) AS segment, COALESCE(SUM(qty * pence), 0) AS numerator, COUNT(*) AS source_rows FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY segment&quot;,
+      &quot;parameters&quot;: [
+        &quot;2011-11-08&quot;,
+        &quot;2011-11-15&quot;
+      ]
+    }
+  ],
+  &quot;periods&quot;: [
+    {
+      &quot;start&quot;: &quot;2011-11-01&quot;,
+      &quot;end&quot;: &quot;2011-11-08&quot;,
+      &quot;country&quot;: null
+    },
+    {
+      &quot;start&quot;: &quot;2011-11-08&quot;,
+      &quot;end&quot;: &quot;2011-11-15&quot;,
+      &quot;country&quot;: null
+    }
+  ],
+  &quot;warnings&quot;: [
+    &quot;Contributions are accounting changes, not causal drivers, forecasts, or profit.&quot;,
+    &quot;Newly/no-longer observed means eligible records in these windows; it does not establish acquisition or churn.&quot;,
+    &quot;Ranking uses absolute change. Displayed rows plus the explicit remainder equal the overall change.&quot;,
+    &quot;Source duplicates and eligibility rules are unchanged. Missing source activity is not proof of no business activity.&quot;,
+    &quot;Stock codes can represent fees and adjustments as well as merchandise; inspect source descriptions before interpreting a product-code change.&quot;
+  ],
+  &quot;computation_id&quot;: &quot;e1e5908c1f2279edde3b62fe89284bcc65b9c65309f610c712bd7a4249e05838&quot;,
+  &quot;previous_job&quot;: &quot;816d4088053b4245b48ff1b4ba3e75a7&quot;,
+  &quot;current_job&quot;: &quot;8a689bbcfe1f4db2a1cdb3f999d623f4&quot;
+}</pre></html>

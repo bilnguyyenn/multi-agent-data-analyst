@@ -422,8 +422,14 @@ class Operations:
             left = {r["segment"]: r["value"] for r in before["values"]}
             right = {r["segment"]: r["value"] for r in after["values"]}
             for key in sorted(left.keys() | right.keys()):
-                absent = None if after["unit"] == "fraction" else 0
-                x, y = left.get(key, absent), right.get(key, absent)
+                # Absence from a truncated top-N is unknown, not zero.
+                old_absent = (
+                    None if before["unit"] == "fraction" or before["group_count"] > len(left) else 0
+                )
+                new_absent = (
+                    None if after["unit"] == "fraction" or after["group_count"] > len(right) else 0
+                )
+                x, y = left.get(key, old_absent), right.get(key, new_absent)
                 rows.append(
                     {
                         "metric": after["metric"],
@@ -442,3 +448,56 @@ class Operations:
                 "Descriptive changes, not causal attribution. Check snapshot coverage and truncated group lists."
             ],
         }
+
+    def explain_change(self, previous: str, current: str, raw: dict | None = None) -> dict:
+        from analyst.operations.changes import ChangeRequest, bridge, grouped_values
+        from analyst.operations.metrics import ENGINE_SHA256
+
+        request = ChangeRequest.model_validate(raw or {})
+        self.compare(previous, current)  # Reuse completion/definition/period compatibility gates.
+        jobs = [self.get("jobs", identity) for identity in [previous, current]]
+        if jobs[0]["spec"]["end"] > jobs[1]["spec"]["start"]:
+            raise ValueError("select the earlier review first")
+        packets, groups = [], []
+        paths = []
+        for job in jobs:
+            candidates = [self.get("evidence", ref) for ref in job["evidence_ids"]]
+            matches = [
+                p
+                for p in candidates
+                if p["metric"] == request.metric and p["request"]["group_by"] is None
+            ]
+            if len(matches) != 1:
+                raise ValueError(
+                    "playbook must contain exactly one overall request for this metric"
+                )
+            packet = matches[0]
+            if (
+                packet["metric_contract_hash"] != contract_hash()
+                or packet["engine_sha256"] != ENGINE_SHA256
+            ):
+                raise ValueError(
+                    "re-run reviews with the current metric engine before recomputing groups"
+                )
+            path = self.root / "snapshots" / f"{packet['snapshot_hash']}.csv"
+            if file_hash(path) != packet["snapshot_hash"]:
+                raise ValueError("snapshot content changed")
+            paths.append(path)
+            packets.append(packet)
+            groups.append(grouped_values(path, packet, request.group_by))
+        if packets[0]["request"]["country"] != packets[1]["request"]["country"]:
+            raise ValueError("incompatible country filters")
+        for path, packet in zip(paths, packets):
+            if file_hash(path) != packet["snapshot_hash"]:
+                raise ValueError("snapshot changed during change breakdown")
+        result = bridge(*packets, request, *groups)
+        result.update(previous_job=previous, current_job=current)
+        result["computation_id"] = fingerprint(
+            {k: v for k, v in result.items() if k != "computation_id"}
+        )
+        with self.db() as db:
+            db.execute(
+                "INSERT OR IGNORE INTO evidence VALUES (?,?)",
+                [result["computation_id"], json.dumps(result)],
+            )
+        return self.get("evidence", result["computation_id"])

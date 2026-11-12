@@ -1,0 +1,217 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Retail change breakdown</title><style>body{font:16px system-ui;max-width:1100px;margin:40px auto;padding:16px;color:#172b44}table{border-collapse:collapse;width:100%}td,th{padding:10px;border-bottom:1px solid #ddd;text-align:left}pre{white-space:pre-wrap;overflow-wrap:anywhere}h1{color:#145e65}</style><h1>net_sales change by country</h1><p>309792.40 → 388700.17 GBP; change: <strong>78907.77</strong></p><table><thead><tr><th>Group</th><th>Observed cohort</th><th>Previous</th><th>Current</th><th>Change</th></tr></thead><tbody><tr><td>United Kingdom</td><td>continuing</td><td>278003.78</td><td>350982.31</td><td>72978.53</td></tr><tr><td>EIRE</td><td>continuing</td><td>3087.27</td><td>9085.50</td><td>5998.23</td></tr><tr><td>Switzerland</td><td>continuing</td><td>6207.67</td><td>292.58</td><td>-5915.09</td></tr><tr><td>Netherlands</td><td>continuing</td><td>4486.91</td><td>9823.12</td><td>5336.21</td></tr><tr><td>France</td><td>continuing</td><td>4718.81</td><td>8725.53</td><td>4006.72</td></tr><tr><td>Belgium</td><td>continuing</td><td>2412.53</td><td>486.60</td><td>-1925.93</td></tr><tr><td>Germany</td><td>continuing</td><td>2649.45</td><td>4046.21</td><td>1396.76</td></tr><tr><td>Poland</td><td>no_longer_observed</td><td>1361.23</td><td>0.00</td><td>-1361.23</td></tr><tr><td>Austria</td><td>newly_observed</td><td>0.00</td><td>1329.78</td><td>1329.78</td></tr><tr><td>Channel Islands</td><td>no_longer_observed</td><td>1303.14</td><td>0.00</td><td>-1303.14</td></tr><tr><td>All other groups (8)</td><td>Remainder</td><td>5561.61</td><td>3928.54</td><td>-1633.07</td></tr></tbody></table><p>Reconciliation residual: 0 base units. All 18 groups were included before display limiting.</p><p>Contributions are accounting changes, not causal drivers, forecasts, or profit.</p><p>Newly/no-longer observed means eligible records in these windows; it does not establish acquisition or churn.</p><p>Ranking uses absolute change. Displayed rows plus the explicit remainder equal the overall change.</p><p>Source duplicates and eligibility rules are unchanged. Missing source activity is not proof of no business activity.</p><p>Stock codes can represent fees and adjustments as well as merchandise; inspect source descriptions before interpreting a product-code change.</p><h2>Complete evidence</h2><pre>{
+  &quot;version&quot;: &quot;retail-change-bridge-v1&quot;,
+  &quot;metric&quot;: &quot;net_sales&quot;,
+  &quot;group_by&quot;: &quot;country&quot;,
+  &quot;unit&quot;: &quot;GBP&quot;,
+  &quot;base_unit_scale&quot;: 100,
+  &quot;previous_base_units&quot;: 30979240,
+  &quot;current_base_units&quot;: 38870017,
+  &quot;delta_base_units&quot;: 7890777,
+  &quot;previous&quot;: &quot;309792.40&quot;,
+  &quot;current&quot;: &quot;388700.17&quot;,
+  &quot;delta&quot;: &quot;78907.77&quot;,
+  &quot;group_count&quot;: 18,
+  &quot;rows&quot;: [
+    {
+      &quot;segment&quot;: &quot;United Kingdom&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 27800378,
+      &quot;current_base_units&quot;: 35098231,
+      &quot;delta_base_units&quot;: 7297853,
+      &quot;previous&quot;: &quot;278003.78&quot;,
+      &quot;current&quot;: &quot;350982.31&quot;,
+      &quot;delta&quot;: &quot;72978.53&quot;,
+      &quot;previous_source_rows&quot;: 14141,
+      &quot;current_source_rows&quot;: 19327
+    },
+    {
+      &quot;segment&quot;: &quot;EIRE&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 308727,
+      &quot;current_base_units&quot;: 908550,
+      &quot;delta_base_units&quot;: 599823,
+      &quot;previous&quot;: &quot;3087.27&quot;,
+      &quot;current&quot;: &quot;9085.50&quot;,
+      &quot;delta&quot;: &quot;5998.23&quot;,
+      &quot;previous_source_rows&quot;: 135,
+      &quot;current_source_rows&quot;: 317
+    },
+    {
+      &quot;segment&quot;: &quot;Switzerland&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 620767,
+      &quot;current_base_units&quot;: 29258,
+      &quot;delta_base_units&quot;: -591509,
+      &quot;previous&quot;: &quot;6207.67&quot;,
+      &quot;current&quot;: &quot;292.58&quot;,
+      &quot;delta&quot;: &quot;-5915.09&quot;,
+      &quot;previous_source_rows&quot;: 131,
+      &quot;current_source_rows&quot;: 13
+    },
+    {
+      &quot;segment&quot;: &quot;Netherlands&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 448691,
+      &quot;current_base_units&quot;: 982312,
+      &quot;delta_base_units&quot;: 533621,
+      &quot;previous&quot;: &quot;4486.91&quot;,
+      &quot;current&quot;: &quot;9823.12&quot;,
+      &quot;delta&quot;: &quot;5336.21&quot;,
+      &quot;previous_source_rows&quot;: 70,
+      &quot;current_source_rows&quot;: 65
+    },
+    {
+      &quot;segment&quot;: &quot;France&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 471881,
+      &quot;current_base_units&quot;: 872553,
+      &quot;delta_base_units&quot;: 400672,
+      &quot;previous&quot;: &quot;4718.81&quot;,
+      &quot;current&quot;: &quot;8725.53&quot;,
+      &quot;delta&quot;: &quot;4006.72&quot;,
+      &quot;previous_source_rows&quot;: 292,
+      &quot;current_source_rows&quot;: 489
+    },
+    {
+      &quot;segment&quot;: &quot;Belgium&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 241253,
+      &quot;current_base_units&quot;: 48660,
+      &quot;delta_base_units&quot;: -192593,
+      &quot;previous&quot;: &quot;2412.53&quot;,
+      &quot;current&quot;: &quot;486.60&quot;,
+      &quot;delta&quot;: &quot;-1925.93&quot;,
+      &quot;previous_source_rows&quot;: 96,
+      &quot;current_source_rows&quot;: 29
+    },
+    {
+      &quot;segment&quot;: &quot;Germany&quot;,
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;previous_base_units&quot;: 264945,
+      &quot;current_base_units&quot;: 404621,
+      &quot;delta_base_units&quot;: 139676,
+      &quot;previous&quot;: &quot;2649.45&quot;,
+      &quot;current&quot;: &quot;4046.21&quot;,
+      &quot;delta&quot;: &quot;1396.76&quot;,
+      &quot;previous_source_rows&quot;: 113,
+      &quot;current_source_rows&quot;: 262
+    },
+    {
+      &quot;segment&quot;: &quot;Poland&quot;,
+      &quot;cohort&quot;: &quot;no_longer_observed&quot;,
+      &quot;previous_base_units&quot;: 136123,
+      &quot;current_base_units&quot;: 0,
+      &quot;delta_base_units&quot;: -136123,
+      &quot;previous&quot;: &quot;1361.23&quot;,
+      &quot;current&quot;: &quot;0.00&quot;,
+      &quot;delta&quot;: &quot;-1361.23&quot;,
+      &quot;previous_source_rows&quot;: 71,
+      &quot;current_source_rows&quot;: 0
+    },
+    {
+      &quot;segment&quot;: &quot;Austria&quot;,
+      &quot;cohort&quot;: &quot;newly_observed&quot;,
+      &quot;previous_base_units&quot;: 0,
+      &quot;current_base_units&quot;: 132978,
+      &quot;delta_base_units&quot;: 132978,
+      &quot;previous&quot;: &quot;0.00&quot;,
+      &quot;current&quot;: &quot;1329.78&quot;,
+      &quot;delta&quot;: &quot;1329.78&quot;,
+      &quot;previous_source_rows&quot;: 0,
+      &quot;current_source_rows&quot;: 70
+    },
+    {
+      &quot;segment&quot;: &quot;Channel Islands&quot;,
+      &quot;cohort&quot;: &quot;no_longer_observed&quot;,
+      &quot;previous_base_units&quot;: 130314,
+      &quot;current_base_units&quot;: 0,
+      &quot;delta_base_units&quot;: -130314,
+      &quot;previous&quot;: &quot;1303.14&quot;,
+      &quot;current&quot;: &quot;0.00&quot;,
+      &quot;delta&quot;: &quot;-1303.14&quot;,
+      &quot;previous_source_rows&quot;: 64,
+      &quot;current_source_rows&quot;: 0
+    }
+  ],
+  &quot;remainder&quot;: {
+    &quot;previous_base_units&quot;: 556161,
+    &quot;current_base_units&quot;: 392854,
+    &quot;delta_base_units&quot;: -163307,
+    &quot;group_count&quot;: 8,
+    &quot;previous&quot;: &quot;5561.61&quot;,
+    &quot;current&quot;: &quot;3928.54&quot;,
+    &quot;delta&quot;: &quot;-1633.07&quot;
+  },
+  &quot;cohorts&quot;: [
+    {
+      &quot;cohort&quot;: &quot;continuing&quot;,
+      &quot;group_count&quot;: 12,
+      &quot;delta_base_units&quot;: 8213734,
+      &quot;delta&quot;: &quot;82137.34&quot;
+    },
+    {
+      &quot;cohort&quot;: &quot;newly_observed&quot;,
+      &quot;group_count&quot;: 2,
+      &quot;delta_base_units&quot;: 132978,
+      &quot;delta&quot;: &quot;1329.78&quot;
+    },
+    {
+      &quot;cohort&quot;: &quot;no_longer_observed&quot;,
+      &quot;group_count&quot;: 4,
+      &quot;delta_base_units&quot;: -455935,
+      &quot;delta&quot;: &quot;-4559.35&quot;
+    }
+  ],
+  &quot;absolute_movement_base_units&quot;: 10599263,
+  &quot;reconciliation_residual_base_units&quot;: 0,
+  &quot;evidence_refs&quot;: [
+    &quot;74bedf5498045ee7ed59dbc8f02fe5bf259acb70eac3ccb5e8b908769bdad593&quot;,
+    &quot;540d785152aa116f87e60b4bc5b8dabf397be73e9a7b99d3f55d0653751ae65a&quot;
+  ],
+  &quot;snapshot_hashes&quot;: [
+    &quot;17c3dc954d786f56c577f2a94522aae9934f904ace07bcb3533f945e81bac9d9&quot;,
+    &quot;e8a2c36cdc8703ff5d631dceee97a94e7090e7eb97d767bdeda6ea32c786488e&quot;
+  ],
+  &quot;metric_contract_hash&quot;: &quot;4d22177ce89a9c03fb207d509512bdb940998459e58d884ef3f4d57f2ae01412&quot;,
+  &quot;source_sha256&quot;: &quot;04c9452f840e51bd1ec4dd5481f3e219c40aef6eadccc79c9999d42d6b5fff83&quot;,
+  &quot;metric_engine_sha256&quot;: &quot;3d51e00b21c1b85ddc2a0fe90dd62672339b2cc00b1964f4682faa9512197b06&quot;,
+  &quot;preparation_sql&quot;: &quot;CREATE TEMP VIEW lines AS SELECT\n        trim(InvoiceNo) AS invoice, trim(StockCode) AS product,\n        NULLIF(NULLIF(trim(CustomerID), &#x27;&#x27;), &#x27;nan&#x27;) AS customer,\n        COALESCE(NULLIF(trim(Country), &#x27;&#x27;), &#x27;(missing)&#x27;) AS country,\n        CASE WHEN regexp_full_match(trim(Quantity), &#x27;[+-]?[0-9]+([.]0+)?&#x27;)\n             THEN try_cast(Quantity AS BIGINT) ELSE NULL END AS qty,\n        CASE WHEN regexp_full_match(trim(UnitPrice), &#x27;[+-]?[0-9]+([.][0-9]{1,4})?&#x27;)\n             THEN try_cast(UnitPrice AS DECIMAL(18,4)) ELSE NULL END AS price,\n        round(try_cast(UnitPrice AS DECIMAL(18,4)) * 100)::BIGINT AS pence,\n        coalesce(try_cast(InvoiceDate AS TIMESTAMP),\n                 try_strptime(InvoiceDate, &#x27;%m/%d/%Y %H:%M&#x27;)) AS occurred,\n        starts_with(upper(trim(InvoiceNo)), &#x27;C&#x27;) AS cancelled FROM raw&quot;,
+  &quot;queries&quot;: [
+    {
+      &quot;sql&quot;: &quot;SELECT COALESCE(country, &#x27;(missing)&#x27;) AS segment, COALESCE(SUM(qty * pence), 0) AS numerator, COUNT(*) AS source_rows FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY segment&quot;,
+      &quot;parameters&quot;: [
+        &quot;2011-11-01&quot;,
+        &quot;2011-11-08&quot;
+      ]
+    },
+    {
+      &quot;sql&quot;: &quot;SELECT COALESCE(country, &#x27;(missing)&#x27;) AS segment, COALESCE(SUM(qty * pence), 0) AS numerator, COUNT(*) AS source_rows FROM lines WHERE price &gt; 0 AND qty IS NOT NULL AND ((NOT cancelled AND qty &gt; 0) OR (cancelled AND qty &lt; 0)) AND invoice IS NOT NULL AND invoice &lt;&gt; &#x27;&#x27; AND occurred IS NOT NULL AND occurred &gt;= ? AND occurred &lt; ? GROUP BY 1 ORDER BY segment&quot;,
+      &quot;parameters&quot;: [
+        &quot;2011-11-08&quot;,
+        &quot;2011-11-15&quot;
+      ]
+    }
+  ],
+  &quot;periods&quot;: [
+    {
+      &quot;start&quot;: &quot;2011-11-01&quot;,
+      &quot;end&quot;: &quot;2011-11-08&quot;,
+      &quot;country&quot;: null
+    },
+    {
+      &quot;start&quot;: &quot;2011-11-08&quot;,
+      &quot;end&quot;: &quot;2011-11-15&quot;,
+      &quot;country&quot;: null
+    }
+  ],
+  &quot;warnings&quot;: [
+    &quot;Contributions are accounting changes, not causal drivers, forecasts, or profit.&quot;,
+    &quot;Newly/no-longer observed means eligible records in these windows; it does not establish acquisition or churn.&quot;,
+    &quot;Ranking uses absolute change. Displayed rows plus the explicit remainder equal the overall change.&quot;,
+    &quot;Source duplicates and eligibility rules are unchanged. Missing source activity is not proof of no business activity.&quot;,
+    &quot;Stock codes can represent fees and adjustments as well as merchandise; inspect source descriptions before interpreting a product-code change.&quot;
+  ],
+  &quot;computation_id&quot;: &quot;b3134ad095450c18540720905ac89985f85f8e9a37bf9c9e6a209757d1ee6238&quot;,
+  &quot;previous_job&quot;: &quot;816d4088053b4245b48ff1b4ba3e75a7&quot;,
+  &quot;current_job&quot;: &quot;8a689bbcfe1f4db2a1cdb3f999d623f4&quot;
+}</pre></html>

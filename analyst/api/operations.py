@@ -13,6 +13,7 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import Response
 from pydantic import BaseModel, ConfigDict, Field
 
+from analyst.operations.changes import ChangeRequest, render_bridge
 from analyst.operations.metrics import REGISTRY, VERSION, MetricRequest, resolve_question
 from analyst.operations.service import Operations, Playbook, Refresh
 from analyst.reporting import render_report, report_payload
@@ -161,6 +162,38 @@ def evidence(identity: str):
 @router.get("/compare")
 def compare(previous: str, current: str):
     return invoke(service().compare, previous, current)
+
+
+@router.get("/changes")
+async def changes(
+    previous: str,
+    current: str,
+    metric: str = "net_sales",
+    group_by: str = "product",
+    limit: int = 10,
+):
+    request = invoke(
+        ChangeRequest.model_validate, {"metric": metric, "group_by": group_by, "limit": limit}
+    )
+    return await asyncio.to_thread(
+        invoke, service().explain_change, previous, current, request.model_dump()
+    )
+
+
+@router.get("/changes/{identity}/report")
+def change_report(identity: str):
+    packet = invoke(service().get, "evidence", identity)
+    if packet.get("version") != "retail-change-bridge-v1":
+        raise HTTPException(409, "not change-breakdown evidence")
+    return Response(
+        invoke(render_bridge, packet),
+        media_type="text/html",
+        headers={
+            "Content-Disposition": 'attachment; filename="retail-change.html"',
+            "X-Content-Type-Options": "nosniff",
+            "Content-Security-Policy": "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'",
+        },
+    )
 
 
 @router.get("/jobs/{identity}/report")
